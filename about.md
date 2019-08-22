@@ -35,6 +35,7 @@ I graduated PhD in Machine Learning (ML) with additional background on Brain-Com
 ### Publications
 (sorted chronologically)
 * First-authored:
+
 [1] K. Vo, J. Jonnagaddala & T. Liaw, ’Statistical supervised meta-ensemble algorithm for medical record linkage’, Journal of Biomedical Informatics 2019.
 
 [2] K. Vo, D. Nguyen, K. Ha & E. Dutkiewicz, ’Subject-Independent ERP-based Brain-Computer Interfaces’, IEEE Transactions on Neural System and Rehabilitation Engineering, 2018.
@@ -52,6 +53,7 @@ I graduated PhD in Machine Learning (ML) with additional background on Brain-Com
 [8] K. Vo & K. Ha, ’Extraction of dynamic features from static handwritten image and recognition using Hidden Markov model’, International Symposium on Electrical and Electronics Engineering (ISEE), Vietnam, 2015.
 
 * Co-authored:
+
 [9] K. Ha, K. Vo & H. Dinh, ’Brainwave-Controlled Applications with the Emotiv EPOC Using Support Vector Machine’, 4th In- ternational Conference on Information Technology, Computer, And Electrical Engineering (ICITACEE), 2016.
 
 [10] K. Ha & K. Vo, ’Real-Time Brainwave-Controlled Interface Using P300 Component in EEG Signal Processing’, 12th IEEE- RIVF International Conference on Computing and Communi- cation Technologies, 2016.
