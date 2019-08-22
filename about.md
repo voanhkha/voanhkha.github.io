@@ -8,9 +8,17 @@ I graduated PhD in Machine Learning with additional background on Brain-Computer
 
 The strongest point in me is the ability to "human learn" various mathematical aspects of research rapidly, ranging from optimization, machine learning, to reinforcement learning. It is demonstrated via my rapid-growing ranking in the global data scientist leaderboard on Kaggle. I joined Kaggle from March 2018, and now (August 2019) I have myself 3 gold medals and 3 silver medals in almost totally diverse aspects of competitions, including mathematical optimization, semi-supervised clustering, tree-based modelling oriented supervised ML, and GCN-oriented supervised ML. The full details of awards are outlined in the "Kaggle Awards" section below.
 
-### More Information
+### Awards
 
-A place to include any other types of information that you'd like to include about yourself.
+* Rank 8/1874 (Gold Medal) Traveling Santa Competition, Jan 2019. Big-scale Optimization: find the shortest path going through 200000 cities. ContestPage, Code_1, Code_2, Solution_Write-up.
+
+* Rank 10/656 (Gold Medal) TrackML Particle Tracking Competition, Aug 2018. High-energy Physics: cluster patterns of helices from 2000 events of 300,000 coordinated points each. ContestPage, Code.
+
+* Rank 23/4541 (Solo Silver Medal), LANL Earthquake Competition, Jun 2019. Regression for predicting time-to-earthquake in seismic acoustic signal. ContestPage, Solution_Write-up.
+
+* Rank 62/1832 (Silver Medal), Instant Gratification, Jun 2019. Gaussian Mixture modeling for mixtures of Gaussians :-). ContestPage.
+
+* Rank 118/4484 (Solo Silver Medal), Santander Value Prediction Competition, Aug 2018. Predict transaction values for potential bank customers. ContestPage.
 
 ### Contact me
 
