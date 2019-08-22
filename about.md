@@ -6,7 +6,6 @@ permalink: /about/
 
 I graduated PhD in Machine Learning (ML) with additional background on Brain-Computer Interface (BCI) at University of Technology Sydney (UTS) in 2019. I am now working as a full-time post-doc in mainly in Multi-agent Reinforcement Learning (RL) at UTS, Australia.
 
-The strongest point in me is the ability to "human learn" various mathematical aspects of research in a very short time, ranging from optimization, ML, to reinforcement learning. It is demonstrated via my rapid-growing ranking in the global data scientist leaderboard on Kaggle. I joined Kaggle from March 2018, and now (August 2019) I have myself 3 gold medals and 3 silver medals in almost totally diverse aspects of competitions, including mathematical optimization, semi-supervised clustering, tree-based modelling oriented supervised ML, and GCN-oriented supervised ML. The full details of awards are outlined in the "Kaggle Awards" section below.
 
 ### Kaggle Awards
 
@@ -18,9 +17,7 @@ The strongest point in me is the ability to "human learn" various mathematical a
 
 * Rank 23/4541 (Solo Silver Medal), LANL Earthquake Competition, Jun 2019. Regression for predicting time-to-earthquake in seismic acoustic signal. ContestPage, Solution_Write-up.
 
-* Rank 62/1832 (Silver Medal), Instant Gratification, Jun 2019. Gaussian Mixture modeling for mixtures of Gaussians :-). ContestPage.
-
-* Rank 118/4484 (Solo Silver Medal), Santander Value Prediction Competition, Aug 2018. Predict transaction values for potential bank customers. ContestPage.
+* Other not-so-very-good competition results: Rank 62/1832 (Silver Medal), Instant Gratification, Jun 2019 (Gaussian Mixture modeling for mixtures of Gaussians :-) ). Rank 118/4484 (Solo Silver Medal), Santander Value Prediction Competition, Aug 2018 (Predict transaction values for potential bank customers).
 
 ### Timeline
 
@@ -61,7 +58,7 @@ The strongest point in me is the ability to "human learn" various mathematical a
 
 ### What I hope for
 
-Although I have in my hands some publications, I never satisfied with any of them. The reason is that due to some reasons, I had to strive to complete my PhD in a very short time, hence I had to push my published papers too much.
+Although I have in my hands some publications, I never satisfied with any of them. The reason is that due to personal reasons, I had to strive to complete my PhD in a very short time, hence I had to push my published papers too much.
 
 As a result, I always hope that I can publish some papers in high-quality conferences or journals soon, such as ICML, NIPS, or at least AAAI. I also want to be a top 10 data scientist on Kaggle global leaderboard (oops, that can be considered an extremely tough and long-term goal).
 
