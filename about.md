@@ -4,12 +4,13 @@ title: About
 permalink: /about/
 ---
 
-I graduated PhD in Machine Learning (ML) with additional background on Brain-Computer Interface (BCI) at University of Technology Sydney (UTS) in 2019. I am now working as a full-time post-doc in mainly in Multi-agent Reinforcement Learning (RL) at UTS, Australia.
+I graduated PhD in Machine Learning (ML) with additional background on Brain-Computer Interface (BCI) at University of Technology Sydney (UTS) in 2019. I am now working as a full-time post-doc in Multi-agent Reinforcement Learning (RL) at UTS, Australia.
 
 
 ### Kaggle Awards
 
 * Rank xx/2600 (...Medal) Predicting Molecular Properties, Aug 2019. Graph-neural-network oriented competition on predicting chemical properties from 150,000 molecule structures. ContestPage, Code, Solution_Write-up.
+![hehe](https://github.com/voanhkha/voanhkha.github.io/blob/master/images/Molecule_Kaggle.png)
 
 * Rank 8/1874 (Gold Medal) Traveling Santa Competition, Jan 2019. Big-scale Optimization: find the shortest path going through 200000 cities. ContestPage, Code_1, Code_2, Solution_Write-up.
 
