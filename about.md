@@ -10,9 +10,9 @@ I graduated PhD in Machine Learning (ML) with additional background on Brain-Com
 ### Kaggle Awards
 
 * Rank xx/2600 (...Medal) Predicting Molecular Properties, Aug 2019. Graph-neural-network oriented competition on predicting chemical properties from 150,000 molecule structures. ContestPage, Code, Solution_Write-up.
-![_config.yml](https://github.com/voanhkha/voanhkha.github.io/blob/master/images/Molecule_2.png)
+![_config.yml](/images/Molecule_2.png)
 <div class="imgcap">
-<img src="https://github.com/voanhkha/voanhkha.github.io/blob/master/images/Molecule_2.png" style="border:none; width:100%;">
+<img src="/images/Molecule_2.png" style="border:none; width:100%;">
 </div>
 
 
