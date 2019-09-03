@@ -9,7 +9,7 @@ I graduated PhD in Machine Learning (ML) with additional background on Brain-Com
 
 ### Kaggle Profile (Updated September 2019)
 <div class="imgcap">
-<img src="/images/Kaggle_Profile_Sep2019">
+<img src="/images/Kaggle_Profile_Sep2019.png">
 </div>
 
 * Rank xx/2600 (...Medal) Predicting Molecular Properties, Aug 2019. Graph-neural-network oriented competition on predicting chemical properties from 150,000 molecule structures. ContestPage, Code, Solution_Write-up.
