@@ -9,7 +9,7 @@ I graduated PhD in Machine Learning (ML) with additional background on Brain-Com
 
 ### Kaggle Profile (Updated September 2019)
 <div class="imgcap">
-<img src="/images/Kaggle_Profile_Sep2019.png">
+<img src="/images/Kaggle_Profile_28Nov2019.png">
 </div>
 
 * Rank 10/2749 (Gold Medal) Predicting Molecular Properties, Aug 2019. Graph-neural-network oriented competition on predicting chemical properties from 150,000 molecule structures. 
@@ -24,6 +24,10 @@ I graduated PhD in Machine Learning (ML) with additional background on Brain-Com
 * Rank 10/656 (Gold Medal) TrackML Particle Tracking Competition, Aug 2018. High-energy Physics: cluster patterns of helices from 2000 events of 300,000 coordinated points each.
 [ContestPage](https://www.kaggle.com/c/trackml-particle-identification/leaderboard), [Code](https://www.kaggle.com/khahuras/0-53x-clustering-using-hough-features-basic)
 ![_config.yml](/images/TrackML.png)
+
+* Rank 16/1538 (Solo Silver Medal), Understanding Cloud Organization Competition, Nov 2019. Computer vision's Segmentation of cloud formations via satellite images. 
+[ContestPage](https://www.kaggle.com/c/understanding_cloud_organization/leaderboard), [Solution](https://www.kaggle.com/c/understanding_cloud_organization/discussion/118065#latest-680911)
+![_config.yml](/images/Cloud.png)
 
 * Rank 23/4541 (Solo Silver Medal), LANL Earthquake Competition, Jun 2019. Regression for predicting time-to-earthquake in seismic acoustic signal.
 [ContestPage](https://www.kaggle.com/c/LANL-Earthquake-Prediction/leaderboard), [Solution](https://www.kaggle.com/c/LANL-Earthquake-Prediction/discussion/94446#latest-544510)
