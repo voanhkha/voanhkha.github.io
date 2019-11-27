@@ -7,7 +7,7 @@ permalink: /about/
 I graduated PhD in Machine Learning (ML) with additional background on Brain-Computer Interface (BCI) at University of Technology Sydney (UTS) in 2019. I am now working as a full-time post-doc in Multi-agent Reinforcement Learning (RL) at UTS, Australia.
 
 
-### Kaggle Profile (Updated September 2019)
+### Kaggle Profile (Updated November 2019)
 <div class="imgcap">
 <img src="/images/Kaggle_Profile_28Nov2019.png">
 </div>
