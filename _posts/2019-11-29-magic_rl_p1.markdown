@@ -6,26 +6,58 @@ excerpt: "I will show some magic of Reinforcement Learning in a magical way."
 mathjax: true
 ---
 
+**Introduction**
+
 In this post, I will present some interesting and somewhat "magical" (at least, to me :-) ) stuffs about Reinforcement Learning (RL), via some simple scenarios.
-By the end of this post, I hope you will also be thrilled by the capability of what RL can bring.
+By the end of this post, I hope you will also be thrilled by the capability of what RL can bring. In detail, you will understand:
++ How to define a simple grid-world multi-agent environment
++ How to define the reward system to make the agents learn what we want
++ The magic of the stochastic policy
++ How to code everything in Python, from scratch!
 
 This is the first part of a planned 3 parts I want to write about RL. These posts are for everybody even one with not much prior knowledge in RL, to understand the great power of the stochasticity property of the behaviour of the learned agents.
 
 ![_config.yml](/images/MAgentGIF.gif)
 
-![_config.yml](/images/magic_rl_p1_image1.png)
 
-<div class="imgcap">
-<img src="/images/magic_rl_p1_image1.png" height="200">
-<div class="thecap">The agent, environment, and action space.</div>
-</div>
+**The Environment**
+
+![_config.yml](/images/magic_rl_p1_image1.png)
 
 In this first scenario demonstration, I put 1 agent and 2 foods on random positions of the map. Since the agent can move in 4 directions at any time step, they can theoretically reach any cell in this 6x6 map, or any cell in a much much bigger map, say, 1 billion x 1 billion. That means they can theoretically collect as many foods as possible, on an extremely big map.
 
 Turning back on this tiny 6x6 world, I introduce the term "state", or "observation" of the agent, that is the 3x3 square with the agent in the center. That is equivalent to saying that at any time step, the agent knows (and only knows) the nearest 9 cells surrounding it. Numerically, I can represent each blank cell (no food) as 0, the food-occupied cell as 1, and the wall cells as -1. Indeed, each cell type can be represented by any arbitrary number, because no matter what our model can still automatically adjust this change during training. But it's better to keep things as simple as possible for the sake of our model training task later on. By the way, these environment objects' representation makes sense, since food cell (1) is more encouraged to reach, blank cell (0) is uncertain, and wall cell (-1) is encouraged to avoid . By the environment's definition the agent will stay as-is if it moves directly into the wall.
 
-\\( \nabla_\boldsymbol{x} J(\boldsymbol{x}) \\)
-\\(\nabla_{W} \log p(y=UP \mid x) \\)
-
-
 ![_config.yml](/images/local_state.png)
+
+
+**The Reward**
+
+Now the next question is to define a reward function for our agent to learn. This is IMHO the most important thing in developing an RL scenario. We have lots of ways to assign a scalar reward to the agent at each time step, such as
+
++ Reward System 1: At each time step \\(t\\), if the agent collects food then \\(r_t = +1\\); if collides with wall then \\(r_t = -1\\); otherwise \\(r_t = 0\\).
++ Reward System 2: If seeing food around (in the 3x3 local observation) then \\(r_t = +1\\), if collects food then \\(r = +2\\), else \\(r = -1\\).
+As you can see, both reward systems seem to be correct, because they both encourage the agent to strive for food.
+
+But, sadly, they are all **WRONG**!! Why?
+
+That's because we have violated the most basic rule in RL: **"We need to tell the agent WHAT to achieve, NOT HOW to achieve"**. This is so far the most important quote I extract from the popular textbook "Reinforcement Learning: An Introduction 2nd Edition" of R. Sutton and A. Barto. The main reason is that, if we tell the agent HOW to achieve the goal, it will mostly only attempt to directly optimize the way to achieve the ultimate goal, not the ultimate goal, leading to sub-optimal behavior. As an example, if our goal is to "collect all food in the map", and we define the reward system as presented above, the agent cannot reach the food if the food is too far from it. The agent's local observation at each time step is limited (in this case: only 3x3 cells surrounding it), then what if there's no food around it? It will probably move randomly and desparately looking for food! In other words, the agent is completely blind about the whole world.
+
+Okay. At this point, you may wonder if the agent has only limited local observation, how can it sweep through the whole map looking for food? Is it possible to do so? And how? 
+
+Well, that is what I want to show in this post: The Magic!
+
+**Stochastic Policy: Make the Blind Bright**
+
+Before plunging into the magic, let us first find a way to define a correct reward system first. So far as I said, we need to tell the agent WHAT to achieve, not HOW to achieve. So what should we tell the agent to do in this food-searching scenario? The answer is unimaginarily simple: we define as "win" or "lose" if the agent can get all food or not (after a maximum time). In detail, the reward system is shown as below
+
++ The Correct Reward System: `r = 0` for every time step except the final time step; `r = +1` if no food remains in the last time step; `r = -1` if there is still food remain in the last time step.
+
+This reward system is like winning or losing the game. In this scenario, I specify the `last_time_step = 20`. So far this reward formulation matches the concept of "telling the agent WHAT to achieve", because we only care about the final result. As a result I will describe the game rule once again with this reward system:
+
++ At `t=0`: game starts, place 1 agent and 2 foods randomly on the map. 
++ At each incremental time step `t = 1, 2, ..., 19`, the agent make a move. The reward for each of these time steps is always `r = 0` because the agent is yet to know it wins or loses the game.
++ At `t = 20`: game ends. If all food collected `r = +1`, otherwise `r = -1`.
+
+In the first glance, this reward system seems to be impossible for the agent to learn, doesn't it? No, it's not, because we have a secret weapon: Policy Gradient (well, this secret has been revealed for tens of years). 
+
