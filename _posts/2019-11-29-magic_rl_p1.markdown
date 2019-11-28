@@ -86,5 +86,5 @@ Intuitively, because the final outcome is lose (-1), it governs all previous ste
 
 **Finally the Magic: Policy Gradient**
 Let us see a trained agent using PG on a 6x6 map:
-![_config.yml](/images/policy_6x6_view3x3_1p_2f_150ms_178x200.gif)
 
+![_config.yml](/images/policy_6x6_view3x3_1p_2f_150ms_178x200.gif "title 1") ![_config.yml](/images/policy_6x6_view3x3_1p_2f_150ms_178x200(3).gif)
