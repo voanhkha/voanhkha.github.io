@@ -61,3 +61,5 @@ This reward system is like winning or losing the game. In this scenario, I speci
 
 In the first glance, this reward system seems to be impossible for the agent to learn, doesn't it? No, it's not, because we have a secret weapon: Policy Gradient (well, this secret has been revealed for tens of years). 
 
+![_config.yml](/images/rl_flow.png)
+
