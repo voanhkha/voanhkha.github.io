@@ -55,11 +55,26 @@ Before plunging into the magic, let us first find a way to define a correct rewa
 
 This reward system is like winning or losing the game. In this scenario, I specify the `last_time_step = 20`. So far this reward formulation matches the concept of "telling the agent WHAT to achieve", because we only care about the final result. As a result I will describe the game rule once again with this reward system:
 
-+ At `t=0`: game starts, place 1 agent and 2 foods randomly on the map. 
-+ At each incremental time step `t = 1, 2, ..., 19`, the agent make a move. The reward for each of these time steps is always `r = 0` because the agent is yet to know it wins or loses the game.
-+ At `t = 20`: game ends. If all food collected `r = +1`, otherwise `r = -1`.
++ At \\(t = 0\\): game starts, place 1 agent and 2 foods randomly on the map. 
++ At each incremental time step \\(t = 1, 2, \dots, 19\\), the agent make a move. The reward for each of these time steps is always \\(r_t = 0\\) because the agent is yet to know it wins or loses the game.
++ At \\(t = 20\\): game ends. If all food collected \\(r_t = +1\\), otherwise \\(r_t = -1\\).
 
-In the first glance, this reward system seems to be impossible for the agent to learn, doesn't it? No, it's not, because we have a secret weapon: Policy Gradient (well, this secret has been revealed for tens of years). 
+In the first glance, this reward system seems to be impossible for the agent to learn, doesn't it? No, it's not, because we have a secret magical weapon: Policy Gradient (well, this secret has been revealed for tens of years). 
+
+Talking a little bit more about this kind of rewarding system, it is similar to what Google's Deepmind did when they designed their rewarding system in AlphaZero to master Go game (refer to paper "Mastering the game of Go with deep neural networks and tree search"). Although not exactly the same in this scenario, their rewarding system also only cares about the final outcome of the game: win or lose, and the intermediate states (position of pieces on the board) serve as input observation for the policy model. 
 
 ![_config.yml](/images/rl_flow.png)
+
+
+**Long-term Reward Formulation**
+
+Please forgive me for halting to reveal the secret once more. I think at this stage, you might be thinking that: what's the purpose of all zero-valued rewards at intermediate steps? Are all the actions in those steps meaningless? Indeed, in this particular win-lose formulation, all intermediate steps matter. Imagine if the agent is at the top left corner searching for food at the bottom right corner, then the agent must develop a strategy to feasibly get to the bottom right corner. As a result, all intermediate steps do matter, even so much.
+
+That's the reason why in RL, the term "long-term reward" is of great importance: it embeds long-term goal into the instantaneous reward samples:
+
+\\( R_t = \sum_{k=t}^{t_{\text{max}}} \gamma ^ {k-t} r_t  \\)
+
+That's the reason why in RL, the term "long-term reward" is of great importance: it embeds long-term goal into the instantaneous reward samples
+
+Long-term reward can have two variants: average long-term reward (\\(\gamma = 1 \\)), or discounted long-term reward (\\(0 < \gamma < 1 \\)). The discount factor \\(\gamma \\) weighs the importance of future prospect, with a popular chosen value such as \\(\gamma = 0.99 \\).
 
