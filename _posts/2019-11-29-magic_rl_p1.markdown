@@ -15,6 +15,11 @@ This is the first part of a planned 3 parts I want to write about RL. These post
 
 ![_config.yml](/images/magic_rl_p1_image1.png)
 
+<div class="imgcap">
+<img src="/images/magic_rl_p1_image1.png" height="200">
+<div class="thecap">The agent, environment, and action space.</div>
+</div>
+
 In this first scenario demonstration, I put 1 agent and 2 foods on random positions of the map. Since the agent can move in 4 directions at any time step, they can theoretically reach any cell in this 6x6 map, or any cell in a much much bigger map, say, 1 billion x 1 billion. That means they can theoretically collect as many foods as possible, on an extremely big map.
 
 Turning back on this tiny 6x6 world, I introduce the term "state", or "observation" of the agent, that is the 3x3 square with the agent in the center. That is equivalent to saying that at any time step, the agent knows (and only knows) the nearest 9 cells surrounding it. Numerically, I can represent each blank cell (no food) as 0, the food-occupied cell as 1, and the wall cells as -1. Indeed, each cell type can be represented by any arbitrary number, because no matter what our model can still automatically adjust this change during training. But it's better to keep things as simple as possible for the sake of our model training task later on. By the way, these environment objects' representation makes sense, since food cell (1) is more encouraged to reach, blank cell (0) is uncertain, and wall cell (-1) is encouraged to avoid . By the environment's definition the agent will stay as-is if it moves directly into the wall.
@@ -22,7 +27,5 @@ Turning back on this tiny 6x6 world, I introduce the term "state", or "observati
 \\( \nabla_\boldsymbol{x} J(\boldsymbol{x}) \\)
 \\(\nabla_{W} \log p(y=UP \mid x) \\)
 
-<div class="imgcap">
-<img src="/images/magic_rl_p1_image1.png" height="200">
-<div class="thecap">The agent, environment, and action space.</div>
-</div>
+
+![_config.yml](/images/local_state.png)
