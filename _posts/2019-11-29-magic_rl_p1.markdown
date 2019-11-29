@@ -17,7 +17,7 @@ By the end of this post, I hope you will also be thrilled by the capability of w
 
 This is the first part of a planned 3 parts I want to write about RL. These posts are for everybody even one with not much prior knowledge in RL, to understand the great power of the stochasticity property of the behaviour of the learned agents.
 
-![_config.yml](/images/MAgentGIF.gif)
+![_config.yml](/images/policy_15x15_view3x3_5p_10f_65ms_443x500.gif)
 
 
 **The Environment**
@@ -90,3 +90,7 @@ Let us see a trained agent using PG on a 6x6 map:
 ![_config.yml](/images/policy_6x6_view3x3_1p_2f_150ms_178x200.gif "title 1") ![_config.yml](/images/policy_6x6_view3x3_1p_2f_150ms_178x200(3).gif)
 
 ![_config.yml](/images/optimal_policy_probs.png)
+
+![_config.yml](/images/policy_heatmap_1.png) ![_config.yml](/images/policy_heatmap_2.png)
+
+![_config.yml](/images/policy_15x15_view3x3_5p_10f_65ms_443x500.gif)
