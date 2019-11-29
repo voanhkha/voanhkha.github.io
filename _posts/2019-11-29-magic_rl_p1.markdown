@@ -86,11 +86,38 @@ Intuitively, because the final outcome is lose (-1), it governs all previous ste
 
 **Finally the Magic: Policy Gradient**
 Let us see a trained agent using PG on a 6x6 map:
+![_config.yml](/images/policy_6x6_view3x3_1p_2f_150ms_178x200.gif)
 
-![_config.yml](/images/policy_6x6_view3x3_1p_2f_150ms_178x200.gif "title 1") ![_config.yml](/images/policy_6x6_view3x3_1p_2f_150ms_178x200(3).gif)
+Not much interesting, is it? Wait, am I the only one seeing a strange behaviour of the agent? Is it following the wall counter-clockwise? And why?
+
+As you already know at each time step the agent can only observe 9 nearest cells (which I call the "view") surrounding it. Then, in this small environment the agent must find a way to exploit all information from the state space (equivalent to different views) to develop a strategy to collect as many food in the shortest time as possible. To understand more about the whole behaviour in the global concept, here I show the trained behaviour with respect to some typical different agent views, and give some explanation on it:
 
 ![_config.yml](/images/optimal_policy_probs.png)
 
-![_config.yml](/images/policy_heatmap_1.png) ![_config.yml](/images/policy_heatmap_2.png)
++ The bottom-right subfigure presents the probability distribution of all 5 possible actions given the input view of the agent next to the bottom-side wall with no food around. The trained agent prefers to go right. The similar behaviours are seen if the agent is next to the left-hand wall (it prefers to down) or right-hand wall (it prefers to go up), which I do not show here.
++ The bottom-left subfigure demonstrates that whenever a food presents in the view, the agent will most likely to move itself to the food. This behaviour is also seen in other views with the presence of food.
++ Both top subfigures are key to explain the agent behaviour intuitively. As I trained the agent in a 6x6 grid-world, if it always follows the wall consistently, there's no way to reach the foods at the center cells of the map. So from learning the agent must find itself a way to avoid this. Now let us carefully see the agent's behaviour again in the animation, you can notice that it does not strictly follow the top wall. Instead, it tends to turn down a little bit more when it is adjacent to the top wall. This behaviour is encouraging the agent to explore the world more, although whenever in the completely blind state (nothing around), it must however follows a strict trained strategy to optimise the ultimate goal that has been given for learning. The top-left subfigure suggests that the agent prefers to go right and down. That is the result in accompany with all other states' behavious to optimise the goal: since the agent already strictly follows the left, right, and bottom walls, it must not strictly follows the top wall because if so (as we, human, can easily understand) it can't reach center food cells. So, the behaviour in this completely black view is the optimal when taking all other views' behaviours into account. 
+
+For clearer understanding, let's have a look at the probability of each cell of being stamped on by the agent. The below figure was retrieved by letting the trained agent move 10,000 steps, then counting the number of times each cell is met. The numbers on the plot are the percentage (in %) of that cell being met.
+
+![_config.yml](/images/policy_heatmap_1.png) 
+
+Some cells are rarely met with extremely low frequency, such as the top left cell (0.02%). That is not a problem if a food is placed there, because whenever the agent falls in the cell below it, which has high probability (2.41%), the agent will discover the food and move towards it easily. This heatmap plot, in conclusion, confirms that the agent has positively chance to reach all foods in the 6x6 map.
+
+Now one question arises: how do it behave if being thrown into a bigger world, say, 15x15? Here is the result
+
+![_config.yml](/images/policy_6x6_view3x3_1p_2f_150ms_178x200(3).gif)
+
+As shown, with the same policy trained in the 6x6 world, the agent cannot reach some middle cells in the 15x15 world. Let us have a look at the heatmap in the 15x15 world too (the 5 agents were placed for just the sake of animation).
+
+![_config.yml](/images/policy_heatmap_2.png)
+
+Not surprisingly there are a lot of cells which the agent cannot reach, resulting in remaining foods in some particular cells that the agent can never see.
+
+So, what if we train the agent in the 15x15 world? How will it fare with this big world? 
+
+Let's see the result of the agent trained in the 15x15 world
 
 ![_config.yml](/images/policy_15x15_view3x3_5p_10f_65ms_443x500.gif)
+
+Voila! Although still struggling and time-consuming to see all cells, the agent can still explore the whole map by a better policy when trained in this bigger world. One more interesting fact is that now it moves clockwise instead of counter-clockwise. Since clockwise and counter-clockwise behaviours are nothing different from the global perspective, the policy can reach and converge to either of them first (by luck, of course) when training.
