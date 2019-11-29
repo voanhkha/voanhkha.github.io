@@ -80,12 +80,13 @@ Long-term reward can have two variants: average long-term reward (\\(\gamma = 1 
 
 + \\( r_0 = 0, r_1 = 0, r_2 = 0, \dots, r_{18} = 0, r_{19} = 0, r_{20} = -1  \\)
 which can be converted to
-+ \\( R_0 = -0.818, R_1 = -0.826, R_2 = -0.835, \dots, R_{18} = -0.980, R_{19} = -0.990 , R_{20} = -1.000 \\)
++ \\( R_0 = -0.818\\), \\(R_1 = -0.826\\), \\(R_2 = -0.835\\), \\(\dots\\), \\(R_{18} = -0.980\\), \\(R_{19} = -0.990\\) , \\(R_{20} = -1.000 \\)
 
 Intuitively, because the final outcome is lose (-1), it governs all previous steps, guiding the model learning process that "each of the action in those steps will lead to a bad result", where sooner steps have less influence. One can argue that, what if from step 1 to step 10 the agent luckily randomly get all correct decisions, but from step 11 to step 20 it produces bad decisions, how can we know? And is it right thing to do when telling the model that all steps are bad just because the final result is bad? The answer is that case can possibly happen, but in a long session of training where all combinations of sequences of actions can be swept through, on average we would expect correct actions lead to good outcome. To understand more about this interesting fact (indeed, it is the magic of Policy Gradient), I suggest the reader to this great article about Policy Gradient written by a well-known Stanford guy named Andrej Karpathy http://karpathy.github.io/2016/05/31/rl/.
 
 **Finally the Magic: Policy Gradient**
 Let us see a trained agent using PG on a 6x6 map:
+
 ![_config.yml](/images/policy_6x6_view3x3_1p_2f_150ms_178x200.gif)
 
 Not much interesting, is it? Wait, am I the only one seeing a strange behaviour of the agent? Is it following the wall counter-clockwise? And why?
@@ -121,3 +122,10 @@ Let's see the result of the agent trained in the 15x15 world
 ![_config.yml](/images/policy_15x15_view3x3_5p_10f_65ms_443x500.gif)
 
 Voila! Although still struggling and time-consuming to see all cells, the agent can still explore the whole map by a better policy when trained in this bigger world. One more interesting fact is that now it moves clockwise instead of counter-clockwise. Since clockwise and counter-clockwise behaviours are nothing different from the global perspective, the policy can reach and converge to either of them first (by luck, of course) when training.
+
+**Conclusion**
++ From just the local view, the agent can achieve a good policy (behaviour) that can optimise the global ultimate goal, by exploiting all information it can collectively collect from the environment during training. In other words, this "blind" agent becomes bright about the whole world after training. What if we insert some marks in the map, such as an oak tree at cell (4,5) and 2 palm trees at cell (12, 13) and (4, 9)? The answer is that the agent will exploit them very well, resulting in better behaviour than without them.
++ The magic of the trained policy is based on the Policy Gradient theorem, which allows the optimal behaviour to be **stochastic**. In other words, the agent can still pick a sub-optimal action in a specific state to encourage exploration with guidance. The stochasticicy of the behaviour allows the resulting trained action probability distributions of different states to collaborate with each other, without violating the stationarity Markov assumption of the environment. For easy understanding, relate this mechanism to chess games: to win a game (check-mate state) one must reach the previous chess board state which has high probability of check-mating the opponent. Then to reach that prenultimate state one has to reach the state before that.
++ What if we train multiple agents, say, 2 agents, in the 15x15 world? The agents will see each other if they are near, then we have a sense of collaboration here. But training 2 agents in the same time requires many more technical considerations. Will the 2 collaborated agents fare better than the 2 single-trained agents on the map?
+
+That will be the main food in Part 2. Stay tuned, and thanks for reading!
