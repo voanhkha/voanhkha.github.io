@@ -14,24 +14,35 @@ I graduated PhD in Machine Learning (ML) with additional background on Brain-Com
 
 * Rank 10/2749 (Gold Medal) Predicting Molecular Properties, Aug 2019. Graph-neural-network oriented competition on predicting chemical properties from 150,000 molecule structures. 
 [ContestPage](https://www.kaggle.com/c/champs-scalar-coupling/leaderboard), [Code1](https://www.kaggle.com/petersk20/schnet-10th-place-solution), [Code2(https://www.kaggle.com/joshxsarah/custom-gcn-10th-place-solution)], [Solution](https://www.kaggle.com/c/champs-scalar-coupling/discussion/106271#latest-613221)
-![_config.yml](/images/Molecule_2.png)
+<div class="imgcap">
+<img src="/images/Molecule_2.png">
+</div>
 
 
 * Rank 8/1874 (Gold Medal) Traveling Santa Competition, Jan 2019. Big-scale Optimization: find the shortest path going through 200000 cities.
 [ContestPage](https://www.kaggle.com/c/traveling-santa-2018-prime-paths/overview), [Full Code](https://github.com/voanhkha/Traveling-Santa-2018-Kaggle), [Lightweight Code](https://www.kaggle.com/khahuras/super-fast-cumsum-trick-8th-place-demo-solution) [Solution](https://www.kaggle.com/c/traveling-santa-2018-prime-paths/discussion/77257#latest-459837)
-![_config.yml](/images/TravelingSanta.png)
+<div class="imgcap">
+<img src="/images/TravelingSanta.png">
+</div>
+
 
 * Rank 10/656 (Gold Medal) TrackML Particle Tracking Competition, Aug 2018. High-energy Physics: cluster patterns of helices from 2000 events of 300,000 coordinated points each.
 [ContestPage](https://www.kaggle.com/c/trackml-particle-identification/leaderboard), [Code](https://www.kaggle.com/khahuras/0-53x-clustering-using-hough-features-basic)
-![_config.yml](/images/TrackML.png)
+<div class="imgcap">
+<img src="/images/TrackML.png">
+</div>
 
 * Rank 16/1538 (Solo Silver Medal), Understanding Cloud Organization Competition, Nov 2019. Computer vision's Segmentation of cloud formations via satellite images. 
 [ContestPage](https://www.kaggle.com/c/understanding_cloud_organization/leaderboard), [Solution](https://www.kaggle.com/c/understanding_cloud_organization/discussion/118065#latest-680911)
-![_config.yml](/images/Cloud.png)
+<div class="imgcap">
+<img src="/images/Cloud.png">
+</div>
 
 * Rank 23/4541 (Solo Silver Medal), LANL Earthquake Competition, Jun 2019. Regression for predicting time-to-earthquake in seismic acoustic signal.
 [ContestPage](https://www.kaggle.com/c/LANL-Earthquake-Prediction/leaderboard), [Solution](https://www.kaggle.com/c/LANL-Earthquake-Prediction/discussion/94446#latest-544510)
-![_config.yml](/images/LANL.png)
+<div class="imgcap">
+<img src="/images/LANL.png">
+</div>
 
 * Other Results: 
 - Rank 62/1832 (Silver Medal) in Instant Gratification, Jun 2019 (Gaussian Mixture modeling for mixtures of Gaussians :-) ).
