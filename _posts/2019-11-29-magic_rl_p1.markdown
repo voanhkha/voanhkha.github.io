@@ -124,8 +124,12 @@ Let's see the result of the agent trained in the 15x15 world
 Voila! Although still struggling and time-consuming to see all cells, the agent can still explore the whole map by a better policy when trained in this bigger world. One more interesting fact is that now it moves clockwise instead of counter-clockwise. Since clockwise and counter-clockwise behaviours are nothing different from the global perspective, the policy can reach and converge to either of them first (by luck, of course) when training.
 
 **Conclusion**
+
 + From just the local view, the agent can achieve a good policy (behaviour) that can optimise the global ultimate goal, by exploiting all information it can collectively collect from the environment during training. In other words, this "blind" agent becomes bright about the whole world after training. What if we insert some marks in the map, such as an oak tree at cell (4,5) and 2 palm trees at cell (12, 13) and (4, 9)? The answer is that the agent will exploit them very well, resulting in better behaviour than without them.
+
 + The magic of the trained policy is based on the Policy Gradient theorem, which allows the optimal behaviour to be **stochastic**. In other words, the agent can still pick a sub-optimal action in a specific state to encourage exploration with guidance. The stochasticicy of the behaviour allows the resulting trained action probability distributions of different states to collaborate with each other, without violating the stationarity Markov assumption of the environment. For easy understanding, relate this mechanism to chess games: to win a game (check-mate state) one must reach the previous chess board state which has high probability of check-mating the opponent. Then to reach that prenultimate state one has to reach the state before that.
+
 + What if we train multiple agents, say, 2 agents, in the 15x15 world? The agents will see each other if they are near, then we have a sense of collaboration here. But training 2 agents in the same time requires many more technical considerations. Will the 2 collaborated agents fare better than the 2 single-trained agents on the map?
 
-That will be the main food in Part 2. Stay tuned, and thanks for reading!
+
+**That will be the main treat in Part 2. Stay tuned, and thanks for reading!**
