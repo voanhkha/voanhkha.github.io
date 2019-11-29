@@ -17,12 +17,15 @@ By the end of this post, I hope you will also be thrilled by the capability of w
 This is the first part of a planned 3 parts I want to write about RL. These posts are for everybody even one with not much prior knowledge in RL, to understand the great power of the stochasticity property of the behaviour of the learned agents.
 
 ![_config.yml](/images/policy_15x15_view3x3_5p_10f_65ms_443x500.gif)
-
+<div class="imgcap">
+<img src="/images/policy_15x15_view3x3_5p_10f_65ms_443x500.gif" width="350">
+<div class="thecap"></div>
+</div>
 
 **The Environment**
 
 <div class="imgcap">
-<img src="/images/magic_rl_p1_image1.png" width="350">
+<img src="/images/magic_rl_p1_image1.png" width="600">
 <div class="thecap">Our simple grid-world environment setup.</div>
 </div>
 
@@ -31,7 +34,7 @@ In this first scenario demonstration, I put 1 agent and 2 foods on random positi
 Turning back on this tiny 6x6 world, I introduce the term "state", or "observation" of the agent, that is the 3x3 square with the agent in the center. That is equivalent to saying that at any time step, the agent knows (and only knows) the nearest 9 cells surrounding it. Numerically, I can represent each blank cell (no food) as 0, the food-occupied cell as 1, and the wall cells as -1. Indeed, each cell type can be represented by any arbitrary number, because no matter what our model can still automatically adjust this change during training. But it's better to keep things as simple as possible for the sake of our model training task later on. By the way, these environment objects' representation makes sense, since food cell (1) is more encouraged to reach, blank cell (0) is uncertain, and wall cell (-1) is encouraged to avoid . By the environment's definition the agent will stay as-is if it moves directly into the wall.
 
 <div class="imgcap">
-<img src="/images/local_state.png" width="800">
+<img src="/images/local_state.png" width="600">
 <div class="thecap">The 3x3 local view of the agent serves as input features for learning.</div>
 </div>
 
@@ -115,8 +118,8 @@ As you already know at each time step the agent can only observe 9 nearest cells
 For clearer understanding, let's have a look at the probability of each cell of being stamped on by the agent. The below figure was retrieved by letting the trained agent move 10,000 steps, then counting the number of times each cell is met. The numbers on the plot are the percentage (in %) of that cell being met.
 
 <div class="imgcap">
-<img src="/images/policy_heatmap_1.png" width="800">
-<div class="thecap">The percentage (in %) of each map cell being met by the agent.</div>
+<img src="/images/policy_heatmap_1.png" width="600">
+<div class="thecap">The percentage (in %) of each map cell being met by the agent in the 6x6 world.</div>
 </div>
 
 Some cells are rarely met with extremely low frequency, such as the top left cell (0.02%). That is not a problem if a food is placed there, because whenever the agent falls in the cell below it, which has high probability (2.41%), the agent will discover the food and move towards it easily. This heatmap plot, in conclusion, confirms that the agent has positively chance to reach all foods in the 6x6 map.
@@ -131,8 +134,8 @@ Now one question arises: how do it behave if being thrown into a bigger world, s
 As shown, with the same policy trained in the 6x6 world, the agent cannot reach some middle cells in the 15x15 world. Let us have a look at the heatmap in the 15x15 world too
 
 <div class="imgcap">
-<img src="/images/policy_heatmap_2.png" width="800">
-<div class="thecap">Testing the agents using the same trained policy on the 15x15 world (the policy was trained on a 6x6 world by 1 agent). Multiple agents are inserted into the map for the sake of presentation. </div>
+<img src="/images/policy_heatmap_2.png" width="600">
+<div class="thecap">The percentage (in %) of each map cell being met by the trained agent in a 15x15 world. </div>
 </div>
 
 Not surprisingly there are a lot of cells which the agent cannot reach, resulting in remaining foods in some particular cells that the agent can never see.
