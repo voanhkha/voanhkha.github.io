@@ -62,7 +62,8 @@ Before plunging into the magic, let us first find a way to define a correct rewa
 This reward system is like winning or losing the game. In this scenario, I specify the `last_time_step = 20`. So far this reward formulation matches the concept of "telling the agent WHAT to achieve", because we only care about the final result. As a result I will describe the game rule once again with this reward system:
 
 + At \\(t = 0\\): game starts, place 1 agent and 2 foods randomly on the map. 
-+ At each incremental time step \\(t = 1, 2, \dots, 19\\), the agent make a move. The reward for each of these time steps is always \\(r_t = 0\\) because the agent is yet to know it wins or loses the game.
++ At each incremental time step \\(t = 1, 2, \dots, 19\\), the agent makes a move based on its policy. The reward for each of these time steps is always \\(r_t = 0\\) because the agent is yet to know it wins or loses the game.
++ If at any time step \\(t_k\\) whenever there is no food remaining, or equivalently saying that the agent just collects the last food at \\(t = k \\), then, \\(r_k = +1 \\), and terminate the game.
 + At \\(t = 20\\): game ends. If all food collected \\(r_t = +1\\), otherwise \\(r_t = -1\\).
 
 In the first glance, this reward system seems to be impossible for the agent to learn, doesn't it? No, it's not, because we have a secret magical weapon: Policy Gradient (well, this secret has been revealed for tens of years). 
