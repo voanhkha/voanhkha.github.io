@@ -81,7 +81,7 @@ Long-term reward can have two variants: average long-term reward (\\(\gamma = 1 
 which can be converted to
 + \\( R_0 = -0.818\\), \\(R_1 = -0.826\\), \\(R_2 = -0.835\\), \\(\dots\\), \\(R_{18} = -0.980\\), \\(R_{19} = -0.990\\) , \\(R_{20} = -1.000 \\)
 
-Intuitively, because the final outcome is lose (-1), it governs all previous steps, guiding the model learning process that "each of the action in those steps will lead to a bad result", where sooner steps have less influence. One can argue that, what if from step 1 to step 10 the agent luckily randomly get all correct decisions, but from step 11 to step 20 it produces bad decisions, how can we know? And is it right thing to do when telling the model that all steps are bad just because the final result is bad? The answer is that case can possibly happen, but in a long session of training where all combinations of sequences of actions can be swept through, on average we would expect correct actions lead to good outcome. To understand more about this interesting fact (indeed, it is the magic of Policy Gradient), I suggest the reader to this great article about Policy Gradient written by a well-known Stanford guy named Andrej Karpathy http://karpathy.github.io/2016/05/31/rl/.
+Intuitively, because the final outcome is lose (-1), it governs all previous steps, guiding the model learning process that "each of the action in those steps will lead to a bad result", where sooner steps have less influence. One can argue that, what if from step 1 to step 10 the agent luckily randomly get all correct decisions, but from step 11 to step 20 it produces bad decisions, how can we know? And is it right thing to do when telling the model that all steps are bad just because the final result is bad? The answer is that case can possibly happen, but in a long session of training where all combinations of sequences of actions can be swept through, on average we would expect correct actions lead to good outcome. To understand more about this interesting fact (indeed, it is the magic of Policy Gradient), I suggest the reader to this [great article](http://karpathy.github.io/2016/05/31/rl/) about Policy Gradient written by a well-known machine-learning Stanford guy named Andrej Karpathy.
 
 **Finally the Magic: Policy Gradient**
 Let us see a trained agent using PG on a 6x6 map:
@@ -134,3 +134,6 @@ Voila! Although still struggling and time-consuming to see all cells, the agent 
 
 Wait! Are you waiting for the code? Okay, almost forget, but I'm still here. I'd prepared a python notebook here which includes all above experiments. The amazing thing is that this code does not require any Reinforcement-Learning-specific dependencies, and not require GPU too! You can try to train with your local CPU in 20 minutes to achieve those presented result, and animate it! 
 [Code for Magic of Reinforcement Learning - Part 1](https://github.com/voanhkha/Magic_RL)
+
+Gentle Reminder:
+Please feel free to re-use the materials here with citing required, by just simply copy the article source link, or my name. So much thanks for your kindness.
