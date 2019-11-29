@@ -22,7 +22,7 @@ This is the first part of a planned 3 parts I want to write about RL. These post
 **The Environment**
 
 <div class="imgcap">
-<img src="/images/magic_rl_p1_image1.png" height="400">
+<img src="/images/magic_rl_p1_image1.png" width="350">
 <div class="thecap">Our simple grid-world environment setup.</div>
 </div>
 
@@ -31,7 +31,7 @@ In this first scenario demonstration, I put 1 agent and 2 foods on random positi
 Turning back on this tiny 6x6 world, I introduce the term "state", or "observation" of the agent, that is the 3x3 square with the agent in the center. That is equivalent to saying that at any time step, the agent knows (and only knows) the nearest 9 cells surrounding it. Numerically, I can represent each blank cell (no food) as 0, the food-occupied cell as 1, and the wall cells as -1. Indeed, each cell type can be represented by any arbitrary number, because no matter what our model can still automatically adjust this change during training. But it's better to keep things as simple as possible for the sake of our model training task later on. By the way, these environment objects' representation makes sense, since food cell (1) is more encouraged to reach, blank cell (0) is uncertain, and wall cell (-1) is encouraged to avoid . By the environment's definition the agent will stay as-is if it moves directly into the wall.
 
 <div class="imgcap">
-<img src="/images/local_state.png" height="400">
+<img src="/images/local_state.png" width="400">
 <div class="thecap">The 3x3 local view of the agent serves as input features for learning.</div>
 </div>
 
@@ -67,7 +67,10 @@ In the first glance, this reward system seems to be impossible for the agent to 
 
 Talking a little bit more about this kind of rewarding system, it is similar to what Google's Deepmind did when they designed their rewarding system in AlphaZero to master Go game (refer to paper "Mastering the game of Go with deep neural networks and tree search"). Although not exactly the same in this scenario, their rewarding system also only cares about the final outcome of the game: win or lose, and the intermediate states (position of pieces on the board) serve as input observation for the policy model. 
 
-![_config.yml](/images/rl_flow.png)
+<div class="imgcap">
+<img src="/images/rl_flow.png" width="400">
+<div class="thecap">The training flow. Agents are guided only by the final outcome of the game (win or lose) within 20 time steps. </div>
+</div>
 
 
 **Long-term Reward Formulation**
@@ -91,13 +94,18 @@ Intuitively, because the final outcome is lose (-1), it governs all previous ste
 **Finally the Magic: Policy Gradient**
 Let us see a trained agent using PG on a 6x6 map:
 
-![_config.yml](/images/policy_6x6_view3x3_1p_2f_150ms_178x200.gif)
+<div class="imgcap">
+<img src="/images/policy_6x6_view3x3_1p_2f_150ms_178x200.gif" width="400">
+<div class="thecap">Testing the trained agent in a 6x6 world.</div>
+
 
 Not much interesting, is it? Wait, am I the only one seeing a strange behaviour of the agent? Is it following the wall counter-clockwise? And why?
 
 As you already know at each time step the agent can only observe 9 nearest cells (which I call the "view") surrounding it. Then, in this small environment the agent must find a way to exploit all information from the state space (equivalent to different views) to develop a strategy to collect as many food in the shortest time as possible. To understand more about the whole behaviour in the global concept, here I show the trained behaviour with respect to some typical different agent views, and give some explanation on it:
 
-![_config.yml](/images/optimal_policy_probs.png)
+<div class="imgcap">
+<img src="/images/optimal_policy_probs.png" width="400">
+<div class="thecap">The action probability distribution of the trained agent for some states.</div>
 
 + The bottom-right subfigure presents the probability distribution of all 5 possible actions given the input view of the agent next to the bottom-side wall with no food around. The trained agent prefers to go right. The similar behaviours are seen if the agent is next to the left-hand wall (it prefers to down) or right-hand wall (it prefers to go up), which I do not show here.
 + The bottom-left subfigure demonstrates that whenever a food presents in the view, the agent will most likely to move itself to the food. This behaviour is also seen in other views with the presence of food.
