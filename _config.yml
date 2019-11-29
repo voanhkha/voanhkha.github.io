@@ -1,10 +1,10 @@
 # Site settings
 title: Kha Vo blog
 email: 
-description: "The magic of Machine Learning."
+description: "The Magic of Machine Learning."
 baseurl: ""
 url: "http://voanhkha.github.io"
-twitter_username: voanhkha
+twitter_username:
 github_username:  voanhkha
 
 # Build settings
