@@ -131,5 +131,6 @@ Voila! Although still struggling and time-consuming to see all cells, the agent 
 
 + What if we train multiple agents, say, 2 agents, in the 15x15 world? The agents will see each other if they are near, then we have a sense of collaboration here. But training 2 agents in the same time requires many more technical considerations. Will the 2 collaborated agents fare better than the 2 single-trained agents on the map?
 
-
 **That will be the main treat in Part 2. Stay tuned, and thanks for reading!**
+
+Wait! Are you waiting for the code? Okay, almost forget, but I'm still here. I'd prepared a python notebook here which includes all above experiments. The amazing thing is that this code does not require any Reinforcement-Learning-specific dependencies, and not require GPU too! You can try to train with your local CPU in 20 minutes to achieve those presented result, and animate it! 
