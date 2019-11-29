@@ -10,8 +10,7 @@ mathjax: true
 
 In this post, I will present some interesting and somewhat "magical" (at least, to me :-) ) stuffs about Reinforcement Learning (RL), via some simple scenarios.
 By the end of this post, I hope you will also be thrilled by the capability of what RL can bring. In detail, you will understand:
-+ How to define a simple grid-world multi-agent environment
-+ How to define the reward system to make the agents learn what we want
++ How to define the environment to make the agents learn what we want
 + The magic of the stochastic policy
 + How to code everything in Python, from scratch!
 
@@ -134,3 +133,4 @@ Voila! Although still struggling and time-consuming to see all cells, the agent 
 **That will be the main treat in Part 2. Stay tuned, and thanks for reading!**
 
 Wait! Are you waiting for the code? Okay, almost forget, but I'm still here. I'd prepared a python notebook here which includes all above experiments. The amazing thing is that this code does not require any Reinforcement-Learning-specific dependencies, and not require GPU too! You can try to train with your local CPU in 20 minutes to achieve those presented result, and animate it! 
+[Code for Magic of Reinforcement Learning - Part 1](https://github.com/voanhkha/Magic_RL)
