@@ -31,7 +31,7 @@ In this first scenario demonstration, I put 1 agent and 2 foods on random positi
 Turning back on this tiny 6x6 world, I introduce the term "state", or "observation" of the agent, that is the 3x3 square with the agent in the center. That is equivalent to saying that at any time step, the agent knows (and only knows) the nearest 9 cells surrounding it. Numerically, I can represent each blank cell (no food) as 0, the food-occupied cell as 1, and the wall cells as -1. Indeed, each cell type can be represented by any arbitrary number, because no matter what our model can still automatically adjust this change during training. But it's better to keep things as simple as possible for the sake of our model training task later on. By the way, these environment objects' representation makes sense, since food cell (1) is more encouraged to reach, blank cell (0) is uncertain, and wall cell (-1) is encouraged to avoid . By the environment's definition the agent will stay as-is if it moves directly into the wall.
 
 <div class="imgcap">
-<img src="/images/local_state.png" width="400">
+<img src="/images/local_state.png" width="800">
 <div class="thecap">The 3x3 local view of the agent serves as input features for learning.</div>
 </div>
 
@@ -68,7 +68,7 @@ In the first glance, this reward system seems to be impossible for the agent to 
 Talking a little bit more about this kind of rewarding system, it is similar to what Google's Deepmind did when they designed their rewarding system in AlphaZero to master Go game (refer to paper "Mastering the game of Go with deep neural networks and tree search"). Although not exactly the same in this scenario, their rewarding system also only cares about the final outcome of the game: win or lose, and the intermediate states (position of pieces on the board) serve as input observation for the policy model. 
 
 <div class="imgcap">
-<img src="/images/rl_flow.png" width="400">
+<img src="/images/rl_flow.png" width="800">
 <div class="thecap">The training flow. Agents are guided only by the final outcome of the game (win or lose) within 20 time steps. </div>
 </div>
 
@@ -95,17 +95,18 @@ Intuitively, because the final outcome is lose (-1), it governs all previous ste
 Let us see a trained agent using PG on a 6x6 map:
 
 <div class="imgcap">
-<img src="/images/policy_6x6_view3x3_1p_2f_150ms_178x200.gif" width="400">
+<img src="/images/policy_6x6_view3x3_1p_2f_150ms_178x200.gif" width="300">
 <div class="thecap">Testing the trained agent in a 6x6 world.</div>
-
+</div>
 
 Not much interesting, is it? Wait, am I the only one seeing a strange behaviour of the agent? Is it following the wall counter-clockwise? And why?
 
 As you already know at each time step the agent can only observe 9 nearest cells (which I call the "view") surrounding it. Then, in this small environment the agent must find a way to exploit all information from the state space (equivalent to different views) to develop a strategy to collect as many food in the shortest time as possible. To understand more about the whole behaviour in the global concept, here I show the trained behaviour with respect to some typical different agent views, and give some explanation on it:
 
 <div class="imgcap">
-<img src="/images/optimal_policy_probs.png" width="400">
+<img src="/images/optimal_policy_probs.png" width="800">
 <div class="thecap">The action probability distribution of the trained agent for some states.</div>
+</div>
 
 + The bottom-right subfigure presents the probability distribution of all 5 possible actions given the input view of the agent next to the bottom-side wall with no food around. The trained agent prefers to go right. The similar behaviours are seen if the agent is next to the left-hand wall (it prefers to down) or right-hand wall (it prefers to go up), which I do not show here.
 + The bottom-left subfigure demonstrates that whenever a food presents in the view, the agent will most likely to move itself to the food. This behaviour is also seen in other views with the presence of food.
@@ -113,17 +114,26 @@ As you already know at each time step the agent can only observe 9 nearest cells
 
 For clearer understanding, let's have a look at the probability of each cell of being stamped on by the agent. The below figure was retrieved by letting the trained agent move 10,000 steps, then counting the number of times each cell is met. The numbers on the plot are the percentage (in %) of that cell being met.
 
-![_config.yml](/images/policy_heatmap_1.png) 
+<div class="imgcap">
+<img src="/images/policy_heatmap_1.png" width="800">
+<div class="thecap">The percentage (in %) of each map cell being met by the agent.</div>
+</div>
 
 Some cells are rarely met with extremely low frequency, such as the top left cell (0.02%). That is not a problem if a food is placed there, because whenever the agent falls in the cell below it, which has high probability (2.41%), the agent will discover the food and move towards it easily. This heatmap plot, in conclusion, confirms that the agent has positively chance to reach all foods in the 6x6 map.
 
 Now one question arises: how do it behave if being thrown into a bigger world, say, 15x15? Here is the result
 
-![_config.yml](/images/policy_6x6_view3x3_1p_2f_150ms_178x200(3).gif)
+<div class="imgcap">
+<img src="/images/policy_6x6_view3x3_1p_2f_150ms_178x200(3).gif" width="350">
+<div class="thecap">Testing the agents using the same trained policy on the 15x15 world (the policy was trained on a 6x6 world by 1 agent). Multiple agents are inserted into the map for the sake of presentation. </div>
+</div>
 
-As shown, with the same policy trained in the 6x6 world, the agent cannot reach some middle cells in the 15x15 world. Let us have a look at the heatmap in the 15x15 world too (the 5 agents were placed for just the sake of animation).
+As shown, with the same policy trained in the 6x6 world, the agent cannot reach some middle cells in the 15x15 world. Let us have a look at the heatmap in the 15x15 world too
 
-![_config.yml](/images/policy_heatmap_2.png)
+<div class="imgcap">
+<img src="/images/policy_heatmap_2.png" width="800">
+<div class="thecap">Testing the agents using the same trained policy on the 15x15 world (the policy was trained on a 6x6 world by 1 agent). Multiple agents are inserted into the map for the sake of presentation. </div>
+</div>
 
 Not surprisingly there are a lot of cells which the agent cannot reach, resulting in remaining foods in some particular cells that the agent can never see.
 
@@ -131,7 +141,10 @@ So, what if we train the agent in the 15x15 world? How will it fare with this bi
 
 Let's see the result of the agent trained in the 15x15 world
 
-![_config.yml](/images/policy_15x15_view3x3_5p_10f_65ms_443x500.gif)
+<div class="imgcap">
+<img src="/images/policy_15x15_view3x3_5p_10f_65ms_443x500.gif" width="350">
+<div class="thecap">Testing the agents using the same trained policy on the 15x15 world (the policy was trained on the same size 15x15 world by 1 agent). </div>
+</div>
 
 Voila! Although still struggling and time-consuming to see all cells, the agent can still explore the whole map by a better policy when trained in this bigger world. One more interesting fact is that now it moves clockwise instead of counter-clockwise. Since clockwise and counter-clockwise behaviours are nothing different from the global perspective, the policy can reach and converge to either of them first (by luck, of course) when training.
 
