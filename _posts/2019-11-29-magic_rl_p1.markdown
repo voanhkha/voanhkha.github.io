@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-title: The Magic of Reinforcement Learning (part 1)
+title: The Magic of Reinforcement Learning (Part 1)
 excerpt: "I will show some magic of Reinforcement Learning in a magical way."
 mathjax: true
 ---
@@ -20,6 +20,11 @@ This is the first part of a planned 3 parts I want to write about RL. These post
 
 
 **The Environment**
+
+<div class="imgcap">
+<img src="/images/magic_rl_p1_image1.png" height="200">
+<div class="thecap">Our simple grid-world environment setup.</div>
+</div>
 
 ![_config.yml](/images/magic_rl_p1_image1.png)
 
