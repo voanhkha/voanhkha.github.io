@@ -91,7 +91,7 @@ I graduated PhD in Machine Learning (ML) with additional background on Brain-Com
 
 As a result, I always hope that I can publish some papers in high-quality conferences or journals soon, such as ICML, NIPS, AAAI. But I don't think that's the matter of hope. I think it's just the matter of time! I also want to be a top 10 data scientist on Kaggle global leaderboard (oops, that can be considered an extremely tough and long-term goal).
 
-For a little bit further in the future, I hope I can either establish a small AI company, or I can work as a researcher for big AI teams in the world, such as Microsoft Research or Google AI, only when I have enough wide and deep knowledge, skills, and/or stable financial situation.
+For a little bit further in the future, I hope I can either establish a small AI company, or I can work in a very interesting and secret AI project that can make a huge impact on people's lives!
 
 
 ### Contact me
