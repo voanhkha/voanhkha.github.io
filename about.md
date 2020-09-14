@@ -9,7 +9,7 @@ I graduated PhD in Machine Learning (ML) with additional background on Mathemati
 
 ### Kaggle Profile (Updated September 2020)
 <div class="imgcap">
-<img src="/images/kaggleprofilemay20.png">
+<img src="/images/kaggleprofilemay20.jpg">
 </div>
 
 
