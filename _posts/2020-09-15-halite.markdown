@@ -36,4 +36,10 @@ The full game rules are described here [insert link]. I only extract some key tr
 - The game lasts a maximum of 400 turns.
 - At the end of the game, player ranking (1,2,3,4) is calculated based on final banked halite.
 
-Phew, sorry for making you reading that boring rules. Just watch this game and you'll see how a game work.
+Phew, sorry for making you reading that boring rules. Just watch this game and you'll see how a game flows!
+
+<div class="imgcap">
+<img src="/images/halite_full.gif" width="600">
+<div class="thecap">A typical full game of 4 high-scoring bots.</div>
+</div>
+
