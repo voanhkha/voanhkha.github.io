@@ -1,0 +1,39 @@
+---
+layout: post
+comments: true
+title: Semantic Segmentation for Imitation Learning - Halite IV Competition
+excerpt: "I will show how a data-driven approach can mimic behaviours of other bots that are extremely hard to code."
+mathjax: true
+---
+
+**Introduction**
+
+In September 2020, I and my team, named "KhaVo Dan Gilles Robga Tung", finished very high (rank 9/1140) in a world-class AI programming challenge "Halite by Two Sigma" held on Kaggle.
+In this post I would like to represent my team to publish our solution, and my personal discussions about this competition.
+
+In detail, you will understand:
++ What is this competition about
++ How challenging it is to hard-code a bot that can compete well
++ How a data-driven approach can massively mitigate this challenge and produce unexpectedly outstanding result
+
+
+**The Competition Game Rules**
+The full game rules are described here [insert link]. I only extract some key traits as follows.
+
+- There are 4 players (battle royale style) competing in each "episode", or game.
+- Each player starts with 5000 halite and 1 ship.
+- At each time step, a ship can choose from 6 actions: NORTH, EAST, SOUTH, WEST, CONVERT, and None (stay idle).
+- Each ship can CONVERT itself into a shipyard (or base). Conversion fee is 500 halite. For the other moving actions or staying idle, there is no fee.
+- If the ship stays idle, it can mine 25% of halite from the position it is on, and adds to its "cargo". Its cargo is unlimited.
+- Each base cannot move, and can choose from 2 actions: SPAWN and None (do nothing). SPAWN means that the base will spawn a new ship on its position. SPAWN fee is 500 halite.
+- Ships need to be move back to any base to deposit its cargo. The deposited halite will be added to the bank. This is similar to a Starcraft game.
+- In order to spend halite for SPAWN or CONVERT, halite must be in the bank (except the case that a ship wants to CONVERT itself, so its cargo is valid to be spent)
+- At any time step, multiple ships (from all teams, including friendly ships) can step on the same position. In this case, the lightest ship (the ship with least cargo) will destroy all other ships. In case of tie, all ships are destroyed.
+- A ship stepping on an enemy base will destroy that base.
+- If multiple ships stepping on a base, then ship collision is done first, then ship-base collision later. The full turn resolution order is described in the full game rules.
+- Halite on the map is randomly and symmetrically distributed at the start of the game.
+- Halite in each cell regenerates by 2% per turn, up to a maximum of 500 halite.
+- The game lasts a maximum of 400 turns.
+- At the end of the game, player ranking (1,2,3,4) is calculated based on final banked halite.
+
+Phew, sorry for making you reading that boring rules. Just watch this game and you'll see how a game work.
