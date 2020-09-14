@@ -4,13 +4,35 @@ title: About
 permalink: /about/
 ---
 
-I graduated PhD in Machine Learning (ML) with additional background on Brain-Computer Interface (BCI) at University of Technology Sydney (UTS) in 2019. I am now working as a full-time post-doc in Multi-agent Reinforcement Learning (RL) at UTS, Australia.
+I graduated PhD in Machine Learning (ML) with additional background on Mathematical Optimization and Brain-Computer Interface (BCI) at University of Technology Sydney (UTS) in 2019. 
 
 
-### Kaggle Profile (Updated November 2019)
+### Kaggle Profile (Updated September 2020)
 <div class="imgcap">
 <img src="/images/Kaggle_Profile_28Nov2019.png">
 </div>
+
+* Rank 9/1140 (Gold Medal) Halite IV by Two Sigma, September 2020. Data-driven AI programming for highly-competitive game.
+[ContestPage](https://www.kaggle.com/c/halite/leaderboard), [Code](), [BriefSolution](), [FullSolution]()
+<div class="imgcap">
+<img src="/images/halite.png">
+</div>
+
+
+
+* Rank 3/2618 (Gold Medal) Liverpool Ion Switching, May 2020. Identify the number of ion channels in biological data.
+[ContestPage](https://www.kaggle.com/c/liverpool-ion-switching/leaderboard), [Code1](https://www.kaggle.com/khahuras/1st-place-non-leak-solution), [Code2](https://github.com/GillesVandewiele/Liverpool-Ion-Switching), [BriefSolution](https://www.kaggle.com/c/liverpool-ion-switching/discussion/153734), [FullSolution](https://medium.com/@gillesvandewiele/334fab86fc85)
+<div class="imgcap">
+<img src="/images/liverpool.png">
+</div>
+
+
+* Rank 14/3497 (Gold Medal) Data Science Bowl, Jan 2020. Hierarchical Data Modelling for Measuring Education Factors in Young Children.
+[ContestPage](https://www.kaggle.com/c/data-science-bowl-2019/leaderboard), [Code1](https://www.kaggle.com/khahuras/bowl-2201-a), [Solution (https://www.kaggle.com/c/data-science-bowl-2019/discussion/127221)
+<div class="imgcap">
+<img src="/images/DSB2019.png">
+</div>
+
 
 * Rank 10/2749 (Gold Medal) Predicting Molecular Properties, Aug 2019. Graph-neural-network oriented competition on predicting chemical properties from 150,000 molecule structures. 
 [ContestPage](https://www.kaggle.com/c/champs-scalar-coupling/leaderboard), [Code1](https://www.kaggle.com/petersk20/schnet-10th-place-solution), [Code2(https://www.kaggle.com/joshxsarah/custom-gcn-10th-place-solution)], [Solution](https://www.kaggle.com/c/champs-scalar-coupling/discussion/106271#latest-613221)
@@ -44,8 +66,18 @@ I graduated PhD in Machine Learning (ML) with additional background on Brain-Com
 <img src="/images/LANL.png">
 </div>
 
+
+* Rank 17/1620 (Silver Medal) Santa Workshop Tour, Feb 2020. Pure Mathematical Assignment Optimization.
+[ContestPage](https://www.kaggle.com/c/santa-workshop-tour-2019/leaderboard), [Code](https://github.com/voanhkha/Santa_Workshop_Tour_2019)
+<div class="imgcap">
+<img src="/images/santa2019.png">
+</div>
+
+
 * Other Results: 
+- Rank 61/2265 (Solo Silver Medal) in Deepfake Detection Challenge 2019 (Terabyte-scale classification of high-quality deepfake videos)
 - Rank 62/1832 (Silver Medal) in Instant Gratification, Jun 2019 (Gaussian Mixture modeling for mixtures of Gaussians :-) ).
+- Rank 98/3314 (Silver Medal) in SIIM-ISIC Melanoma Classification, Aug 2020 (Computer Vision to identify melanoma in skin legion images)
 - Rank 118/4484 (Solo Silver Medal) in Santander Value Prediction Competition, Aug 2018 (Predict transaction values for potential bank customers).
 
 ### Timeline
@@ -58,7 +90,7 @@ I graduated PhD in Machine Learning (ML) with additional background on Brain-Com
 * Feb 2016 - Aug 2016: Firmware Engineer at Seldat Inc.
 * Oct 2016 - May 2019: PhD in BCI-related ML, University of Technology Sydney.
 * Mar 2018 - Mar 2019: Research Assistant in medical-data-related ML, University of New South Wales.
-* Mar-Jun 2019: Data scientist intern at Commonwealth Bank of Australia.
+* Jan-Jun 2019: Data scientist intern at Commonwealth Bank of Australia.
 * Aug 2019 - now: Post-doc in Multi-agent Reinforcement Learning at UTS, Australia.
 
 ### Publications
@@ -88,10 +120,7 @@ I graduated PhD in Machine Learning (ML) with additional background on Brain-Com
 [10] ’Real-Time Brainwave-Controlled Interface Using P300 Component in EEG Signal Processing’, 12th IEEE- RIVF International Conference on Computing and Communi- cation Technologies, 2016.
 
 ### What I hope for
-
-As a result, I always hope that I can publish some papers in high-quality conferences or journals soon, such as ICML, NIPS, AAAI. But I don't think that's the matter of hope. I think it's just the matter of time! I also want to be a top 10 data scientist on Kaggle global leaderboard (oops, that can be considered an extremely tough and long-term goal).
-
-For a little bit further in the future, I hope I can either establish a small AI company, or I can work in a very interesting and secret AI project that can make a huge impact on people's lives!
+I always hope to work in very interesting and secret AI projects that can make a huge impact on people's lives!
 
 
 ### Contact me
