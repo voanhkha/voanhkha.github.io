@@ -8,13 +8,19 @@ mathjax: true
 
 **Introduction**
 
-In September 2020, I and my team, named "KhaVo Dan Gilles Robga Tung", finished very high (rank 9/1140) in a world-class AI programming challenge "Halite by Two Sigma" held on Kaggle.
-In this post I would like to represent my team to publish our solution, and my personal discussions about this competition.
+In September 2020, I and my team, named "KhaVo Dan Gilles Robga Tung", finished high (rank 9/1140) in a world-class AI programming challenge "Halite by Two Sigma" held on Kaggle.
+In this post I would like to represent my team to publish our solution (co-written by all members). So much thanks to my teammates for the great time we spent together, climbing the leaderboard everyday, countless discussions and also joking.
 
-In detail, you will understand:
+<div class="imgcap">
+<img src="/images/halite_team.png" width="300">
+<div class="thecap">Competition result (temporary, to be updated as the ranking will be finalized on Sep 23rd 2020. My teammates' nicknames are my personal namings without their consent, but with their generous forgiveness in case they don't like.</div>
+</div>
+
+
+After reading, a new reader may expect to understand:
 + What is this competition about
 + How challenging it is to hard-code a bot that can compete well
-+ How a data-driven approach can massively mitigate this challenge and produce unexpectedly outstanding result
++ How a data-driven approach can massively mitigate this challenge and produce outstanding result
 
 
 **The Competition Game Rules**
