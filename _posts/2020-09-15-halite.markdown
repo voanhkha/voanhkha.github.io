@@ -53,6 +53,9 @@ Phew, sorry for making you reading that boring rules. Just watch this game and y
 <div class="thecap">A typical full game of 4 high-scoring bots.</div>
 </div>
 
+Manual Bot
+---
+
 As we can see, despite the simple game rules, the match is extremely competitive. Hundred of ships were fierce fighting for each halite cell. The logic to make a bot work well is certainly not simple, as it takes into account multiple aspects of the game. For simplicity, we will describe some traits that contribute to a good bot:
 - How to move all ship into various cells to optimize the halite per turn.
 - How to consider which area should we go to, i.e., avoid areas with densely populated enemies.
@@ -88,15 +91,23 @@ At each time step, we know everything about the game, including the position of 
 The headache begins. Seeing this board state with more than 30 ships, how do we assign the optimal mission for each ship? Which ships need to mine, which ships to attack, to harass, to deposit...? 
 
 Even if we managed to assign, say, ships 1,2,3,4 to attack an enemy ship (5), how do we chase the prey effectively?
-Looking at these below chasing scenarios:
 
 
-Those demonstrations demonstrate that chasing and isolating a single enemy ship is not as simple as we may think. It requires some analytical problem solving skills. We will quickly show how to scan for a potential scene that we have high chance to kill off an enemy ship.
+**How to launch an effective attack**
 
-Next, we would like to quickly describe how we control the "aggressiveness" of our bot throught the game flow. Warning: this is a highly-customized tactic that deals with this specific game that requires massive programming and tunings. You can choose to skip reading this part and jump to the next section without losing your grip on this post.
+Chasing and isolating a single enemy ship is not as simple as we may think. It requires some analytical problem solving skills. We will quickly show how to scan for a potential scene that we have high chance to kill off an enemy ship. In a general case, if we randomly assign a bunch of ships to attack an enemy ship by just moving towards the prey without considering anything else, they may chase... forever. So, we come up with a detailed tactic on how to scan for a potential prey, and chase it with minimal number of ships. Let us look at the below figure
+
+
+<div class="imgcap">
+<img src="/images/halite_attack.png" width="600">
+<div class="thecap">Four quadrants corresponding to the centered prey that need to be occupied each at least one ship for an effective kill.</div>
+</div>
+
 
 
 **Manually Control Aggressiveness**:
+
+Next, we would like to quickly describe how we control the "aggressiveness" of our bot throught the game flow. Warning: this is a highly-customized tactic that deals with this specific game that requires massive programming and tunings. You can choose to skip reading this part and jump to the next section without losing your grip on this post.
 
 - The aggressiveness is reflected by the maximum percentage of ships whose halite is 0 and state is ATTACK_SHIP.
 - For the first 50 steps of the game, our bot has 0 aggressiveness. After that, this value switches between 0.8 and 0.3 each 60 steps.
@@ -112,15 +123,11 @@ Next, we would like to quickly describe how we control the "aggressiveness" of o
 
 // function to compute worth
 def _approxWorth(self, halite, nship, nyard, cargo):
- if self.board.step < 200:
- worth = halite + nship*500 + nyard*1000 + cargo*0.8
- elif self.board.step < 300:
- worth = halite + nship*400 + nyard*400 + cargo*0.8
- elif self.board.step < 370:
- worth = halite + nship*100 + nyard*100 + cargo*0.9
- else:
- worth = halite + cargo*0.9
- return worth
+  if self.board.step < 200: worth = halite + nship*500 + nyard*1000 + cargo*0.8
+  elif self.board.step < 300:  worth = halite + nship*400 + nyard*400 + cargo*0.8
+  elif self.board.step < 370: worth = halite + nship*100 + nyard*100 + cargo*0.9
+  else: worth = halite + cargo*0.9
+return worth
  
 - If at a step, one of our ships is next to a suitable opponent base, we command the ship to attack it.
 A suitable opponent base is one that:
@@ -128,8 +135,12 @@ A suitable opponent base is one that:
 + The player that own the shipyard either has less than 500 halite (so that he cannot spawn a ship on that shipyard to counter my attack) or he doesn't want to spawn to counter an attack (we record this information from the previous steps of the match).
 - From step 360, empty ships which cannot collect a significant amount of halite until end game are commanded to attack enemy bases.
 
+**Protecting Bases**
+One important aspect of the game is the protection of bases. Enemies can destroy our bases by deliberately crashing into it. In these situations, both the base and the enemy ship are destroyed.  To protect a base, we have two approaches. First, a friendly ship can constantly stand on the base until a depositing ship arrives and become the new protector, pushes the old protector out for mining. Second, a more complex refactored protector strategy is to ensure that one of our ships is always closer to our bases than the closest enemy ship. If the distance from the closest enemy ship to our base is equal to d, then our closest ship cannot leave the radius of d - 1. This updated approach is the improved version of the first approach, but still not optimal as it cannot defend from attacks of multiple ships. On the other hand, the first approach has its own pros that it prevent any enemy ship to come close to our base territories if they simple just scan for unprotected bases.
 
-**Imitation Learning by Semantic Segmentation**
+
+Machine Learning Bot: Imitation Learning by Semantic Segmentation
+---
 
 During the course of competition, we were inspired by some machine learning approaches discussed publicly on the forum. We decided to have a try on this direction, and personally, we believe this would give significant boost because we always trust in data and the magical methods the human beings have now advanced with it. Inspired by this starter notebook by [david], we managed to make a data-driven machine learning bot work nicely! The high-level steps are listed as belows.
 
@@ -145,7 +156,7 @@ During the course of competition, we were inspired by some machine learning appr
 
 <div class="imgcap">
 <img src="/images/segmentation_halite.png" width="600">
-<div class="thecap">How semantic segmentation in computer vision relates to multi-agent learning. Part of the figure is extracted from https://www.jeremyjordan.me/semantic-segmentation/</div>
+<div class="thecap">How semantic segmentation in computer vision relates to multi-agent learning. Part of the figure is extracted from [here](https://www.jeremyjordan.me/semantic-segmentation/) </div>
 </div>
 
 
@@ -173,16 +184,21 @@ Since the machine learning (ML) bot only produces action probabilities, a simple
 
 To rise up 10 more ranks to reach top 10, we need to combine some manual heuristics to alleviate the burden of learning. For instance, the ML bot needs not to learn when to spawn, or where/when a ship should convert into a shipyard. Although those are immediate actions that can be predicted by the ML bot, they are not recommended to be used directly, due to the lack of high-level complex human reasoning. The ML bot is adept at another more subtle skill: navigating ships in a fiercely competitive dense area. Light ships are more frequent in accompany each other to together fight for mining territory or attack. Manual coding is possible, but personally to a data scientist, it is a nightmare!
 
-Let us take a look at how the ML bot plays. The below figure shows some stats of our top ML bot as compared to other top teams that we imitate from. We can see that our ML bot can achieve the more or less averaged behaviour of all teams throughout the whole game. Some points:
-- Team "convex" has the best average halite reward after step 300, thanks to its aggressiveness earlier in the game (number of ships with 0-halite). 
-- Team "robiland" has quite low reward, but significantly many more ships for trying to completely "dominate" the game.
-- Late peaks in the third plot observed in some teams indicate that they launch base raid at end-game, a tactic that can massively damage any opponent if all of their bases are destroyed.
-- Team "leukocyte" mostly focuses on mining mission and truly wants peace. It doesn't want to spawn many ships to attack other people. This strategy is also competitive if one manages to have a very good dodging technique to avoid being killed and efficient mining tactics, then just try to survive the crazy blitz. 
+Let us take a look at how the ML bot plays. The below figure shows some stats of our top ML bot as compared to other top teams that we imitate from. We can see that our ML bot can achieve the more or less averaged behaviour of all teams throughout the whole game. 
 
 <div class="imgcap">
 <img src="/images/halite_stats.png" width="800">
 <div class="thecap">Some stats during 400 game steps, averaged on all games of top competitors</div>
 </div>
 
+Some points:
+- Team "convex" has the best average halite reward after step 300, thanks to its aggressiveness earlier in the game (number of ships with 0-halite). 
+- Team "robiland" has quite low reward, but significantly many more ships for trying to completely "dominate" the game.
+- Late peaks in the third plot observed in some teams indicate that they launch base raid at end-game, a tactic that can massively damage any opponent if all of their bases are destroyed.
+- Team "leukocyte" mostly focuses on mining mission and truly wants peace. It doesn't want to spawn many ships to attack other people. This strategy is also competitive if one manages to have a very good dodging technique to avoid being killed and efficient mining tactics, then just try to survive the crazy blitz. 
+- Our manual bot cannot cope with the ML bot in terms of mining efficiency by a mile, but its versatality in attacking is outstanding since we can adaptively adjust the number of empty ships at various stages of the game based on different situations.
 
-<img src="https://hitcounter.pythonanywhere.com/count/tag.svg" alt="Hits">
+**Conclusions**
+We as a team just have had a great time together learning, discussing, enriching our knowledge, sharpening our skills, making new friends, and competing with talented people from the globe. We are so proud of this result, given that most of us seasoned data scientists on Kaggle may not find this competition comfortable enough to compete. There is also an interesting fact that no ML bot can finish in top 10 in the previous 3 Halite competitions, and another fact that most top data scientists on Kaggle really shy away from this competition due to its programming-skill-based nature. That makes our achievement much sweeter since we were always believing in ourselves! We hope that our solution can inspire as many data scientists/researchers as possible in the future. The power of machine learning is something immeasurable and... magical. When we realize that our data-driven bot can copy complex attacking tactics of other teams, we were literally dropping our jaws given the fact that we struggled so hard to code an attacking tactics by hand without any great success.
+
+Thank you for reading.
