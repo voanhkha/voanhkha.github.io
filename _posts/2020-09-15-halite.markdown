@@ -78,7 +78,7 @@ Even if we managed to assign, say, ships 1,2,3,4 to attack an enemy ship (5), ho
 Looking at these below chasing scenarios:
 
 
-Those demonstrations demonstrate that chasing and isolating a single enemy ship is not as simple as we can think. It requires some analytical problem solving skills. If you're interested in these kinds of in-depth tactics, I recommend to read my technically detailed write-up on Kaggle (link posted at the beginning section of this post).
+Those demonstrations demonstrate that chasing and isolating a single enemy ship is not as simple as we may think. It requires some analytical problem solving skills. If you're interested in these kinds of in-depth tactics, I recommend to read my technically detailed write-up on Kaggle (link posted at the beginning section of this post).
 
 
 **Imitation Learning by Semantic Segmentation**
@@ -97,10 +97,15 @@ During the course of competition, we were inspired by some machine learning appr
 
 <div class="imgcap">
 <img src="/images/segmentation_halite.png" width="600">
-<div class="thecap">How semantic segmentation in computer vision relates to multi-agent learning.</div>
+<div class="thecap">How semantic segmentation in computer vision relates to multi-agent learning. Part of the figure is extracted from https://www.jeremyjordan.me/semantic-segmentation/</div>
 </div>
 
-Wanna dig deep into details about how to train the model? Don't hesitate to view my technically-deep write-up on Kaggle [here]
+Wanna dig deep into details about how to train the model? Don't hesitate to view my technically-deep write-up on Kaggle [here]. Here, I would like to show the visualization of feature layers that serve as inputs into the segmentation model (first 100 steps of a specific match). Some layers have flickering effects (layers 9, 10, 11 counted from left to right, from top to bottom) due to the data augmentation technique while training. We have 3 enemies (and their ship positions), and the model should not differentiate which enemy should be put into layer 9, 10, or 11. So we can randomly swap them across multiple time steps.
+
+<div class="imgcap">
+<img src="/images/halite_features.gif" width="800">
+<div class="thecap">Visualization of some feature layers (100 first steps).</div>
+</div>
 
 **Results**
 
@@ -108,6 +113,14 @@ Since the machine learning (ML) bot only produces action probabilities, a simple
 
 To rise up 10 more ranks to reach top 10, we need to combine some manual heuristics to alleviate the burden of learning. For instance, the ML bot needs not to learn when to spawn, or where/when a ship should convert into a shipyard. Although those are immediate actions that can be predicted by the ML bot, they are not recommended to be used directly, due to the lack of high-level complex human reasoning. The ML bot is adept at another more subtle skill: navigating ships in a fiercely competitive dense area. Light ships are more frequent in accompany each other to together fight for mining territory or attack. Manual coding is possible, but personally to a data scientist, it is a nightmare!
 
-Let us take a look at how the ML bot plays. The below figures show some stats of our top ML bot as compared to other top teams that we imitate from. 
+Let us take a look at how the ML bot plays. The below figure shows some stats of our top ML bot as compared to other top teams that we imitate from. We can see that our ML bot can achieve the more or less averaged behaviour of all teams throughout the whole game. Some points:
+- Team "convex" has the best average halite reward after step 300, thanks to its aggressiveness earlier in the game (number of ships with 0-halite). 
+- Team "robiland" has quite low reward, but significantly many more ships for trying to completely "dominate" the game.
+- Late peaks in the third plot observed in some teams indicate that they launch base raid at end-game, a tactic that can massively damage any opponent if all of their bases are destroyed.
+- Team "leukocyte" mostly focuses on mining mission and truly wants peace. It doesn't want to spawn many ships to attack other people. This strategy is also competitive if one manages to have a very good dodging technique to avoid being killed and efficient mining tactics, then just try to survive the crazy blitz. 
 
+<div class="imgcap">
+<img src="/images/halite_stats.png" width="800">
+<div class="thecap">Some stats during 400 game steps, averaged on all games of top competitors</div>
+</div>
 
