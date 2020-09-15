@@ -43,12 +43,43 @@ Phew, sorry for making you reading that boring rules. Just watch this game and y
 <div class="thecap">A typical full game of 4 high-scoring bots.</div>
 </div>
 
+As we can see, despite the simple game rules, the match is extremely competitive. Hundred of ships were fierce fighting for each halite cell. The logic to make a bot work well is certainly not simple, as it takes into account multiple aspects of the game. For simplicity, I will describe some traits that contribute to a good bot:
+- How to move all ship into various cells to optimize the halite per turn.
+- How to consider which area should we go to, i.e., avoid areas with densely populated enemies.
+- When and how to deposit a ship, i.e., too heavy ships are prone to be destroyed, but returning to frequent might decrease halite mined.
+- How to detect an isolated enemy ship, and how to move our herd of light ships to kill it.
+- When to spawn new ships. Spawning is a crucial factor, as spawning too many/too few greatly affect the game mechanics: mining-focus and halite save (few ships) or attack-focus and dominate (many ships).
+- When and where to convert a ship into a base.
+- How to track and rank opponents in order to make attack targets or avoid collisions.
+- ...
 
+Each of the mentioned points above caused us a great headache. It is more like a parameter tuning task, but this "parameter" is not simple a set of numbers than can vary, but it is a whole mess of programming code.
+
+Anyway, we managed to have some very decent variants of manual bots that work considerably well in the live leaderboard (LB). Wait! What is a LB? Let me quickly explain as well
+
+**How the live leaderboard ranking works**
+The most interesting feature of this competition is the live LB ranking. Everybody can submit their own bots everyday. Each bot will start with 600 points representing its "skill" level. Continually, bots from all teams will be drawn against each other (with similar skill) to form a 4-player battle royale match (all 4 bots must be from 4 different teams). When a match finishes, 4 bots will be ranked (1,2,3,4) based on their final halite. The 1st place and 2nd place teams will be rewarded some points, and the 3rd and 4th place teams will be penalized some points. As you can imagine a very good bot will win most of the matches and continue to increase its "skill" points, until it fights with bots with similar high skill and lose. The matches for the whole pool of thousands of bots are played restlessly until the deadline day, which is 3 months apart from the competition commence day. In other words, this matching system is similar to an ELO rating in chess, if one is familiar with chess ratings. A one-week-old bot may play several hundreds of matches, guaranteeing its skill score convergence on the LB.
+
+**How a manual approach cause such a headache**
+Now let us go back to discussing the manual bot. To resolve various questions mentioned, one needs a bot "framework" to begin programming with. One typical framework is shown below
 
 <div class="imgcap">
 <img src="/images/manualbot.png" width="800">
 <div class="thecap">High summary of a manual bot.</div>
 </div>
+
+At each time step, we know everything about the game, including the position of all our/enemy ships/bases, how much halite/cargo every one has, and also past time steps information. That means we also know how opponents move in previous steps, and we can aggregate/accumulate some game statistics as well, such as how much halite had each enemy gained per turn, how many kills did they commit... Using all these information, one can perform a two-stage assignment problem to assign move to each ship.
+- Stage 1: Assigning a mission to each ship, with some input parameters from the global information, and output parameters indicating the properties of the mission, i.e., which enemy to attack is an output parameter.
+- Stage 2: Assigning a move to each ship, based on the assigned mission in stage 1. For instance, a "mining" mission for ship A with target cell (12, 17) can simply guide ship A from its current position, such as (10, 10), to (12, 17) to the cell that is 1-step nearer to (12, 17), that is (11, 10) or (10, 11). 
+
+The headache begins. Seeing this board state with more than 30 ships, how do we assign the optimal mission for each ship? Which ships need to mine, which ships to attack, to harass, to deposit...? 
+
+Even if we managed to assign, say, ships 1,2,3,4 to attack an enemy ship (5), how do we chase the prey effectively?
+
+I may need to "quickly" explain how to make an "attack" mission look good. Remember, this is only 1 among lots of possible missions.
+
+**A manual way to attack and kill an enemy ship**
+
 
 <div class="imgcap">
 <img src="/images/mlbot.png" width="800">
