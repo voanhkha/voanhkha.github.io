@@ -8,7 +8,7 @@ mathjax: true
 
 **Introduction**
 
-In September 2020, I and my team, named "KhaVo Dan Gilles Robga Tung", finished high (rank 9/1140) in a world-class AI programming challenge "Halite by Two Sigma" held on Kaggle.
+In September 2020, I and my team, named "KhaVo Dan Gilles Robga Tung", finished high (rank 9/1140) in a world-class AI programming challenge ["Halite by Two Sigma" held on Kaggle](https://www.kaggle.com/c/halite/leaderboard).
 In this post I would like to represent my team to publish our solution (co-written by all members). So much thanks to my teammates for the great time we spent together, climbing the leaderboard everyday, countless discussions and also joking.
 
 <div class="imgcap">
@@ -22,9 +22,8 @@ After reading, a new reader may expect to understand:
 + How challenging it is to hard-code a bot that can compete well
 + How a data-driven approach can massively mitigate this challenge and produce outstanding result
 
-
 **The Competition Game Rules**
-The full game rules are described here [insert link]. I only extract some key traits as follows.
+The full game rules are described here in the [competition webpage](https://www.kaggle.com/c/halite/overview/halite-rules). I only extract some key traits as follows.
 
 - There are 4 players (battle royale style) competing in each "episode", or game.
 - Each player starts with 5000 halite and 1 ship.
@@ -84,17 +83,49 @@ Even if we managed to assign, say, ships 1,2,3,4 to attack an enemy ship (5), ho
 Looking at these below chasing scenarios:
 
 
-Those demonstrations demonstrate that chasing and isolating a single enemy ship is not as simple as we may think. It requires some analytical problem solving skills. If you're interested in these kinds of in-depth tactics, I recommend to read my technically detailed write-up on Kaggle (link posted at the beginning section of this post).
+Those demonstrations demonstrate that chasing and isolating a single enemy ship is not as simple as we may think. It requires some analytical problem solving skills. We will quickly show how to scan for a potential scene that we have high chance to kill off an enemy ship.
 
+Next, we would like to quickly describe how we control the "aggressiveness" of our bot throught the game flow. Warning: this is a highly-customized tactic that deals with this specific game that requires massive programming and tunings. You can choose to skip reading this part and jump to the next section without losing your grip on this post.
+
+**Manually Control Aggressiveness**:
+- The aggressiveness is reflected by the maximum percentage of ships whose halite is 0 and state is ATTACK_SHIP.
+- For the first 50 steps of the game, our bot has 0 aggressiveness. After that, this value switches between 0.8 and 0.3 each 60 steps.
+- From steps 320, the aggressiveness is fixed to be 0.3. We found that the changing aggressiveness is better than a fixed value. We tried a dozen combinations and finally chose 0.8, 0.3 and 60 as the parameters.
+- In most cases, our ships only attack opponent ships which have more halite (don't attack opponent ships with equal halite). The exception is when an empty enemy ship is very close to one of our bases. In this case, one empty ship is assigned a role to chase this opponent ship. The aim is not to die together with it, just to make it go far from our bases.
+- In normal cases when attacking, an empty opponent ship is targeted by at most 1 of our ships; a nonzero opponent ship is targeted by at most 4 of our ships (and these four all have less halite than the opponent ship). An exception is at end game, when protecting our bases.
+- The opponent ships to be targeted (i.e. the preys) with high priority are:
+ + those who are not empty and have only 0 or 1 safe move. (At most 4 of my ships attack these preys.)
+ + those "near" our bases. If they are empty, at most 1 of our ships attack them. If they are not empty, at most 4 ships attack them. How "near" is near enough to attack is determined by the number of friendly ships.
+- The preys with low priority are those who are not empty and in our vicinity. If our ships have no good mining spots to collect from, they go attack these preys.
+- Only empty ships (i.e. ships with 0 halite) are allowed to attacking bases.
+- Only attack a base of a player whose "worth" is high enough. The worth of a player is computed from the number of his ships, bases, halite, cargo and game step. The detail is in the below function. We only attack opponents whose worth is > 0.8 our worth and his worth > our worth - 2000.
+
+// function to compute worth
+def _approxWorth(self, halite, nship, nyard, cargo):
+ if self.board.step < 200:
+ worth = halite + nship*500 + nyard*1000 + cargo*0.8
+ elif self.board.step < 300:
+ worth = halite + nship*400 + nyard*400 + cargo*0.8
+ elif self.board.step < 370:
+ worth = halite + nship*100 + nyard*100 + cargo*0.9
+ else:
+ worth = halite + cargo*0.9
+ return worth
+ 
+- If at a step, one of our ships is next to a suitable opponent base, we command the ship to attack it.
+A suitable opponent base is one that:
++ satisfies the "worth condition" described above.
++ The player that own the shipyard either has less than 500 halite (so that he cannot spawn a ship on that shipyard to counter my attack) or he doesn't want to spawn to counter an attack (we record this information from the previous steps of the match).
+- From step 360, empty ships which cannot collect a significant amount of halite until end game are commanded to attack enemy bases.
 
 **Imitation Learning by Semantic Segmentation**
 
-During the course of competition, we were inspired by some machine learning approaches discussed publicly on the forum. We decided to have a try on this direction, and personally, I believe this would give significant boost because I always trust in data and the magical methods the human beings have now advanced with it. Inspired by this starter notebook by [david], we managed to make a data-driven machine learning bot work nicely! The high-level steps are listed as belows.
+During the course of competition, we were inspired by some machine learning approaches discussed publicly on the forum. We decided to have a try on this direction, and personally, we believe this would give significant boost because we always trust in data and the magical methods the human beings have now advanced with it. Inspired by this starter notebook by [david], we managed to make a data-driven machine learning bot work nicely! The high-level steps are listed as belows.
 
 - Continually collect match replays from top teams on the live LB.
 - "Imitate" their bots by learning the actions of all ships given a board state. Basically for each match, we have 400 turns corresponding to 400 images to be learned. Thousands of matches would suffice for a model to generalize.
-- The machine learning model is inspired from semantic segmentation (SS) in computer vision.  Specifically in SS, we are given raw images as input and required to label the object class of each pixel in each image. We formulate the multi-agent board as an image with size equal to the board (21x21), and each pixel represents a cell, which has various features on it, i.e., occupied ship, amount of halite, distance to nearest base, how many enemy ships are around, ...
-- The output of the task is another image of the same size (21x21), such that each pixel in it represents an action of any object it occupies (an empty cell can still produce an action but since there's no ship on it we don't use it anyway).
+- The machine learning model is inspired from semantic segmentation (SS) in computer vision.  Specifically in SS, we are given raw images as input and required to label the object class of each pixel in each image. We formulate the multi-agent board as an image with size equal to the board (n_featuresx21x21), and each pixel represents a cell, which has various features (n_features) on it, i.e., occupied ship, amount of halite, distance to nearest base, how many enemy ships are around, ...
+- The output of the task is another image of size (5x21x21), such that each pixel in it represents an action (depth 5) of any object it occupies (an empty cell can still produce an action but since there's no ship on it we don't use it anyway).
 
 <div class="imgcap">
 <img src="/images/mlbot.png" width="800">
@@ -106,7 +137,16 @@ During the course of competition, we were inspired by some machine learning appr
 <div class="thecap">How semantic segmentation in computer vision relates to multi-agent learning. Part of the figure is extracted from https://www.jeremyjordan.me/semantic-segmentation/</div>
 </div>
 
-Wanna dig deep into details about how to train the model? Don't hesitate to view my technically-deep write-up on Kaggle [here]. Here, I would like to show the visualization of feature layers that serve as inputs into the segmentation model (first 100 steps of a specific match). Some layers have flickering effects (layers 9, 10, 11 counted from left to right, from top to bottom) due to the data augmentation technique while training. We have 3 enemies (and their ship positions), and the model should not differentiate which enemy should be put into layer 9, 10, or 11. So we can randomly swap them across multiple time steps.
+**The model**
+- The n_featuresx21x21 image is passed through a U-net semantic segmentation model, with a modified EfficientNet (EffNet) encoder. The predictions of actions (NORTH, EAST, SOUTH, WEST, None) are passed into a linear sum assignment function for a next action recommendation. The model originally predicted CONVERT and SPAWN but it was found a heuristic handled these better.
+- The encoder is a modified EfficientNet influenced by the Alaska2 Steganography challenge which had many single pixel artefacts to detect. The Halite board requires single pixel classification, so we must ensure only Stride 1 convolutions at the start of the network so as to not lose detail in early feature maps. [Qishen Ha posted a discussion](https://www.kaggle.com/c/alaska2-image-steganalysis/discussion/168542) on how to modify EffNet to do this. We further modified this with 5x stride-1 conv2D layers before the EffNet B0. This encoder is placed in a very shallow depth 2 Unet.
+- Data and Training: More than 100,000 matches were scraped during the challenge. Most of our submissions used about 3,000 of the top matches which changed daily. Some players were easier to imitate than others. 
+- Models used 20-30 channels of data, including ship and base positions, distance to bases, dominance matrices, attack ships with no cargo, etc. [David NQ's starter kernel](https://www.kaggle.com/david1013/pytorch-starter) was an invaluable resource that inspired us. 
+- We didn't have a good metric on how good a move was other than improving Dice and CrossEntropyLoss. 
+- Augmentation included random 32x32 crops of 21x21 toroidal space. Rotation and flips of a 5 channel directional arrays involved permuting NSEW channels.
+- Surprisingly the network could learn how to create attack formations, send ships to base in the last steps, and mine very efficiently. - Agents trained on games of 1330+ were able to store 1400+ with added heuristics.
+
+We would like to visualize some feature channels (first 100 steps of a specific match). Some have flickering effects (channels 9, 10, 11 counted from left to right, from top to bottom) due to the enemy-swapping data augmentation technique while training: we have 3 enemies and the model should not differentiate which enemy should be put into layer 9, 10, or 11. So we can randomly swap them across multiple time steps.
 
 <div class="imgcap">
 <img src="/images/halite_features.gif" width="800">
