@@ -43,3 +43,23 @@ Phew, sorry for making you reading that boring rules. Just watch this game and y
 <div class="thecap">A typical full game of 4 high-scoring bots.</div>
 </div>
 
+
+
+<div class="imgcap">
+<img src="/images/manualbot.png" width="600">
+<div class="thecap">High summary of a manual bot.</div>
+</div>
+
+<div class="imgcap">
+<img src="/images/mlbot.png" width="600">
+<div class="thecap">High summary of a machine learning bot.</div>
+</div>
+
+
+<div class="imgcap">
+<img src="/images/segmentation_halite.png" width="600">
+<div class="thecap">How semantic segmentation in computer vision relates to multi-agent learning.</div>
+</div>
+
+
+
