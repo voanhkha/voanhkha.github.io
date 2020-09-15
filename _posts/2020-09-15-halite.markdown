@@ -75,22 +75,39 @@ At each time step, we know everything about the game, including the position of 
 The headache begins. Seeing this board state with more than 30 ships, how do we assign the optimal mission for each ship? Which ships need to mine, which ships to attack, to harass, to deposit...? 
 
 Even if we managed to assign, say, ships 1,2,3,4 to attack an enemy ship (5), how do we chase the prey effectively?
+Looking at these below chasing scenarios:
 
-I may need to "quickly" explain how to make an "attack" mission look good. Remember, this is only 1 among lots of possible missions.
 
-**A manual way to attack and kill an enemy ship**
+Those demonstrations demonstrate that chasing and isolating a single enemy ship is not as simple as we can think. It requires some analytical problem solving skills. If you're interested in these kinds of in-depth tactics, I recommend to read my technically detailed write-up on Kaggle (link posted at the beginning section of this post).
 
+
+**Imitation Learning by Semantic Segmentation**
+
+During the course of competition, we were inspired by some machine learning approaches discussed publicly on the forum. We decided to have a try on this direction, and personally, I believe this would give significant boost because I always trust in data and the magical methods the human beings have now advanced with it. Inspired by this starter notebook by [david], we managed to make a data-driven machine learning bot work nicely! The high-level steps are listed as belows.
+
+- Continually collect match replays from top teams on the live LB.
+- "Imitate" their bots by learning the actions of all ships given a board state. Basically for each match, we have 400 turns corresponding to 400 images to be learned. Thousands of matches would suffice for a model to generalize.
+- The machine learning model is inspired from semantic segmentation (SS) in computer vision.  Specifically in SS, we are given raw images as input and required to label the object class of each pixel in each image. We formulate the multi-agent board as an image with size equal to the board (21x21), and each pixel represents a cell, which has various features on it, i.e., occupied ship, amount of halite, distance to nearest base, how many enemy ships are around, ...
+- The output of the task is another image of the same size (21x21), such that each pixel in it represents an action of any object it occupies (an empty cell can still produce an action but since there's no ship on it we don't use it anyway).
 
 <div class="imgcap">
 <img src="/images/mlbot.png" width="800">
 <div class="thecap">High summary of a machine learning bot.</div>
 </div>
 
-
 <div class="imgcap">
 <img src="/images/segmentation_halite.png" width="600">
 <div class="thecap">How semantic segmentation in computer vision relates to multi-agent learning.</div>
 </div>
 
+Wanna dig deep into details about how to train the model? Don't hesitate to view my technically-deep write-up on Kaggle [here]
+
+**Results**
+
+Since the machine learning (ML) bot only produces action probabilities, a simple assignment solver must be used to assign to each ship an action, such that no two friendly ships will collide on the same cell, as well as to maximize the joint probability of all actions from all ships. This pure ML bot alone got us to rank around 20 on the LB, which is considered a huge success.
+
+To rise up 10 more ranks to reach top 10, we need to combine some manual heuristics to alleviate the burden of learning. For instance, the ML bot needs not to learn when to spawn, or where/when a ship should convert into a shipyard. Although those are immediate actions that can be predicted by the ML bot, they are not recommended to be used directly, due to the lack of high-level complex human reasoning. The ML bot is adept at another more subtle skill: navigating ships in a fiercely competitive dense area. Light ships are more frequent in accompany each other to together fight for mining territory or attack. Manual coding is possible, but personally to a data scientist, it is a nightmare!
+
+Let us take a look at how the ML bot plays. The below figures show some stats of our top ML bot as compared to other top teams that we imitate from. 
 
 
