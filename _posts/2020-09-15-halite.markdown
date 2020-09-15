@@ -46,12 +46,12 @@ Phew, sorry for making you reading that boring rules. Just watch this game and y
 
 
 <div class="imgcap">
-<img src="/images/manualbot.png" width="600">
+<img src="/images/manualbot.png" width="800">
 <div class="thecap">High summary of a manual bot.</div>
 </div>
 
 <div class="imgcap">
-<img src="/images/mlbot.png" width="600">
+<img src="/images/mlbot.png" width="800">
 <div class="thecap">High summary of a machine learning bot.</div>
 </div>
 
