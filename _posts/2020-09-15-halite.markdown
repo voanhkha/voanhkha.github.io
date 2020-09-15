@@ -6,13 +6,16 @@ excerpt: "I will show how a data-driven approach can mimic behaviours of other b
 mathjax: true
 ---
 
+[Our full code repository (to be updated)]()
+[Our Kaggle write-up (similar to this post, but with Kaggle community comments) (to be updated)]()
+
 **Introduction**
 
 In September 2020, I and my team, named "KhaVo Dan Gilles Robga Tung", finished high (rank 9/1140) in a world-class AI programming challenge ["Halite by Two Sigma" held on Kaggle](https://www.kaggle.com/c/halite/leaderboard).
-In this post I would like to represent my team to publish our solution (co-written by all members). So much thanks to my teammates for the great time we spent together, climbing the leaderboard everyday, countless discussions and also joking.
+In this post I would like to represent my team to publish our solution (co-written by all members: [Kha Vo](https://www.kaggle.com/khahuras), [Dan Grunberg](https://www.kaggle.com/solverworld), [Gilles Vandewiele](https://www.kaggle.com/group16), [Rob Gardiner](https://www.kaggle.com/robga), and [Tung M Phung](https://www.kaggle.com/tungmphung)). So much thanks to my teammates for the great time we spent together, climbing the leaderboard everyday, countless discussions and also joking.
 
 <div class="imgcap">
-<img src="/images/halite_team.png" width="300">
+<img src="/images/halite_team.png" width="600">
 <div class="thecap">Competition result (temporary, to be updated as the ranking will be finalized on Sep 23rd 2020. My teammates' nicknames are my personal namings without their consent, but with their generous forgiveness in case they don't like.</div>
 </div>
 
@@ -22,8 +25,10 @@ After reading, a new reader may expect to understand:
 + How challenging it is to hard-code a bot that can compete well
 + How a data-driven approach can massively mitigate this challenge and produce outstanding result
 
+
 **The Competition Game Rules**
-The full game rules are described here in the [competition webpage](https://www.kaggle.com/c/halite/overview/halite-rules). I only extract some key traits as follows.
+
+The full game rules are described here in the [competition webpage](https://www.kaggle.com/c/halite/overview/halite-rules). We only extract some key rules as follows.
 
 - There are 4 players (battle royale style) competing in each "episode", or game.
 - Each player starts with 5000 halite and 1 ship.
@@ -48,7 +53,7 @@ Phew, sorry for making you reading that boring rules. Just watch this game and y
 <div class="thecap">A typical full game of 4 high-scoring bots.</div>
 </div>
 
-As we can see, despite the simple game rules, the match is extremely competitive. Hundred of ships were fierce fighting for each halite cell. The logic to make a bot work well is certainly not simple, as it takes into account multiple aspects of the game. For simplicity, I will describe some traits that contribute to a good bot:
+As we can see, despite the simple game rules, the match is extremely competitive. Hundred of ships were fierce fighting for each halite cell. The logic to make a bot work well is certainly not simple, as it takes into account multiple aspects of the game. For simplicity, we will describe some traits that contribute to a good bot:
 - How to move all ship into various cells to optimize the halite per turn.
 - How to consider which area should we go to, i.e., avoid areas with densely populated enemies.
 - When and how to deposit a ship, i.e., too heavy ships are prone to be destroyed, but returning to frequent might decrease halite mined.
@@ -62,10 +67,13 @@ Each of the mentioned points above caused us a great headache. It is more like a
 
 Anyway, we managed to have some very decent variants of manual bots that work considerably well in the live leaderboard (LB). Wait! What is a LB? Let me quickly explain as well
 
+
 **How the live leaderboard ranking works**
+
 The most interesting feature of this competition is the live LB ranking. Everybody can submit their own bots everyday. Each bot will start with 600 points representing its "skill" level. Continually, bots from all teams will be drawn against each other (with similar skill) to form a 4-player battle royale match (all 4 bots must be from 4 different teams). When a match finishes, 4 bots will be ranked (1,2,3,4) based on their final halite. The 1st place and 2nd place teams will be rewarded some points, and the 3rd and 4th place teams will be penalized some points. As you can imagine a very good bot will win most of the matches and continue to increase its "skill" points, until it fights with bots with similar high skill and lose. The matches for the whole pool of thousands of bots are played restlessly until the deadline day, which is 3 months apart from the competition commence day. In other words, this matching system is similar to an ELO rating in chess, if one is familiar with chess ratings. A one-week-old bot may play several hundreds of matches, guaranteeing its skill score convergence on the LB.
 
 **How a manual approach cause such a headache**
+
 Now let us go back to discussing the manual bot. To resolve various questions mentioned, one needs a bot "framework" to begin programming with. One typical framework is shown below
 
 <div class="imgcap">
@@ -87,7 +95,9 @@ Those demonstrations demonstrate that chasing and isolating a single enemy ship 
 
 Next, we would like to quickly describe how we control the "aggressiveness" of our bot throught the game flow. Warning: this is a highly-customized tactic that deals with this specific game that requires massive programming and tunings. You can choose to skip reading this part and jump to the next section without losing your grip on this post.
 
+
 **Manually Control Aggressiveness**:
+
 - The aggressiveness is reflected by the maximum percentage of ships whose halite is 0 and state is ATTACK_SHIP.
 - For the first 50 steps of the game, our bot has 0 aggressiveness. After that, this value switches between 0.8 and 0.3 each 60 steps.
 - From steps 320, the aggressiveness is fixed to be 0.3. We found that the changing aggressiveness is better than a fixed value. We tried a dozen combinations and finally chose 0.8, 0.3 and 60 as the parameters.
@@ -118,6 +128,7 @@ A suitable opponent base is one that:
 + The player that own the shipyard either has less than 500 halite (so that he cannot spawn a ship on that shipyard to counter my attack) or he doesn't want to spawn to counter an attack (we record this information from the previous steps of the match).
 - From step 360, empty ships which cannot collect a significant amount of halite until end game are commanded to attack enemy bases.
 
+
 **Imitation Learning by Semantic Segmentation**
 
 During the course of competition, we were inspired by some machine learning approaches discussed publicly on the forum. We decided to have a try on this direction, and personally, we believe this would give significant boost because we always trust in data and the magical methods the human beings have now advanced with it. Inspired by this starter notebook by [david], we managed to make a data-driven machine learning bot work nicely! The high-level steps are listed as belows.
@@ -137,7 +148,9 @@ During the course of competition, we were inspired by some machine learning appr
 <div class="thecap">How semantic segmentation in computer vision relates to multi-agent learning. Part of the figure is extracted from https://www.jeremyjordan.me/semantic-segmentation/</div>
 </div>
 
+
 **The model**
+
 - The n_featuresx21x21 image is passed through a U-net semantic segmentation model, with a modified EfficientNet (EffNet) encoder. The predictions of actions (NORTH, EAST, SOUTH, WEST, None) are passed into a linear sum assignment function for a next action recommendation. The model originally predicted CONVERT and SPAWN but it was found a heuristic handled these better.
 - The encoder is a modified EfficientNet influenced by the Alaska2 Steganography challenge which had many single pixel artefacts to detect. The Halite board requires single pixel classification, so we must ensure only Stride 1 convolutions at the start of the network so as to not lose detail in early feature maps. [Qishen Ha posted a discussion](https://www.kaggle.com/c/alaska2-image-steganalysis/discussion/168542) on how to modify EffNet to do this. We further modified this with 5x stride-1 conv2D layers before the EffNet B0. This encoder is placed in a very shallow depth 2 Unet.
 - Data and Training: More than 100,000 matches were scraped during the challenge. Most of our submissions used about 3,000 of the top matches which changed daily. Some players were easier to imitate than others. 
@@ -152,6 +165,7 @@ We would like to visualize some feature channels (first 100 steps of a specific 
 <img src="/images/halite_features.gif" width="800">
 <div class="thecap">Visualization of some feature layers (100 first steps).</div>
 </div>
+
 
 **Results**
 
@@ -170,3 +184,5 @@ Let us take a look at how the ML bot plays. The below figure shows some stats of
 <div class="thecap">Some stats during 400 game steps, averaged on all games of top competitors</div>
 </div>
 
+
+<img src="https://hitcounter.pythonanywhere.com/count/tag.svg" alt="Hits">
