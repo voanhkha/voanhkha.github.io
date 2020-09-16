@@ -188,6 +188,37 @@ During the course of competition, we were inspired by some machine learning appr
 <div class="thecap">High summary of a machine learning bot.</div>
 </div>
 
+
+**Feature Engineering**
+
+Feature engineering efforts were minimal. Except some basic game feature layers such as ships/bases positions, cell halites, ..., we also hand-crafted some informative features such as dominance map, threat estimation, last action, ... The features are detailedly shown as belows, with embeded data augmentation explained where due.
+- Ship presence (4 layers for 4 teams, with self position fixed in layer indices, and randomly swap enemy layer indices).
+- Base presence (4 layers)
+- Empty ship presents (4 layers)
+- Ship cargo (4 layers)
+- Overall halite of player (4 layers)
+
+- Manhattan distance to nearest friendly base (4 layers)
+- Manhattan distance to nearest enemy base (4 layers)
+- Self/enemy dominance map, computed by convolution of self/enemy ship positions (4 layers)
+- Last action of each ship (4 layers)
+- Threat estimation of each ship (4 layers, each is the count of nearby lighter enemy ships with distance<=2)
+- Map halite (1 layer)
+- Game step (1 layer, all pixels same value of normalized game step)
+
+We also tried to combine each group of 3 layers into one layer representing "all enemy" and remove separate layers for different enemies. Results are varied. We think that the model can exploit the information about different enemies to produce more reliable action. For instance, multiple teams trying to occupy the same cell but no one dares to go into it first, forming a "limbo" state. Using separate enemy layers can help the model to command our ship to break the deadlock.
+
+
+**Data Augmentation and Test-time Augmentation**
+
+- 3 layers of 3 enemies (for each feature) are swapped.
+- Whole n_featuresx21x21 input image and output label are randomly flipped/rotated. When doing so, it is important to change the pixel values/labels related to direction: label pixel or last action pixel (i.e., NORTH to SOUTH if using vertical flip).
+- Random toroidal crop in a wrap fashion to enrich training data.
+- Expand the 21x21 view into the 32x32 view to resolve edge problem during learning. The reason is that the pixels at the edges will lose information of the opposite edge in the board wrap fashion.
+- Random dropout: remove a few friendly ships.
+- TTA: apply the similar flip/rotate/toroidal crop techniques.
+
+
 <div class="imgcap">
 <img src="/images/segmentation_halite.png" width="600">
 <div class="thecap">How semantic segmentation in computer vision relates to multi-agent learning. Part of the figure is extracted from [here](https://www.jeremyjordan.me/semantic-segmentation/) </div>
