@@ -253,3 +253,25 @@ On the other hand, in another game where we finished 3rd, we did not do well in 
 We as a team just have had a great time together learning, discussing, enriching our knowledge, sharpening our skills, making new friends, and competing with talented people from the globe. We are so proud of this result, given that most of us seasoned data scientists on Kaggle may not find this competition comfortable enough to compete. There is also an interesting fact that no ML bot can finish in top 10 in the previous 3 Halite competitions, and another fact that most top data scientists on Kaggle really shy away from this competition due to its programming-skill-based nature. That makes our achievement much sweeter since we were always believing in ourselves! We hope that our solution can inspire as many data scientists/researchers as possible in the future. The power of machine learning is something immeasurable and... magical. When we realize that our data-driven bot can copy complex attacking tactics of other teams, we were literally dropping our jaws given the fact that we struggled so hard to code an attacking tactics by hand without any great success.
 
 Thank you for reading, and comments are wholeheartedly welcomed!
+
+Finally, we'll show a typical full match animation that we beated 3 strong opponents on the LB (divided into 4 animations: step 0-99, step 100-199, step 200-299, and step 300-399). Have fun!
+
+<div class="imgcap">
+<img src="/images/halitematch (1).gif" width="600">
+<div class="thecap">Full match (step 0-99)</div>
+</div>
+
+<div class="imgcap">
+<img src="/images/halitematch (2).gif" width="600">
+<div class="thecap">Full match (step 100-199)</div>
+</div>
+
+<div class="imgcap">
+<img src="/images/halitematch (3).gif" width="600">
+<div class="thecap">Full match (step 200-299)</div>
+</div>
+
+<div class="imgcap">
+<img src="/images/halitematch (4).gif" width="600">
+<div class="thecap">Full match (step 300-399)</div>
+</div>
