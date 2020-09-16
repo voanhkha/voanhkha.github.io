@@ -232,7 +232,7 @@ We also tried to combine each group of 3 layers into one layer representing "all
 
 
 **The model**
-
+- We employed [`catalyst `](https://github.com/catalyst-team/catalyst) (https://github.com/catalyst-team/catalyst) as the main training framework and found it an extremely convenient. It provides us with error-free training, and all convenience on checkpointing, schedule, optimizer,... like Tensorflow, while still allows Pytorch dynamical coding style and free network architecture modifications. 
 - The n_featuresx21x21 image is passed through a U-net semantic segmentation model, with a modified EfficientNet (EffNet) encoder. The predictions of actions (NORTH, EAST, SOUTH, WEST, None) are passed into a linear sum assignment function for a next action recommendation. The model originally predicted CONVERT and SPAWN but it was found a heuristic handled these better.
 - The encoder is a modified EfficientNet influenced by the Alaska2 Steganography challenge which had many single pixel artefacts to detect. The Halite board requires single pixel classification, so we must ensure only Stride 1 convolutions at the start of the network so as to not lose detail in early feature maps. [Qishen Ha posted a discussion](https://www.kaggle.com/c/alaska2-image-steganalysis/discussion/168542) on how to modify EffNet to do this. We further modified this with 5x stride-1 conv2D layers before the EffNet B0. This encoder is placed in a very shallow depth 2 Unet.
 - Data and Training: More than 100,000 matches were scraped during the challenge. Most of our submissions used about 3,000 of the top matches which changed daily. Some players were easier to imitate than others. 
