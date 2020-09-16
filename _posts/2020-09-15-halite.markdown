@@ -11,7 +11,8 @@ mathjax: true
 [Kaggle write-up, similar to this post but with more community comments](https://www.kaggle.com/c/halite/discussion/183312)
 
 
-**Introduction**
+Introduction
+===
 
 In September 2020, I and my team, named "KhaVo Dan Gilles Robga Tung", finished high (rank 8/1143) in a world-class AI programming challenge ["Halite by Two Sigma" held on Kaggle](https://www.kaggle.com/c/halite/leaderboard). In this post I would like to represent my team to publish our solution (co-written by all members: [Kha Vo](https://www.kaggle.com/khahuras), [Dan Grunberg](https://www.kaggle.com/solverworld), [Gilles Vandewiele](https://www.kaggle.com/group16), [Rob Gardiner](https://www.kaggle.com/robga), and [Tung M Phung](https://www.kaggle.com/tungmphung)).  So much thanks to my teammates for the great time we spent together. We would also like to thank Two Sigma and Kaggle for hosting this wonderful competition. Personally after competing more than 10 competitions back-to-back in the last two years, this competition is something really special that we enjoyed so much:
 - Supportive Kaggle staff, huge thanks to  DJ Sterling, Myles O'Neill, Addison Howard, and especially Sam Harris for constantly replying to bug reports and improving Kaggle simulation environment.
