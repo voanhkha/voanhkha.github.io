@@ -6,15 +6,12 @@ excerpt: "I will show how a data-driven approach can mimic behaviours of other b
 mathjax: true
 ---
 
-[Our full code repository (to be updated)]()
-
-[Our Kaggle write-up (similar to this post, but with Kaggle community comments) (to be updated)]()
-
+[Our full code, to be updated]()
+[Kaggle write-up, similar to this post but with more community comments](https://www.kaggle.com/c/halite/discussion/183312)
 
 **Introduction**
 
-In September 2020, I and my team, named "KhaVo Dan Gilles Robga Tung", finished high (rank 8/1140) in a world-class AI programming challenge ["Halite by Two Sigma" held on Kaggle](https://www.kaggle.com/c/halite/leaderboard).
-In this post I would like to represent my team to publish our solution (co-written by all members: [Kha Vo](https://www.kaggle.com/khahuras), [Dan Grunberg](https://www.kaggle.com/solverworld), [Gilles Vandewiele](https://www.kaggle.com/group16), [Rob Gardiner](https://www.kaggle.com/robga), and [Tung M Phung](https://www.kaggle.com/tungmphung)). So much thanks to my teammates for the great time we spent together. We would also like to thank Two Sigma and Kaggle for hosting this wonderful competition. Personally after competing more than 10 competitions back-to-back in the last two years, this competition is something really special that we enjoyed so much:
+In September 2020, I and my team, named "KhaVo Dan Gilles Robga Tung", finished high (rank 8/1143) in a world-class AI programming challenge ["Halite by Two Sigma" held on Kaggle](https://www.kaggle.com/c/halite/leaderboard). In this post I would like to represent my team to publish our solution (co-written by all members: [Kha Vo](https://www.kaggle.com/khahuras), [Dan Grunberg](https://www.kaggle.com/solverworld), [Gilles Vandewiele](https://www.kaggle.com/group16), [Rob Gardiner](https://www.kaggle.com/robga), and [Tung M Phung](https://www.kaggle.com/tungmphung)).  So much thanks to my teammates for the great time we spent together. We would also like to thank Two Sigma and Kaggle for hosting this wonderful competition. Personally after competing more than 10 competitions back-to-back in the last two years, this competition is something really special that we enjoyed so much:
 - Supportive Kaggle staff, huge thanks to  DJ Sterling, Myles O'Neill, Addison Howard, and especially Sam Harris for constantly replying to bug reports and improving Kaggle simulation environment.
 - Game replay animation is great that allows us to enjoy the entertainment just like watching competitive sport matches.
 - Generally matchmaking system is fine and relatively fair.
@@ -25,12 +22,9 @@ In this post I would like to represent my team to publish our solution (co-writt
 
 If there was any problem with this competition, that would be only 4 halite-threaded swags given to the top 4 teams. We need more swags!
 
+![temporary, to be updated as the ranking will be finalized on Sep 23rd 2020](https://github.com/voanhkha/voanhkha.github.io/blob/master/images/halite_team.png?raw=true)
 
-<div class="imgcap">
-<img src="/images/halite_team.png" width="600">
-<div class="thecap">Competition result (temporary, to be updated as the ranking will be finalized on Sep 23rd 2020.</div>
-</div>
-
+Generally speaking, our best bot consists of a core [imitation learning](https://sites.google.com/view/icml2018-imitation-learning/) based model to directly predict each ship's immediate action in a centralized learning fashion. This core backbone is equipped with fine-tuned heuristics on some key policies such as base spawning, ship converting, base protecting,... which directly override the outputs of the model when needed. We will show how a data-driven approach can mimic behaviours of other bots that are extremely hard to code.
 
 After reading, a new reader may expect to understand:
 + What is this competition about
@@ -60,10 +54,8 @@ The full game rules are described here in the [competition webpage](https://www.
 
 Phew, sorry for making you reading that boring rules. Just watch this game and you'll see how a game flows!
 
-<div class="imgcap">
-<img src="/images/halite_full.gif" width="600">
-<div class="thecap">A typical full game of 4 high-scoring bots.</div>
-</div>
+![A typical full game of 4 high-scoring bots.](https://github.com/voanhkha/voanhkha.github.io/blob/master/images/halite_full.gif?raw=true)
+
 
 Manual Bot
 ---
@@ -91,13 +83,13 @@ The most interesting feature of this competition is the live LB ranking. Everybo
 
 Now let us go back to discussing the manual bot. To resolve various questions mentioned, one needs a bot "framework" to begin programming with. One typical framework is shown below
 
-<div class="imgcap">
-<img src="/images/manualbot.png" width="800">
-<div class="thecap">High summary of a manual bot.</div>
-</div>
+![High summary of a manual bot](https://github.com/voanhkha/voanhkha.github.io/blob/master/images/manualbot.png?raw=true)
+
 
 At each time step, we know everything about the game, including the position of all our/enemy ships/bases, how much halite/cargo every one has, and also past time steps information. That means we also know how opponents move in previous steps, and we can aggregate/accumulate some game statistics as well, such as how much halite had each enemy gained per turn, how many kills did they commit... Using all these information, one can perform a two-stage assignment problem to assign move to each ship.
+
 - Stage 1: Assigning a mission to each ship, with some input parameters from the global information, and output parameters indicating the properties of the mission, i.e., which enemy to attack is an output parameter.
+
 - Stage 2: Assigning a move to each ship, based on the assigned mission in stage 1. For instance, a "mining" mission for ship A with target cell (12, 17) can simply guide ship A from its current position, such as (10, 10), to (12, 17) to the cell that is 1-step nearer to (12, 17), that is (11, 10) or (10, 11). 
 
 The headache begins. Seeing this board state with more than 30 ships, how do we assign the optimal mission for each ship? Which ships need to mine, which ships to attack, to harass, to deposit...? Even if we managed to assign, say, ships 1,2,3,4 to attack an enemy ship (5), how do we chase the prey effectively? Now, let us go through each key mission for a manual bot.
@@ -130,17 +122,14 @@ There are many more aspects of our current best manual bot, but the general idea
 
 Chasing and isolating a single enemy ship is not as simple as we may think. It requires some analytical problem solving skills. We will quickly show how to scan for a potential scene that we have high chance to kill off an enemy ship. In a general case, if we randomly assign a bunch of ships to attack an enemy ship by just moving towards the prey without considering anything else, they may chase... forever. So, we come up with a detailed tactic on how to scan for a potential prey, and chase it with minimal number of ships. Let us look at the below figure.
 
-<div class="imgcap">
-<img src="/images/halite_attack.png" width="600">
-<div class="thecap">Four quadrants corresponding to the centered prey that need to be occupied each at least one ship for an effective kill.</div>
-</div>
+![Four quadrants corresponding to the centered prey that need to be occupied each at least one ship for an effective kill.](https://github.com/voanhkha/voanhkha.github.io/blob/master/images/halite_attack.png?raw=true)
 
-To ensure a certain kill, we need to have at least one ship occupying each colored quadrant from the prey's persective. The predators will move towards to prey by selecting the immediate move that approaches the nearest red lines. In this tactic, the prey will be surely be encircled, and we might need an extra ship to ensure a kill. Note that if there is no ship in any quadrant, the chase will be mostly unsuccessful. Using this tactic one can easily estimate the "threat" that any ship has. A cool thing is that a team can "borrow" a ship from a 3rd team to kill the prey. This is done by using 3 ships to close the range and chase the victim to the end of the tunnel where another enemy is waiting for.
+To ensure a certain kill, we need to have at least one ship occupying each coloured quadrant from the prey's perspective. The predators will move towards to prey by selecting the immediate move that approaches the nearest red lines. In this tactic, the prey will be surely be encircled, and we might need an extra ship to ensure a kill. Note that if there is no ship in any quadrant, the chase will be mostly unsuccessful. Using this tactic one can easily estimate the "threat" that any ship has. A cool thing is that a team can "borrow" a ship from a 3rd team to kill the prey. This is done by using 3 ships to close the range and chase the victim to the end of the tunnel where another enemy is waiting for.
 
 
 **Manually Control Aggressiveness**:
 
-Next, we would like to quickly describe how we control the "aggressiveness" of our bot throught the game flow. Warning: this is a highly-customized tactic that deals with this specific game that requires massive programming and tunings. You can choose to skip reading this part and jump to the next section without losing your grip on this post.
+Next, we would like to quickly describe how we control the "aggressiveness" of our bot throught the game flow. Warning: this is a highly-customised tactic that deals with this specific game that requires massive programming and tuning. You can choose to skip reading this part and jump to the next section without losing your grip on this post.
 
 - The aggressiveness is reflected by the maximum percentage of ships whose halite is 0 and state is ATTACK_SHIP.
 - For the first 50 steps of the game, our bot has 0 aggressiveness. After that, this value switches between 0.8 and 0.3 each 60 steps.
@@ -154,18 +143,13 @@ Next, we would like to quickly describe how we control the "aggressiveness" of o
 - Only empty ships (i.e. ships with 0 halite) are allowed to attacking bases.
 - Only attack a base of a player whose "worth" is high enough. The worth of a player is computed from the number of his ships, bases, halite, cargo and game step. The detail is in the below function. We only attack opponents whose worth is > 0.8 our worth and his worth > our worth - 2000.
 
-
+`
 // function to compute worth
-
   if self.board.step < 200: worth = halite + nship*500 + nyard*1000 + cargo*0.8
-  
   elif self.board.step < 300:  worth = halite + nship*400 + nyard*400 + cargo*0.8
-  
   elif self.board.step < 370: worth = halite + nship*100 + nyard*100 + cargo*0.9
-  
   else: worth = halite + cargo*0.9
-//
-
+`
  
 - If at a step, one of our ships is next to a suitable opponent base, we command the ship to attack it.
 A suitable opponent base is one that:
@@ -178,39 +162,36 @@ A suitable opponent base is one that:
 
 One important aspect of the game is the protection of bases. Enemies can destroy our bases by deliberately crashing into it. In these situations, both the base and the enemy ship are destroyed.  To protect a base, we have two approaches. First, a friendly ship can constantly stand on the base until a depositing ship arrives and become the new protector, pushes the old protector out for mining. Second, a more complex refactored protector strategy is to ensure that one of our ships is always closer to our bases than the closest enemy ship. If the distance from the closest enemy ship to our base is equal to d, then our closest ship cannot leave the radius of d - 1. This updated approach is the improved version of the first approach. Our mining efficiency is decreased by roughly 17% if 2 out of the 12 ships act as protectors. However this approach still has cons as it cannot defend from attacks of multiple ships. On the other hand, the first approach has its own pros that it always prevents enemy ships to come close to our base territories, if the opponent tactic is just simply scan for any unprotected bases.
 
+![Two base protecting tactics](https://github.com/voanhkha/voanhkha.github.io/blob/master/images/halite_protect.png?raw=true)
+
 
 Machine Learning Bot: Imitation Learning by Semantic Segmentation
 ---
 
-During the course of competition, we were inspired by some machine learning approaches discussed publicly on the forum. We decided to have a try on this direction, and personally, we believe this would give significant boost because we always trust in data and the magical methods the human beings have now advanced with it. Inspired by this starter notebook by [david], we managed to make a data-driven machine learning bot work nicely! The high-level steps are listed as belows.
+During the course of competition, we were inspired by some machine learning approaches discussed publicly on the forum. We decided to have a try on this direction, and personally, we believe this would give significant boost because we always trust in data and the magical methods the human beings have now advanced with it. Inspired by this starter notebook by [david], we managed to make a data-driven machine learning bot work nicely! The high-level steps are listed as below.
 
 - Continually collect match replays from top teams on the live LB.
-- "Imitate" their bots by learning the actions of all ships given a board state. Basically for each match, we have 400 turns corresponding to 400 images to be learned. Thousands of matches would suffice for a model to generalize.
+- "Imitate" their bots by learning the actions of all ships given a board state. Basically for each match, we have 400 turns corresponding to 400 images to be learned. Thousands of matches would suffice for a model to generalise.
 - The machine learning model is inspired from semantic segmentation (SS) in computer vision.  Specifically in SS, we are given raw images as input and required to label the object class of each pixel in each image. We formulate the multi-agent board as an image with size equal to the board (n_featuresx21x21), and each pixel represents a cell, which has various features (n_features) on it, i.e., occupied ship, amount of halite, distance to nearest base, how many enemy ships are around, ...
 - The output of the task is another image of size (5x21x21), such that each pixel in it represents an action (depth 5) of any object it occupies (an empty cell can still produce an action but since there's no ship on it we don't use it anyway).
 
-<div class="imgcap">
-<img src="/images/mlbot.png" width="800">
-<div class="thecap">High summary of a machine learning bot.</div>
-</div>
-
+![High summary of a machine learning bot](https://github.com/voanhkha/voanhkha.github.io/blob/master/images/mlbot.png?raw=true)
 
 **Feature Engineering**
 
-Feature engineering efforts were minimal. Except some basic game feature layers such as ships/bases positions, cell halites, ..., we also hand-crafted some informative features such as dominance map, threat estimation, last action, ... The features are detailedly shown as belows, with embeded data augmentation explained where due.
+Feature engineering efforts were minimal. Except some basic game feature layers such as ships/bases positions, cells' halite, ..., we also hand-crafted some informative features such as dominance map, threat estimation, last action, ... The features are shown as belows, with embedded data augmentation explained where due.
 - Ship presence (4 layers for 4 teams, with self position fixed in layer indices, and randomly swap enemy layer indices).
 - Base presence (4 layers)
 - Empty ship presents (4 layers)
 - Ship cargo (4 layers)
 - Overall halite of player (4 layers)
-
 - Manhattan distance to nearest friendly base (4 layers)
 - Manhattan distance to nearest enemy base (4 layers)
 - Self/enemy dominance map, computed by convolution of self/enemy ship positions (4 layers)
 - Last action of each ship (4 layers)
 - Threat estimation of each ship (4 layers, each is the count of nearby lighter enemy ships with distance<=2)
 - Map halite (1 layer)
-- Game step (1 layer, all pixels same value of normalized game step)
+- Game step (1 layer, all pixels same value of normalised game step)
 
 We also tried to combine each group of 3 layers into one layer representing "all enemy" and remove separate layers for different enemies. Results are varied. We think that the model can exploit the information about different enemies to produce more reliable action. For instance, multiple teams trying to occupy the same cell but no one dares to go into it first, forming a "limbo" state. Using separate enemy layers can help the model to command our ship to break the deadlock.
 
@@ -225,10 +206,7 @@ We also tried to combine each group of 3 layers into one layer representing "all
 - TTA: apply the similar flip/rotate/toroidal crop techniques.
 
 
-<div class="imgcap">
-<img src="/images/segmentation_halite.png" width="600">
-<div class="thecap">How semantic segmentation in computer vision relates to multi-agent learning. Part of the figure is extracted from [here](https://www.jeremyjordan.me/semantic-segmentation/) </div>
-</div>
+![How semantic segmentation in computer vision relates to multi-agent learning. Part of the figure is extracted from www.jeremyjordan.me/semantic-segmentation](https://github.com/voanhkha/voanhkha.github.io/blob/master/images/segmentation_halite.png?raw=true)
 
 
 **The model**
@@ -241,74 +219,59 @@ We also tried to combine each group of 3 layers into one layer representing "all
 - Augmentation included random 32x32 crops of 21x21 toroidal space. Rotation and flips of a 5 channel directional arrays involved permuting NSEW channels.
 - Surprisingly the network could learn how to create attack formations, send ships to base in the last steps, and mine very efficiently. - Agents trained on games of 1330+ were able to store 1400+ with added heuristics.
 
-We would like to visualize some feature channels (first 100 steps of a specific match). Some have flickering effects (channels 9, 10, 11 counted from left to right, from top to bottom) due to the enemy-swapping data augmentation technique while training: we have 3 enemies and the model should not differentiate which enemy should be put into layer 9, 10, or 11. So we can randomly swap them across multiple time steps.
+We would like to visualise some feature channels (first 100 steps of a specific match). Some have flickering effects (channels 9, 10, 11 counted from left to right, from top to bottom) due to the enemy-swapping data augmentation technique while training: we have 3 enemies and the model should not differentiate which enemy should be put into layer 9, 10, or 11. So we can randomly swap them across multiple time steps.
 
-<div class="imgcap">
-<img src="/images/halite_features.gif" width="800">
-<div class="thecap">Visualization of some feature layers (100 first steps).</div>
-</div>
+![Visualization of some feature layers (100 first steps)](https://github.com/voanhkha/voanhkha.github.io/blob/master/images/halite_features.gif?raw=true)
 
 
 **Results**
 
-Since the machine learning (ML) bot only produces action probabilities, a simple assignment solver must be used to assign to each ship an action, such that no two friendly ships will collide on the same cell, as well as to maximize the joint probability of all actions from all ships. This pure ML bot alone got us to rank around 20 on the LB, which is considered a huge success.
+Since the machine learning (ML) bot only produces action probabilities, a simple assignment solver must be used to assign to each ship an action, such that no two friendly ships will collide on the same cell, as well as to maximise the joint probability of all actions from all ships. This pure ML bot alone got us to rank around 20 on the LB, which is considered a huge success.
 
 To rise up 10 more ranks to reach top 10, we need to combine some manual heuristics to alleviate the burden of learning. For instance, the ML bot needs not to learn when to spawn, or where/when a ship should convert into a shipyard. Although those are immediate actions that can be predicted by the ML bot, they are not recommended to be used directly, due to the lack of high-level complex human reasoning. The ML bot is adept at another more subtle skill: navigating ships in a fiercely competitive dense area. Light ships are more frequent in accompany each other to together fight for mining territory or attack. Manual coding is possible, but personally to a data scientist, it is a nightmare!
 
 Let us take a look at how the ML bot plays. The below figure shows some stats of our top ML bot as compared to other top teams that we imitate from. We can see that our ML bot can achieve the more or less averaged behaviour of all teams throughout the whole game. 
 
-<div class="imgcap">
-<img src="/images/halite_stats.png" width="800">
-<div class="thecap">Some stats during 400 game steps, averaged on all games of top competitors</div>
-</div>
+![Some stats during 400 game steps, averaged on all games of top competitors](https://github.com/voanhkha/voanhkha.github.io/blob/master/images/halite_stats.png?raw=true)
 
 Some points:
 - Team "convex" has the best average halite reward after step 300, thanks to its aggressiveness earlier in the game (number of ships with 0-halite). 
 - Team "robiland" has quite low reward, but significantly many more ships for trying to completely "dominate" the game.
 - Late peaks in the third plot observed in some teams indicate that they launch base raid at end-game, a tactic that can massively damage any opponent if all of their bases are destroyed.
 - Team "leukocyte" mostly focuses on mining mission and truly wants peace. It doesn't want to spawn many ships to attack other people. This strategy is also competitive if one manages to have a very good dodging technique to avoid being killed and efficient mining tactics, then just try to survive the crazy blitz. 
-- Our manual bot cannot cope with the ML bot in terms of mining efficiency by a mile, but its versatality in attacking is outstanding since we can adaptively adjust the number of empty ships at various stages of the game based on different situations.
+- Our manual bot cannot cope with the ML bot in terms of mining efficiency by a mile, but its versatility in attacking is outstanding since we can adaptively adjust the number of empty ships at various stages of the game based on different situations.
 
 Now, let's have a look at some specific one game.
-<div class="imgcap">
-<img src="/images/gamestats1.png" width="600">
-<div class="thecap">Stats of a specific match</div>
-</div>
+
+![Stats of a specific match](https://github.com/voanhkha/voanhkha.github.io/blob/master/images/gamestats1.png?raw=true)
 
 We won the above game against 3 strong opponents. The finished halite of 3 top teams are very close, shown in the last plot "Halite". We won this game because of superior mining efficiency in early game that gave us an advantage, and we have a great killing rate that is only worse than the... 4th placed team. This game demonstrates that being too aggressive is not recommended. As well, 2nd and 3rd placed team have many more ships than us, but in the end we won, thanks to a great "[Nash equilibrium](https://www.kaggle.com/c/halite/discussion/168131)" that we reached specifically in this game.
 
-<div class="imgcap">
-<img src="/images/gamestats2.png" width="600">
-<div class="thecap">Stats of a specific match</div>
-</div>
+![Stats of another match](https://github.com/voanhkha/voanhkha.github.io/blob/master/images/gamestats2.png?raw=true)
 
-On the other hand, in another game where we finished 3rd, we did not do well in battle. Our number of ships are still competitive until mid-game (around step 200), then gradually dropped due to the advancedment of opponents' manual attacking strategy that our ML bot cannot fully imitate. Losing too many ships led us to a terrible state at step 300 when two top teams just begin to focus on mining, depicted by the late peaks in Cargo per ship, when we couldn't compete anymore. 
+
+On the other hand, in another game where we finished 3rd, we did not do well in battle. Our number of ships are still competitive until mid-game (around step 200), then gradually dropped due to the advancement of opponents' manual attacking strategy that our ML bot cannot fully imitate. Losing too many ships led us to a terrible state at step 300 when two top teams just begin to focus on mining, depicted by the late peaks in Cargo per ship, when we couldn't compete anymore. 
 
 
 **Conclusions**
 
-We as a team just have had a great time together learning, discussing, enriching our knowledge, sharpening our skills, making new friends, and competing with talented people from the globe. We are so proud of this result, given that most of us seasoned data scientists on Kaggle may not find this competition comfortable enough to compete. There is also an interesting fact that no ML bot can finish in top 10 in the previous 3 Halite competitions, and another fact that most top data scientists on Kaggle really shy away from this competition due to its programming-skill-based nature. That makes our achievement much sweeter since we were always believing in ourselves! We hope that our solution can inspire as many data scientists/researchers as possible in the future. The power of machine learning is something immeasurable and... magical. When we realize that our data-driven bot can copy complex attacking tactics of other teams, we were literally dropping our jaws given the fact that we struggled so hard to code an attacking tactics by hand without any great success.
+We as a team just have had a great time together learning, discussing, enriching our knowledge, sharpening our skills, making new friends, and competing with talented people in the world. We are so proud of this result, given that most of us seasoned data scientists on Kaggle may not find this competition comfortable enough to compete. There is also an interesting fact that no ML bot can finish in top 10 in the previous 3 Halite competitions, and another fact that most top data scientists on Kaggle really shy away from this competition due to its programming-skill-based nature. This type of competition is completely different than most others, because it requires visible progressive improvements due to true public LB. It's like playing open card games.
 
-Thank you for reading, and comments are wholeheartedly welcomed!
+We hope that our solution can inspire as many data scientists/researchers as possible in the future. The power of machine learning is something immeasurable and... magical. When we realise that our data-driven bot can copy complex attacking tactics of other teams, we were literally dropping our jaws given the fact that we struggled so hard to code an attacking tactics by hand without any great success.
 
-Finally, we'll show a typical full match animation that we beated 3 strong opponents on the LB (divided into 4 animations: step 0-99, step 100-199, step 200-299, and step 300-399). Have fun!
+Personally, I would like again send my thanks to great teammates. Everyone was enjoying the competition, and will enjoy the (maybe) gold medal. It would be sweet to all if it comes true. I, especially, like this type of competition, because of its LB transparency similar to some Santa competitions. I also wrote a topic about a year ago, titled [The Elegance of Policy Gradient in Reinforcement Learning](https://voanhkha.github.io/2019/11/29/magic_rl_p1/)  to demonstrate my passion for this area.
 
-<div class="imgcap">
-<img src="/images/halitematch (1).gif" width="600">
-<div class="thecap">Full match (step 0-99)</div>
-</div>
+Finally, we'll show a typical full match animation that we beat 3 strong opponents on the LB (divided into 4 animations: step 0-99, step 100-199, step 200-299, and step 300-399). Have fun!
 
-<div class="imgcap">
-<img src="/images/halitematch (2).gif" width="600">
-<div class="thecap">Full match (step 100-199)</div>
-</div>
+![Full match (step 0-99)](https://github.com/voanhkha/voanhkha.github.io/blob/master/images/halitematch1.gif?raw=true)
 
-<div class="imgcap">
-<img src="/images/halitematch (3).gif" width="600">
-<div class="thecap">Full match (step 200-299)</div>
-</div>
+![Full match (step 100-199)](https://github.com/voanhkha/voanhkha.github.io/blob/master/images/halitematch2.gif?raw=true)
 
-<div class="imgcap">
-<img src="/images/halitematch (4).gif" width="600">
-<div class="thecap">Full match (step 300-399)</div>
-</div>
+![Full match (step 200-299)](https://github.com/voanhkha/voanhkha.github.io/blob/master/images/halitematch3.gif?raw=true)
+
+![Full match (step 300-399)](https://github.com/voanhkha/voanhkha.github.io/blob/master/images/halitematch4.gif?raw=true)
+
+
+Thanks for reading, and comments are wholeheartedly welcomed!
+
+
