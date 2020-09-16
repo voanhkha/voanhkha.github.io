@@ -1,22 +1,34 @@
 ---
 layout: post
 comments: true
-title: Semantic Segmentation for Imitation Learning - Halite IV Competition
+title: Imitation Learning by Semantic Segmentation for Multi-Agent Halite IV Competition
 excerpt: "I will show how a data-driven approach can mimic behaviours of other bots that are extremely hard to code."
 mathjax: true
 ---
 
 [Our full code repository (to be updated)]()
+
 [Our Kaggle write-up (similar to this post, but with Kaggle community comments) (to be updated)]()
+
 
 **Introduction**
 
-In September 2020, I and my team, named "KhaVo Dan Gilles Robga Tung", finished high (rank 9/1140) in a world-class AI programming challenge ["Halite by Two Sigma" held on Kaggle](https://www.kaggle.com/c/halite/leaderboard).
-In this post I would like to represent my team to publish our solution (co-written by all members: [Kha Vo](https://www.kaggle.com/khahuras), [Dan Grunberg](https://www.kaggle.com/solverworld), [Gilles Vandewiele](https://www.kaggle.com/group16), [Rob Gardiner](https://www.kaggle.com/robga), and [Tung M Phung](https://www.kaggle.com/tungmphung)). So much thanks to my teammates for the great time we spent together, climbing the leaderboard everyday, countless discussions and also joking.
+In September 2020, I and my team, named "KhaVo Dan Gilles Robga Tung", finished high (rank 8/1140) in a world-class AI programming challenge ["Halite by Two Sigma" held on Kaggle](https://www.kaggle.com/c/halite/leaderboard).
+In this post I would like to represent my team to publish our solution (co-written by all members: [Kha Vo](https://www.kaggle.com/khahuras), [Dan Grunberg](https://www.kaggle.com/solverworld), [Gilles Vandewiele](https://www.kaggle.com/group16), [Rob Gardiner](https://www.kaggle.com/robga), and [Tung M Phung](https://www.kaggle.com/tungmphung)). So much thanks to my teammates for the great time we spent together. We would also like to thank Two Sigma and Kaggle for hosting this wonderful competition. Personally after competing more than 10 competitions back-to-back in the last two years, this competition is something really special that we enjoyed so much:
+- Supportive Kaggle staff, huge thanks to  DJ Sterling, Myles O'Neill, Addison Howard, and especially Sam Harris for constantly replying to bug reports and improving Kaggle simulation environment.
+- Game replay animation is great that allows us to enjoy the entertainment just like watching competitive sport matches.
+- Generally matchmaking system is fine and relatively fair.
+- No need to be scared, worried, or desparate about LB shake-up. 
+- Competing against a different set of competitors on Kaggle that I'm sure are very strong in programming skills.
+- No discussion brawls, scandals, or cheating.
+- Normal ranking points and medals, which is a huge motivation.
+
+If there was any problem with this competition, that would be only 4 halite-threaded swags given to the top 4 teams. We need more swags!
+
 
 <div class="imgcap">
 <img src="/images/halite_team.png" width="600">
-<div class="thecap">Competition result (temporary, to be updated as the ranking will be finalized on Sep 23rd 2020. My teammates' nicknames are my personal namings without their consent, but with their generous forgiveness in case they don't like.</div>
+<div class="thecap">Competition result (temporary, to be updated as the ranking will be finalized on Sep 23rd 2020.</div>
 </div>
 
 
@@ -198,7 +210,22 @@ Some points:
 - Team "leukocyte" mostly focuses on mining mission and truly wants peace. It doesn't want to spawn many ships to attack other people. This strategy is also competitive if one manages to have a very good dodging technique to avoid being killed and efficient mining tactics, then just try to survive the crazy blitz. 
 - Our manual bot cannot cope with the ML bot in terms of mining efficiency by a mile, but its versatality in attacking is outstanding since we can adaptively adjust the number of empty ships at various stages of the game based on different situations.
 
+Now, let's have a look at some specific one game.
+<div class="imgcap">
+<img src="/images/gamestats1.png" width="600">
+<div class="thecap">Stats of a specific match</div>
+</div>
+
+We won the above game against 3 strong opponents. The finished halite of 3 top teams are very close, shown in the last plot "Halite". We won this game because of superior mining efficiency in early game that gave us an advantage, and we have a great killing rate that is only worse than the... 4th placed team. This game demonstrates that being too aggressive is not recommended. As well, 2nd and 3rd placed team have many more ships than us, but in the end we won, thanks to a great "[Nash equilibrium](https://www.kaggle.com/c/halite/discussion/168131)" that we reached specifically in this game.
+
+<div class="imgcap">
+<img src="/images/gamestats2.png" width="600">
+<div class="thecap">Stats of a specific match</div>
+</div>
+
+On the other hand, in another game where we finished 3rd, we did not do well in battle. Our number of ships are still competitive until mid-game (around step 200), then gradually dropped due to the advancedment of opponents' manual attacking strategy that our ML bot cannot fully imitate. Losing too many ships led us to a terrible state at step 300 when two top teams just begin to focus on mining, depicted by the late peaks in Cargo per ship, when we couldn't compete anymore. 
+
 **Conclusions**
 We as a team just have had a great time together learning, discussing, enriching our knowledge, sharpening our skills, making new friends, and competing with talented people from the globe. We are so proud of this result, given that most of us seasoned data scientists on Kaggle may not find this competition comfortable enough to compete. There is also an interesting fact that no ML bot can finish in top 10 in the previous 3 Halite competitions, and another fact that most top data scientists on Kaggle really shy away from this competition due to its programming-skill-based nature. That makes our achievement much sweeter since we were always believing in ourselves! We hope that our solution can inspire as many data scientists/researchers as possible in the future. The power of machine learning is something immeasurable and... magical. When we realize that our data-driven bot can copy complex attacking tactics of other teams, we were literally dropping our jaws given the fact that we struggled so hard to code an attacking tactics by hand without any great success.
 
-Thank you for reading.
+Thank you for reading, and comments are wholeheartedly welcomed!
