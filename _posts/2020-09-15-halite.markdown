@@ -121,6 +121,7 @@ The general framework above has a lot of customized tricks and tunes. Right now,
 - Our ships camping opponents' shipyards is possible, but needs to be applied in a smart way, i.e., we must not camp anymore when knowing the opponent has a counter-camp tactic.
 - "Global-memory" variables that capture all history moves, position, missions, targets, game stats… of all our ships and every aspect of the game.
 - Attacking strategy: how to use a fixed set of ships to kill 1 enemy ship in the shortest time? This toy problem is needed to be mastered as a black-box, and will be discussed later.
+- Predicting final finished halite of all teams, at step 300-340: this serves as a factor to decide which enemy should we launch the end-game base raid on. The prediction is conducted by a simple regression model using some basic in-game stats, such as number of ships/bases, remaining halite, ...
 
 There are many more aspects of our current best manual bot, but the general ideas are as mentioned.
 
@@ -153,13 +154,18 @@ Next, we would like to quickly describe how we control the "aggressiveness" of o
 - Only empty ships (i.e. ships with 0 halite) are allowed to attacking bases.
 - Only attack a base of a player whose "worth" is high enough. The worth of a player is computed from the number of his ships, bases, halite, cargo and game step. The detail is in the below function. We only attack opponents whose worth is > 0.8 our worth and his worth > our worth - 2000.
 
+
 // function to compute worth
-def _approxWorth(self, halite, nship, nyard, cargo):
+
   if self.board.step < 200: worth = halite + nship*500 + nyard*1000 + cargo*0.8
+  
   elif self.board.step < 300:  worth = halite + nship*400 + nyard*400 + cargo*0.8
+  
   elif self.board.step < 370: worth = halite + nship*100 + nyard*100 + cargo*0.9
+  
   else: worth = halite + cargo*0.9
-return worth
+//
+
  
 - If at a step, one of our ships is next to a suitable opponent base, we command the ship to attack it.
 A suitable opponent base is one that:
@@ -170,7 +176,7 @@ A suitable opponent base is one that:
 
 **Protecting Bases**
 
-One important aspect of the game is the protection of bases. Enemies can destroy our bases by deliberately crashing into it. In these situations, both the base and the enemy ship are destroyed.  To protect a base, we have two approaches. First, a friendly ship can constantly stand on the base until a depositing ship arrives and become the new protector, pushes the old protector out for mining. Second, a more complex refactored protector strategy is to ensure that one of our ships is always closer to our bases than the closest enemy ship. If the distance from the closest enemy ship to our base is equal to d, then our closest ship cannot leave the radius of d - 1. This updated approach is the improved version of the first approach, but still not optimal as it cannot defend from attacks of multiple ships. On the other hand, the first approach has its own pros that it prevent any enemy ship to come close to our base territories if they simple just scan for unprotected bases.
+One important aspect of the game is the protection of bases. Enemies can destroy our bases by deliberately crashing into it. In these situations, both the base and the enemy ship are destroyed.  To protect a base, we have two approaches. First, a friendly ship can constantly stand on the base until a depositing ship arrives and become the new protector, pushes the old protector out for mining. Second, a more complex refactored protector strategy is to ensure that one of our ships is always closer to our bases than the closest enemy ship. If the distance from the closest enemy ship to our base is equal to d, then our closest ship cannot leave the radius of d - 1. This updated approach is the improved version of the first approach. Our mining efficiency is decreased by roughly 17% if 2 out of the 12 ships act as protectors. However this approach still has cons as it cannot defend from attacks of multiple ships. On the other hand, the first approach has its own pros that it always prevents enemy ships to come close to our base territories, if the opponent tactic is just simply scan for any unprotected bases.
 
 
 Machine Learning Bot: Imitation Learning by Semantic Segmentation
