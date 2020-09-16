@@ -100,21 +100,41 @@ At each time step, we know everything about the game, including the position of 
 - Stage 1: Assigning a mission to each ship, with some input parameters from the global information, and output parameters indicating the properties of the mission, i.e., which enemy to attack is an output parameter.
 - Stage 2: Assigning a move to each ship, based on the assigned mission in stage 1. For instance, a "mining" mission for ship A with target cell (12, 17) can simply guide ship A from its current position, such as (10, 10), to (12, 17) to the cell that is 1-step nearer to (12, 17), that is (11, 10) or (10, 11). 
 
-The headache begins. Seeing this board state with more than 30 ships, how do we assign the optimal mission for each ship? Which ships need to mine, which ships to attack, to harass, to deposit...? 
+The headache begins. Seeing this board state with more than 30 ships, how do we assign the optimal mission for each ship? Which ships need to mine, which ships to attack, to harass, to deposit...? Even if we managed to assign, say, ships 1,2,3,4 to attack an enemy ship (5), how do we chase the prey effectively? Now, let us go through each key mission for a manual bot.
 
-Even if we managed to assign, say, ships 1,2,3,4 to attack an enemy ship (5), how do we chase the prey effectively?
+**How to mine**
+
+- An optimization assignment problem will assign for each ship a target cell to come to. The problem is global for all ships.
+- The score for each cell for each ship is determined by average halite per turn for that ship to come to that cell and return to the nearest base. The algorithm is explained in this [great notebook](https://www.kaggle.com/solverworld/optimal-mining-with-carried-halite) from our team.
+- That score is partly affected by a "dominance" factor. The dominance factor is the score for each cell that indicates how many enemy ships surrounding it.
+- The cells of our shipyards are scored based on the current carried halite divided by distance of ship to that cell. For early mining boost, we use carried=0 to not let the ship return too frequently in start game.
+- A shipyard can be targeted by at most 4 friendly ships.
+- When the assignment problem is done, each ship will claim its target and begin to move into its target.
+- The moving procedure is also done by another assignment problem. For each cell in the map, for each ship, there will be a score of this "immediate target" that is next to each ship. This second assignment problem is to avoid self-collision.
+- Enemy attacking and collisions are all considered in this moving assignment problem.
+- Detecting campers (enemy zero-ship staying idling at a zero-cell next to our shipyard) and destroy them.
+- Can assign a subset of our ships to attack an enemy ship.
+- Max_ship calculation and whether to spawn is extremely important. We have a decent one now using logistic regression with some basic features, and some rules.
+- Predicting next enemy moves: using avoidance consideration for each enemy ship and attacking options…, we can predict the most probable next enemy moves now, and it is integrated in our move assignment problem. But this is for sure not as good as a ML approach to navigate in local region.
+
+The general framework above has a lot of customized tricks and tunes. Right now, we are working on the following ideas:
+- Our ships camping opponents' shipyards is possible, but needs to be applied in a smart way, i.e., we must not camp anymore when knowing the opponent has a counter-camp tactic.
+- "Global-memory" variables that capture all history moves, position, missions, targets, game stats… of all our ships and every aspect of the game.
+- Attacking strategy: how to use a fixed set of ships to kill 1 enemy ship in the shortest time? This toy problem is needed to be mastered as a black-box, and will be discussed later.
+
+There are many more aspects of our current best manual bot, but the general ideas are as mentioned.
 
 
 **How to launch an effective attack**
 
-Chasing and isolating a single enemy ship is not as simple as we may think. It requires some analytical problem solving skills. We will quickly show how to scan for a potential scene that we have high chance to kill off an enemy ship. In a general case, if we randomly assign a bunch of ships to attack an enemy ship by just moving towards the prey without considering anything else, they may chase... forever. So, we come up with a detailed tactic on how to scan for a potential prey, and chase it with minimal number of ships. Let us look at the below figure
-
+Chasing and isolating a single enemy ship is not as simple as we may think. It requires some analytical problem solving skills. We will quickly show how to scan for a potential scene that we have high chance to kill off an enemy ship. In a general case, if we randomly assign a bunch of ships to attack an enemy ship by just moving towards the prey without considering anything else, they may chase... forever. So, we come up with a detailed tactic on how to scan for a potential prey, and chase it with minimal number of ships. Let us look at the below figure.
 
 <div class="imgcap">
 <img src="/images/halite_attack.png" width="600">
 <div class="thecap">Four quadrants corresponding to the centered prey that need to be occupied each at least one ship for an effective kill.</div>
 </div>
 
+To ensure a certain kill, we need to have at least one ship occupying each colored quadrant from the prey's persective. The predators will move towards to prey by selecting the immediate move that approaches the nearest red lines. In this tactic, the prey will be surely be encircled, and we might need an extra ship to ensure a kill. Note that if there is no ship in any quadrant, the chase will be mostly unsuccessful. Using this tactic one can easily estimate the "threat" that any ship has. A cool thing is that a team can "borrow" a ship from a 3rd team to kill the prey. This is done by using 3 ships to close the range and chase the victim to the end of the tunnel where another enemy is waiting for.
 
 
 **Manually Control Aggressiveness**:
@@ -147,7 +167,9 @@ A suitable opponent base is one that:
 + The player that own the shipyard either has less than 500 halite (so that he cannot spawn a ship on that shipyard to counter my attack) or he doesn't want to spawn to counter an attack (we record this information from the previous steps of the match).
 - From step 360, empty ships which cannot collect a significant amount of halite until end game are commanded to attack enemy bases.
 
+
 **Protecting Bases**
+
 One important aspect of the game is the protection of bases. Enemies can destroy our bases by deliberately crashing into it. In these situations, both the base and the enemy ship are destroyed.  To protect a base, we have two approaches. First, a friendly ship can constantly stand on the base until a depositing ship arrives and become the new protector, pushes the old protector out for mining. Second, a more complex refactored protector strategy is to ensure that one of our ships is always closer to our bases than the closest enemy ship. If the distance from the closest enemy ship to our base is equal to d, then our closest ship cannot leave the radius of d - 1. This updated approach is the improved version of the first approach, but still not optimal as it cannot defend from attacks of multiple ships. On the other hand, the first approach has its own pros that it prevent any enemy ship to come close to our base territories if they simple just scan for unprotected bases.
 
 
@@ -225,7 +247,9 @@ We won the above game against 3 strong opponents. The finished halite of 3 top t
 
 On the other hand, in another game where we finished 3rd, we did not do well in battle. Our number of ships are still competitive until mid-game (around step 200), then gradually dropped due to the advancedment of opponents' manual attacking strategy that our ML bot cannot fully imitate. Losing too many ships led us to a terrible state at step 300 when two top teams just begin to focus on mining, depicted by the late peaks in Cargo per ship, when we couldn't compete anymore. 
 
+
 **Conclusions**
+
 We as a team just have had a great time together learning, discussing, enriching our knowledge, sharpening our skills, making new friends, and competing with talented people from the globe. We are so proud of this result, given that most of us seasoned data scientists on Kaggle may not find this competition comfortable enough to compete. There is also an interesting fact that no ML bot can finish in top 10 in the previous 3 Halite competitions, and another fact that most top data scientists on Kaggle really shy away from this competition due to its programming-skill-based nature. That makes our achievement much sweeter since we were always believing in ourselves! We hope that our solution can inspire as many data scientists/researchers as possible in the future. The power of machine learning is something immeasurable and... magical. When we realize that our data-driven bot can copy complex attacking tactics of other teams, we were literally dropping our jaws given the fact that we struggled so hard to code an attacking tactics by hand without any great success.
 
 Thank you for reading, and comments are wholeheartedly welcomed!
