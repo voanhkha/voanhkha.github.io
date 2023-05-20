@@ -21,9 +21,9 @@ I love AI as a whole. I always feel that a machine that can reason is something 
 OK, that's enough isn't it. Thanks so much for reading up to this point. Now is the showcase of my achievements. I'll try to update them as soon as I have something new and I hope I'll never want to stop it!
 
 
-### Kaggle Profile (Updated September 2020)
+### Kaggle Profile (Updated May 2023)
 <div class="imgcap">
-<img src="/images/kaggleprofilemay20.jpg">
+<img src="/images/kaggleprofilemay23.png">
 </div>
 
 
@@ -60,18 +60,20 @@ OK, that's enough isn't it. Thanks so much for reading up to this point. Now is 
 - Rank 98/3314 (Silver Medal) in SIIM-ISIC Melanoma Classification, Aug 2020 (Computer Vision to identify melanoma in skin legion images)
 - Rank 118/4484 (Solo Silver Medal) in Santander Value Prediction Competition, Aug 2018 (Predict transaction values for potential bank customers).
 
-### Timeline
+### Timeline (chronologically descending)
 
-* 2009-2014: Bachelor in Telecommunication degree awarded by Hochiminh City University of Technology.
-* Summer 2013: Internship at Kanden System Solutions, Osaka, Japan.
-* 2014-2015: Master of Engineering degree awarded by Telecom Bretagne.
-* Aug 2014 - Dec 2015: Electrical Engineer at Ascenx Technologies/KLA-Tencor.
-* Summer 2015: Lecturer (Signal Processing course) at Hochiminh City University of Technology.
-* Feb 2016 - Aug 2016: Firmware Engineer at Seldat Inc.
-* Oct 2016 - May 2019: PhD in BCI-related ML, University of Technology Sydney.
-* Mar 2018 - Mar 2019: Research Assistant in medical-data-related ML, University of New South Wales.
+* Oct 2020 - now: Senior Data Scientist -> Data Science Lead -> Data Science Manager at Collective Intelligence (or Collective[i]) and intelligence.com
+* Aug 2019 - Sep 2020: Post-doc in Multi-agent Reinforcement Learning at UTS, Australia.
 * Jan-Jun 2019: Data scientist intern at Commonwealth Bank of Australia.
-* Aug 2019 - now: Post-doc in Multi-agent Reinforcement Learning at UTS, Australia.
+* Mar 2018 - Mar 2019: Research Assistant in medical-data-related ML, University of New South Wales.
+* Oct 2016 - May 2019: PhD in BCI-related ML, University of Technology Sydney.
+* Feb 2016 - Aug 2016: Firmware Engineer at Seldat Inc.
+* Summer 2015: Lecturer (Signal Processing course) at Hochiminh City University of Technology.
+* Aug 2014 - Dec 2015: Electrical Engineer at Ascenx Technologies/KLA-Tencor.
+* 2014-2015: Master of Engineering degree awarded by Telecom Bretagne.
+* Summer 2013: Internship at Kanden System Solutions, Osaka, Japan.
+* 2009-2014: Bachelor in Telecommunication degree awarded by Hochiminh City University of Technology.
+
 
 ### Publications
 (sorted chronologically)
