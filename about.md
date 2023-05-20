@@ -4,7 +4,21 @@ title: About
 permalink: /about/
 ---
 
-I graduated PhD in Machine Learning (ML) with additional background on Mathematical Optimization and Brain-Computer Interface (BCI) at University of Technology Sydney (UTS) in 2019. 
+Hello there!
+
+Thank you for visiting my page. I am really flattered a bit and hope you're gonna enjoy the following content.
+
+First, let me introduce a little bit about myself, then I'll humbly showcase some of my achievements that I am truly proud of.
+
+I am Kha Vo, or "KhaData" (honestly I prefer to be called khadata though!), a true data scientist. At the time of this writing (May 2023), I am working as a data science manager for Collective Intelligence (intelligence.com), which is based in New York. I got my PhD in Machine Learning (ML) with additional background on Mathematical Optimization and Brain-Computer Interface (BCI) at University of Technology Sydney (UTS) in 2019. 
+
+From 2018 in Australia, I used to work as a Data Scientist at the Commonwealth Bank of Australia, a data science researcher at University of New South Wales, a postdoctorate research scientist at UTS and Australian Defence Force (ADF). Before then I also worked for some companies in Vietnam from 2014-2016 after graduating the best and the most prestigious engineering training program (PFIEV) in the best and the most pretigious engineering univeristy in Vietnam (Hochiminh City University of Technology). I also was selected as 1 of the 5 unique students in Vietnam to have a fully-stipend internship to Japan in 2013 for a very big electrical corporation (Kanden System Solutions). Up to now I also have about 10 first-authored scientific papers and multiple academic awards during my study.
+
+Besides professional works, I really enjoy competing in top-tier data science competitions on Kaggle, where thousands of best teams around the world gathered for oftenly 3 months to solve a single but extremely difficult business/data/research problems. The long format of each competition means that it usually requires tremendous efforts from each competitor, including knowledge, skills, teamwork, tenacity, stamina, strategy, and sometimes luck, to get into the top 10 and earn a GOLD MEDAL! And what's surprising? I got NINE (9) GOLD MEDALS in total, including a 1st place finish (1/2605 teams) in the prestigious Google Brain Ventilator Prediction in 2021.
+
+I love AI as a whole. I always feel that a machine that can reason is something really magical. A machine that can talk, can listen, can analyze, can answer questions, can walk, can reason, can detect,... how wonderful it is! And this feeling is the main motivation that excites me always, and make me feel that I never work a single day.
+
+OK, that's enough isn't it. Thanks so much for reading up to this point. Now is the showcase of my achievements. I'll try to update them as soon as I have something new and I hope I'll never want to stop it!
 
 
 ### Kaggle Profile (Updated September 2020)
