@@ -4,43 +4,27 @@ title: About
 permalink: /about/
 ---
 
-Hello there!
+I am Kha Vo, an AI scientist. At the time of this writing (May 2023), I am working as a Data Science Lead for Collective Intelligence (intelligence.com), which is based in New York. I got my PhD in Machine Learning (ML) with additional background on Mathematical Optimization and Brain-Computer Interface (BCI) at University of Technology Sydney (UTS) in 2019. 
 
-Thank you for visiting my page. I am really flattered a bit and hope you're gonna enjoy the following content.
+My interest of work is lying between 3 different fields: machine learning (deep learning, statistical modelling), reinforcement learning, and program synthesis. I achieved 10 Kaggle Competition Gold Medals. Out of those, the most recent one I got (Nov 2024) is the one that I'm most proud of: I finished 6th over 1400 teams in the $1M-prize AGI-ARC challenge!  
 
-First, let me introduce a little bit about myself, then I'll humbly showcase some of my achievements that I am truly proud of.
+My professional career spreads through many totally different areas, from academia research (PostDoc at UTS, Research Fellow at UNSW), corporate environments (CBA, Oracle), to medium-size AI companies or start-ups (H2O.ai, Collective[i]). 
 
-I am Kha Vo, or "KhaData" (honestly I prefer to be called khadata though!), a true data scientist. At the time of this writing (May 2023), I am working as a data science manager for Collective Intelligence (intelligence.com), which is based in New York. I got my PhD in Machine Learning (ML) with additional background on Mathematical Optimization and Brain-Computer Interface (BCI) at University of Technology Sydney (UTS) in 2019. 
+My dream is to be part of a team that can build the next-gen AI, something really big that is completely out-of-the-box and can last for 10 years, like what Deep Learning has done since 2015.
 
-From 2018 in Australia, I used to work as a Data Scientist at the Commonwealth Bank of Australia, a data science researcher at University of New South Wales, a postdoctorate research scientist at UTS and Australian Defence Force (ADF). Before then I also worked for some companies in Vietnam from 2014-2016 after graduating the best and the most prestigious engineering training program (PFIEV) in the best and the most pretigious engineering univeristy in Vietnam (Hochiminh City University of Technology). I also was selected as 1 of the 5 unique students in Vietnam to have a fully-stipend internship to Japan in 2013 for a very big electrical corporation (Kanden System Solutions). Up to now I also have about 10 first-authored scientific papers and multiple academic awards during my study.
-
-Besides professional works, I really enjoy competing in top-tier data science competitions on Kaggle, where thousands of best teams around the world gathered for oftenly 3 months to solve a single but extremely difficult business/data/research problems. The long format of each competition means that it usually requires tremendous efforts from each competitor, including knowledge, skills, teamwork, tenacity, stamina, strategy, and sometimes luck, to get into the top 10 and earn a GOLD MEDAL! And what's surprising? I got NINE (9) GOLD MEDALS in total, including a 1st place finish (1/2605 teams) in the prestigious Google Brain Ventilator Prediction in 2021.
+Besides professional works, I really enjoy competing in top-tier data science competitions on Kaggle, where thousands of best teams around the world gathered for oftenly 3 months to solve a single but extremely difficult business/data/research problems. The long format of each competition means that it usually requires tremendous efforts from each competitor, including knowledge, skills, teamwork, tenacity, stamina, strategy, and sometimes luck, to get into the top 10 and earn a GOLD MEDAL! And what's surprising? I got NINE 10 GOLD MEDALS in total! That includes a 1st place finish (1/2605 teams) in the prestigious Google Brain Ventilator Prediction in 2021, and a solo 6th place out of 1400 teams in the $1M-prize ARC-AGI contest hosted by Francois Chollet!
 
 I love AI as a whole. I always feel that a machine that can reason is something really magical. A machine that can talk, can listen, can analyze, can answer questions, can walk, can reason, can detect,... how wonderful it is! And this feeling is the main motivation that excites me always, and make me feel that I never work a single day. I want to have my work on AI making huge impacts on people's lives.
 
-OK, that's enough isn't it. Thanks so much for reading up to this point. Now is the showcase of my achievements. I'll try to update them as soon as I have something new and I hope I'll never want to stop it!
-
-
-### Career Journey (Updated May 2023) (chronologically descending)
-
-* Oct 2020 - now (May 2023 as of this writing): Senior Data Scientist -> Data Science Lead -> Data Science Manager at Collective Intelligence (or Collective[i]) and intelligence.com.
-* Aug 2019 - Sep 2020: Post-doc in Multi-agent Reinforcement Learning at UTS, Australia.
-* Jan-Jun 2019: Data scientist intern at Commonwealth Bank of Australia.
-* Mar 2018 - Mar 2019: Research Assistant in medical-data-related ML, University of New South Wales.
-* Oct 2016 - May 2019: PhD in BCI-related ML, University of Technology Sydney.
-* Feb 2016 - Aug 2016: Firmware Engineer at Seldat Inc.
-* Summer 2015: Lecturer (Signal Processing course) at Hochiminh City University of Technology.
-* Aug 2014 - Dec 2015: Electrical Engineer at Ascenx Technologies/KLA-Tencor.
-* 2014-2015: Master of Engineering degree awarded by Telecom Bretagne.
-* Summer 2013: Internship at Kanden System Solutions, Osaka, Japan.
-* 2009-2014: Bachelor in Telecommunication degree awarded by Hochiminh City University of Technology.
-
-
+Besides work, I also enjoy playing music (piano, classical guitar, bass guitar), playing chess, watching movies and sports (soccer, tennis, chess). I also like to travel and spend time with my little family.
 
 ### Kaggle Profile and Competition History (Updated May 2023)
 <div class="imgcap">
 <img src="/images/kaggleprofilemay23.png">
 </div>
+
+* Rank 6/1400 (Gold Medal - SOLO) ARC Prize, Nov 2024. 
+Create an AI capable of solving reasoning tasks it has never seen before
 
 
 * Rank 1/2605 (Gold Medal) Google Brain - Ventilator Pressure Prediction, October 2021. 
@@ -107,7 +91,6 @@ Other Results:
 
 
 ### Publications
-(sorted chronologically)
 * First-authored:
 
 [1] Statistical supervised meta-ensemble algorithm for medical record linkage, Journal of Biomedical Informatics 2019.
@@ -118,7 +101,7 @@ Other Results:
 
 [4] Subject-Independent P300 BCI using Ensemble Classifier, Dynamic Stopping and Adaptive Learning, IEEE Global Communications Conference (GLOBECOM), Singapore, 2017.
 
-[5] Real-Time Analysis on Ensemble SVM Scores to Reduce P300-Speller Intensi- fication Time, 39th International Conference of the IEEE Engineering in Medicine and Biology Society (EMBC), Korea, 2017.
+[5] Real-Time Analysis on Ensemble SVM Scores to Reduce P300-Speller Intensification Time, 39th International Conference of the IEEE Engineering in Medicine and Biology Society (EMBC), Korea, 2017.
 
 [6] Dynamic Stopping Using eSVM Scores Analysis for Event-Related Potential Brain-Computer Interfaces, 11th International Symposium on Medical Information and Communication Technology (ISMICT), Portugal, 2017.
 
