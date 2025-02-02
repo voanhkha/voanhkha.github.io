@@ -21,8 +21,11 @@ Besides work, I also enjoy playing music (piano, classical guitar, bass guitar),
 <img src="/images/kaggleprofilemay23.png">
 </div>
 
-* Rank 6/1400 (Gold Medal - SOLO) ARC Prize, Nov 2024. 
-Create an AI capable of solving reasoning tasks it has never seen before
+* Rank 6/1400 (Gold Medal, solo) ARC Prize, Nov 2024. 
+Create an AI capable of solving reasoning tasks it has never seen before. After this achievement, I got the chance to personally meet Francois Chollet!
+<div class="imgcap">
+<img src="/images/chollet_kha.png">
+</div>
 
 
 * Rank 1/2605 (Gold) Google Brain - Ventilator Pressure Prediction, October 2021. 
