@@ -4,7 +4,7 @@ title: About
 permalink: /about/
 ---
 
-I am Kha Vo, an AI scientist. At the time of this writing, I am working as a Data Science Lead for Collective[i] (collectivei.com). I got my PhD in Machine Learning (ML) at University of Technology Sydney (UTS) in 2019. 
+I am Kha Vo, an AI scientist.
 
 My interest of work is lying between 3 different fields: machine learning (deep learning, statistical modelling), reinforcement learning, and program synthesis.
 
