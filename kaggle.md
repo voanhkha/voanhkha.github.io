@@ -18,12 +18,12 @@ Create an AI capable of solving reasoning tasks it has never seen before. After 
 
 * Rank 1/2605 (Gold) Google Brain - Ventilator Pressure Prediction, October 2021. 
 Simulate a ventilator connected to a sedated patient’s lung. Given with time-series breathe ins-outs data, predict the abnormalities of breaths in any arbitrary time by minimizing the MAE between actual ground-truth data with predictions. Requires extremely high time-series analytical skills and RNN modelling with precise validation pipeline, and extra knowledge of control theory.
-[ContestPage](https://www.kaggle.com/c/ventilator-pressure-prediction/leaderboard), [FullSolution](https://towardsdatascience.com/winning-the-kaggle-google-brain-ventilator-pressure-prediction-2d4c90d831ec)  
+[ContestPage](https://www.kaggle.com/c/ventilator-pressure-prediction/leaderboard), [FullSolution](https://towardsdatascience.com/winning-the-kaggle-google-brain-ventilator-pressure-prediction-2d4c90d831ec).  
 
 
 * Rank 3/2618 (Gold) Liverpool Ion Switching, May 2020. 
 Deep Learning/Hidden Markove modelling to predict the number of open channels during the duration of time-series human electrophysiological signal data. Requires finesse in time-series analysis, spotting the pivoting distinctive features from signal by systematic approaches (mainly unsupervised modelling like kNN and tSNE), then use an ensemble of methods (RNNs, decision trees, random forest) to avoid overfitting.
-[ContestPage](https://www.kaggle.com/c/liverpool-ion-switching/leaderboard), [Code1](https://www.kaggle.com/khahuras/1st-place-non-leak-solution), [Code2](https://github.com/GillesVandewiele/Liverpool-Ion-Switching), [BriefSolution](https://www.kaggle.com/c/liverpool-ion-switching/discussion/153734), [FullSolution](https://medium.com/@gillesvandewiele/334fab86fc85)  
+[ContestPage](https://www.kaggle.com/c/liverpool-ion-switching/leaderboard), [Code1](https://www.kaggle.com/khahuras/1st-place-non-leak-solution), [Code2](https://github.com/GillesVandewiele/Liverpool-Ion-Switching), [BriefSolution](https://www.kaggle.com/c/liverpool-ion-switching/discussion/153734), [FullSolution](https://medium.com/@gillesvandewiele/334fab86fc85).  
 
 
 * Rank 9/874 (Gold) Santa 2022 - The Christmas Card Conundrum, January 2023.
