@@ -79,4 +79,4 @@ Other Results:
 - Rank 118/4484 Santander Value Prediction Competition, Aug 2018 (Predict transaction values for potential bank customers).
 - 
 
-[Return to Home](voanhkha.github.io)
+[Return to Home](https://khavo.ai)
