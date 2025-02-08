@@ -10,8 +10,8 @@ exclude:
 
 # Site settings
 title: Kha Vo
-subtitle: "A simple yet classy theme for your Jekyll website or blog"
-email: khahruas@gmail.com
+subtitle: "A versatile AI scientist who won 10 Kaggle competition gold medals!"
+email: khahuras@gmail.com
 name: Kha Vo
 description: >
   The Magic of AI and Machine Learning from a Kaggle Competition Grandmaster.
@@ -54,11 +54,11 @@ jekyll-archives:
 
 # Category descriptions (for archive pages)
 descriptions:
-  - cat: jekyll
-    desc: "Posts describing Jekyll setup techniques."
+  - cat: Kaggle
+    desc: "Posts about Kaggle."
 
-  - cat: dummy
-    desc: "Just some placeholder posts, lorem ipsum and the rest."
+  - cat: AI
+    desc: "Posts about AI in general."
 
 # Social icons and sharing options
 #
@@ -92,7 +92,7 @@ social:
 
   - name: GitHub
     icon: github
-    username: bencentra
+    username: voanhkha
     url: https://github.com/voanhkha
     desc: Fork me on GitHub
     share: true
