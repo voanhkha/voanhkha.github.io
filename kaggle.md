@@ -76,4 +76,7 @@ Other Results:
 - Rank 61/2265 Deepfake Detection Challenge 2019 (Terabyte-scale classification of high-quality deepfake videos).  
 - Rank 62/1832 Instant Gratification, Jun 2019 (Gaussian Mixture modeling for mixtures of Gaussians :-) ).  
 - Rank 98/3314 SIIM-ISIC Melanoma Classification, Aug 2020 (Computer Vision to identify melanoma in skin legion images).  
-- Rank 118/4484 Santander Value Prediction Competition, Aug 2018 (Predict transaction values for potential bank customers).  
+- Rank 118/4484 Santander Value Prediction Competition, Aug 2018 (Predict transaction values for potential bank customers).
+- 
+
+[Return to Home](voanhkha.github.io)
