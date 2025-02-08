@@ -25,4 +25,4 @@ Besides work, I also enjoy playing music (piano, classical guitar, bass guitar),
 
 [khahuras@gmail.com](mailto:khahuras@gmail.com)
 
-[Return to Home](voanhkha.github.io)
+[Return to Home](https://khavo.ai)
