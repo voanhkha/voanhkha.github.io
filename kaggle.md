@@ -2,6 +2,7 @@
 layout: page
 title: Kaggle
 permalink: /kaggle/
+main_nav: true
 ---
 
 ### Kaggle Profile and Competition History (Updated May 2023)
