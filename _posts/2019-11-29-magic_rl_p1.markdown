@@ -4,6 +4,11 @@ comments: true
 title: The Elegance of Policy Gradient in Reinforcement Learning (Part 1)
 excerpt: "I will show some magic of Reinforcement Learning in a magical way."
 mathjax: true
+date:   2019-11-29 00:00:00
+author: Kha Vo
+categories: Reinforcement Learning
+tags:	AI
+cover:  "/assets/instacode.png"
 ---
 
 **Introduction**
