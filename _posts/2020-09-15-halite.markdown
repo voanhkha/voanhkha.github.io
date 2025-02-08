@@ -4,6 +4,11 @@ comments: true
 title: Imitation Learning by Semantic Segmentation for Multi-Agent Halite IV Competition
 excerpt: "I will show how a data-driven approach can mimic behaviours of other bots that are extremely hard to code."
 mathjax: true
+date:   2020-09-15 00:00:00
+author: Kha Vo
+categories: Kaggle
+tags:	AI
+cover:  "/assets/instacode.png"
 ---
 
 [Our full code](https://github.com/digitalspecialists/halite4)
