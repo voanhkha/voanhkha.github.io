@@ -1,8 +1,8 @@
 ---
 layout: post
 comments: true
-title: The surprising effects of the unsupervised algorithm DBSCAN on a very challenging Quantum Physics particle tracking problem
-excerpt: "I will show how a data-driven approach can mimic behaviours of other bots that are extremely hard to code."
+title: DBSCAN - an underrated unsupervised algorithm
+excerpt: "I will show how DBSCAN surprisingly effectively solves a very challenging Quantum Physics particle tracking problem."
 mathjax: true
 date:   2018-08-14 00:00:00
 author: Kha Vo
