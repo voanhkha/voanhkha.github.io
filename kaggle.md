@@ -20,7 +20,8 @@ Create an AI capable of solving reasoning tasks it has never seen before. After 
 
 * 1/2605: Google Brain Ventilator Pressure Prediction (Gold) - Oct 2021.  
 Simulate a ventilator connected to a sedated patient’s lung. Given with time-series breathe ins-outs data, predict the abnormalities of breaths in any arbitrary time by minimizing the MAE between actual ground-truth data with predictions. Requires extremely high time-series analytical skills and RNN modelling with precise validation pipeline, and extra knowledge of control theory.
-[ContestPage](https://www.kaggle.com/c/ventilator-pressure-prediction/leaderboard), [FullSolution](https://towardsdatascience.com/winning-the-kaggle-google-brain-ventilator-pressure-prediction-2d4c90d831ec).
+[[ContestPage]](https://www.kaggle.com/c/ventilator-pressure-prediction/leaderboard) [[FullSolution]](https://towardsdatascience.com/winning-the-kaggle-google-brain-ventilator-pressure-prediction-2d4c90d831ec).
+
 
 
 * 2/92: H2O.ai Predict the LLM - Nov 2023
@@ -36,7 +37,9 @@ Deep Learning/Hidden Markove modelling to predict the number of open channels du
 * 8/1874 Traveling Santa Competition (Gold) - Jan 2019
 Big-scale Optimization: find the shortest path going through 200000 cities with a customized constraints that no commercial solver can do.
 [ContestPage](https://www.kaggle.com/c/traveling-santa-2018-prime-paths/overview), [Full Code](https://github.com/voanhkha/Traveling-Santa-2018-Kaggle), [Lightweight Code](https://www.kaggle.com/khahuras/super-fast-cumsum-trick-8th-place-demo-solution) [Solution](https://www.kaggle.com/c/traveling-santa-2018-prime-paths/discussion/77257#latest-459837)  
-
+<br>
+<br>
+<br>
 
 * 8/1140: Halite IV by Two Sigma (Gold) - Sep 2020 
 Deep Image Segmentation for Competitive AI Gaming. A break-through in innovation: exploit computer vision’s image segmentation modelling for a problem of reinforcement learning. In a game with 2D map and pixel-objects, an image segmentation model can perfectly match and learn the output (action) of each object (aircrafts) so that we don’t need to normally use reinforcement learning which requires more efforts
