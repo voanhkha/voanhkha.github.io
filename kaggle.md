@@ -11,14 +11,14 @@ main_nav: true
 </div>  
 
 
-* 6/1400: ARC Prize, 6/1400 (Solo Gold) - Nov 2024
+* 6/1400: ARC Prize, 6/1400 (Solo Gold) - Nov 2024.  
 Create an AI capable of solving reasoning tasks it has never seen before. After this achievement, I got the chance to personally meet Francois Chollet!
 <div class="imgcap">
 <img src="/images/chollet_kha.png">
 </div>  
 
 
-* 1/2605: Google Brain Ventilator Pressure Prediction (Gold) - Oct 2021
+* 1/2605: Google Brain Ventilator Pressure Prediction (Gold) - Oct 2021.  
 Simulate a ventilator connected to a sedated patient’s lung. Given with time-series breathe ins-outs data, predict the abnormalities of breaths in any arbitrary time by minimizing the MAE between actual ground-truth data with predictions. Requires extremely high time-series analytical skills and RNN modelling with precise validation pipeline, and extra knowledge of control theory.
 [ContestPage](https://www.kaggle.com/c/ventilator-pressure-prediction/leaderboard), [FullSolution](https://towardsdatascience.com/winning-the-kaggle-google-brain-ventilator-pressure-prediction-2d4c90d831ec).
 
