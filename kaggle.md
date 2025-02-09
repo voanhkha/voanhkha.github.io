@@ -28,14 +28,19 @@ Detect the identities of several popular LLMs based on their outputs
 [ContestPage](https://www.kaggle.com/competitions/h2oai-predict-the-llm/leaderboard), [Solution](https://www.kaggle.com/competitions/h2oai-predict-the-llm/discussion/453809), [Code](https://www.kaggle.com/code/khahuras/2nd-place-solution)
 
 
-* 13/832: LLM 20 Questions (top Solo Silver) - Aug 2024
-Develop an open-source LLM to play the game of 20 questions with other bots in a competitive simulation environment.
-[ContestPage](https://www.kaggle.com/competitions/llm-20-questions/leaderboard), [Solution & Code](https://www.kaggle.com/code/khahuras/offline-policy-questioner-agent).  
-
-
 * 3/2618 Liverpool Ion Switching (Gold) - May 2020
 Deep Learning/Hidden Markove modelling to predict the number of open channels during the duration of time-series human electrophysiological signal data. Requires finesse in time-series analysis, spotting the pivoting distinctive features from signal by systematic approaches (mainly unsupervised modelling like kNN and tSNE), then use an ensemble of methods (RNNs, decision trees, random forest) to avoid overfitting.
 [ContestPage](https://www.kaggle.com/c/liverpool-ion-switching/leaderboard), [Code1](https://www.kaggle.com/khahuras/1st-place-non-leak-solution), [Code2](https://github.com/GillesVandewiele/Liverpool-Ion-Switching), [BriefSolution](https://www.kaggle.com/c/liverpool-ion-switching/discussion/153734), [FullSolution](https://medium.com/@gillesvandewiele/334fab86fc85).  
+
+
+* 8/1874 Traveling Santa Competition (Gold) - Jan 2019
+Big-scale Optimization: find the shortest path going through 200000 cities with a customized constraints that no commercial solver can do.
+[ContestPage](https://www.kaggle.com/c/traveling-santa-2018-prime-paths/overview), [Full Code](https://github.com/voanhkha/Traveling-Santa-2018-Kaggle), [Lightweight Code](https://www.kaggle.com/khahuras/super-fast-cumsum-trick-8th-place-demo-solution) [Solution](https://www.kaggle.com/c/traveling-santa-2018-prime-paths/discussion/77257#latest-459837)  
+
+
+* 8/1140: Halite IV by Two Sigma (Gold) - Sep 2020 
+Deep Image Segmentation for Competitive AI Gaming. A break-through in innovation: exploit computer vision’s image segmentation modelling for a problem of reinforcement learning. In a game with 2D map and pixel-objects, an image segmentation model can perfectly match and learn the output (action) of each object (aircrafts) so that we don’t need to normally use reinforcement learning which requires more efforts
+[ContestPage](https://www.kaggle.com/c/halite/leaderboard), [Code](https://github.com/digitalspecialists/halite4), [FullSolution](https://www.kaggle.com/c/halite/discussion/183312)  
 
 
 * 9/874: Santa 2022 The Christmas Card Conundrum (Gold) - Jan 2023
@@ -48,9 +53,19 @@ Reinforcement Learning for 4-player competitive game. Requires heavy knowledge o
 [ContestPage](https://www.kaggle.com/c/hungry-geese/leaderboard), [Code](https://github.com/digitalspecialists/hungrygeese), [FullSolution](https://www.kaggle.com/c/hungry-geese/discussion/255931)  
 
 
-* 9/1140: Halite IV by Two Sigma (Gold) - Sep 2020 
-Deep Image Segmentation for Competitive AI Gaming. A break-through in innovation: exploit computer vision’s image segmentation modelling for a problem of reinforcement learning. In a game with 2D map and pixel-objects, an image segmentation model can perfectly match and learn the output (action) of each object (aircrafts) so that we don’t need to normally use reinforcement learning which requires more efforts
-[ContestPage](https://www.kaggle.com/c/halite/leaderboard), [Code](https://github.com/digitalspecialists/halite4), [FullSolution](https://www.kaggle.com/c/halite/discussion/183312)  
+* 10/2749: Predicting Molecular Properties (Gold) - Aug 2019
+Graph-neural-network oriented competition on predicting chemical properties from 150,000 molecule structures. 
+[ContestPage](https://www.kaggle.com/c/champs-scalar-coupling/leaderboard), [Code1](https://www.kaggle.com/petersk20/schnet-10th-place-solution), [Code2(https://www.kaggle.com/joshxsarah/custom-gcn-10th-place-solution)], [Solution](https://www.kaggle.com/c/champs-scalar-coupling/discussion/106271#latest-613221)
+
+
+* 10/656: TrackML Particle Tracking Competition (Gold) - Aug 2018
+High-energy Physics: cluster patterns of helices from 2000 events of 300,000 coordinated points each.
+[ContestPage](https://www.kaggle.com/c/trackml-particle-identification/leaderboard), [Code](https://www.kaggle.com/khahuras/0-53x-clustering-using-hough-features-basic)
+
+
+* 13/832: LLM 20 Questions (top Solo Silver) - Aug 2024
+Develop an open-source LLM to play the game of 20 questions with other bots in a competitive simulation environment.
+[ContestPage](https://www.kaggle.com/competitions/llm-20-questions/leaderboard), [Solution & Code](https://www.kaggle.com/code/khahuras/offline-policy-questioner-agent).  
 
 
 * 14/3497: Data Science Bowl (Gold) - Jan 2020
@@ -58,34 +73,19 @@ Hierarchical Data Modelling for Measuring Education Factors in Young Children.
 [ContestPage](https://www.kaggle.com/c/data-science-bowl-2019/leaderboard), [Code1](https://www.kaggle.com/khahuras/bowl-2201-a), [Solution (https://www.kaggle.com/c/data-science-bowl-2019/discussion/127221)  
 
 
-* 10/2749: Predicting Molecular Properties (Gold) - Aug 2019
-Graph-neural-network oriented competition on predicting chemical properties from 150,000 molecule structures. 
-[ContestPage](https://www.kaggle.com/c/champs-scalar-coupling/leaderboard), [Code1](https://www.kaggle.com/petersk20/schnet-10th-place-solution), [Code2(https://www.kaggle.com/joshxsarah/custom-gcn-10th-place-solution)], [Solution](https://www.kaggle.com/c/champs-scalar-coupling/discussion/106271#latest-613221)  
-
-
-* 8/1874 Traveling Santa Competition (Gold) - Jan 2019
-Big-scale Optimization: find the shortest path going through 200000 cities with a customized constraints that no commercial solver can do.
-[ContestPage](https://www.kaggle.com/c/traveling-santa-2018-prime-paths/overview), [Full Code](https://github.com/voanhkha/Traveling-Santa-2018-Kaggle), [Lightweight Code](https://www.kaggle.com/khahuras/super-fast-cumsum-trick-8th-place-demo-solution) [Solution](https://www.kaggle.com/c/traveling-santa-2018-prime-paths/discussion/77257#latest-459837)  
-
-
-* 10/656: TrackML Particle Tracking Competition (Gold) - Aug 2018
-High-energy Physics: cluster patterns of helices from 2000 events of 300,000 coordinated points each.
-[ContestPage](https://www.kaggle.com/c/trackml-particle-identification/leaderboard), [Code](https://www.kaggle.com/khahuras/0-53x-clustering-using-hough-features-basic)  
-
-
 * 16/1538: Understanding Cloud Organization Competition (top Solo Silver) - Nov 2019
 Computer vision's Segmentation of cloud formations via satellite images. 
-[ContestPage](https://www.kaggle.com/c/understanding_cloud_organization/leaderboard), [Solution](https://www.kaggle.com/c/understanding_cloud_organization/discussion/118065#latest-680911)  
-
-
-* 23/4541: LANL Earthquake Competition (top Solo Silver) - Jun 2019
-Regression for predicting time-to-earthquake in seismic acoustic signal.
-[ContestPage](https://www.kaggle.com/c/LANL-Earthquake-Prediction/leaderboard), [Solution](https://www.kaggle.com/c/LANL-Earthquake-Prediction/discussion/94446#latest-544510)  
+[ContestPage](https://www.kaggle.com/c/understanding_cloud_organization/leaderboard), [Solution](https://www.kaggle.com/c/understanding_cloud_organization/discussion/118065#latest-680911)
 
 
 * 17/1620: Santa Workshop Tour (top Silver) - Feb 2020.
 Pure Mathematical Assignment Optimization for a customized constraint TSP problem.
 [ContestPage](https://www.kaggle.com/c/santa-workshop-tour-2019/leaderboard), [Code](https://github.com/voanhkha/Santa_Workshop_Tour_2019)  
+
+
+* 23/4541: LANL Earthquake Competition (top Solo Silver) - Jun 2019
+Regression for predicting time-to-earthquake in seismic acoustic signal.
+[ContestPage](https://www.kaggle.com/c/LANL-Earthquake-Prediction/leaderboard), [Solution](https://www.kaggle.com/c/LANL-Earthquake-Prediction/discussion/94446#latest-544510)  
 
 
 Other Results: 
