@@ -6,6 +6,10 @@ main_nav: true
 ---
 ![alt text]({{ site.baseurl }}/assets/kha_godfather_theme.jpg "Profile Picture"){:.profile}
 
+Hey!
+
+Welcome to my personal professional blog!
+
 I am Kha Vo, an AI scientist and engineer.
 
 My interest of work is lying between 3 different fields: machine learning (deep learning, statistical modelling), reinforcement learning, and program synthesis.
