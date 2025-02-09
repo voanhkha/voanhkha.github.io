@@ -22,19 +22,19 @@ Create an AI capable of solving reasoning tasks it has never seen before. After 
 
 * __1/2605: Google Brain Ventilator Pressure Prediction (Gold) - Oct 2021__ <br> 
 Simulate a ventilator connected to a sedated patient’s lung. Given with time-series breathe ins-outs data, predict the abnormalities of breaths in any arbitrary time by minimizing the MAE between actual ground-truth data with predictions. Requires extremely high time-series analytical skills and RNN modelling with precise validation pipeline, and extra knowledge of control theory.  <br>
-[[ContestPage]](https://www.kaggle.com/c/ventilator-pressure-prediction/leaderboard) [[Solution]](https://towardsdatascience.com/winning-the-kaggle-google-brain-ventilator-pressure-prediction-2d4c90d831ec).
+[[ContestPage]](https://www.kaggle.com/c/ventilator-pressure-prediction/leaderboard) [[Solution]](https://towardsdatascience.com/winning-the-kaggle-google-brain-ventilator-pressure-prediction-2d4c90d831ec)
 <br>
 <br>
 
 * __2/92: H2O.ai Predict the LLM - Nov 2023__ <br> 
 Detect the identities of several popular LLMs based on their outputs <br>
-[[ContestPage]](https://www.kaggle.com/competitions/h2oai-predict-the-llm/leaderboard) [[Solution]](https://www.kaggle.com/competitions/h2oai-predict-the-llm/discussion/453809), [Code](https://www.kaggle.com/code/khahuras/2nd-place-solution)
+[[ContestPage]](https://www.kaggle.com/competitions/h2oai-predict-the-llm/leaderboard) [[Solution]](https://www.kaggle.com/competitions/h2oai-predict-the-llm/discussion/453809) [[Code]](https://www.kaggle.com/code/khahuras/2nd-place-solution)
 <br>
 <br> 
 
 * __3/2618 Liverpool Ion Switching (Gold) - May 2020__ <br> 
 Deep Learning/Hidden Markove modelling to predict the number of open channels during the duration of time-series human electrophysiological signal data. Requires finesse in time-series analysis, spotting the pivoting distinctive features from signal by systematic approaches (mainly unsupervised modelling like kNN and tSNE), then use an ensemble of methods (RNNs, decision trees, random forest) to avoid overfitting. <br>
-[[ContestPage]](https://www.kaggle.com/c/liverpool-ion-switching/leaderboard) [[Code1]](https://www.kaggle.com/khahuras/1st-place-non-leak-solution) [[Code2]](https://github.com/GillesVandewiele/Liverpool-Ion-Switching) [[BriefSolution]](https://www.kaggle.com/c/liverpool-ion-switching/discussion/153734) [[FullSolution]](https://medium.com/@gillesvandewiele/334fab86fc85).
+[[ContestPage]](https://www.kaggle.com/c/liverpool-ion-switching/leaderboard) [[Code1]](https://www.kaggle.com/khahuras/1st-place-non-leak-solution) [[Code2]](https://github.com/GillesVandewiele/Liverpool-Ion-Switching) [[BriefSolution]](https://www.kaggle.com/c/liverpool-ion-switching/discussion/153734) [[FullSolution]](https://medium.com/@gillesvandewiele/334fab86fc85)
 <br>
 <br>
 
@@ -46,7 +46,7 @@ Big-scale Optimization: find the shortest path going through 200000 cities with 
 
 * __8/1140: Halite IV by Two Sigma (Gold) - Sep 2020__ <br> 
 Deep Image Segmentation for Competitive AI Gaming. A break-through in innovation: exploit computer vision’s image segmentation modelling for a problem of reinforcement learning. In a game with 2D map and pixel-objects, an image segmentation model can perfectly match and learn the output (action) of each object (aircrafts) so that we don’t need to normally use reinforcement learning which requires more efforts. <br>
-[[ContestPage]](https://www.kaggle.com/c/halite/leaderboard) [Code](https://github.com/digitalspecialists/halite4) [[Solution]](https://www.kaggle.com/c/halite/discussion/183312)  
+[[ContestPage]](https://www.kaggle.com/c/halite/leaderboard) [[Code]](https://github.com/digitalspecialists/halite4) [[Solution]](https://www.kaggle.com/c/halite/discussion/183312)  
 <br>
 <br>
 
@@ -58,13 +58,13 @@ Pure mathematical optimization in a very large environment (a tweaked travelling
 
 * __9/875: Hungry Geese (Gold) - Aug 2021__ <br> 
 Reinforcement Learning for 4-player competitive game. Requires heavy knowledge of Reinforcement Learning, from setting up training pipeline, tuning model architecture, and the engineering finesse to combine heuristics into the model logic. Also its needs dynamic programming skills for those heuristics. <br>
-[ContestPage](https://www.kaggle.com/c/hungry-geese/leaderboard) [[Code]](https://github.com/digitalspecialists/hungrygeese) [[Solution]](https://www.kaggle.com/c/hungry-geese/discussion/255931)  
+[[ContestPage]](https://www.kaggle.com/c/hungry-geese/leaderboard) [[Code]](https://github.com/digitalspecialists/hungrygeese) [[Solution]](https://www.kaggle.com/c/hungry-geese/discussion/255931)  
 <br>
 <br>
 
 * __10/2749: Predicting Molecular Properties (Gold) - Aug 2019__ <br> 
 Graph-neural-network oriented competition on predicting chemical properties from 150,000 molecule structures.  <br>
-[[ContestPage]](https://www.kaggle.com/c/champs-scalar-coupling/leaderboard) [[Code1]](https://www.kaggle.com/petersk20/schnet-10th-place-solution) [[Code2]](https://www.kaggle.com/joshxsarah/custom-gcn-10th-place-solution)] [[Solution]](https://www.kaggle.com/c/champs-scalar-coupling/discussion/106271#latest-613221)
+[[ContestPage]](https://www.kaggle.com/c/champs-scalar-coupling/leaderboard) [[Code1]](https://www.kaggle.com/petersk20/schnet-10th-place-solution) [[Code2]](https://www.kaggle.com/joshxsarah/custom-gcn-10th-place-solution) [[Solution]](https://www.kaggle.com/c/champs-scalar-coupling/discussion/106271#latest-613221)
 <br>
 <br>
 
@@ -76,13 +76,13 @@ High-energy Physics: cluster patterns of helices from 2000 events of 300,000 coo
 
 * __13/832: LLM 20 Questions (top Solo Silver) - Aug 2024__ <br> 
 Develop an open-source LLM to play the game of 20 questions with other bots in a competitive simulation environment. <br>
-[[ContestPage]](https://www.kaggle.com/competitions/llm-20-questions/leaderboard) [[Solution & Code]](https://www.kaggle.com/code/khahuras/offline-policy-questioner-agent).  
+[[ContestPage]](https://www.kaggle.com/competitions/llm-20-questions/leaderboard) [[Solution & Code]](https://www.kaggle.com/code/khahuras/offline-policy-questioner-agent)
 <br>
 <br>
 
 * __14/3497: Data Science Bowl (Gold) - Jan 2020__ <br> 
 Hierarchical Data Modelling for Measuring Education Factors in Young Children. <br>
-[[ContestPage]](https://www.kaggle.com/c/data-science-bowl-2019/leaderboard) [[Code]](https://www.kaggle.com/khahuras/bowl-2201-a) [[Solution]] (https://www.kaggle.com/c/data-science-bowl-2019/discussion/127221)  
+[[ContestPage]](https://www.kaggle.com/c/data-science-bowl-2019/leaderboard) [[Code]](https://www.kaggle.com/khahuras/bowl-2201-a) [[Solution]](https://www.kaggle.com/c/data-science-bowl-2019/discussion/127221)  
 <br>
 <br>
 
