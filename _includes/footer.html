@@ -27,7 +27,13 @@
           {% if social.url != "" %}
           <li>
             <a href="{{ social.url }}" title="{{ social.desc }}">
-              <i class="fa fa-{{ social.icon }}"></i>
+
+	        {% if social.url contains '.svg' %}
+	          <img src="{{ social.url }}" alt="{{ social.name }}">
+	        {% else %}
+	          <i class="fa fa-{{ social.icon }}"></i>
+	        {% endif %}
+		    
               <span class="username">{% if social.username %}{{ social.username }}{% else %}{{ social.name }}{% endif %}</span>
             </a>
           </li>
