@@ -20,7 +20,7 @@ description: >
 # root of your server.
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://voanhkha.github.io" # the base hostname & protocol for your site
-cover: "/assets/header_image.jpg"
+cover: "/assets/mars.jpg"
 logo: "/assets/logo.png"
 
 # Build settings
@@ -99,8 +99,8 @@ social:
 
   - name: LinkedIn
     icon: linkedin
-    username: Ben Centra
-    url: https://www.linkedin.com/pub/ben-centra/47/769/60a
+    username: Kha Vo
+    url: https://www.linkedin.com/in/dr-kha-vo/
     desc: Connect with me on LinkedIn
     share: true
 
@@ -182,10 +182,10 @@ social:
     share: true
 
   - name: "Kaggle"
-    icon: hacker-news
+    icon: kaggle
     username: "khahuras"
     url: "https://www.kaggle.com/khahuras"
-    desc: My Kaggle Profile
+    desc: View my Kaggle profile
     share: true
 
 # Social sharing protocols
