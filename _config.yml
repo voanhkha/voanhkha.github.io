@@ -182,9 +182,9 @@ social:
     share: true
 
   - name: "Kaggle"
-    icon: kaggle
+    icon: ""
     username: "khahuras"
-    url: "https://www.kaggle.com/khahuras"
+    url: "/assets/icons/kaggle-brands-solid.svg"
     desc: View my Kaggle profile
     share: true
 
