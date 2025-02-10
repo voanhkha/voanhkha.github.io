@@ -83,6 +83,13 @@ social:
     desc: Follow me on X (Twitter)
     share: true
 
+  - name: "Kaggle"
+    icon: ""
+    username: "khahuras"
+    url: "/assets/icons/kaggle-brands-solid.svg"
+    desc: View my Kaggle profile
+    share: true
+
   - name: Facebook
     icon: facebook
     username: thebencentra
@@ -181,12 +188,7 @@ social:
     desc: Share to Reddit
     share: true
 
-  - name: "Kaggle"
-    icon: ""
-    username: "khahuras"
-    url: "/assets/icons/kaggle-brands-solid.svg"
-    desc: View my Kaggle profile
-    share: true
+
 
 # Social sharing protocols
 # These are for automatically generating sharing metadata for FB and Twitter
