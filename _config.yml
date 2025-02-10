@@ -78,15 +78,15 @@ descriptions:
 social:
   - name: Twitter
     icon: twitter
-    username: khavo_ds
+    username: "X/Twitter"
     url: https://x.com/khavo_ds
     desc: Follow me on X (Twitter)
     share: true
 
-  - name: "Kaggle"
-    icon: ""
-    username: "khahuras"
-    url: "/assets/icons/kaggle-brands-solid.svg"
+  - name: Kaggle
+    icon: kaggle
+    username: "Kaggle"
+    url: "https://www.kaggle.com/khahuras"
     desc: View my Kaggle profile
     share: true
 
@@ -99,14 +99,14 @@ social:
 
   - name: GitHub
     icon: github
-    username: voanhkha
+    username: "Github"
     url: https://github.com/voanhkha
     desc: Fork me on GitHub
     share: true
 
   - name: LinkedIn
     icon: linkedin
-    username: Kha Vo
+    username: "LinkedIn"
     url: https://www.linkedin.com/in/dr-kha-vo/
     desc: Connect with me on LinkedIn
     share: true
