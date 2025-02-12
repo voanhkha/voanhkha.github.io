@@ -1,0 +1,14 @@
+---
+layout: post
+comments: true
+title: Towards general intelligence
+excerpt: "I really FEEL the AGI: My original novel approach to ARC-AGI 2024 that ranked 6/1400 in the $1.1M-prized ARC-AGI 2024"
+mathjax: true
+date:   2025-02-12 00:00:00
+author: Kha Vo
+categories: Kaggle
+tags:	AI
+cover:  "/assets/instacode.png"
+---
+
+The solution.
