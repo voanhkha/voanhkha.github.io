@@ -1,8 +1,8 @@
 ---
 layout: post
 comments: true
-title: I won a Kaggle competition! (Google Brain Ventilator Pressure Prediction)
-excerpt: "Given with time-series breathe ins-outs data, predict the abnormalities of breaths in any arbitrary time"
+title: I WIN a Kaggle competition!
+excerpt: "I finished 1/2600 teams in the Google Brain Ventilator Pressure Prediction!"
 mathjax: true
 date:   2021-11-30 00:00:00
 author: Kha Vo
