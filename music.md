@@ -46,43 +46,7 @@ __Romance (Guitar Tremolo Style)__
 <br>
 
 
-__Harry Belafonte - Jamaica Farewell (guitar cover)__
-<iframe width="560" height="315" src="https://www.youtube.com/embed/Pst6Mi9yb4Q?si=iRrI8yh6s4eiKY0T" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" > </iframe>
-<br>
-<br>
-
-
-__Oh my darling Clementine (guitar cover)__
-<iframe width="560" height="315" src="https://www.youtube.com/embed/oaJVpHu5yf4?si=WJJJvVeU4lnGeeBe" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" > </iframe>
-<br>
-<br>
-
-
-__Hallelujah (guitar cover)__
-<iframe width="560" height="315" src="https://www.youtube.com/embed/PdEGnG0INNE?si=BvdcEsgzheMqaHJ_" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" > </iframe>
-<br>
-<br>
-
 __Extreme - More than words (guitar beat cover with original Extreme voice)__
 <iframe width="560" height="315" src="https://www.youtube.com/embed/_4t9becliVQ?si=laifWJi_523vuee5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" > </iframe>
 <br>
 <br>
-
-
-
-
-__Ray Peterson - Tell Laura I love her (guitar cover)__
-<iframe width="560" height="315" src="https://www.youtube.com/embed/j-RCFPBCRjA?si=5-foQQsnDkA7iHjh" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" > </iframe>
-<br>
-<br>
-
-
-__Carpenters - Top of the world (guitar cover)__
-<iframe width="560" height="315" src="https://www.youtube.com/embed/n2roJvnm7Uc?si=6E1ozbgvtWeURZpL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" > </iframe>
-<br>
-<br>
-
-
-
-
-
