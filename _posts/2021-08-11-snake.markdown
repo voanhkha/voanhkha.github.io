@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-title: Write a bot to play Snake: not that easy!
+title: "Write a bot to play Snake: not that easy!"
 excerpt: "Reinforcement learning is never easy! But enough for me to win rank 9/875!"
 mathjax: true
 date:   2021-08-11 00:00:00
