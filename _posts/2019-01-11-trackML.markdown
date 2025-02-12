@@ -1,0 +1,14 @@
+---
+layout: post
+comments: true
+title: Write a TSP solver in python from SCRATCH, why not!
+excerpt: "How a custom TSP problem forced us to write custom algorithms and finally seized rank 8/1874 in Kaggle Santa 2018! (plus an introduction to Kotlin!)"
+mathjax: true
+date:   2019-01-11 00:00:00
+author: Kha Vo
+categories: Kaggle
+tags:	AI
+cover:  "/assets/instacode.png"
+---
+
+The solution.
