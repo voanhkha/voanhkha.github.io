@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "Papers"
-permalink: /posts/
+permalink: /papers/
 main_nav: true
 ---
 
