@@ -1,8 +1,8 @@
 ---
 layout: post
 comments: true
-title: I should have finished 1/2618 in the Kaggle Liverpool Ion Switching Competition! 
-excerpt: "...instead finished 3rd due to an unfortunate data leak that 2 other teams exploited!"
+title: "I ALMOST won my 1st Kaggle competition!" 
+excerpt: "...instead finished 3rd due to an unfortunate data leak that 2 other teams exploited in the Liverpool Ion Switching Competition"
 mathjax: true
 date:   2020-05-27 00:00:00
 author: Kha Vo
