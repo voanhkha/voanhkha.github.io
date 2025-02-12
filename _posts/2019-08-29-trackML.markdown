@@ -1,0 +1,14 @@
+---
+layout: post
+comments: true
+title: I train a graph NN for the 1st time!
+excerpt: "...and win a gold medal rank 10/2749 in the Kaggle Predicting Molecular Properties challenge!"
+mathjax: true
+date:   2019-08-29 00:00:00
+author: Kha Vo
+categories: Kaggle
+tags:	AI
+cover:  "/assets/instacode.png"
+---
+
+The solution.
