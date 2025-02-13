@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/aad2a211-e4a6-4810-9122-510689b98811)![image](https://github.com/user-attachments/assets/1101ae31-db3d-43b5-9222-ba15cf7a9629)---
+---
 layout: post
 comments: true
 title: LLM Offline Policy
