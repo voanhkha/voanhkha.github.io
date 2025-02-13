@@ -6,16 +6,19 @@ main_nav: true
 ---
 
 ### Kaggle Achievements (Updated Feb 2025)
+
 <div class="imgcap">
-<img src="/images/kaggleprofilemay23.png">
+<img src="/images/KaggleProfile_10Golds.jpg">
 </div>  
 <br>
 <br>
 
+
+
 * __6/1400: ARC Prize 2024 (Solo Gold) - Nov 2024__ <br>
 Create an AI capable of solving reasoning tasks it has never seen before. After this achievement, I got the chance to personally meet Francois Chollet!
 <div class="imgcap" style="display: flex; justify-content: center;">
-<img src="/images/chollet_kha.png" style="width: 95%;">
+<img src="/images/Kha_Francois_MeetUp.png" style="width: 100%;">
 </div>  
 <br>
 <br>
