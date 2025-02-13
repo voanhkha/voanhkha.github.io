@@ -12,7 +12,7 @@ main_nav: true
 <br>
 <br>
 
-* __6/1400: ARC Prize, 6/1400 (Solo Gold) - Nov 2024__<br>
+* __6/1400: ARC Prize 2024 (Solo Gold) - Nov 2024__ <br>
 Create an AI capable of solving reasoning tasks it has never seen before. After this achievement, I got the chance to personally meet Francois Chollet!
 <div class="imgcap" style="display: flex; justify-content: center;">
 <img src="/images/chollet_kha.png" style="width: 95%;">
