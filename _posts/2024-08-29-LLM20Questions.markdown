@@ -13,6 +13,13 @@ cover:  "/assets/instacode.png"
 
 I've just earned my top solo silver medal (rank 13) in a Kaggle simulation competition, where we need to develop an LLM to play the game of 20 questions. <br>
 
+
+<div class="imgcap">
+<img src="/images/llm20q_kaggleLB.png" width="400">
+<div class="thecap"> Final leaderboard </div>
+</div>
+<br>
+
 The great thing about this challenge is that in each match, there are 4 players involved, instead of 2. It is a 2 versus 2 match-up. A team will comprise of 2 players, one acts as the questioner and the other as the answerer. <br>
 
 At the start of the game, a common secret keyword is given to the answerers of the 2 teams. Then the questioner of each team will start to ask its teammate answerer a binary (yes or no) question, receive an answer, and produce a keyword guess. <br>
