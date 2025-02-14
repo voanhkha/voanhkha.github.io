@@ -44,6 +44,7 @@ You can see an example episode below where this bot excellently correctly guesse
 <div class="thecap"> A game of 20 questions conducted by 4 bots in a 2-vs-2 match-up </div>
 </div>
 
+<br>
 The successful rate of this bot is about 10%, which means you will win 1 game in about 10 games played! This is considered a high percentage given the difficulty of the game.<br>
 
 In my own version of this bot, I have many more features that I want for my own. My version can reach >900 points on the LB recently (but it got deactivated when I submitted some new bots). <br>
