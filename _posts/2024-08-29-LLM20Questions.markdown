@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-title: Excited to have my LLM chatbot play a competitive game!
+title: My LLM plays a coop-competitive game
 excerpt: "How to embed an offline policy knowledge to an LLM AI chatbot that plays the game of 20 Questions, and won rank 13/832 in a Kaggle simulation competition."
 mathjax: true
 date:   2024-08-29 00:00:00
@@ -15,7 +15,7 @@ I've just earned my top solo silver medal (rank 13) in a Kaggle simulation compe
 
 
 <div class="imgcap">
-<img src="/images/llm20q_kaggleLB.png" width="400">
+<img src="/images/llm20q_kaggleLB.png" width="500">
 <div class="thecap"> Final leaderboard </div>
 </div>
 <br>
@@ -29,9 +29,9 @@ If the guess of the questioner of any team is correct, 2 players of that team wi
 A key thing about this competition is that a fixed list of keywords will be embeded to the referee (Kaggle server). This list will change and inaccessible by any means in the final evaluation period (final 2 weeks). <br>
 
 During the competition, I have publicly shared to the Kaggle forum my approach which worked really well in both public and private LB.
-I named it as "offline-policy-questioner agent". <br>
+I named it as "offline-policy-questioner agent". It got >50 upvotes and >250 forks!  <br>
 
-You can find the notebook here.
+You can find the code in my [[Kaggle notebook]](https://www.kaggle.com/code/khahuras/offline-policy-questioner-agent). Enjoy! <br>
 
 The idea is that public open-weight LLMs are not so skillful in 20 Questions game. Asking broad questions and narrowing down gradually is the only way to find out the secret keyword, but many LLMs seem not to be great in that area. <br>
 
@@ -56,5 +56,6 @@ The successful rate of this bot is about 10%, which means you will win 1 game in
 
 In my own version of this bot, I have many more features that I want for my own. My version can reach >900 points on the LB recently (but it got deactivated when I submitted some new bots). <br>
 
-You can find the code in my [[Kaggle notebook]](https://www.kaggle.com/code/khahuras/offline-policy-questioner-agent). Enjoy!
+I aimed for my first solo gold medal and missed only 2 ranks (13 instead of 11) finally. It was a little bit disappointed. However I also realized many of the top bots (in gold regions) integrated my solution into theirs! And that made me really happy! <br>
 
+Thanks for reading and see you in another post!
