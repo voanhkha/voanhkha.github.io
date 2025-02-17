@@ -11,9 +11,9 @@ tags:	AI
 cover:  "/assets/instacode.png"
 ---
 
-I have just lost my first win (rank 1) of a Kaggle competition! It's due to an expected data leak at the end and two other teams exploited it! <br>
+I have just lost my first win (rank 1) of a Kaggle competition! It's due to an expected data leak at the end and two other teams exploited it! So finally we ranked 3rd. <br>
 
-It is a contest about Deep Learning/Hidden Markove modelling to predict the number of open channels during the duration of time-series human electrophysiological signal data. 
+It is a 3-month contest about Deep Learning/Hidden Markove modelling to predict the number of open channels during the duration of time-series human electrophysiological signal data. 
 It requires some finesse in time-series analysis, spotting the pivoting distinctive features from signal by systematic approaches (mainly unsupervised modelling like kNN and tSNE),
 then use an ensemble of methods (RNNs, decision trees, random forest) to avoid overfitting. <br>
 
@@ -27,7 +27,11 @@ It was a really fun and helpful experience in the whole journey of this competit
 
 - Zidmie wrote about the data leak [here](https://www.kaggle.com/c/liverpool-ion-switching/discussion/153824)<br><br>
 
-In those materials you can easily find our codes as well. Have fun!
+- My code about the best non-leak solution [here](https://www.kaggle.com/code/khahuras/1st-place-non-leak-solution?scriptVersionId=34894967)<br><br>
+
+- Our full code [here](https://github.com/GillesVandewiele/Liverpool-Ion-Switching)<br><br>
+
+Have fun!
 
 
 
