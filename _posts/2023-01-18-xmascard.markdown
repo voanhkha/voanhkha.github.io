@@ -11,12 +11,8 @@ tags:	AI
 cover:  "/assets/instacode.png"
 ---
 
-9/874: Santa 2022 The Christmas Card Conundrum (Gold) - Jan 2023
-Pure mathematical optimization in a very large environment (a tweaked travelling salesman problem with millions of instances), 
-that requires manual heuristics as well as techniques for speeding the procedures, and cannot rely on any optimization solver.
+I have just won another Kaggle gold medal in the traditional annual Santa contest. For this year it is another variant of a custom TSP. <br>
 
-9th place solution - with video visualization - Team Arm Breakers
-In this topic our team Arm Breakers, consisting of Zidmie, Vincent, Kha, Gilles, and Yaron, would like to brief our solution of the Santa 2022 - The Christmas Card Conundrum Competition on Kaggle. Great thanks to the Kaggle team and fellow competitors for this wonderful and interesting yearly traditional competition.
 Our code is here:
 https://www.kaggle.com/code/khahuras/arm-breakers-solution/notebook?scriptVersionId=116622207
 
