@@ -10,59 +10,58 @@ categories: Kaggle
 tags:	AI
 cover:  "/assets/instacode.png"
 ---
-
-I have just won another Kaggle gold medal in the traditional annual Santa contest. For this year it is another variant of a custom TSP. <br>
+I have just won another Kaggle gold medal in the traditional annual Santa contest (Christmas Card Conundrum 2022). For this year it is another variant of a custom TSP. <br>
 
 Our code is here:
 https://www.kaggle.com/code/khahuras/arm-breakers-solution/notebook?scriptVersionId=116622207
 
 FINAL SOLUTION VIDEO VISUALIZATION
 
-![image]([https://github.com/user-attachments/assets/b8779c9c-645c-4a53-8e03-468daf0f0127](https://www.googleapis.com/download/storage/v1/b/kaggle-forum-message-attachments/o/inbox%2F1829450%2F01fac8018a0f6ab049e1d466e491a01f%2Farmbreakers_visual.gif?generation=1674046367578891&alt=media))
+![solution_visual](https://www.googleapis.com/download/storage/v1/b/kaggle-forum-message-attachments/o/inbox%2F1829450%2F01fac8018a0f6ab049e1d466e491a01f%2Farmbreakers_visual.gif?generation=1674046367578891&alt=media) <br>
 
-(This visualization tool is developed by Daniel Dias @danieldias via his webpage here https://danieloliveira56.github.io/kaggle-santa2022-tools/)
+(This visualization tool is developed by Daniel Dias @danieldias via his webpage [here](https://danieloliveira56.github.io/kaggle-santa2022-tools/))<br>
 
-SOLUTION BRIEF
-In short, our solution first attempts to find an initial “pure” TSP tour by using LKH v3. Then we try to formulate the custom constraints on the pure solution so that we can easily find a configuration path through it. The next work would be writing a custom “homemade” LK algorithm (based on pseudo codes from http://tsp-basics.blogspot.com) to search for potential moves and make local improvements on the tour, while still trying to minimize the custom constraints until they’re completely gone. With this homemade algorithm acting as the backbone searching solver, we also exploit LKH v3 for manually finding improvements on some sub-tours (and ignore if any improvement violates the constraints). Importantly, we also sometimes make “custom” fixes by eyeballing the tour and making adjustments directly, for the cases that violate the constraint but the improvement cost is worth the manual fixing efforts. Finally, we use another homemade algorithm to search for a full configuration path given a full constraint-satisfied tour.
+**SOLUTION BRIEF**<br>
+In short, our solution first attempts to find an initial “pure” TSP tour by using LKH v3. Then we try to formulate the custom constraints on the pure solution so that we can easily find a configuration path through it. The next work would be writing a custom “homemade” LK algorithm (based on pseudo codes from http://tsp-basics.blogspot.com) to search for potential moves and make local improvements on the tour, while still trying to minimize the custom constraints until they’re completely gone. With this homemade algorithm acting as the backbone searching solver, we also exploit LKH v3 for manually finding improvements on some sub-tours (and ignore if any improvement violates the constraints). Importantly, we also sometimes make “custom” fixes by eyeballing the tour and making adjustments directly, for the cases that violate the constraint but the improvement cost is worth the manual fixing efforts. Finally, we use another homemade algorithm to search for a full configuration path given a full constraint-satisfied tour.<br><br>
 
-LKH INITIAL TOUR
-Using LKH v3, we manage to get a pure TSP tour of around 74075. The cost for jumping between 2 pixels is exactly the competition cost, consisting of color difference and pixel distance.
+**LKH INITIAL TOUR**<br>
+Using LKH v3, we manage to get a pure TSP tour of around 74075. The cost for jumping between 2 pixels is exactly the competition cost, consisting of color difference and pixel distance.<br><br>
 
-CUSTOM CONSTRAINTS FOR FINDING A CONFIGURATION PATH
-We find that to easily find a configuration path for a pixel tour, there must be some constraints due to the nature of the problem (mostly due to the enforced starting arm config at the origin, and the quadrant-related aspects).
-Going from the origin (0,0) in both directions, there must be at least 64 moves of either y+ or y- before reaching the first x<0. This is due to the fact that the starting config is (64 0;-32 0;-16 0;-8 0;-4 0;-2 0;-1 0;-1 0). Note that we can’t decrease x to a negative number, unless the first arm link (64 0) either becomes (64 64) or (64 -64) in order to decrease x (63 64) or (63 -64). This constraint also means that the two pixels next to the origin must (or should) be (0, -1) and (0, 1).
+**CUSTOM CONSTRAINTS FOR FINDING A CONFIGURATION PATH**<br>
+We find that to easily find a configuration path for a pixel tour, there must be some constraints due to the nature of the problem (mostly due to the enforced starting arm config at the origin, and the quadrant-related aspects).<br>
+Going from the origin (0,0) in both directions, there must be at least 64 moves of either y+ or y- before reaching the first x<0. This is due to the fact that the starting config is (64 0;-32 0;-16 0;-8 0;-4 0;-2 0;-1 0;-1 0). Note that we can’t decrease x to a negative number, unless the first arm link (64 0) either becomes (64 64) or (64 -64) in order to decrease x (63 64) or (63 -64). This constraint also means that the two pixels next to the origin must (or should) be (0, -1) and (0, 1).<br>
 Going from the image’s corner to another corner must be done in at least 255 steps, ensuring we don’t go in a straight line.
-Anywhere in the tour, there must exist 128 counts in any direction (out of 4 directions: x+, x-, y+, y-) that travel through 4 different quadrants (with points on the 2 axis not counted as in any quadrant). We can’t move the arms fast enough if we change between 4 quadrants too quickly.
+Anywhere in the tour, there must exist 128 counts in any direction (out of 4 directions: x+, x-, y+, y-) that travel through 4 different quadrants (with points on the 2 axis not counted as in any quadrant). We can’t move the arms fast enough if we change between 4 quadrants too quickly. <br><br>
 
-HOMEMADE PYTHON TSP SOLVER WITH CUSTOM CONSTRAINTS
-We developed a homemade TSP solver in Python with the objective to minimize the penalty on the constraints as well as the color cost simultaneously. The difficulty of this solver is that it must be working real fast given the slow nature of Python. So we design the solver such that:
-It uses Pypy3.9 instead of normal Python (CPython). For this design we must not use any unsupported libraries in Pypy, such as pandas or numpy. We have to depend on only python lists, tuples, and python objects. Using Pypy speeds up almost 10 times as compared to Python.
-Coding a few different types of TSP moves up to 5-opt: 2-opt, 3-opt, 4-opt double bridge, 4-opt sequential, and 5-opt sequential.
-Custom constraints can be freely developed and added into the objective function as the penalty of the tour’s cost with different weights.
+**HOMEMADE PYTHON TSP SOLVER WITH CUSTOM CONSTRAINTS**<br>
+We developed a homemade TSP solver in Python with the objective to minimize the penalty on the constraints as well as the color cost simultaneously. The difficulty of this solver is that it must be working real fast given the slow nature of Python. So we design the solver such that:<br>
+It uses Pypy3.9 instead of normal Python (CPython). For this design we must not use any unsupported libraries in Pypy, such as pandas or numpy. We have to depend on only python lists, tuples, and python objects. Using Pypy speeds up almost 10 times as compared to Python.<br>
+Coding a few different types of TSP moves up to 5-opt: 2-opt, 3-opt, 4-opt double bridge, 4-opt sequential, and 5-opt sequential.<br>
+Custom constraints can be freely developed and added into the objective function as the penalty of the tour’s cost with different weights.<br>
 “Kick and fix” is possible: finding random moves that ruin the tour by small arbitrary margins, and damage it, before re-optimizing the tour again. This mechanism turns out to be important to escape deep local optima.
-Collaboration between team members is possible (and must be simple and automatic): different solvers continually pick up the best tour from a shared Dropbox folder, then try to “kick and fix” it and paste the better tour (if it exists) to that folder so that other solvers know. With this collaboration scheme we manage to launch about 30 instances remotely.
-The Python solver alone can get rid of the penalties and produce a tour of around 74080. Even though this score is considerably good, it is still not good enough to get a gold medal. We need to deploy some more manual work presented below to further squeeze out just 4 more points.
+Collaboration between team members is possible (and must be simple and automatic): different solvers continually pick up the best tour from a shared Dropbox folder, then try to “kick and fix” it and paste the better tour (if it exists) to that folder so that other solvers know. With this collaboration scheme we manage to launch about 30 instances remotely.<br>
+The Python solver alone can get rid of the penalties and produce a tour of around 74080. Even though this score is considerably good, it is still not good enough to get a gold medal. We need to deploy some more manual work presented below to further squeeze out just 4 more points.<br><br>
 
-MANUAL IMPROVEMENT BY USING LKHv3 ON SUB-TOURS
-We run LKH on sub-tours (of varying lengths) of our current best submission, keeping a certain start and end point fixed. The improvements of this approach is usually from 0.01 to 0.3, with less and less chance of improvement when the score becomes better and better.
+**MANUAL IMPROVEMENT BY USING LKHv3 ON SUB-TOURS**<br>
+We run LKH on sub-tours (of varying lengths) of our current best submission, keeping a certain start and end point fixed. The improvements of this approach is usually from 0.01 to 0.3, with less and less chance of improvement when the score becomes better and better.<br><br>
 
-MANUALLY FIXING THE CONSTRAINTS OF A SLIGHTLY VIOLATED TOUR
-We were stuck at about 74078 and couldn't escape the local optimum despite “kicking and fixing” the tours with very high kicking parameters. Then we had to allow some penalties to creep in the tour again, and tried to remove them manually.
-Most violations consist of crossing the axes in particular ways too quickly, without time in between them to turn the 64 arm around. We wrote some diagnostic tools for identifying and plotting the violation. This helps find good places for cutting the violating segment by removing an edge, removing another nearby edge outside the violating segment, and then connecting the 4 relevant pixels by two other edges, so that the two problematic axis-crossings are further apart.
-Most times, this leads to other violations which need to be corrected, or even to the tour breaking into disjoint sub-tours. However, in the latter case, a quick enumeration can usually find a 0-cost (or even negative cost) way of re-stitching the sub-tours.
-Removing constraints allowed the solver to explore a wider space, and then the semi-manual correction process could sometimes fix them in a way that improved our previous (valid) result.
+**MANUALLY FIXING THE CONSTRAINTS OF A SLIGHTLY VIOLATED TOUR**<br>
+We were stuck at about 74078 and couldn't escape the local optimum despite “kicking and fixing” the tours with very high kicking parameters. Then we had to allow some penalties to creep in the tour again, and tried to remove them manually.<br>
+Most violations consist of crossing the axes in particular ways too quickly, without time in between them to turn the 64 arm around. We wrote some diagnostic tools for identifying and plotting the violation. This helps find good places for cutting the violating segment by removing an edge, removing another nearby edge outside the violating segment, and then connecting the 4 relevant pixels by two other edges, so that the two problematic axis-crossings are further apart.<br>
+Most times, this leads to other violations which need to be corrected, or even to the tour breaking into disjoint sub-tours. However, in the latter case, a quick enumeration can usually find a 0-cost (or even negative cost) way of re-stitching the sub-tours.<br>
+Removing constraints allowed the solver to explore a wider space, and then the semi-manual correction process could sometimes fix them in a way that improved our previous (valid) result.<br><br>
 
-SEARCHING FOR THE CONFIGURATION PATH GIVEN THE CONSTRAINT-SATISFIED TOUR
-For a path that respects the 3 constraints described above, our solver always managed to find a configuration path with one single link movement for every pixel change.
-At each city i+1 of the path, the solver calculates all the possible link configuration (usually about 150 config), then out of these 150 config, it just keeps 32 config :
+**SEARCHING FOR THE CONFIGURATION PATH GIVEN THE CONSTRAINT-SATISFIED TOUR** <br>
+For a path that respects the 3 constraints described above, our solver always managed to find a configuration path with one single link movement for every pixel change.<br>
+At each city i+1 of the path, the solver calculates all the possible link configuration (usually about 150 config), then out of these 150 config, it just keeps 32 config :<br>
 
-One config where the first link is the closest to the top (y=64)
-One config where the first link is the closest from the bottom (y=-64)
-One config at the right (x=64)
-One config at the left (x=-64)
-And the same for all 8 links.
+One config where the first link is the closest to the top (y=64)<br>
+One config where the first link is the closest from the bottom (y=-64)<br>
+One config at the right (x=64)<br>
+One config at the left (x=-64)<br>
+And the same for all 8 links.<br>
 From these 32 configs, we usually are in a good position to go to the next city. Sometimes it’s not possible. In the case where we can’t reach city i+1, we go back 100 cities behind and from each city, we store 1000 configurations, randomly, added to the 32 configurations above. If it still doesn’t enable us to reach city i+1, we move back 200 behind and store 2000 configurations for each city. It was never useful to go back further.
-The solver starts once from the beginning, up to position (x=128,y=128) (top right corner, with a unique possible link configuration). Then the solver starts from the end, back to the same position. This removes the problem of the specific link configuration at the beginning and at the end.
+The solver starts once from the beginning, up to position (x=128,y=128) (top right corner, with a unique possible link configuration). Then the solver starts from the end, back to the same position. This removes the problem of the specific link configuration at the beginning and at the end.<br><br>
 Thanks for reading,
 Team Arm Breakers.
 
