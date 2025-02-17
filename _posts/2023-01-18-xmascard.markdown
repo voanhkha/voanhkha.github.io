@@ -12,10 +12,13 @@ cover:  "/assets/instacode.png"
 ---
 I have just won another Kaggle gold medal in the traditional annual Santa contest (Christmas Card Conundrum 2022). For this year it is another variant of a custom TSP. <br>
 
-Our code is here:
+Although I have a little experience with these kinds of competitions, I still have to state that it was not even close to easy. All of the other teams accelerated their race towards the end and we just barely made the 9th place with all efforts spent. <br>
+
+My (partly) solution code is here:
 https://www.kaggle.com/code/khahuras/arm-breakers-solution/notebook?scriptVersionId=116622207
 
-FINAL SOLUTION VIDEO VISUALIZATION
+<br>
+**FINAL SOLUTION VIDEO VISUALIZATION**
 
 ![solution_visual](https://www.googleapis.com/download/storage/v1/b/kaggle-forum-message-attachments/o/inbox%2F1829450%2F01fac8018a0f6ab049e1d466e491a01f%2Farmbreakers_visual.gif?generation=1674046367578891&alt=media) <br>
 
@@ -62,7 +65,7 @@ One config at the left (x=-64)<br>
 And the same for all 8 links.<br>
 From these 32 configs, we usually are in a good position to go to the next city. Sometimes it’s not possible. In the case where we can’t reach city i+1, we go back 100 cities behind and from each city, we store 1000 configurations, randomly, added to the 32 configurations above. If it still doesn’t enable us to reach city i+1, we move back 200 behind and store 2000 configurations for each city. It was never useful to go back further.
 The solver starts once from the beginning, up to position (x=128,y=128) (top right corner, with a unique possible link configuration). Then the solver starts from the end, back to the same position. This removes the problem of the specific link configuration at the beginning and at the end.<br><br>
-Thanks for reading,
-Team Arm Breakers.
+
+Thanks for reading!
 
 
