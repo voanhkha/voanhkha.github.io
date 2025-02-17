@@ -10,7 +10,7 @@ categories: Kaggle
 tags:	AI
 cover:  "/assets/instacode.png"
 ---
-I have just won another Kaggle gold medal in the traditional annual Santa contest (Christmas Card Conundrum 2022). For this year it is another variant of a custom TSP. <br>
+I have just won another Kaggle gold medal in the traditional annual Santa contest [Christmas Card Conundrum 2022](https://www.kaggle.com/competitions/santa-2022/leaderboard). For this year it is another variant of a custom TSP. <br>
 
 Although I have a little experience with these kinds of competitions, I still have to state that it was not even close to easy. All of the other teams accelerated their race towards the end and we just barely made the 9th place with all efforts spent. <br>
 
