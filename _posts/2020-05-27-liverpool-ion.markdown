@@ -11,9 +11,23 @@ tags:	AI
 cover:  "/assets/instacode.png"
 ---
 
-The solution.
+I have just lost my first win (rank 1) of a Kaggle competition! It's due to an expected data leak at the end and two other teams exploited it! <br>
+
+It is a contest about Deep Learning/Hidden Markove modelling to predict the number of open channels during the duration of time-series human electrophysiological signal data. 
+It requires some finesse in time-series analysis, spotting the pivoting distinctive features from signal by systematic approaches (mainly unsupervised modelling like kNN and tSNE),
+then use an ensemble of methods (RNNs, decision trees, random forest) to avoid overfitting. <br>
+
+![leaderboard](https://miro.medium.com/v2/resize:fit:1100/format:webp/1*V10hsLxhpun-sNbcF0dqgQ.png) <br>
+
+It was a really fun and helpful experience in the whole journey of this competition with my teammates. Each of us wrote their part about various aspects of the competition: <br> <br>
+
+- I wrote about the forward-backward algorithm that we used [here](https://www.kaggle.com/competitions/liverpool-ion-switching/discussion/153734)  <br><br>
+
+- Gilles published our complete solution on Medium [here](https://medium.com/towards-data-science/identifying-the-number-of-open-ion-channels-with-hidden-markov-models-334fab86fc85)<br><br>
+
+- Zidmie wrote about the data leak [here](https://www.kaggle.com/c/liverpool-ion-switching/discussion/153824)<br><br>
+
+In those materials you can easily find our codes as well. Have fun!
 
 
-Deep Learning/Hidden Markove modelling to predict the number of open channels during the duration of time-series human electrophysiological signal data. 
-Requires finesse in time-series analysis, spotting the pivoting distinctive features from signal by systematic approaches (mainly unsupervised modelling like kNN and tSNE),
-then use an ensemble of methods (RNNs, decision trees, random forest) to avoid overfitting.
+
