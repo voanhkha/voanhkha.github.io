@@ -20,9 +20,11 @@ https://www.kaggle.com/code/khahuras/arm-breakers-solution/notebook?scriptVersio
 <br>
 **FINAL SOLUTION VIDEO VISUALIZATION**
 
-![solution_visual](https://www.googleapis.com/download/storage/v1/b/kaggle-forum-message-attachments/o/inbox%2F1829450%2F01fac8018a0f6ab049e1d466e491a01f%2Farmbreakers_visual.gif?generation=1674046367578891&alt=media) <br>
-
-(This visualization tool is developed by Daniel Dias @danieldias via his webpage [here](https://danieloliveira56.github.io/kaggle-santa2022-tools/))<br>
+![solution_visual](https://www.googleapis.com/download/storage/v1/b/kaggle-forum-message-attachments/o/inbox%2F1829450%2F01fac8018a0f6ab049e1d466e491a01f%2Farmbreakers_visual.gif?generation=1674046367578891&alt=media) 
+<div style="text-align: center;">
+  <em>(This visualization tool is developed by Daniel Dias @danieldias via his webpage [here](https://danieloliveira56.github.io/kaggle-santa2022-tools/)).</em>
+</div>
+<br>
 
 **SOLUTION BRIEF**<br>
 In short, our solution first attempts to find an initial “pure” TSP tour by using LKH v3. Then we try to formulate the custom constraints on the pure solution so that we can easily find a configuration path through it. The next work would be writing a custom “homemade” LK algorithm (based on pseudo codes from http://tsp-basics.blogspot.com) to search for potential moves and make local improvements on the tour, while still trying to minimize the custom constraints until they’re completely gone. With this homemade algorithm acting as the backbone searching solver, we also exploit LKH v3 for manually finding improvements on some sub-tours (and ignore if any improvement violates the constraints). Importantly, we also sometimes make “custom” fixes by eyeballing the tour and making adjustments directly, for the cases that violate the constraint but the improvement cost is worth the manual fixing efforts. Finally, we use another homemade algorithm to search for a full configuration path given a full constraint-satisfied tour.<br><br>
