@@ -183,8 +183,10 @@ One important aspect of the game is the protection of bases. Enemies can destroy
 
 <div class="imgcap">
 <img src="https://github.com/voanhkha/voanhkha.github.io/blob/master/images/halite_protect.png?raw=true" width="450">
-<div class="Two base protecting tactics."></div>
+<div class="thecap"> Two base protecting tactic </div>
 </div>
+
+
 
 Machine Learning Bot: Imitation Learning by Semantic Segmentation
 ---
@@ -198,8 +200,10 @@ During the course of competition, we were inspired by some machine learning appr
 
 <div class="imgcap">
 <img src="https://github.com/voanhkha/voanhkha.github.io/blob/master/images/mlbot.png?raw=true" width="600">
-<div class="High summary of a machine learning bot."></div>
+<div class="thecap"> High summary of a machine learning bot </div>
 </div>
+
+
 
 
 **Feature Engineering**
@@ -232,7 +236,7 @@ We also tried to combine each group of 3 layers into one layer representing "all
 
 <div class="imgcap">
 <img src="https://github.com/voanhkha/voanhkha.github.io/blob/master/images/segmentation_halite.png?raw=true" width="400">
-<div class="How semantic segmentation in computer vision relates to multi-agent learning. Part of the figure is extracted from www.jeremyjordan.me/semantic-segmentation"></div>
+<div class="thecap">How semantic segmentation in computer vision relates to multi-agent learning</div>
 </div>
 
 
@@ -250,7 +254,7 @@ We would like to visualise some feature channels (first 100 steps of a specific 
 
 <div class="imgcap">
 <img src="https://github.com/voanhkha/voanhkha.github.io/blob/master/images/halite_features.gif?raw=true" width="600">
-<div class="Visualization of some feature layers (100 first steps)"></div>
+<div class="thecap">Visualization of some feature layers (100 first steps)</div>
 </div>
 
 
@@ -264,7 +268,7 @@ Let us take a look at how the ML bot plays. The below figure shows some stats of
 
 <div class="imgcap">
 <img src="https://github.com/voanhkha/voanhkha.github.io/blob/master/images/halite_stats.png?raw=true" width="800">
-<div class="Some stats during 400 game steps, averaged on all games of top competitors"></div>
+<div class="thecap">Some stats during 400 game steps, averaged on all games of top competitors</div>
 </div>
 
 Some points:
@@ -278,14 +282,14 @@ Now, let's have a look at some specific one game.
 
 <div class="imgcap">
 <img src="https://github.com/voanhkha/voanhkha.github.io/blob/master/images/gamestats1.png?raw=true" width="750">
-<div class="Stats of a specific match"></div>
+<div class="thecap">Stats of a specific match</div>
 </div>
 
 We won the above game against 3 strong opponents. The finished halite of 3 top teams are very close, shown in the last plot "Halite". We won this game because of superior mining efficiency in early game that gave us an advantage, and we have a great killing rate that is only worse than the... 4th placed team. This game demonstrates that being too aggressive is not recommended. As well, 2nd and 3rd placed team have many more ships than us, but in the end we won, thanks to a great "[Nash equilibrium](https://www.kaggle.com/c/halite/discussion/168131)" that we reached specifically in this game.
 
 <div class="imgcap">
 <img src="https://github.com/voanhkha/voanhkha.github.io/blob/master/images/gamestats2.png?raw=true" width="750">
-<div class="Stats of another match"></div>
+<div class="thecap">Stats of another match</div>
 </div>
 
 On the other hand, in another game where we finished 3rd, we did not do well in battle. Our number of ships are still competitive until mid-game (around step 200), then gradually dropped due to the advancement of opponents' manual attacking strategy that our ML bot cannot fully imitate. Losing too many ships led us to a terrible state at step 300 when two top teams just begin to focus on mining, depicted by the late peaks in Cargo per ship, when we couldn't compete anymore. 
@@ -303,22 +307,22 @@ Finally, we'll show a typical full match animation that we beat 3 strong opponen
 
 <div class="imgcap">
 <img src="https://github.com/voanhkha/voanhkha.github.io/blob/master/images/halitematch1.gif?raw=true" width="600">
-<div class="Full match (step 0-99)"></div>
+<div class="thecap">Full match (step 0-99)</div>
 </div>
 
 <div class="imgcap">
 <img src="https://github.com/voanhkha/voanhkha.github.io/blob/master/images/halitematch2.gif?raw=true" width="600">
-<div class="Full match (step 100-199)"></div>
+<div class="thecap">Full match (step 100-199)</div>
 </div>
 
 <div class="imgcap">
 <img src="https://github.com/voanhkha/voanhkha.github.io/blob/master/images/halitematch3.gif?raw=true" width="600">
-<div class="Full match (step 200-299)"></div>
+<div class="thecap">Full match (step 200-299)</div>
 </div>
 
 <div class="imgcap">
 <img src="https://github.com/voanhkha/voanhkha.github.io/blob/master/images/halitematch4.gif?raw=true" width="600">
-<div class="Full match (step 300-399)"></div>
+<div class="thecap">Full match (step 300-399)</div>
 </div>
 
 
