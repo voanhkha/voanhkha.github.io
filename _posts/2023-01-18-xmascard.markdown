@@ -14,22 +14,13 @@ I have just won another Kaggle gold medal in the traditional annual Santa contes
 
 Although I have a little experience with these kinds of competitions, I still have to state that it was not even close to easy. All of the other teams accelerated their race towards the end and we just barely made the 9th place with all efforts spent. <br>
 
-My (partly) solution code is here:
-https://www.kaggle.com/code/khahuras/arm-breakers-solution/notebook?scriptVersionId=116622207
+My (partly) solution code is [here](https://www.kaggle.com/code/khahuras/arm-breakers-solution/notebook?scriptVersionId=116622207).
 
 <br>
-**FINAL SOLUTION VIDEO VISUALIZATION**
-
-![solution_visual](https://www.googleapis.com/download/storage/v1/b/kaggle-forum-message-attachments/o/inbox%2F1829450%2F01fac8018a0f6ab049e1d466e491a01f%2Farmbreakers_visual.gif?generation=1674046367578891&alt=media) 
-<div style="text-align: center;">
-  <em>This visualization tool is developed by Daniel Dias @danieldias via his webpage [here](https://danieloliveira56.github.io/kaggle-santa2022-tools/) .</em>
-</div>
-<br>
-
 
 <div class="imgcap">
 <img src="https://www.googleapis.com/download/storage/v1/b/kaggle-forum-message-attachments/o/inbox%2F1829450%2F01fac8018a0f6ab049e1d466e491a01f%2Farmbreakers_visual.gif?generation=1674046367578891&alt=media" width="500">
-<div class="thecap"> This visualization tool is developed by Daniel Dias @danieldias via his webpage [here](https://danieloliveira56.github.io/kaggle-santa2022-tools/) </div>
+<div class="thecap"> The visualization of my solution </div>
 </div>
 <br>
 
