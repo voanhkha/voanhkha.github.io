@@ -12,3 +12,33 @@ cover:  "/assets/instacode.png"
 ---
 
 The solution.
+
+
+
+<div class="imgcap">
+<img src="/images/trackML_detector_yz.png" width="500">
+<div class="thecap"> All 'hits' detected inside the detector in 3D </div>
+</div>
+<br>
+
+
+<div class="imgcap">
+<img src="/images/trackML_detector_xy.png" width="500">
+<div class="thecap"> 'Hits' visualized from slices in xy </div>
+</div>
+<br>
+
+
+<div class="imgcap">
+<img src="/images/trackML_hits.gif" width="500">
+<div class="thecap"> Animation of some 'hits' </div>
+</div>
+<br>
+
+
+
+<div class="imgcap">
+<img src="/images/trackML_tracks.gif" width="500">
+<div class="thecap"> Animation of some reconstructed 'tracks' of helices in 3D </div>
+</div>
+<br>
