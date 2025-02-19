@@ -20,7 +20,7 @@ description: >
 # root of your server.
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://voanhkha.github.io" # the base hostname & protocol for your site
-cover: "/assets/mars.jpg"
+cover: "/images/trackML_hits.gif"
 logo: "/assets/logo.png"
 
 # Build settings
