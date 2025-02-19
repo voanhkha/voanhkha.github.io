@@ -21,7 +21,7 @@ What they did is that instead of a traditional TSP problem where we need to find
 
 In a nutshell, "prime" CityId here means nothing but just random fixed cities among a forest of 200K cities. Just this simple constraint invalids all existing open-source or commercial solvers. What we can do best with those solvers is to generate the non-constraint path (indeed we did with LKH3), then further optimize that path with our custom optimizer. <br><br>
 
-![solution_visual](https://www.kaggleusercontent.com/kf/8187253/eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0..u-xzgC-ByTjprmAT3-ikmQ.H1lImyJ6vsMhmSBYgBweWSx2dLD_strBhnVdDYKoMfp-5dqoodFs6dRQrN-s2wXtGq43BpZsDFTnX9Xd6wZ7vKs_H6qazhvG9OEw-ZCJ7TUiygE-lm2muMDcVSgTkAmDHLsvzX2DMleFIRaOxpjILEnhpnrxM7hCk57iw3jyxikSEmAUs2fuMZ_sSejEn3mKQvTzPN1vtXkNvfEkSbDEN1S3y9uSc3IkdIIzeIzoLiXC3KlJbs_UcNcoejPtgzDqe38bXqxjilH4RJsp_zuPmm1Hq4HDXEPwWItBpZ4hix1m3aIQh0QzC8z1sKbKtU8-n4gzDB4ndWPHRuU7H4B3pYke9ZlZdXDvDBUo6wJF0kq_Yy84GcUhFOzwm2ypODnQ_tW2PdwQi-6ZruW_cguCKv17Kubyg9aqf3IEN-HNMuAE3S51NY08rtXRk_6xjSdaA_KeYlITNfvieGOfLE4CEYVJ3kzfWX-PrtypVHZ36KHhco1APYvSKp40E5mw7s7PiPjtlcQ0AKcKePVVPKYYq32KTq7CsVBzu-BCGfpQrLT2tYA4RouGUA7TRB4CkmxQdwfCUwlBQoYlwRacfzWI_kCU3YG_qA_rpAYDB5G9XipyTnGa0UATM9vxACqO8RJnPTR-IhySYgz2AK-PAf8ZyUAzBIgMMq-TF8fRbqky9JA.1rBJ7hNMhb9dJ2d9B5VoNg/__results___files/__results___63_0.png) 
+![solution_visual](/images/santa18_path.png) 
 <div style="text-align: center;">
   <em>Purple points: every 10th cities in the path. Green points: prime cities. Total 200K cities (points)</em>
 </div>
