@@ -18,7 +18,7 @@ The most interesting fact about this feat is that it wasn't a normal Kaggle comp
 It is the [TrackML Particle Tracking Competition](https://www.kaggle.com/competitions/trackml-particle-identification/leaderboard), and I finished at rank 10/656 (together with my great teammate [Zidmie](https://www.kaggle.com/zidmie)) <br>
 
 <div class="imgcap">
-<img src="/images/images/TrackML_Kaggle.png" width="500">
+<img src="/images/TrackML_Kaggle.png" width="500">
 <div class="thecap"> Animation of some 'hits' </div>
 </div>
 <br>
