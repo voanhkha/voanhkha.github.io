@@ -52,7 +52,7 @@ Why? That's because we have the prior knowledge about the trajectories of the tr
 
 Extracting some simple features, i.e., the Hough transforms, plugging them into an effective unsupervised algorithm, then voila! It worked like a charm! <br><br>
 
-I did experiments with many algos like kNN, HDBSCAN, EM... but finally DBSCAN is the best! It allows us to finetune parameters to adapt the the problem at hand. It's fast, and it's highly effective! I wrote a demo (simple version) [Kaggle notebook](https://www.kaggle.com/code/khahuras/0-53x-clustering-using-hough-features-basic) to show off how I solve this competition. 
+I did experiments with many algos like kNN, HDBSCAN, EM... but finally [DBSCAN](https://en.wikipedia.org/wiki/DBSCAN) is the best! It allows us to finetune parameters to adapt the the problem at hand. It's fast, and it's highly effective! I wrote a demo (simple version) [Kaggle notebook](https://www.kaggle.com/code/khahuras/0-53x-clustering-using-hough-features-basic) to show off how I solve this competition. 
 
 
 <div class="imgcap">
