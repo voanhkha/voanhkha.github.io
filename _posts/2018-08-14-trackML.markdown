@@ -8,7 +8,7 @@ date:   2018-08-14 00:00:00
 author: Kha Vo
 categories: Kaggle
 tags:	AI
-cover:  "/assets/instacode.png"
+cover:  "/images/trackML_hits.gif"
 ---
 
 The solution.
