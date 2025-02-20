@@ -8,7 +8,7 @@ date:   2019-01-11 00:00:00
 author: Kha Vo
 categories: Kaggle
 tags:	AI
-cover:  "/assets/instacode.png"
+cover:  "/images/santa2018.gif"
 ---
 
 This is my first time writing and optimizing from scratch a Python script that solves a traveling salesman problem (TSP) for the Kaggle Santa 2018 competition. <br><br>
@@ -21,10 +21,12 @@ What they did is that instead of a traditional TSP problem where we need to find
 
 In a nutshell, "prime" CityId here means nothing but just random fixed cities among a forest of 200K cities. Just this simple constraint invalids all existing open-source or commercial solvers. What we can do best with those solvers is to generate the non-constraint path (indeed we did with LKH3), then further optimize that path with our custom optimizer. <br><br>
 
-![solution_visual](/images/santa18_path.png) 
-<div style="text-align: center;">
-  <em>Purple points: every 10th cities in the path. Green points: prime cities. Total 200K cities (points)</em>
+
+<div class="imgcap">
+<img src="/images/santa18_path.png" width="500">
+<div class="thecap"> Purple: every 10th cities in the path. Green: prime cities. Total 200K cities (points) </div>
 </div>
+
 <br><br>
 
 The best thing about this year's Santa is that the optimal solution was never been found! For most of other Santa competitions on Kaggle, the problem scale is often not this big and not allowing competitors to get creative on their optimization solution, instead with just a race to the known optimal once 2 or 3 teams with the identical score surge on top of the leaderboard.<br><br>
@@ -36,7 +38,8 @@ Please read my solution write-up and code below: <br><br>
 [My Kaggle solution code](https://www.kaggle.com/code/khahuras/super-fast-cumsum-trick-8th-place-demo-solution)<br>
 [My full code](https://github.com/voanhkha/Traveling-Santa-2018-Kaggle)<br><br>
 
-![solution_path](/images/santa2018.gif)
-<div style="text-align: center;">
-  <em>The visualization of path traveling.</em>
+
+<div class="imgcap">
+<img src="/images/santa2018.gif" width="500">
+<div class="thecap"> The visualization of path traveling </div>
 </div>
