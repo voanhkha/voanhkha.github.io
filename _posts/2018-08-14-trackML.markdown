@@ -15,7 +15,14 @@ Nothing can describe my feelings when I won my first Kaggle competition gold med
 
 The most interesting fact about this feat is that it wasn't a normal Kaggle competition then. We see almost >90% of the contests about supervised machine learning. This one is different. <br><br>
 
-It is the [TrackML Particle Tracking Competition](https://www.kaggle.com/competitions/trackml-particle-identification/leaderboard), and I finished at rank 10/656 (together with my great teammate [Zidmie](https://www.kaggle.com/zidmie)) <br><br>
+It is the [TrackML Particle Tracking Competition](https://www.kaggle.com/competitions/trackml-particle-identification/leaderboard), and I finished at rank 10/656 (together with my great teammate [Zidmie](https://www.kaggle.com/zidmie)) <br>
+
+<div class="imgcap">
+<img src="/images/images/TrackML_Kaggle.png" width="500">
+<div class="thecap"> Animation of some 'hits' </div>
+</div>
+<br>
+<br>
 
 The difference is that due to the nature of the problem, traditional supervised ML algorithms don't work well! Why? Let me explain the problem first. <br> <br>
 
