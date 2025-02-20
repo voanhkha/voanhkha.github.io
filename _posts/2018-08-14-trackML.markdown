@@ -11,8 +11,21 @@ tags:	AI
 cover:  "/images/trackML_hits.gif"
 ---
 
-The solution.
+Nothing can describe my feelings when I won my first Kaggle competition gold medal! <br><br>
 
+The most interesting fact about this feat is that it wasn't a normal Kaggle competition then. We see almost >90% of the contests about supervised machine learning. This one is different. <br><br>
+
+It is the [TrackML Particle Tracking Competition](https://www.kaggle.com/competitions/trackml-particle-identification/leaderboard), and I finished at rank 10/656 (together with my great teammate [Zidmie](https://www.kaggle.com/zidmie)) <br><br>
+
+The difference is that due to the nature of the problem, traditional supervised ML algorithms don't work well! Why? Let me explain the problem first. <br> <br>
+
+In this competition we are given a set of >8000 'events'. For each event, we are given about 100K 'hits' (or points) in 3D coordinates (x, y, z). So we know about every hit's (x, y, z). These hits were the positions of the particles' helix trajectories recorded inside a machine called the 'detector' in high-energy physics. So far so good? <br><br>
+
+In the detector, there are 'layers' and hits are only recorded when the particles hit these layers. So when they travel anywhere in the space between these layers, we don't know where they are.  <br><br>
+
+Imagine a single particle travels in a helix trajectory in space inside the detector. It will hit different layers (and continue to travel). So all of the positions of those hits are recorded. In other words, the total of 100K hits belong to many "trajectories" of single particles. We call this as 'tracks'. <br><br>
+
+Let's look some visualizations of all the hits inside the detector: <br> <br>
 
 
 <div class="imgcap">
@@ -29,6 +42,19 @@ The solution.
 <br>
 
 
+So, what's the problem statement here? <br> <br>
+
+We are required to reconstruct the 'tracks' from the hits alone! (of course, the labeled data is given, meaning that we have at hand a handful of events which we know which hits belong to which tracks). <br><br>
+
+Approaching this contest with a supervised machine learning method can be extremely challenging. The first evidence is that out of the top 10 teams, there is only 1 team (2nd place) employed a supervised ML approach with an NN architecture. <br><br>
+
+Why? That's because we have the prior knowledge about the trajectories of the tracks: they're all helices! If this is scientifically sounding, why don't we exploit this fact? <br><br>
+
+Extracting some simple features, i.e., the Hough transforms, plugging them into an effective unsupervised algorithm, then voila! It worked like a charm! <br><br>
+
+I did experiments with many algos like kNN, HDBSCAN, EM... but finally DBSCAN is the best! It allows us to finetune parameters to adapt the the problem at hand. It's fast, and it's highly effective! I wrote a demo (simple version) [Kaggle notebook](https://www.kaggle.com/code/khahuras/0-53x-clustering-using-hough-features-basic) to show off how I solve this competition. 
+
+
 <div class="imgcap">
 <img src="/images/trackML_hits.gif" width="500">
 <div class="thecap"> Animation of some 'hits' </div>
@@ -36,9 +62,11 @@ The solution.
 <br>
 
 
-
 <div class="imgcap">
 <img src="/images/trackML_tracks.gif" width="500">
 <div class="thecap"> Animation of some reconstructed 'tracks' of helices in 3D </div>
 </div>
 <br>
+<br>
+
+It's really unusual, and good to see a single unsupervised algorithm dominate a featured Kaggle competition with a very hard scientific problem. The world of AI is truly astounding and full of surprise!
