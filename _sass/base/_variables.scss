@@ -24,6 +24,7 @@ $small-spacing: $base-spacing / 2;
 $base-z-index: 0;
 
 // Colors
+$black: #000;
 $dark-gray: #333;
 $medium-gray: #999;
 $light-gray: #ddd;
@@ -40,7 +41,7 @@ $gray: #7f8c8d;				// Asbestos
 $bc-red: #bc0000;
 
 // Font Colors
-$base-background-color: $dark-gray;
+$base-background-color: $black;
 $base-font-color: $white;
 $action-color: $orange;
 $highlight-color: tint($action-color, 33%);
