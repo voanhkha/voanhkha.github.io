@@ -17,6 +17,8 @@ html, body {
 	margin: 0;
 	padding: 0;
 	width: 100%;
+	background-color: $dark-gray;
+    	color: $white; /* Ensures text is readable */
 }
 
 ol.default {
