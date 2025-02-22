@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Kaggle
+title: KAGGLE
 permalink: /kaggle/
 main_nav: true
 ---
