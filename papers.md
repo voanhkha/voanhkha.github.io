@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "Papers"
+title: "PAPERS"
 permalink: /papers/
 main_nav: true
 ---
