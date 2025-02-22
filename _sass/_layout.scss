@@ -30,7 +30,7 @@ ul.default {
 }
 
 code {
-	background-color: #eee;
+	background-color: $medium-gray;
 	display: inline-block;
 	border-radius: 3px;
 	padding: 0 3px;
@@ -257,7 +257,7 @@ pre code.hljs {
     }
 	}
 	.site-header-container {
-		color: $dark-gray;
+		color: $white;
 		text-shadow: 0 2px 1px rgba(0,0,0,0.33);
 		background-color: $highlight-color;
 		.site-header{
@@ -273,7 +273,7 @@ pre code.hljs {
 	img {
 		display: block;
 		margin: auto;
-		width: 90%;
+		width: 95%;
 	}
 	/*
 	*	Posts
