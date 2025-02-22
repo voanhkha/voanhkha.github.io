@@ -47,7 +47,7 @@ jekyll-archives:
     tag: '/tag/:name/'
 
 # Disqus comments
-# disqus_shortname: bencentra
+disqus_shortname: anhkhavo
 
 # Google analytics
 # ga_tracking_id: "UA-XXXX-1"
@@ -83,8 +83,8 @@ social:
     desc: Follow me on X (Twitter)
     share: true
 
-  - name: "Kaggle"
-    icon: K
+  - name: Kaggle
+    icon: kaggle
     username: "Kaggle"
     url: "https://www.kaggle.com/khahuras"
     desc: View my Kaggle profile
