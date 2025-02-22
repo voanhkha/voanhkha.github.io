@@ -17,7 +17,7 @@ html, body {
 	margin: 0;
 	padding: 0;
 	width: 100%;
-	background-color: $dark-gray;
+	background-color: $black;
     	color: $white; /* Ensures text is readable */
 }
 
@@ -30,7 +30,7 @@ ul.default {
 }
 
 code {
-	background-color: $medium-gray;
+	background-color: $dark-gray;
 	display: inline-block;
 	border-radius: 3px;
 	padding: 0 3px;
@@ -123,7 +123,7 @@ pre code.hljs {
 	top: 0;
 	left: 0;
 	right: 0;
-	background: $dark-gray;
+	background: $black;
 	z-index: 1;
 	/*
 	*	Navigation Menu - http://refills.bourbon.io/unstyled/ (see "Navigation")
