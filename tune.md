@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Music
-permalink: /music/
+title: TUNE
+permalink: /tune/
 main_nav: true
 ---
 I'm able to pick some guitar strings or smash some piano keys, although not as good as professionals 😄.
