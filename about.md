@@ -10,11 +10,13 @@ My name is Kha Vo, an AI scientist / engineer. <br>
 
 My interest of work is to develop creative AI solutions to solve complex problems. That could be any of LLM finetuning, deep learning modeling (time-series, RL, graph-NN...), program synthesis, mathematical optimization, AutoML, to statistical analysis. <br>
 
-My strength is my versatility and exposure to various challenging AI problems, demonstrated by achieving 10 Kaggle competition gold medals! Check out my [Kaggle Achievements](https://khavo.ai/kaggle) page or my [Kaggle profile](https://kaggle.com/khahuras) <br>
+My strength is my versatility and exposure to various challenging AI problems, demonstrated by achieving 10 Kaggle competition gold medals! I'm proud to present my [Kaggle Achievements](https://khavo.ai/kaggle) and my [Kaggle profile](https://kaggle.com/khahuras). <br>
 
-I have worked for: Collective[i], H2O.ai,  Oracle, UTS, UNSW... <br>
+Occasionally I write [Posts](https://khavo.ai/posts) to share my technical insights and discoveries. <br>
 
-Here is also the list of my few notable [papers](https://khavo.ai/papers). <br>
+I have worked as key roles for Collective[i], H2O.ai, Oracle, CBA, UNSW, UTS. <br>
+
+Here is the list of my few notable [papers](https://khavo.ai/papers). <br>
 
 Besides work, I also enjoy music, chess, and soccer. Check out my [Tunes](https://khavo.ai/tunes) page! <br><br>
 
