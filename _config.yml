@@ -10,17 +10,17 @@ exclude:
 
 # Site settings
 title: Kha Vo
-subtitle: "A versatile AI scientist who won 10 Kaggle competition gold medals!"
+subtitle: "A versatile AI scientist-engineer who won 10 Kaggle competition gold medals"
 email: khahuras@gmail.com
 name: Kha Vo
 description: >
-  The Magic of AI and Machine Learning from a Kaggle Competition Grandmaster.
+  The personal webpage of a 10-gold-medal Kaggle Grandmaster
 # Base URL of site (i.e. /blog). It should always start with a slash,
 # and never end with a slash. Set it to a blank value if hosting at the
 # root of your server.
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://voanhkha.github.io" # the base hostname & protocol for your site
-cover: "/images/trackML_hits.gif"
+cover: "/assets/grow.gif"
 logo: "/assets/logo.png"
 
 # Build settings
