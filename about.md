@@ -16,7 +16,7 @@ Occasionally I write [Posts](https://khavo.ai/posts) to share my technical insig
 
 I have worked as key roles for Collective[i], H2O.ai, Oracle, CBA, UNSW, UTS. <br>
 
-Here is the list of my few notable [papers](https://khavo.ai/papers). <br>
+Also, I have a few notable research [Papers](https://khavo.ai/papers). <br>
 
 Besides work, I also enjoy music, chess, and soccer. Check out my [Tunes](https://khavo.ai/tunes) page! <br><br>
 
