@@ -1,8 +1,8 @@
 ---
 layout: post
 comments: true
-title: Write a traveling salesman solver in python from scratch!
-excerpt: "How a custom TSP problem forced us to write custom algorithms and finally seized rank 8/1874 in Kaggle Santa 2018! (plus an introduction to Kotlin!)"
+title: Write 3000 lines of python code to solve a strange traveling salesman problem
+excerpt: "How a weird TSP problem forced us to write custom algorithms and finally seized rank 8/1874 in Kaggle Santa 2018! (plus an introduction to Kotlin!)"
 mathjax: true
 date:   2019-01-11 00:00:00
 author: Kha Vo
