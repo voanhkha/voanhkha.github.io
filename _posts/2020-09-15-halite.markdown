@@ -1,8 +1,8 @@
 ---
 layout: post
 comments: true
-title: Imitation learning by U-Net for a 4-player ship battle game
-excerpt: "I will show how a data-driven approach (semantic segmentation) can mimic behaviours of other competitors rule-based top bots in the Kaggle Multi-Agent Halite IV Competition, and secured rank 8/1140!"
+title: Imitation learning by U-Net for a multi-player strategic game
+excerpt: "I will show how a data-driven approach (semantic segmentation) can mimic rule-based top bots in the Kaggle 4-Agent Halite IV Competition, and secured rank 8/1140!"
 mathjax: true
 date:   2020-09-15 00:00:00
 author: Kha Vo
