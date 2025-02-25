@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-title: My LLM plays a coop-competitive game
+title: My finetuned LLM plays 20 questions like a charm
 excerpt: "How to embed an offline policy knowledge to an LLM AI chatbot that plays the game of 20 Questions, and won rank 13/832 in a Kaggle simulation competition."
 mathjax: true
 date:   2024-08-29 00:00:00
