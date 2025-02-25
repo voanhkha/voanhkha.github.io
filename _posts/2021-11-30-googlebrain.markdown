@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-title: I finally WIN a Kaggle competition! (rank 1/2605)
+title: I finally WIN a Kaggle competition, rank 1/2605 !!!
 excerpt: "I finished 1/2600 teams in the Google Brain Ventilator Pressure Prediction!"
 mathjax: true
 date:   2021-11-30 00:00:00
