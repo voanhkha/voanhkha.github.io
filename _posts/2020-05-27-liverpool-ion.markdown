@@ -1,8 +1,8 @@
 ---
 layout: post
 comments: true
-title: "I ALMOST won my 1st Kaggle competition!" 
-excerpt: "...instead finished 3rd due to an unfortunate data leak that 2 other teams exploited in the Liverpool Ion Switching Competition"
+title: "Hidden Markov model (alone!) can almost win me a Kaggle competition" 
+excerpt: "...instead I finished 3rd due to an unfortunate data leak that 2 other teams exploited in the Liverpool Ion Switching Competition"
 mathjax: true
 date:   2020-05-27 00:00:00
 author: Kha Vo
