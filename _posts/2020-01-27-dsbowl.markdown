@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-title: The power of ensemble zoo
+title: Ensemble zoo never disappoints!
 excerpt: "... but must be equipped with counter-overfitting measures to win a Kaggle Gold medal!"
 mathjax: true
 date:   2020-01-27 00:00:00
