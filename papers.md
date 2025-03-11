@@ -8,7 +8,7 @@ main_nav: true
 My few notable 1st-authored research papers (out of more than 10 in total):
 <br> <br> 
 
-- Q-MARL: A quantum-inspired algorithm using neural message passing for large-scale multi-agent reinforcement learning (2020)
+- Q-MARL: A quantum-inspired algorithm using neural message passing for large-scale multi-agent reinforcement learning (2025)
 [[Paper]](https://arxiv.org/abs/2503.07397){:target="_blank"}
 <br> <br>
 
