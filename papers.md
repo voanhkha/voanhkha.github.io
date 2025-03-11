@@ -12,8 +12,8 @@ My few notable 1st-authored research papers (out of more than 10 in total):
 [[Paper]](https://arxiv.org/abs/2503.07397){:target="_blank"}
 <br> <br>
 
-- Statistical supervised meta-ensemble algorithm for medical record linkage (2019)
-[[Paper]](https://www.sciencedirect.com/science/article/pii/S1532046419301388){:target="_blank"}
+- Statistical supervised meta-ensemble algorithm for medical record linkage (2019) <br>
+(copy this link to a new tab https://www.sciencedirect.com/science/article/pii/S1532046419301388)
 <br> <br>
 
 - Subject-Independent ERP-based Brain-Computer Interfaces (2018)
