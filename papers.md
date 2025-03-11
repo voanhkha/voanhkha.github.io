@@ -8,8 +8,8 @@ main_nav: true
 My few notable 1st-authored research papers (out of more than 10 in total):
 <br> <br> 
 
-- Q-MARL: A graph-based solution for large-scale multi-agent reinforcement learning inspired by quantum chemistry (2020)
-[[Paper]](https://github.com/voanhkha/voanhkha.github.io/blob/master/assets/Q-MARL_KhaVo_Paper.pdf)
+- Q-MARL: A quantum-inspired algorithm using neural message passing for large-scale multi-agent reinforcement learning (2020)
+[[Paper]](https://arxiv.org/abs/2503.07397)
 <br> <br>
 
 - Statistical supervised meta-ensemble algorithm for medical record linkage (2019)
