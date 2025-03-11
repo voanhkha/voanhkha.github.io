@@ -20,6 +20,14 @@ Also, I have a few notable research [Papers](https://khavo.ai/papers). <br>
 
 Besides work, I also enjoy music, chess, and soccer. Check out my [Tunes](https://khavo.ai/tunes) page! <br><br>
 
+<!-- Container for the animation -->
+<div id="animation-container">
+  <!-- The animation will appear here -->
+</div>
+
+<!-- Include the JS script file -->
+<script src="{{ '/js/neural_visuals.js' | relative_url }}"></script>
+
 
 ### Contact me <br>
 
