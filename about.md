@@ -26,6 +26,7 @@ Besides work, I also enjoy music, chess, and soccer. Check out my [Tunes](https:
 </div>
 
 <!-- Include the JS script file -->
+<canvas id="visualizationCanvas" class="fibonacci"></canvas>
 <script src="{{ '/js/neural_visuals.js' | relative_url }}"></script>
 
 
