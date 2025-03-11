@@ -9,7 +9,7 @@ My few notable 1st-authored research papers (out of more than 10 in total):
 <br> <br> 
 
 - Q-MARL: A quantum-inspired algorithm using neural message passing for large-scale multi-agent reinforcement learning (2020)
-[[Paper]](https://arxiv.org/abs/2503.07397)
+[[Paper]](https://arxiv.org/abs/2503.07397){:target="_blank"}
 <br> <br>
 
 - Statistical supervised meta-ensemble algorithm for medical record linkage (2019)
@@ -17,13 +17,13 @@ My few notable 1st-authored research papers (out of more than 10 in total):
 <br> <br>
 
 - Subject-Independent ERP-based Brain-Computer Interfaces (2018)
-[[Paper]](https://opus.lib.uts.edu.au/bitstream/10453/120128/4/TNSRE_2017.pdf)
+[[Paper]](https://opus.lib.uts.edu.au/bitstream/10453/120128/4/TNSRE_2017.pdf){:target="_blank"}
 <br> <br>
 
 - Optimal Length-Constrained Segmentation and Subject-Adaptive Learning for Real-time Arrhythmia Detection (2018)
-[[Paper]](https://opus.lib.uts.edu.au/bitstream/10453/133622/4/08672519%20%28002%29.pdf)
+[[Paper]](https://opus.lib.uts.edu.au/bitstream/10453/133622/4/08672519%20%28002%29.pdf){:target="_blank"}
 <br> <br>
 
 - Extraction of Dynamic Trajectory on Multi-Stroke Static Handwriting Images Using Loop Analysis and Skeletal Graph Model (2016)
-[[Paper]](https://www.rev-jec.org/index.php/rev-jec/article/view/131/107)
+[[Paper]](https://www.rev-jec.org/index.php/rev-jec/article/view/131/107){:target="_blank"}
 <br> <br>
