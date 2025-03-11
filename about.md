@@ -22,12 +22,12 @@ Besides work, I also enjoy music, chess, and soccer. Check out my [Tunes](https:
 
 <!-- Container for the animation -->
 <div id="animation-container">
-  <!-- The animation will appear here -->
-</div>
-
 <!-- Include the JS script file -->
 <canvas id="visualizationCanvas" class="fibonacci"></canvas>
 <script src="{{ '/js/neural_visuals.js' | relative_url }}"></script>
+</div>
+
+
 
 
 ### Contact me <br>
