@@ -87,8 +87,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 // canvas.width = width * pixelRatio;
                 // canvas.height = height * pixelRatio;
                 
-                canvas.width = window.innerWidth;
-                canvas.height = window.innerHeight;
+                canvas.width = window.innerWidth * pixelRatio;
+                canvas.height = window.innerHeight * pixelRatio;
                 
                 // Style size (CSS pixels)
                 canvas.style.width = width + 'px';
