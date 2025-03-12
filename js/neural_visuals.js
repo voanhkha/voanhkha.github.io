@@ -80,17 +80,13 @@ document.addEventListener('DOMContentLoaded', () => {
             // Make canvas full screen
             function resizeCanvas() {
                 const pixelRatio = window.devicePixelRatio || 1;
-                
-                // const width = canvas.clientWidth;
-                // const height = canvas.clientHeight;
-                
-                const width = window.innerWidth;
-                const height = window.innerHeight;
-                
-                 // Set actual size in memory (scaled to account for extra pixel density)
+                const width = canvas.clientWidth;
+                const height = canvas.clientHeight;
+
+                // Set actual size in memory (scaled to account for extra pixel density)
                 canvas.width = width * pixelRatio;
                 canvas.height = height * pixelRatio;
-                
+
                 // Style size (CSS pixels)
                 canvas.style.width = width + 'px';
                 canvas.style.height = height + 'px';
@@ -104,7 +100,6 @@ document.addEventListener('DOMContentLoaded', () => {
             // Particle class: Manages individual particle behavior, appearance, and connections
             class Particle {
                 constructor(x, y, angle, patternRadius, centerX, centerY, color, settings) {
-                    this.turn = 0
                     this.x = x;
                     this.y = y;
                     this.angle = angle;
@@ -147,14 +142,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 update() {
                     // Optimize angle calculation by using modulo to keep it in range
-                    // this.angle = (this.angle + this.orbitSpeed) % this.TWO_PI;
+                    this.angle = (this.angle + this.orbitSpeed) % this.TWO_PI;
 
                     // Calculate position
                     const angleCalc = this.angle;
                     this.x = this.centerX + this.orbitRadius * Math.cos(angleCalc);
                     this.y = this.centerY + this.orbitRadius * Math.sin(angleCalc);
-
-                    this.turn += 1
 
                     // Simplified pulsation logic with fewer conditionals
                     if (this.pulsationState === 'fadeIn') {
@@ -180,8 +173,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 draw() {
                     // Only draw if particle is visible
                     if (this.opacity <= 0) return;
-                    if (this.turn < this.orbitRadius * 2) return;
-
+                    
                     ctx.beginPath();
                     ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
                     ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
@@ -204,10 +196,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         // Skip if other particle is invisible
                         if (otherParticle.opacity <= 0) return;
 
-                        if (this.turn < this.orbitRadius * 2.2) return;
-
                         const distance = Math.hypot(this.x - otherParticle.x, this.y - otherParticle.y);
-                        const maxDistance = 200;
+                        const maxDistance = 250;
 
                         if (distance < maxDistance) {
                             // Cache the opacity calculation
@@ -501,7 +491,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         }
                     }
                 } else if (pattern === 'fibonacci') {
-                    const numParticles = 1200;
+                    const numParticles = 800;
                     // Calculate maxRadius based on canvas dimensions
                     const maxRadius = Math.min(canvas.clientWidth, canvas.clientHeight) * 0.28;
                     const goldenAngle = Math.PI * (3 - Math.sqrt(5));
@@ -1087,3 +1077,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
+                // const width = window.innerWidth;
+                // const height = window.innerHeight;
