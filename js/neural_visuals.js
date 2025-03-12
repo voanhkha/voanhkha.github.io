@@ -80,8 +80,11 @@ document.addEventListener('DOMContentLoaded', () => {
             // Make canvas full screen
             function resizeCanvas() {
                 const pixelRatio = window.devicePixelRatio || 1;
-                const width = canvas.clientWidth;
-                const height = canvas.clientHeight;
+                //const width = canvas.clientWidth;
+                //const height = canvas.clientHeight;
+                
+                const width = window.innerWidth;
+                const height = window.innerHeight;
 
                 // Set actual size in memory (scaled to account for extra pixel density)
                 canvas.width = width * pixelRatio;
@@ -1078,5 +1081,5 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-                // const width = window.innerWidth;
+                    // const width = windowr.innerWidth;
                 // const height = window.innerHeight;
