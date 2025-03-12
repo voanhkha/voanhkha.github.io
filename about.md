@@ -11,7 +11,7 @@ My name is Kha Vo, an AI scientist / engineer. <br>
 My interest of work is to develop creative AI solutions to solve complex problems. That could be any of LLM finetuning, deep learning modeling (time-series, RL, graph-NN...), program synthesis, mathematical optimization, AutoML, to statistical analysis. <br>
 
 <div id="animation-container">
-<canvas id="visualizationCanvas" class="wave"></canvas>
+<canvas id="visualizationCanvas" class="fibonacci"></canvas>
 <!--   <canvas id="visualizationCanvas" class="fibonacci" width="1604" height="600" style="width: 802px; height: 300px; opacity: 1;"></canvas> -->
 <script src="{{ '/js/neural_visuals.js' | relative_url }}"></script>
 </div>
@@ -22,7 +22,7 @@ Occasionally I write [Posts](https://khavo.ai/posts) to share my technical insig
 
 <div id="animation-container">
 <!-- <canvas id="visualizationCanvas" class="wave"></canvas> -->
-  <canvas id="visualizationCanvas" class="wave" width="1604" height="600" style="width: 802px; height: 300px; opacity: 1;"></canvas>
+  <canvas id="visualizationCanvas" class="fibonacci" width="1604" height="600" style="width: 802px; height: 300px; opacity: 1;"></canvas>
 <script src="{{ '/js/neural_visuals.js' | relative_url }}"></script>
 </div>
 
