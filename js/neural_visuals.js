@@ -84,9 +84,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 const height = canvas.clientHeight;
 
                 // Set actual size in memory (scaled to account for extra pixel density)
-                canvas.width = width * pixelRatio;
-                canvas.height = height * pixelRatio;
-
+                // canvas.width = width * pixelRatio;
+                // canvas.height = height * pixelRatio;
+                
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+                
                 // Style size (CSS pixels)
                 canvas.style.width = width + 'px';
                 canvas.style.height = height + 'px';
