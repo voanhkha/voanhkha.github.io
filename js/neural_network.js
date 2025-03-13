@@ -34,7 +34,7 @@ var w = c.width = window.innerWidth,
 			rotVelY: .0005,
 			
 			repaintColor: '#111',
-			connectionColor: 'hsla(30,100%,0%, alp)', //blue
+			connectionColor: 'hsla(30,0%,100%, alp)', //blue
 			rootColor: 'hsla(35,0%,100%, 1)', // red
 			endColor: 'hsla(40,0%,100%, 1)', // cyan
 			dataColor: 'hsla(45,0%,100%, 1)',  // orange
