@@ -13,31 +13,31 @@ var w = c.width = window.innerWidth,
 		opts = {
 			
 			range: 180,
-			baseConnections: 3,
-			addedConnections: 5,
-			baseSize: 5,
+			baseConnections: 8,
+			addedConnections: 10,
+			baseSize: 3,
 			minSize: 1,
-			dataToConnectionSize: .4,
+			dataToConnectionSize: .3,
 			sizeMultiplier: .7,
 			allowedDist: 40,
 			baseDist: 40,
 			addedDist: 30,
-			connectionAttempts: 100,
+			connectionAttempts: 130,
 			
 			dataToConnections: 1,
-			baseSpeed: .02,
-			addedSpeed: .025,
-			baseGlowSpeed: .1,
-			addedGlowSpeed: .1,
+			baseSpeed: .01,
+			addedSpeed: .001,
+			baseGlowSpeed: .05,
+			addedGlowSpeed: .05,
 			
-			rotVelX: .002,
-			rotVelY: .0015,
+			rotVelX: .001,
+			rotVelY: .0005,
 			
 			repaintColor: '#111',
 			connectionColor: 'hsla(40,0%,100%, alp)', //blue
 			rootColor: 'hsla(40,0%,100%, alp)', // red
 			endColor: 'hsla(40,0%,100%,alp)', // cyan
-			dataColor: 'hsla(40,80%,light%,alp)',  // orange
+			dataColor: 'hsla(40,80%,100%,alp)',  // orange
 
 			// connectionColor: 'hsla(200,60%,light%, alp)', //blue
 			// rootColor: 'hsla(0,60%,light%, alp)', // red
