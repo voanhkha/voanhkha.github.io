@@ -1,4 +1,4 @@
-var c = document.getElementById('visualizationCanvas');
+var c = document.getElementById('visualizationCanvas_neuralNet');
 var ctx = c.getContext('2d');
 
 // Set canvas to full screen
