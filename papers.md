@@ -26,4 +26,11 @@ https://www.sciencedirect.com/science/article/pii/S1532046419301388
 
 - Extraction of Dynamic Trajectory on Multi-Stroke Static Handwriting Images Using Loop Analysis and Skeletal Graph Model (2016)
 [[Paper]](https://www.rev-jec.org/index.php/rev-jec/article/view/131/107){:target="_blank"}
-<br> <br>
+
+
+<div id="animation-container">
+  <!-- Canvas element for animation -->
+  <canvas id="visualizationCanvas_neuralNet"></canvas>
+</div>
+
+<script src="{{ '/js/neural_network.js' | relative_url }}"></script>
