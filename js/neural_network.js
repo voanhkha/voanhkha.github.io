@@ -35,9 +35,9 @@ var w = c.width = window.innerWidth,
 			
 			repaintColor: '#111',
 			connectionColor: 'hsla(30,100%,0%, alp)', //blue
-			rootColor: 'hsla(35,100%,0%, 1)', // red
-			endColor: 'hsla(40,100%,0%,1)', // cyan
-			dataColor: 'hsla(45,100%,0%,1)',  // orange
+			rootColor: 'hsla(35,0%,100%, 1)', // red
+			endColor: 'hsla(40,0%,100%, 1)', // cyan
+			dataColor: 'hsla(45,0%,100%, 1)',  // orange
 
 			// connectionColor: 'hsla(200,60%,light%, alp)', //blue
 			// rootColor: 'hsla(0,60%,light%, alp)', // red
