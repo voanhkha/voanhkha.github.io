@@ -34,10 +34,10 @@ var w = c.width = window.innerWidth,
 			rotVelY: .0005,
 			
 			repaintColor: '#111',
-			connectionColor: 'hsla(30,100%,light%, 1)', //blue
-			rootColor: 'hsla(35,100%,light%, 1)', // red
-			endColor: 'hsla(40,100%,light%,1)', // cyan
-			dataColor: 'hsla(45,100%,light%,1)',  // orange
+			connectionColor: 'hsla(30,100%,0%, alp)', //blue
+			rootColor: 'hsla(35,100%,0%, 1)', // red
+			endColor: 'hsla(40,100%,0%,1)', // cyan
+			dataColor: 'hsla(45,100%,0%,1)',  // orange
 
 			// connectionColor: 'hsla(200,60%,light%, alp)', //blue
 			// rootColor: 'hsla(0,60%,light%, alp)', // red
