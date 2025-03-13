@@ -34,8 +34,8 @@ https://www.sciencedirect.com/science/article/pii/S1532046419301388
 - Extraction of Dynamic Trajectory on Multi-Stroke Static Handwriting Images Using Loop Analysis and Skeletal Graph Model (2016)
 [[Paper]](https://www.rev-jec.org/index.php/rev-jec/article/view/131/107){:target="_blank"}
 
-<div id="animation-container">
+ <!-- <div id="animation-container"> -->
   <!-- Canvas element for animation -->
-  <canvas id="visualizationCanvas_rainbow"></canvas>
-</div>
-<script src="{{ '/js/rainbow.js' | relative_url }}"></script>
+ <!--  <canvas id="visualizationCanvas_rainbow"></canvas> -->
+<!--  </div> -->
+<!--  <script src="{{ '/js/rainbow.js' | relative_url }}"></script> -->
