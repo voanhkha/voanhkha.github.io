@@ -5,6 +5,13 @@ permalink: /papers/
 main_nav: true
 ---
 
+<div id="animation-container">
+  <!-- Canvas element for animation -->
+  <canvas id="visualizationCanvas_neuralNet"></canvas>
+</div>
+
+<script src="{{ '/js/neural_network.js' | relative_url }}"></script>
+
 My few notable 1st-authored research papers (out of more than 10 in total):
 <br> <br> 
 
@@ -28,9 +35,3 @@ https://www.sciencedirect.com/science/article/pii/S1532046419301388
 [[Paper]](https://www.rev-jec.org/index.php/rev-jec/article/view/131/107){:target="_blank"}
 
 
-<div id="animation-container">
-  <!-- Canvas element for animation -->
-  <canvas id="visualizationCanvas_neuralNet"></canvas>
-</div>
-
-<script src="{{ '/js/neural_network.js' | relative_url }}"></script>
