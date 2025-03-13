@@ -41,8 +41,12 @@ Detect the identities of several popular LLMs based on their outputs <br>
 * __3/2618 Liverpool Ion Switching (Gold) - May 2020__ <br> 
 Deep Learning/Hidden Markove modelling to predict the number of open channels during the duration of time-series human electrophysiological signal data. Requires finesse in time-series analysis, spotting the pivoting distinctive features from signal by systematic approaches (mainly unsupervised modelling like kNN and tSNE), then use an ensemble of methods (RNNs, decision trees, random forest) to avoid overfitting. <br>
 [[ContestPage]](https://www.kaggle.com/c/liverpool-ion-switching/leaderboard) [[Code1]](https://www.kaggle.com/khahuras/1st-place-non-leak-solution) [[Code2]](https://github.com/GillesVandewiele/Liverpool-Ion-Switching) [[BriefSolution]](https://www.kaggle.com/c/liverpool-ion-switching/discussion/153734) [[FullSolution]](https://medium.com/@gillesvandewiele/334fab86fc85)
-<br>
-<br>
+
+<div id="animation-container">
+  <!-- Canvas element for animation -->
+  <canvas id="visualizationCanvas_sphere"></canvas>
+</div>
+<script src="{{ '/js/sphere' | relative_url }}"></script>
 
 * __8/1874 Traveling Santa Competition (Gold) - Jan 2019__ <br> 
 Big-scale Optimization: find the shortest path going through 200000 cities with a customized constraints that no commercial solver can do. <br>
