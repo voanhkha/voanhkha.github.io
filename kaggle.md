@@ -10,10 +10,13 @@ main_nav: true
 <div class="imgcap">
 <img src="/images/KhaVo_KaggleGM.png" style="width: 70%;">
 </div>  
-<br>
-<br>
 
 
+<div id="animation-container">
+  <!-- Canvas element for animation -->
+  <canvas id="visualizationCanvas_constellation"></canvas>
+</div>
+<script src="{{ '/js/constellation.js' | relative_url }}"></script>
 
 * __6/1400: ARC Prize 2024 (Solo Gold) - Nov 2024__ <br>
 Create an AI capable of solving reasoning tasks it has never seen before. After this achievement, I got the chance to personally meet Francois Chollet!
