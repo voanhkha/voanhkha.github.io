@@ -25,22 +25,27 @@ var w = c.width = window.innerWidth,
 			connectionAttempts: 100,
 			
 			dataToConnections: 1,
-			baseSpeed: .04,
-			addedSpeed: .05,
-			baseGlowSpeed: .4,
-			addedGlowSpeed: .4,
+			baseSpeed: .02,
+			addedSpeed: .025,
+			baseGlowSpeed: .1,
+			addedGlowSpeed: .1,
 			
-			rotVelX: .003,
-			rotVelY: .002,
+			rotVelX: .002,
+			rotVelY: .0015,
 			
 			repaintColor: '#111',
-			connectionColor: 'hsla(200,60%,light%,alp)',
-			rootColor: 'hsla(0,60%,light%,alp)',
-			endColor: 'hsla(160,20%,light%,alp)',
-			dataColor: 'hsla(40,80%,light%,alp)',
+			connectionColor: 'hsla(200,0%,100%, alp)', //blue
+			rootColor: 'hsla(0,0%,100%, alp)', // red
+			endColor: 'hsla(160,0%,100%,alp)', // cyan
+			dataColor: 'hsla(40,80%,light%,alp)',  // orange
+
+			// connectionColor: 'hsla(200,60%,light%, alp)', //blue
+			// rootColor: 'hsla(0,60%,light%, alp)', // red
+			// endColor: 'hsla(160,20%,light%,alp)', // cyan
+			// dataColor: 'hsla(40,80%,light%,alp)',  // orange
 			
 			wireframeWidth: .1,
-			wireframeColor: '#88f',
+			wireframeColor: '#fff',
 			
 			depth: 250,
 			focalLength: 250,
