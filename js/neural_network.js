@@ -72,10 +72,16 @@ var w = c.width = window.innerWidth,
 		
 		Tau = Math.PI * 2;
 
+  // Title and Subtitle (you can replace this with dynamic values if needed)
+  var title = 'Kha Vo' // '{{ site.title }}'; // Title from Jekyll
+  var subtitle = 'A versatile grandmaster AI scientist who won 10 Kaggle competition medals' // '{{ site.subtitle }}'; // Subtitle from Jekyll, optional
+  // Set font styles
+
 ctx.fillStyle = '#222';
 ctx.fillRect( 0, 0, w, h );
-ctx.fillStyle = '#ccc';
-ctx.font = '50px Verdana';
+ctx.fillStyle = '#ccc'; // Title text color
+ctx.font = '50px Verdana'; // Set font for title
+ctx.textAlign = 'center'; // Center text horizontally
 ctx.fillText( 'Calculating Nodes', w / 2 - ctx.measureText( 'Calculating Nodes' ).width / 2, h / 2 - 15 );
 
 window.setTimeout( init, 4 ); // to render the loading screen
@@ -354,6 +360,14 @@ function anim(){
 	ctx.strokeStyle = 'red';
 	ctx.arc( opts.vanishPoint.x, opts.vanishPoint.y, opts.range * opts.focalLength / opts.depth, 0, Tau );
 	ctx.stroke();*/
+
+	// WRITE TEXT
+	ctx.fillText(title, w / 2, h / 3);  // Adjust y position as needed
+    // If there is a subtitle, draw it
+      if (subtitle) {
+      ctx.font = '20px Arial'; // Smaller font for subtitle
+      ctx.fillText(subtitle, w / 2, h / 2);  // Subtitle below the title
+       }
 }
 
 window.addEventListener( 'resize', function(){
