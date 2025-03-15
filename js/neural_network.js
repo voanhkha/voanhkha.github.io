@@ -77,12 +77,11 @@ var w = c.width = window.innerWidth,
   var subtitle = 'A versatile grandmaster AI scientist who won 10 Kaggle competition medals' // '{{ site.subtitle }}'; // Subtitle from Jekyll, optional
   // Set font styles
 
-ctx.fillStyle = '#222';
 ctx.fillRect( 0, 0, w, h );
-ctx.fillStyle = '#ccc'; // Title text color
+ctx.fillStyle = '#FFD580'; // Title text color
 ctx.font = '50px Verdana'; // Set font for title
 ctx.textAlign = 'center'; // Center text horizontally
-ctx.fillText( 'Calculating Nodes', w / 2 - ctx.measureText( 'Calculating Nodes' ).width / 2, h / 2 - 15 );
+//ctx.fillText( 'Calculating Nodes', w / 2 - ctx.measureText( 'Calculating Nodes' ).width / 2, h / 2 - 15 );
 
 window.setTimeout( init, 4 ); // to render the loading screen
 
@@ -362,11 +361,12 @@ function anim(){
 	ctx.stroke();*/
 
 	// WRITE TEXT
-	ctx.fillText(title, w / 2, h / 3);  // Adjust y position as needed
+	// ctx.font = '50px Verdana'; // Smaller font for subtitle
+	ctx.fillText(title, w/2, 2*h/5);  // Adjust y position as needed
     // If there is a subtitle, draw it
       if (subtitle) {
-      ctx.font = '20px Arial'; // Smaller font for subtitle
-      ctx.fillText(subtitle, w / 2, h / 2);  // Subtitle below the title
+      ctx.font = 'italic 20px Arial'; // Smaller font for subtitle
+      ctx.fillText(subtitle, w/2, 2*h/3);  // Subtitle below the title
        }
 }
 
