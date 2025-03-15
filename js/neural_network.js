@@ -73,7 +73,7 @@ var w = c.width = window.innerWidth,
 		Tau = Math.PI * 2;
 
   // Title and Subtitle (you can replace this with dynamic values if needed)
-  var title = 'KHA VO' // '{{ site.title }}'; // Title from Jekyll
+  var title = 'Kha Vo' // '{{ site.title }}'; // Title from Jekyll
   var subtitle = 'A versatile grandmaster AI scientist who won 10 Kaggle competition medals' // '{{ site.subtitle }}'; // Subtitle from Jekyll, optional
   // Set font styles
 
@@ -360,15 +360,15 @@ function anim(){
 
 	// WRITE TEXT
 	ctx.textAlign = 'center'; // Center text horizontally
-	ctx.fillStyle = '#d35400'; // Title text color
+	ctx.fillStyle = '#d36900'; // Title text color
 	ctx.font = 'bold 50px "Fira Code", monospace' // 'bold 50px "IBM Plex Mono", monospace', '50px Verdana'
 	ctx.fillText(title, w/2, 7*h/15);  // Adjust y position as needed
     // If there is a subtitle, draw it
       if (subtitle) {
-      ctx.font = '20px "IBM Plex Mono", monospace'; // Smaller font for subtitle
+      ctx.font = 'italic 20px "IBM Plex Mono", monospace'; // Smaller font for subtitle
       ctx.fillStyle = '#FFFFFF';
       ctx.textAlign = 'center'; // Center text horizontally
-      ctx.fillText(subtitle, w/2, 9*h/15);  // Subtitle below the title
+      ctx.fillText(subtitle, w/2, 8*h/15);  // Subtitle below the title
        }
 }
 
