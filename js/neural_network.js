@@ -78,8 +78,6 @@ var w = c.width = window.innerWidth,
   // Set font styles
 
 ctx.fillRect( 0, 0, w, h );
-ctx.fillStyle = '#FFD580'; // Title text color
-ctx.font = '50px Verdana'; // Set font for title
 ctx.textAlign = 'center'; // Center text horizontally
 //ctx.fillText( 'Calculating Nodes', w / 2 - ctx.measureText( 'Calculating Nodes' ).width / 2, h / 2 - 15 );
 
@@ -362,11 +360,13 @@ function anim(){
 
 	// WRITE TEXT
 	// ctx.font = '50px Verdana'; // Smaller font for subtitle
+	ctx.fillStyle = '#FFD580'; // Title text color
+	ctx.font = '50px Verdana'; // Set font for title
 	ctx.fillText(title, w/2, 2*h/5);  // Adjust y position as needed
     // If there is a subtitle, draw it
       if (subtitle) {
-      ctx.font = 'italic 20px Arial'; // Smaller font for subtitle
-      ctx.fillText(subtitle, w/2, 2*h/3);  // Subtitle below the title
+      ctx.font = 'italic 15px Arial'; // Smaller font for subtitle
+      ctx.fillText(subtitle, w/2, 3*h/5);  // Subtitle below the title
        }
 }
 
