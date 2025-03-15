@@ -78,7 +78,7 @@ var w = c.width = window.innerWidth,
   // Set font styles
 
 ctx.fillRect( 0, 0, w, h );
-ctx.textAlign = 'center'; // Center text horizontally
+
 //ctx.fillText( 'Calculating Nodes', w / 2 - ctx.measureText( 'Calculating Nodes' ).width / 2, h / 2 - 15 );
 
 window.setTimeout( init, 4 ); // to render the loading screen
@@ -359,14 +359,15 @@ function anim(){
 	ctx.stroke();*/
 
 	// WRITE TEXT
-	// ctx.font = '50px Verdana'; // Smaller font for subtitle
+	ctx.textAlign = 'center'; // Center text horizontally
 	ctx.fillStyle = '#FFA500'; // Title text color
 	ctx.font = 'bold 40px "Pacifico", cursive' // 'bold 50px "IBM Plex Mono", monospace', '50px Verdana'
 	ctx.fillText(title, w/2, 7*h/15);  // Adjust y position as needed
     // If there is a subtitle, draw it
       if (subtitle) {
       ctx.font = '20px "IBM Plex Mono", monospace'; // Smaller font for subtitle
-     ctx.fillStyle = '#FFD68A'
+      ctx.fillStyle = '#FFD68A';
+      ctx.textAlign = 'center'; // Center text horizontally
       ctx.fillText(subtitle, w/2, 9*h/15);  // Subtitle below the title
        }
 }
