@@ -17,6 +17,8 @@ main_nav: true
   <canvas id="visualizationCanvas_constellation"></canvas>
 </div>
 <script src="{{ '/js/constellation.js' | relative_url }}"></script>
+<script src="{{ '/js/TweenLite.min.js' | relative_url }}"></script>
+<script src="{{ '/js/EasePack.min.js' | relative_url }}"></script>
 
 * __6/1400: ARC Prize 2024 (Solo Gold) - Nov 2024__ <br>
 Create an AI capable of solving reasoning tasks it has never seen before. After this achievement, I got the chance to personally meet Francois Chollet!
