@@ -5,123 +5,225 @@ var ctx = c.getContext('2d');
 c.width = window.innerWidth;
 c.height = window.innerHeight;
 
-var s = c.width = c.height = 500,
-		ctx = c.getContext( '2d' ),
-		
-		opts = {
-			text: '`1234567890-=qwertyuiop[]asdfghjkl;zxcvbnm,./¬!"£$%^&*()_+ASDFGHJKL:@~ZXCVBNM<>?|QWERTYUIOP{}',
-			count: 150,
-			baseStartDist: 100,
-			addedStartDist: 60,
-			startY: 100,
-			endY: -200,
-			gravity: .03,
-			baseVel: 1,
-			addedVel: 0.2,
-			angleVariation: .2,
-			middleAttraction: .003,
-			templateColor: 'hsla(hue,80%,50%,.5)',
-			
-			vanishPoint: {
-				x: s / 2,
-				y: s / 2
-			},
-			focalLength: 250,
-			depth: 250
-			
-		},
-		
-		particles = [],
-		tick = 0,
-		
-		tau = 6.2831853071795864769252867665590057683943387987502116419498891846156328125724179972560696506842341359; // yes, I decided that memorizing tau to 100 decimal places was a good idea. e^(i*tau/2) + cos( tau ) regrets
+/* SECTION: Constellation Function 
+ * Require: EasePack.min.js & TweenLite.min.js by GreenSock Platform.
+ * LINK: https://greensock.com
+ */
 
-function Particle(){
-	this.canvas = document.createElement( 'canvas' );
-	this.canvas.width = 20;
-	this.canvas.height = 40;
-	this.ctx = this.canvas.getContext( '2d' );
-	this.ctx.font = '40px monospace';
-	this.reset();
-}
-Particle.prototype.reset = function(){
-	
-	var radius = opts.baseStartDist + opts.addedStartDist * Math.random(),
-			ang = Math.random() * tau,
-			velAng = ang + tau / 4 + opts.angleVariation *  ( Math.random() * 2 - 1 ),
-			vel = opts.baseVel + opts.addedVel * Math.random();
-	
-	this.x = radius * Math.cos( ang );
-	this.y = opts.startY;
-	this.z = radius * Math.sin( ang );
-	
-	this.vx = vel * Math.cos( velAng );
-	this.vy = 0;
-	this.vz = vel * Math.sin( velAng );
-	
-	var character = opts.text[ opts.text.length * Math.random() | 0 ],
-	    color = opts.templateColor.replace( 'hue', tick + ang / tau * 180 );
-	
-	this.ctx.clearRect( 0, 0, 20, 40 );
-	this.ctx.fillStyle = color;
-	this.ctx.fillText( character, -2, 40 );
-}
-Particle.prototype.step = function(){
-	
-	this.x += this.vx -= this.x * opts.middleAttraction;
-	this.y += this.vy -= opts.gravity;
-	this.z += this.vz -= this.z * opts.middleAttraction;
-	
-	var radius = 1 - Math.sqrt( ( this.y - opts.startY ) / ( opts.endY - opts.startY ) );
-	
-	if( radius < 0 )
-		radius *= 2;
-	
-	if( isNaN( radius ) )
-		radius = 0;
-	
-	var x = this.x * radius,
-			y = -this.y,
-			z = this.z * radius
-	
-	if( y > -opts.endY )
-		y = -opts.endY + .1 * ( -opts.endY - y );
-	
-	
-	z += opts.depth;
-	
-	var scale = opts.focalLength / z,
-			screenX = opts.vanishPoint.x + x * scale,
-			screenY = opts.vanishPoint.y + y * scale,
-			
-			charSize = scale * 20;
-	
-	ctx.drawImage( this.canvas, 0, 0, 20, 40, screenX - charSize / 4, screenY - charSize / 2, charSize / 2, charSize );
-	
-	if( this.y < opts.endY && Math.random() < .1 )
-		this.reset();
-}
+    var width, height, largeHeader, canvas, ctx, points, target, animateHeader = true;
 
-function anim(){
-	
-	window.requestAnimationFrame( anim );
-	
-	++tick;
-	
-	ctx.globalCompositeOperation = 'source-over';
-	ctx.fillStyle = '#222';
-	ctx.fillRect( 0, 0, s, s );
-	
-	if( particles.length < opts.count && Math.random() < .6 )
-		particles.push( new Particle );
-	
-	ctx.globalCompositeOperation = 'lighter';
-	particles.map( function( particle ){ particle.step(); } );
-	
-}
+    // Main
+    initHeader();
+    initAnimation();
+    addListeners();
 
-anim();
+    function initHeader() {
+        width = window.innerWidth;
+        height = window.innerHeight;
+        target = {x: width/2, y: height/2};
 
+        largeHeader = document.getElementById('large-header');
+        largeHeader.style.height = height+'px';
+
+        canvas = document.getElementById('demo-canvas');
+        canvas.width = width;
+        canvas.height = height;
+        ctx = canvas.getContext('2d');
+
+        // create points
+        points = [];
+        for(var x = 0; x < width; x = x + width/20) {
+            for(var y = 0; y < height; y = y + height/20) {
+                var px = x + Math.random()*width/20;
+                var py = y + Math.random()*height/20;
+                var p = {x: px, originX: px, y: py, originY: py };
+                points.push(p);
+            }
+        }
+
+        // for each point find the 5 closest points
+        for(var i = 0; i < points.length; i++) {
+            var closest = [];
+            var p1 = points[i];
+            for(var j = 0; j < points.length; j++) {
+                var p2 = points[j]
+                if(!(p1 == p2)) {
+                    var placed = false;
+                    for(var k = 0; k < 5; k++) {
+                        if(!placed) {
+                            if(closest[k] == undefined) {
+                                closest[k] = p2;
+                                placed = true;
+                            }
+                        }
+                    }
+
+                    for(var k = 0; k < 5; k++) {
+                        if(!placed) {
+                            if(getDistance(p1, p2) < getDistance(p1, closest[k])) {
+                                closest[k] = p2;
+                                placed = true;
+                            }
+                        }
+                    }
+                }
+            }
+            p1.closest = closest;
+        }
+
+        // assign a circle to each point
+        for(var i in points) {
+            var c = new Circle(points[i], 2+Math.random()*2, 'rgba(255,255,255,0.3)');
+            points[i].circle = c;
+        }
+    }
+
+    // Event handling
+    function addListeners() {
+        if(!('ontouchstart' in window)) {
+            window.addEventListener('mousemove', mouseMove);
+        }
+        window.addEventListener('scroll', scrollCheck);
+        window.addEventListener('resize', resize);
+    }
+
+    function mouseMove(e) {
+        var posx = posy = 0;
+        if (e.pageX || e.pageY) {
+            posx = e.pageX;
+            posy = e.pageY;
+        }
+        else if (e.clientX || e.clientY)    {
+            posx = e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft;
+            posy = e.clientY + document.body.scrollTop + document.documentElement.scrollTop;
+        }
+        target.x = posx;
+        target.y = posy;
+    }
+
+    function scrollCheck() {
+        if(document.body.scrollTop > height) animateHeader = false;
+        else animateHeader = true;
+    }
+
+    function resize() {
+        width = window.innerWidth;
+        height = window.innerHeight;
+        largeHeader.style.height = height+'px';
+        canvas.width = width;
+        canvas.height = height;
+    }
+
+    // animation
+    function initAnimation() {
+        animate();
+        for(var i in points) {
+            shiftPoint(points[i]);
+        }
+    }
+
+    function animate() {
+        if(animateHeader) {
+            ctx.clearRect(0,0,width,height);
+            for(var i in points) {
+                // detect points in range
+                if(Math.abs(getDistance(target, points[i])) < 4000) {
+                    points[i].active = 0.3;
+                    points[i].circle.active = 0.6;
+                } else if(Math.abs(getDistance(target, points[i])) < 20000) {
+                    points[i].active = 0.1;
+                    points[i].circle.active = 0.3;
+                } else if(Math.abs(getDistance(target, points[i])) < 40000) {
+                    points[i].active = 0.02;
+                    points[i].circle.active = 0.1;
+                } else {
+                    points[i].active = 0;
+                    points[i].circle.active = 0;
+                }
+
+                drawLines(points[i]);
+                points[i].circle.draw();
+            }
+        }
+        requestAnimationFrame(animate);
+    }
+
+    function shiftPoint(p) {
+        TweenLite.to(p, 1+1*Math.random(), {x:p.originX-50+Math.random()*100,
+            y: p.originY-50+Math.random()*100, ease:Circ.easeInOut,
+            onComplete: function() {
+                shiftPoint(p);
+            }});
+    }
+
+    // Canvas manipulation
+    function drawLines(p) {
+        if(!p.active) return;
+        for(var i in p.closest) {
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(p.closest[i].x, p.closest[i].y);
+            ctx.strokeStyle = 'rgba(156,217,249,'+ p.active+')';
+            ctx.stroke();
+        }
+    }
+
+    function Circle(pos,rad,color) {
+        var _this = this;
+
+        // constructor
+        (function() {
+            _this.pos = pos || null;
+            _this.radius = rad || null;
+            _this.color = color || null;
+        })();
+
+        this.draw = function() {
+            if(!_this.active) return;
+            ctx.beginPath();
+            ctx.arc(_this.pos.x, _this.pos.y, _this.radius, 0, 2 * Math.PI, false);
+            ctx.fillStyle = 'rgba(156,217,249,'+ _this.active+')';
+            ctx.fill();
+        };
+    }
+
+    // Util
+    function getDistance(p1, p2) {
+        return Math.pow(p1.x - p2.x, 2) + Math.pow(p1.y - p2.y, 2);
+    }
+    
+
+/* SECTION: requestAnimationFrame polyfill 
+ * Authors: Erik Möller, fixes from Paul Irish & Tino Zijdel.
+ * Original File Name: paulirish/rAF.js
+ * Link: http://paulirish.com/2011/requestanimationframe-for-smart-animating/
+ * MIT license
+ */
+
+(function() {
+    var lastTime = 0;
+    var vendors = ['ms', 'moz', 'webkit', 'o'];
+    for(var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
+        window.requestAnimationFrame = window[vendors[x]+'RequestAnimationFrame'];
+        window.cancelAnimationFrame = window[vendors[x]+'CancelAnimationFrame']
+            || window[vendors[x]+'CancelRequestAnimationFrame'];
+    }
+
+    if (!window.requestAnimationFrame)
+        window.requestAnimationFrame = function(callback, element) {
+            var currTime = new Date().getTime();
+            var timeToCall = Math.max(0, 16 - (currTime - lastTime));
+            var id = window.setTimeout(function() { callback(currTime + timeToCall); },
+                timeToCall);
+            lastTime = currTime + timeToCall;
+            return id;
+        };
+
+    if (!window.cancelAnimationFrame)
+        window.cancelAnimationFrame = function(id) {
+            clearTimeout(id);
+        };
+}());
 
 // Update canvas size when window is resized
 window.addEventListener('resize', function() {
