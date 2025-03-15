@@ -48,7 +48,7 @@ Deep Learning/Hidden Markove modelling to predict the number of open channels du
   <!-- Canvas element for animation -->
   <canvas id="visualizationCanvas_sphere"></canvas>
 </div>
-<script src="{{ '/js/sphere' | relative_url }}"></script>
+<script src="{{ '/js/sphere.js' | relative_url }}"></script>
 
 * __8/1874 Traveling Santa Competition (Gold) - Jan 2019__ <br> 
 Big-scale Optimization: find the shortest path going through 200000 cities with a customized constraints that no commercial solver can do. <br>
