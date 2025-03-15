@@ -73,7 +73,7 @@ var w = c.width = window.innerWidth,
 		Tau = Math.PI * 2;
 
   // Title and Subtitle (you can replace this with dynamic values if needed)
-  var title = 'Kha Vo' // '{{ site.title }}'; // Title from Jekyll
+  var title = 'KHA VO' // '{{ site.title }}'; // Title from Jekyll
   var subtitle = 'A versatile grandmaster AI scientist who won 10 Kaggle competition medals' // '{{ site.subtitle }}'; // Subtitle from Jekyll, optional
   // Set font styles
 
@@ -361,7 +361,7 @@ function anim(){
 	// WRITE TEXT
 	ctx.textAlign = 'center'; // Center text horizontally
 	ctx.fillStyle = '#FFA500'; // Title text color
-	ctx.font = 'bold 40px "Pacifico", cursive' // 'bold 50px "IBM Plex Mono", monospace', '50px Verdana'
+	ctx.font = 'bold 50px "Fira Code", monospace' // 'bold 50px "IBM Plex Mono", monospace', '50px Verdana'
 	ctx.fillText(title, w/2, 7*h/15);  // Adjust y position as needed
     // If there is a subtitle, draw it
       if (subtitle) {
@@ -372,18 +372,18 @@ function anim(){
        }
 }
 
-window.addEventListener( 'resize', function(){
+// window.addEventListener( 'resize', function(){
 	
-	opts.vanishPoint.x = ( w = c.width = window.innerWidth ) / 2;
-	opts.vanishPoint.y = ( h = c.height = window.innerHeight ) / 2;
-	ctx.fillRect( 0, 0, w, h );
-});
+// 	opts.vanishPoint.x = ( w = c.width = window.innerWidth ) / 2;
+// 	opts.vanishPoint.y = ( h = c.height = window.innerHeight ) / 2;
+// 	ctx.fillRect( 0, 0, w, h );
+// });
 
 // window.addEventListener( 'click', init );
 
 
-// // Update canvas size when window is resized
-// window.addEventListener('resize', function() {
-//     c.width = window.innerWidth;
-//     c.height = window.innerHeight;
-// });
+// Update canvas size when window is resized
+window.addEventListener('resize', function() {
+    c.width = window.innerWidth;
+    c.height = window.innerHeight;
+});
