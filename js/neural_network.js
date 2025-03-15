@@ -376,12 +376,12 @@ window.addEventListener( 'resize', function(){
 	opts.vanishPoint.y = ( h = c.height = window.innerHeight ) / 2;
 	ctx.fillRect( 0, 0, w, h );
 });
-window.addEventListener( 'click', init );
+
+// window.addEventListener( 'click', init );
 
 
-
-// Update canvas size when window is resized
-window.addEventListener('resize', function() {
-    c.width = window.innerWidth;
-    c.height = window.innerHeight;
-});
+// // Update canvas size when window is resized
+// window.addEventListener('resize', function() {
+//     c.width = window.innerWidth;
+//     c.height = window.innerHeight;
+// });
