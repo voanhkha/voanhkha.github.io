@@ -151,7 +151,7 @@ function anim(){
 	
 	window.requestAnimationFrame( anim );
 	
-	ctx.fillStyle = '#333';
+	ctx.fillStyle = '#111';
 	ctx.fillRect( 0, 0, w, h );
 	
 	rot.x += opts.rotVel.x;
