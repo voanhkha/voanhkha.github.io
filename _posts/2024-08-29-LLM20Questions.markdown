@@ -51,6 +51,7 @@ Officially, use the asked questions and answers to make the LLM predict the real
 <img src="/images/llm_20q_questions_df.png" width="400">
 <div class="thecap"> I prepared a dataframe of questions bank using OpenAI's GPT4</div>
 </div>
+<br>
 
 The advantages of offline-policy approach are: <br>
 
@@ -84,6 +85,7 @@ There are a few key takeaways from this competition that I found really valuable
 <img src="https://www.googleapis.com/download/storage/v1/b/kaggle-forum-message-attachments/o/inbox%2F6624777%2Fb3e468f4bc8f9da52f5d7ff1c5d7a52a%2Fscatter.png?generation=1725032484048482&alt=media" width="400">
 <div class="thecap"> The scatter plot demonstrates the impact of the probability calculation. Public keywords tend to have a lower thing probability rank (meaning high probability) and a low frequency rank (meaning high frequency). The ranks and values are inverted because I ranked the keywords from high value to low value. </div>
 </div>
+<br>
 
 <div class="imgcap">
 <img src="https://www.googleapis.com/download/storage/v1/b/kaggle-forum-message-attachments/o/inbox%2F6624777%2F798d60bf764599a824e1af8e8f39a2f0%2Fheatmap.png?generation=1725033082865389&alt=media" width="400">
