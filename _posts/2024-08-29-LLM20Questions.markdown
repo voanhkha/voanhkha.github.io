@@ -1,8 +1,8 @@
 ---
 layout: post
 comments: true
-title: My finetuned LLM plays 20 questions like a charm
-excerpt: "How to embed an offline policy knowledge to an LLM AI chatbot that plays the game of 20 Questions, and won rank 13/832 in a Kaggle simulation competition."
+title: Finetune an LLM to play the game of '20 questions'
+excerpt: "...and won rank 13/832 in a Kaggle simulation competition."
 mathjax: true
 date:   2024-08-29 00:00:00
 author: Kha Vo
@@ -12,7 +12,6 @@ cover:  "/assets/instacode.png"
 ---
 
 I've just earned my top solo silver medal (rank 13) in a Kaggle simulation competition ["LLM 20 Questions"](https://www.kaggle.com/competitions/llm-20-questions), where we need to develop an LLM to play the game of 20 questions. <br>
-
 
 <div class="imgcap">
 <img src="/images/llm20q_kaggleLB.png" width="500">
@@ -92,6 +91,6 @@ There are a few key takeaways from this competition that I found really valuable
 <div class="thecap"> Using this heatmap, we can calculate the probability of each keyword being included in the private keyword list, based on the observation that the public keyword list closely resembles the private one. </div>
 </div>
 
-<br><br>
+<br>
 
 That's it for a painstaking but wonderful Kaggle simulation competition. Thanks for reading and see you in another post!
