@@ -14,10 +14,10 @@ My few notable 1st-authored research papers (out of more than 10 in total):
 
 <div id="animation-container">
   <!-- Canvas element for animation -->
-  <canvas id="visualizationCanvas_neuralNet"></canvas>
+  <canvas id="visualizationCanvas_sphere"></canvas>
 </div>
 
-<script src="{{ '/js/neural_network.js' | relative_url }}"></script>
+<script src="{{ '/js/sphere.js' | relative_url }}"></script>
 
 - Statistical supervised meta-ensemble algorithm for medical record linkage (2019) <br>
 https://www.sciencedirect.com/science/article/pii/S1532046419301388
