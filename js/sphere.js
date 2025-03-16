@@ -107,8 +107,13 @@ Point.prototype.render = function(){
 	z = z * rot.cos.x + y1 * rot.sin.x;
 	
 	// so that we don't have to remove opts.depth later
-	ctx.strokeStyle = 'hsla(hue,80%,50%,alp)'.replace( 'alp', 1 - ( ( z / ( opts.radius + opts.radiusVariation ) ) / 2 + .5 ) ).replace( 'hue', ( this.angA + this.angB ) / Math.PI / 4 * 360 );
-	
+	// ctx.strokeStyle = 'hsla(hue,80%,50%,alp)'.replace( 'alp', 1 - ( ( z / ( opts.radius + opts.radiusVariation ) ) / 2 + .5 ) ).replace( 'hue', ( this.angA + this.angB ) / Math.PI / 4 * 360 );
+    ctx.strokeStyle = 'hsla(hue,80%,100%,alp)'.replace( 'alp', 1 - ( ( z / ( opts.radius + opts.radiusVariation ) ) / 2 + .5 ) +.1 ).replace( 'hue', ( this.angA + this.angB ) / Math.PI / 4 * 360 );
+    ctx.lineWidth = .1
+
+	// ctx.lineWidth = this.size * this.screen.scale;
+
+
 	// translate on the world translation
 	z += opts.depth;
 	
@@ -116,6 +121,13 @@ Point.prototype.render = function(){
 	this.screen.scale = opts.fl / z;
 	this.screen.x = opts.vanishPoint.x + x * this.screen.scale;
 	this.screen.y = opts.vanishPoint.y + y * this.screen.scale;
+
+    // **Draw the point as a small white dot**
+	ctx.beginPath();
+	ctx.arc(this.screen.x, this.screen.y, .7 * this.screen.scale, 0, Math.PI * 2); // Radius 2
+    // ctx.fillStyle = 'white'
+	ctx.fillStyle = 'rgba(255, 255, 255, 1)'.replace('alp',  1 - ((z / (opts.radius + opts.radiusVariation)) / 2 + 0.5));
+	ctx.fill();
 	
 	for( var i = 0; i < this.neighbours.length; ++i ){
 		
