@@ -12,7 +12,7 @@ var w = c.width = window.innerWidth,
 		
 		opts = {
 			
-			range: 180,
+			range: 250,
 			baseConnections: 8,
 			addedConnections: 10,
 			baseSize: 3,
@@ -74,7 +74,7 @@ var w = c.width = window.innerWidth,
 
   // Title and Subtitle (you can replace this with dynamic values if needed)
   var title = 'Kha Vo' // '{{ site.title }}'; // Title from Jekyll
-  var subtitle = 'A versatile grandmaster AI scientist who won 10 Kaggle competition medals' // '{{ site.subtitle }}'; // Subtitle from Jekyll, optional
+  var subtitle = 'A versatile AI scientist' // '{{ site.subtitle }}'; // Subtitle from Jekyll, optional
   // Set font styles
 
 ctx.fillRect( 0, 0, w, h );
@@ -360,16 +360,18 @@ function anim(){
 
 	// WRITE TEXT
 	ctx.textAlign = 'center'; // Center text horizontally
-	ctx.fillStyle = '#d36900'; // Title text color
-	ctx.font = 'bold 50px "Fira Code", monospace' // 'bold 50px "IBM Plex Mono", monospace', '50px Verdana'
-	ctx.fillText(title, w/2, 7*h/15);  // Adjust y position as needed
-    // If there is a subtitle, draw it
-      if (subtitle) {
-      ctx.font = 'italic 20px "IBM Plex Mono", monospace'; // Smaller font for subtitle
-      ctx.fillStyle = '#FFFFFF';
-      ctx.textAlign = 'center'; // Center text horizontally
-      ctx.fillText(subtitle, w/2, 8*h/15);  // Subtitle below the title
-       }
+	ctx.fillStyle = isHovering ? '#FC6A03': '#D67229'; // Title text color
+	ctx.font = isHovering ? '49px "Fira Code", monospace': '48px "Fira Code", monospace' // 'bold 50px "IBM Plex Mono", monospace', '50px Verdana'
+	// ctx.fillText(title, w/2, 7*h/15);  // Adjust y position as needed
+    ctx.fillText(title, opts.vanishPoint.x, opts.vanishPoint.y - 20);
+
+ 
+    ctx.font = 'italic 20px "IBM Plex Mono", monospace'; // Smaller font for subtitle
+    ctx.fillStyle = '#FFFFFF';
+    ctx.textAlign = 'center'; // Center text horizontally
+    //   ctx.fillText(subtitle, w/2, 8*h/15);  // Subtitle below the title
+    ctx.fillText(subtitle, opts.vanishPoint.x, opts.vanishPoint.y + 30);
+
 }
 
 // window.addEventListener( 'resize', function(){
@@ -387,3 +389,29 @@ window.addEventListener('resize', function() {
     c.width = window.innerWidth;
     c.height = window.innerHeight;
 });
+
+
+
+let titleArea = { x: opts.vanishPoint.x, y: opts.vanishPoint.y - 20, width: 300, height: 50 };
+let isHovering = false;
+
+// Mouse move to detect hover
+c.addEventListener('mousemove', (e) => {
+    const rect = c.getBoundingClientRect();
+    const mouseX = e.clientX - rect.left;
+    const mouseY = e.clientY - rect.top;
+
+    // Check if mouse is over title area
+    isHovering = mouseX >= titleArea.x - titleArea.width / 2 &&
+                  mouseX <= titleArea.x + titleArea.width / 2 &&
+                  mouseY >= titleArea.y - titleArea.height / 2 &&
+                  mouseY <= titleArea.y + titleArea.height / 2;
+});
+
+// Click event to navigate
+c.addEventListener('click', () => {
+    if (isHovering) {
+        window.location.href = 'https://khavo.ai/about';
+    }
+});
+
