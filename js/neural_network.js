@@ -12,7 +12,7 @@ var w = c.width = window.innerWidth,
 		
 		opts = {
 			
-			range: 250,
+			range: 200,
 			baseConnections: 8,
 			addedConnections: 10,
 			baseSize: 3,
@@ -32,7 +32,7 @@ var w = c.width = window.innerWidth,
 			
 			rotVelX: .001,
 			rotVelY: .0005,
-			
+			tick_incr: 1,
 			repaintColor: '#111',
 			connectionColor: 'hsla(30,0%,100%, alp)', //blue
 			rootColor: 'hsla(35,0%,100%, 1)', // red
@@ -82,6 +82,10 @@ ctx.fillRect( 0, 0, w, h );
 //ctx.fillText( 'Calculating Nodes', w / 2 - ctx.measureText( 'Calculating Nodes' ).width / 2, h / 2 - 15 );
 
 window.setTimeout( init, 4 ); // to render the loading screen
+
+function click_canva(){
+ opts.tick_incr = -opts.tick_incr;
+}
 
 function init(){
 	
@@ -327,10 +331,10 @@ function anim(){
 	ctx.fillStyle = opts.repaintColor;
 	ctx.fillRect( 0, 0, w, h );
 	
-	++tick;
+	tick = tick + opts.tick_incr;
 	
 	var rotX = tick * opts.rotVelX,
-			rotY = tick * opts.rotVelY;
+		rotY = tick * opts.rotVelY;
 	
 	cosX = Math.cos( rotX );
 	sinX = Math.sin( rotX );
@@ -361,7 +365,7 @@ function anim(){
 	// WRITE TEXT
 	ctx.textAlign = 'center'; // Center text horizontally
 	ctx.fillStyle = isHovering ? '#FC6A03': '#D67229'; // Title text color
-	ctx.font = isHovering ? '49px "Fira Code", monospace': '48px "Fira Code", monospace' // 'bold 50px "IBM Plex Mono", monospace', '50px Verdana'
+	ctx.font = isHovering ? 'bold 49px "Fira Code", monospace': 'bold 48px "Fira Code", monospace' // 'bold 50px "IBM Plex Mono", monospace', '50px Verdana'
 	// ctx.fillText(title, w/2, 7*h/15);  // Adjust y position as needed
     ctx.fillText(title, opts.vanishPoint.x, opts.vanishPoint.y - 20);
 
@@ -381,7 +385,7 @@ function anim(){
 // 	ctx.fillRect( 0, 0, w, h );
 // });
 
-// window.addEventListener( 'click', init );
+window.addEventListener( 'click', click_canva );
 
 
 // Update canvas size when window is resized
