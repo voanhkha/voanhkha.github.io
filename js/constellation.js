@@ -8,6 +8,7 @@ c.height = window.innerHeight;
 /* SECTION: Constellation Function 
  * Require: EasePack.min.js & TweenLite.min.js by GreenSock Platform.
  * LINK: https://greensock.com
+ * Edit by Kha Vo
  */
 
     var width, height, largeHeader, canvas, ctx, points, target, animateHeader = true;
