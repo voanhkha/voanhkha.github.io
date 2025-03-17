@@ -364,14 +364,14 @@ function anim(){
 
 	// WRITE TEXT
 	ctx.textAlign = 'center'; // Center text horizontally
-	ctx.fillStyle = isHovering ? '#FC6A03': '#D67229'; // Title text color
+	ctx.fillStyle = isHovering ? '#BE5504': '#FC6A03'; // Title text color
 	ctx.font = isHovering ? 'bold 49px "Fira Code", monospace': 'bold 48px "Fira Code", monospace' // 'bold 50px "IBM Plex Mono", monospace', '50px Verdana'
 	// ctx.fillText(title, w/2, 7*h/15);  // Adjust y position as needed
     ctx.fillText(title, opts.vanishPoint.x, opts.vanishPoint.y - 20);
 
  
     ctx.font = 'italic 20px "IBM Plex Mono", monospace'; // Smaller font for subtitle
-    ctx.fillStyle = '#FFFFFF';
+    ctx.fillStyle = isHovering ? '#ED820E':  '#FDA172'; 
     ctx.textAlign = 'center'; // Center text horizontally
     //   ctx.fillText(subtitle, w/2, 8*h/15);  // Subtitle below the title
     ctx.fillText(subtitle, opts.vanishPoint.x, opts.vanishPoint.y + 30);
