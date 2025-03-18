@@ -1,3 +1,5 @@
+(function() {
+
 var c = document.getElementById('visualizationCanvas_sphere');
 var ctx = c.getContext('2d');
 // Set canvas to full screen
@@ -180,3 +182,6 @@ window.addEventListener('resize', function() {
     c.width = window.innerWidth;
     c.height = window.innerHeight;
 });
+
+
+})();
