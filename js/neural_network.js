@@ -1,3 +1,5 @@
+(function() {
+
 var c = document.getElementById('visualizationCanvas_neuralNet');
 var ctx = c.getContext('2d');
 
@@ -419,3 +421,4 @@ c.addEventListener('click', () => {
     }
 });
 
+})();
