@@ -13,7 +13,7 @@ My name is Kha Vo, an AI scientist / engineer. <br>
   <!--   <canvas id="visualizationCanvas" class="fibonacci" width="1604" height="600" style="width: 802px; height: 300px; opacity: 1;"></canvas> -->
 </div>
 
-My interest of work is to develop creative AI solutions to solve complex problems. That could be any of LLM finetuning, deep learning modeling (time-series, RL, graph-NN...), program synthesis, mathematical optimization, AutoML, to statistical analysis. 
+My interest of work is to develop creative AI solutions to solve complex problems. That could be any of LLM finetuning, deep learning modeling (time-series, RL, graph-NN...), program synthesis, mathematical optimization, AutoML, to statistical analysis. I also have experience working with standard data pipelines, infrastructures, and processes (Snowflake dbt, SQL, SageMaker...)
 
 <div id="animation-container">
 <canvas id="visualizationCanvas-2" class="power"></canvas>
