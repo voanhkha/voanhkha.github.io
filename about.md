@@ -21,7 +21,7 @@ My interest of work is to develop creative AI solutions to solve complex problem
 </div>
 
 
-My strength is my versatility and exposure to various challenging AI problems, demonstrated by achieving 10 Kaggle competition gold medals! I'm proud to present my [Kaggle Achievements](https://khavo.ai/kaggle) and my [Kaggle profile](https://kaggle.com/khahuras). <br>
+My strength is my versatility and exposure to various challenging AI problems, demonstrated by achieving 10 Kaggle competition gold medals! Out of the best, I finished rank 1/2600 teams in the Google Brain Ventilator Pressure Prediction, and rank solo 4/1400 in the prestigious $1M-prize ARC-AGI 2024. I'm proud to present my [Kaggle Achievements](https://khavo.ai/kaggle) and my [Kaggle profile](https://kaggle.com/khahuras). <br>
 
 <div id="animation-container">
 <canvas id="visualizationCanvas-3" class="wave"></canvas>
@@ -34,7 +34,7 @@ Occasionally I write [Posts](https://khavo.ai/posts) to share my technical insig
  <canvas id="visualizationCanvas-4" class="fibonacci" width="1604" height="600" style="width: 802px; height: 300px; opacity: 1;"></canvas> 
 </div>
 
-I have worked as key roles for Collective[i], H2O.ai, Oracle, CBA, UNSW, UTS. <br>
+I have worked as key roles for Collective[i] (data science manager, data science lead), H2O.ai (senior customer data scientist), Oracle (senior applied scientist), CBA (senior data scientist), UNSW (applied science researcher), UTS (post-doc). <br>
 
 Also, I have a few notable research [Papers](https://khavo.ai/papers). <br>
 
