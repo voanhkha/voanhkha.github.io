@@ -1,15 +1,14 @@
- // Main
-var c = document.getElementById('visualizationCanvas_constellation');
-var ctx = c.getContext('2d');
+//  // Main
+// var c = document.getElementById('visualizationCanvas_constellation');
+// var ctx = c.getContext('2d');
 
-// Set canvas to full screen
-c.width = window.innerWidth;
-c.height = window.innerHeight;
+// // Set canvas to full screen
+// c.width = window.innerWidth;
+// c.height = window.innerHeight;
 
 /* SECTION: Constellation Function 
  * Require: EasePack.min.js & TweenLite.min.js by GreenSock Platform.
  * LINK: https://greensock.com
- * Edit by Kha Vo
  */
 
     var width, height, largeHeader, canvas, ctx, points, target, animateHeader = true;
@@ -226,9 +225,3 @@ c.height = window.innerHeight;
             clearTimeout(id);
         };
 }());
-
-// Update canvas size when window is resized
-window.addEventListener('resize', function() {
-    c.width = window.innerWidth;
-    c.height = window.innerHeight;
-});
