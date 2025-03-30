@@ -17,6 +17,8 @@ main_nav: true
   <canvas id="visualizationCanvas_constellation"></canvas>
 </div>
 <script src="{{ '/js/constellation.js' | relative_url }}"></script>
+<script src="{{ '/js/EasePack.min.js' | relative_url }}"></script>
+<script src="{{ '/js/TweenLite.min.js' | relative_url }}"></script>
 <!-- <script src="{{ '/js/TweenLite.min.js' | relative_url }}"></script>
 <script src="{{ '/js/EasePack.min.js' | relative_url }}"></script> -->
 
