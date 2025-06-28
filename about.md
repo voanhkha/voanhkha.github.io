@@ -15,7 +15,7 @@ main_nav: true
 }
 
 .img-row img {
-  height: 400px;  /* desired uniform height */
+  height: 300px;  /* desired uniform height */
   width: auto;    /* auto width preserves aspect ratio */
 }
 </style>
