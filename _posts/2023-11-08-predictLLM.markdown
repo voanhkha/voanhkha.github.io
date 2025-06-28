@@ -148,19 +148,19 @@ We may have a significantly better score that could break 0.499 if we combine al
 Thank you for reading. Our full code is publicly available [here](https://www.kaggle.com/khahuras/2nd-place-solution). <br>
 
 <div class="imgcap">
-<img src="/images/meetsri_1.png" width="500">
+<img src="/images/meetsri_1.jpg" width="500">
 <div class="thecap"> Invited and met with Sri Ambati, the CEO of H2O.ai in Singapore </div>
 </div>
 <br>
 
 <div class="imgcap">
-<img src="/images/meetsri_2.png" width="500">
+<img src="/images/meetsri_2.jpg" width="500">
 <div class="thecap"> The H2O.ai conference on Large Language Models </div>
 </div>
 <br>
 
 <div class="imgcap">
-<img src="/images/meetsri_3.png" width="500">
+<img src="/images/meetsri_3.jpg" width="500">
 <div class="thecap"> Private (long) discussion with Sri when he came to Sydney where I live </div>
 </div>
 <br>
