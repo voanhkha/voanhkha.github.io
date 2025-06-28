@@ -9,13 +9,13 @@ main_nav: true
 .img-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 1px;
   justify-content: center;
   align-items: flex-start; /* aligns tops if images have different widths */
 }
 
 .img-row img {
-  height: 150px;  /* desired uniform height */
+  height: 200px;  /* desired uniform height */
   width: auto;    /* auto width preserves aspect ratio */
 }
 </style>
@@ -66,7 +66,7 @@ Also, I have a few notable research [Papers](https://khavo.ai/papers). <br>
   <!--   <canvas id="visualizationCanvas" class="fibonacci" width="1604" height="600" style="width: 802px; height: 300px; opacity: 1;"></canvas> -->
 </div>
 
-Besides work, I also enjoy music, chess, soccer, and making funny AI stuffs :). Check out my [Tunes](https://khavo.ai/tunes) page!  <br>
+Besides work, I also enjoy music (check out my [Tunes](https://khavo.ai/tunes) page), chess, soccer, and making funny AI stuffs :).  <br>
 
 <div class="img-row">
   <img src="/images/kha_brad.jpg" alt="Image 1">
