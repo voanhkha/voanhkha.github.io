@@ -126,7 +126,7 @@ So we have to train a k-fold on the question (suppose k=5), do the split on the 
 <br>
 
 <div class="imgcap">
-<img src="/images/predictllm_3.png" width="500">
+<img src="/images/predictllm_3.png" width="400">
 <div class="thecap"> Pseudo-labeling the hidden competition test data (label not known!) based solely on train data </div>
 </div>
 <br>
@@ -148,19 +148,19 @@ We may have a significantly better score that could break 0.499 if we combine al
 Thank you for reading. Our full code is publicly available [here](https://www.kaggle.com/khahuras/2nd-place-solution). <br>
 
 <div class="imgcap">
-<img src="/images/meetsri_1.jpg" width="500">
+<img src="/images/meetsri_1.jpg" width="300">
 <div class="thecap"> Invited and met with Sri Ambati, the CEO of H2O.ai in Singapore </div>
 </div>
 <br>
 
 <div class="imgcap">
-<img src="/images/meetsri_2.jpg" width="500">
+<img src="/images/meetsri_2.jpg" width="300">
 <div class="thecap"> The H2O.ai conference on Large Language Models </div>
 </div>
 <br>
 
 <div class="imgcap">
-<img src="/images/meetsri_3.jpg" width="500">
+<img src="/images/meetsri_3.JPG" width="300">
 <div class="thecap"> Private (long) discussion with Sri when he came to Sydney where I live </div>
 </div>
 <br>
