@@ -16,21 +16,6 @@ main_nav: true
 </div> -->
 
 
-<div class="container particle">
-			<!--<div class="content">-->
-				<div id="large-header" class="large-header">
-					<canvas id="visualizationCanvas_constellation"></canvas>
-					<!--<h1 class="main-title">Connect <span class="thin">Three</span></h1>-->
-				</div>
-			<!--</div> /content -->
-</div><!-- /container -->
-<!-- <script src="{{ '/js/EasePack.min.js' | relative_url }}"></script>
-<script src="{{ '/js/TweenLite.min.js' | relative_url }}"></script> -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenLite.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/easing/EasePack.min.js"></script>
-<script src="{{ '/js/constellation.js' | relative_url }}"></script>
-
-
 * __6/1400: ARC Prize 2024 (Solo Gold) - Nov 2024__ <br>
 Create an AI capable of solving reasoning tasks it has never seen before. After this achievement, I got the chance to personally meet Francois Chollet!
 <div class="imgcap" style="display: flex; justify-content: center;">
