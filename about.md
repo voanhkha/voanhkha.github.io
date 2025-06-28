@@ -15,7 +15,7 @@ main_nav: true
 }
 
 .img-row img {
-  height: 200px;  /* desired uniform height */
+  height: 400px;  /* desired uniform height */
   width: auto;    /* auto width preserves aspect ratio */
 }
 </style>
@@ -72,9 +72,14 @@ Besides work, I also enjoy music (check out my [Tunes](https://khavo.ai/tunes) p
   <img src="/images/kha_brad.jpg" alt="Image 1">
   <img src="/images/kha_superman.jpg" alt="Image 2">
   <img src="/images/kha_jones.jpg" alt="Image 3">
-  <img src="/images/kha_jack.jpg" alt="Image 4">
-  <img src="/images/kha_elvis.jpg" alt="Image 5">
 </div>
+
+<div class="img-row">
+  <img src="/images/kha_tom.jpg" alt="Image 4">
+  <img src="/images/kha_jack.jpg" alt="Image 5">
+  <img src="/images/kha_elvis.jpg" alt="Image 6">
+</div>
+
 <br>
 
 
