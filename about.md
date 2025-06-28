@@ -4,7 +4,23 @@ title: ABOUT
 permalink: /about/
 main_nav: true
 ---
-![alt text]({{ site.baseurl }}/assets/khavo2023.jpg "Profile Picture"){:.profile}
+
+<style>
+.img-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  align-items: flex-start; /* aligns tops if images have different widths */
+}
+
+.img-row img {
+  height: 150px;  /* desired uniform height */
+  width: auto;    /* auto width preserves aspect ratio */
+}
+</style>
+
+![alt text]({{ site.baseurl }}/assets/kha_godfather_theme.jpg "Profile Picture"){:.profile}
 
 My name is Kha Vo, an AI scientist / engineer. <br>
 
@@ -50,7 +66,17 @@ Also, I have a few notable research [Papers](https://khavo.ai/papers). <br>
   <!--   <canvas id="visualizationCanvas" class="fibonacci" width="1604" height="600" style="width: 802px; height: 300px; opacity: 1;"></canvas> -->
 </div>
 
-Besides work, I also enjoy music, chess, and soccer. Check out my [Tunes](https://khavo.ai/tunes) page! 
+Besides work, I also enjoy music, chess, soccer, and making funny AI stuffs :). Check out my [Tunes](https://khavo.ai/tunes) page!  <br>
+
+<div class="img-row">
+  <img src="/images/kha_brad.jpg" alt="Image 1">
+  <img src="/images/kha_superman.jpg" alt="Image 2">
+  <img src="/images/kha_jones.jpg" alt="Image 3">
+  <img src="/images/kha_jack.jpg" alt="Image 4">
+  <img src="/images/kha_elvis.jpg" alt="Image 5">
+</div>
+<br>
+
 
 <div id="animation-container">
 <canvas id="visualizationCanvas-6" class="donut"></canvas>
@@ -65,4 +91,4 @@ Besides work, I also enjoy music, chess, and soccer. Check out my [Tunes](https:
 
 [Return to Home](https://khavo.ai)
 
-![alt text]({{ site.baseurl }}/assets/kha_godfather_theme.jpg "KhaVo Godfather"){:.profile}
+
