@@ -4,7 +4,7 @@ title: ABOUT
 permalink: /about/
 main_nav: true
 ---
-![alt text]({{ site.baseurl }}/assets/kha_godfather_theme.jpg "Profile Picture"){:.profile}
+![alt text]({{ site.baseurl }}/assets/khavo2023.jpg "Profile Picture"){:.profile}
 
 My name is Kha Vo, an AI scientist / engineer. <br>
 
@@ -27,8 +27,15 @@ My strength is my versatility and exposure to various challenging AI problems, d
 <canvas id="visualizationCanvas-3" class="wave"></canvas>
   <!--   <canvas id="visualizationCanvas" class="fibonacci" width="1604" height="600" style="width: 802px; height: 300px; opacity: 1;"></canvas> -->
 </div>
+<br>
 
-Occasionally I write [Posts](https://khavo.ai/posts) to share my technical insights and discoveries. 
+Besides, I'm also capable of writing softwares or codes in other coding languages, such as Kotlin, JS, and C++. Proud to mention a few projects such as: <br>
++ Visualizations of constellations (the moving particles in this page you are reading) were written in JS. [Code here](https://github.com/voanhkha/voanhkha.github.io/tree/master/js) <br>
++ A TSP solver optimized to crack the Kaggle Santa 2018 competition was written in Kotlin. [Code here](https://github.com/voanhkha/Traveling-Santa-2018-Kaggle) <br>
++ A few C++ projects (mostly heavily modified from other people's work) to optimize performance on Kaggle competitions. <br>
+
+
+Occasionally I write [Posts](https://khavo.ai/posts) in this website, or other short write-ups on Kaggle, to share my technical insights and discoveries. 
 
 <div id="animation-container">
  <canvas id="visualizationCanvas-4" class="fibonacci" width="1604" height="600" style="width: 802px; height: 300px; opacity: 1;"></canvas> 
@@ -57,3 +64,5 @@ Besides work, I also enjoy music, chess, and soccer. Check out my [Tunes](https:
 [khahuras@gmail.com](mailto:khahuras@gmail.com) <br>
 
 [Return to Home](https://khavo.ai)
+
+![alt text]({{ site.baseurl }}/assets/kha_godfather_theme.jpg "KhaVo Godfather"){:.profile}
