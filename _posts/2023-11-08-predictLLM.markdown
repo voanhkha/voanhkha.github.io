@@ -41,7 +41,7 @@ On Kaggle, it’s established that encoders, such as DeBERTa, have ruled NLP com
 
 **1.1 Model Selection** <br>
 Given that it’s 2023 and new decoders coming out almost each day, we decided to use a decoder model out of sheer curiosity. Now, which models do we begin with? We went with the most popular Mistral model for 2 reasons: 1) Performance. It outperforms Llama2-13b on some benchmarks, and 2) Apache 2.0 License.
-<br><br>
+<br>
 
 **1.2 Experiments** <br>
 
@@ -64,7 +64,7 @@ Lastly, these models were not perfectly correlated and that led to nice performa
 
 <div class="imgcap">
 <img src="/images/predictllm_1.png" width="500">
-<div class="thecap"> Final leaderboard </div>
+<div class="thecap"> The LLM architecture of our solution </div>
 </div>
 <br>
 
@@ -89,7 +89,7 @@ The combining steps and optimization coefficients were achieved manually by a sy
 
 <div class="imgcap">
 <img src="/images/predictllm_2.png" width="500">
-<div class="thecap"> Final leaderboard </div>
+<div class="thecap"> Customized assignment optimization post-processing </div>
 </div>
 <br>
   
@@ -127,7 +127,7 @@ So we have to train a k-fold on the question (suppose k=5), do the split on the 
 
 <div class="imgcap">
 <img src="/images/predictllm_3.png" width="500">
-<div class="thecap"> Final leaderboard </div>
+<div class="thecap"> Pseudo-labeling the hidden competition test data (label not known!) based solely on train data </div>
 </div>
 <br>
 
@@ -145,5 +145,22 @@ We may have a significantly better score that could break 0.499 if we combine al
   
 + Step 4: Use the test predictions from step 3 as the additional training data, repeat from step 1. <br>
   
-Thank you for reading. Our full code is publicly available [here](https://www.kaggle.com/khahuras/2nd-place-solution). 
+Thank you for reading. Our full code is publicly available [here](https://www.kaggle.com/khahuras/2nd-place-solution). <br>
 
+<div class="imgcap">
+<img src="/images/meetsri_1.png" width="500">
+<div class="thecap"> Invited and met with Sri Ambati, the CEO of H2O.ai in Singapore </div>
+</div>
+<br>
+
+<div class="imgcap">
+<img src="/images/meetsri_2.png" width="500">
+<div class="thecap"> The H2O.ai conference on Large Language Models </div>
+</div>
+<br>
+
+<div class="imgcap">
+<img src="/images/meetsri_3.png" width="500">
+<div class="thecap"> Private (long) discussion with Sri when he came to Sydney where I live </div>
+</div>
+<br>
