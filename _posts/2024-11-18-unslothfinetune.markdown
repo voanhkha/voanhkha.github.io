@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-title: Unsloth AI: the best python library to finetune LLMs!
+title: Unsloth AI - the best python library to finetune LLMs!
 excerpt: "... that helped me finish 6/1400 in ARC Prize 2024 and meet intimately with Francois Chollet!"
 mathjax: true
 date:   2024-11-18 00:00:00
