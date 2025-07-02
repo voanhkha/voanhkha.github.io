@@ -57,7 +57,7 @@ Occasionally I write [Posts](https://khavo.ai/posts) in this website, or other s
  <canvas id="visualizationCanvas-4" class="fibonacci" width="1604" height="600" style="width: 802px; height: 300px; opacity: 1;"></canvas> 
 </div>
 
-I have worked as key roles for Collective[i] (data science manager, data science lead), H2O.ai (senior customer data scientist), Oracle (senior applied scientist), CBA (senior data scientist), UNSW (applied science researcher), UTS (post-doc). <br>
+I have worked as key roles for Collective[i] (data science manager, data science lead), H2O.ai (senior customer data scientist), Oracle (senior applied scientist), CBA (senior data scientist), UNSW (applied science researcher), UTS (post-doc). I received a PhD degree in machine learning and data science from the University of Technology Sydney (UTS). <br>
 
 Also, I have a few notable research [Papers](https://khavo.ai/papers). <br>
 
