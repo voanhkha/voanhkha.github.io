@@ -29,7 +29,7 @@ My name is Kha Vo, an AI scientist / engineer. <br>
   <!--   <canvas id="visualizationCanvas" class="fibonacci" width="1604" height="600" style="width: 802px; height: 300px; opacity: 1;"></canvas> -->
 </div>
 
-My interest of work is to develop creative AI solutions to solve complex problems. That could be any of LLM finetuning, deep learning modeling (time-series, RL, graph-NN...), program synthesis, mathematical optimization, AutoML, to statistical analysis. I also have experience working with standard data pipelines, infrastructures, and processes (Snowflake dbt, SQL, SageMaker...)
+My interest of work is to develop creative and deep AI solutions to solve complex problems. That could be any of LLM finetuning, deep learning modeling (time-series, computer vision, NLP, reinforcement learning, graph neural networks...), deep program synthesis, mathematical optimization, AutoML, to statistical analysis. I am also familiar with standard data pipelines, infrastructures, and processes (Snowflake, SQL, AWS, GCP, ...)
 
 <div id="animation-container">
 <canvas id="visualizationCanvas-2" class="power"></canvas>
@@ -37,7 +37,7 @@ My interest of work is to develop creative AI solutions to solve complex problem
 </div>
 
 
-My strength is my versatility and exposure to various challenging AI problems, demonstrated by achieving 10 Kaggle competition gold medals! Out of the best, I finished rank 1/2600 teams in the Google Brain Ventilator Pressure Prediction, and rank solo 4/1400 in the prestigious $1M-prize ARC-AGI 2024. I'm proud to present my [Kaggle Achievements](https://khavo.ai/kaggle) and my [Kaggle profile](https://kaggle.com/khahuras). <br>
+My strength is my versatility, depth, and wide exposure to various challenging AI problems, solidly and authentically demonstrated by achieving 10 Kaggle competition gold medals! Out of the best, I finished rank 1/2600 teams in the Google Brain Ventilator Pressure Prediction, and rank solo 4/1400 in the prestigious $1M-prize ARC-AGI 2024. I'm proud to present my [Kaggle Achievements](https://khavo.ai/kaggle) and my [Kaggle profile](https://kaggle.com/khahuras). <br>
 
 <div id="animation-container">
 <canvas id="visualizationCanvas-3" class="wave"></canvas>
