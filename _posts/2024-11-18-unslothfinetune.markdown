@@ -1,8 +1,8 @@
 ---
 layout: post
 comments: true
-title: Unsloth AI - the best python library to finetune LLMs!
-excerpt: "... that helped me finish 6/1400 in ARC Prize 2024 and meet intimately with Francois Chollet!"
+title: Finetune LLMs to solve the famous abstract reasoning challenge with Unsloth AI...
+excerpt: "... and finished 6/1400 in ARC Prize 2024, then met intimately with Francois Chollet!"
 mathjax: true
 date:   2024-11-18 00:00:00
 author: Kha Vo
@@ -21,7 +21,7 @@ My idea of using LLMs to predict the output grid DIRECTLY from the input grid is
 
 So,... that's why we all occupied top places in the LB. <br>
 
-After this feat, I was contacted by and then privately met with Francois Chollet, a TIME AI's top 100 most influential persons in 2024!to share about my solution and approach! We also talked about a possibility that whether I can work for his new founded start-up (but for some undisclosed reason I didn't end up working for him).
+After this feat, I was contacted by and then privately met with Francois Chollet, one of TIME's top 100 most influential persons in AI in 2024! , to share about my solution and approach! We also talked about a possibility that whether I can work for his new founded start-up (but for some undisclosed reason I didn't end up working for him).
 
 <div class="imgcap">
 <img src="/images/chollet_kha.png" width="500">
