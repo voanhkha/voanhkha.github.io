@@ -21,7 +21,7 @@ In this post, I would like to propose a system design for finetuning LLMs to per
 
 
 <div class="imgcap">
-<img src="/images/chapter_transcript_black.png" style="width: 100%; max-width: 1000px;">
+<img src="/images/chapter_transcript_white.png" style="width: 1000px !important;">
 <div class="thecap"> Proposed system design </div>
 </div>
 <br>
