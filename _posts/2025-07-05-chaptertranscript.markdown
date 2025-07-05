@@ -21,17 +21,14 @@ In this post, I would like to propose a system design for finetuning LLMs to per
 
 
 <div class="imgcap">
-<img src="/images/chapter_transcript_black.png" width="700">
-<div class="thecap"> Final leaderboard </div>
+<img src="/images/chapter_transcript_black.png" width="1200">
+<div class="thecap"> Proposed system design </div>
 </div>
 <br>
 
-<pre> ```python 
-  def process_transcript(text): 
-  # Split into chunks and generate chapter summaries 
-    return [chunk_summary(t) for t in split(text)] 
-  ``` </pre>
-
+```python
+print("Works perfectly in Jekyll")
+```
 
 Thank you for reading.
 
