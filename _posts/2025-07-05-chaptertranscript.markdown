@@ -30,6 +30,33 @@ In this post, I would like to propose a system design for finetuning LLMs to per
 print("Works perfectly in Jekyll")
 ```
 
+llm_service.py <br>
+```python
+# llm_service.py
+
+from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
+import torch
+import json
+from flask import Flask, request, jsonify
+
+# === Load model ===
+model_name = "Qwen/Qwen1.5-0.5B-Chat"
+
+bnb_config = BitsAndBytesConfig(
+    load_in_4bit=True,
+    bnb_4bit_compute_dtype=torch.float16,
+    bnb_4bit_use_double_quant=True,
+    bnb_4bit_quant_type="nf4"
+)
+
+tokenizer = AutoTokenizer.from_pretrained(model_name)
+model = AutoModelForCausalLM.from_pretrained(
+    model_name,
+    quantization_config=bnb_config,
+    device_map="auto"
+)
+```
+
 Thank you for reading.
 
 
