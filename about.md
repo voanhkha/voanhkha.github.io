@@ -29,7 +29,7 @@ My name is Kha Vo, an AI scientist / engineer. <br>
   <!--   <canvas id="visualizationCanvas" class="fibonacci" width="1604" height="600" style="width: 802px; height: 300px; opacity: 1;"></canvas> -->
 </div>
 
-My interest of work is to develop creative and deep AI solutions to solve complex problems. That could be any of LLM finetuning, deep learning modeling (time-series, computer vision, NLP, reinforcement learning, graph neural networks...), deep program synthesis, mathematical optimization, AutoML, to statistical analysis. I am also familiar with standard data pipelines, infrastructures, and processes (Snowflake, SQL, AWS, GCP, ...)
+My interest of work is to develop creative and deep AI solutions to solve complex problems. That could be any of LLM finetuning, deep learning modeling (time-series, computer vision, NLP, reinforcement learning, graph neural networks...), deep program synthesis, mathematical optimization, AutoML, to statistical analysis. I am also familiar with standard data pipelines, infrastructures, and processes (Azure, Snowflake, SQL, AWS, GCP,...)
 
 <div id="animation-container">
 <canvas id="visualizationCanvas-2" class="power"></canvas>
@@ -39,17 +39,20 @@ My interest of work is to develop creative and deep AI solutions to solve comple
 
 My strength is my versatility, depth, and wide exposure to various challenging AI problems, solidly and authentically demonstrated by achieving 10 Kaggle competition gold medals! Out of the best, I finished rank 1/2600 teams in the Google Brain Ventilator Pressure Prediction, and rank solo 4/1400 in the prestigious $1M-prize ARC-AGI 2024. I'm proud to present my [Kaggle Achievements](https://khavo.ai/kaggle) and my [Kaggle profile](https://kaggle.com/khahuras). <br>
 
+I would like to briefly explain why "Kaggle" has its own section in my website. In the data science community, a Kaggle competition gold medal is something that is of utmost glory. The reason is that for each featured prized competition, it usually lasted for a few months. So a Kaggle competition is much more competitive than a normal a-few-days hackathon, or a-few-hours competition. To perform well in such lengthy contests, one would need to completely commit all his energy, knowledge, and skills, to continually improve the models, digging into the data, creatively design the solving methods, in order to rise to the top 10 (for the gold medal) of thousands of other competitors. <br>
+
+That also explains why so many top Kagglers are being hired by big techs. For instance, NVIDIA is now hiring roughly 10 out of 20 top worldwide Kagglers. <br>
+
 <div id="animation-container">
 <canvas id="visualizationCanvas-3" class="wave"></canvas>
   <!--   <canvas id="visualizationCanvas" class="fibonacci" width="1604" height="600" style="width: 802px; height: 300px; opacity: 1;"></canvas> -->
 </div>
 <br>
 
-Besides, I'm also capable of writing softwares or codes in other coding languages, such as Kotlin, JS, and C++. Proud to mention a few projects such as: <br>
-+ Visualizations of constellations (the moving particles in this page you are reading) were written in JS. [Code here](https://github.com/voanhkha/voanhkha.github.io/tree/master/js) <br>
-+ A TSP solver optimized to crack the Kaggle Santa 2018 competition was written in Kotlin. [Code here](https://github.com/voanhkha/Traveling-Santa-2018-Kaggle) <br>
-+ A few C++ projects (mostly heavily modified from other people's work) to optimize performance on Kaggle competitions. <br>
-
+Besides deep data science exposure, I'm also capable of writing softwares or codes in other coding languages, such as Kotlin, JS, and C++. Proud to mention a few projects such as: <br>
++ A TSP solver optimized to crack the Kaggle Santa 2018 competition was written in Kotlin (as well as Python). [Code here](https://github.com/voanhkha/Traveling-Santa-2018-Kaggle) <br>
++ A few C++ projects to optimize performance on Kaggle competitions. <br>
++ Some of the constellation visualizations (the moving particles on this website) were written in JS. [Code here](https://github.com/voanhkha/voanhkha.github.io/tree/master/js) <br>
 
 Occasionally I write [Posts](https://khavo.ai/posts) in this website, or other short write-ups on Kaggle, to share my technical insights and discoveries. 
 
