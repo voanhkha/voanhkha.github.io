@@ -76,7 +76,7 @@ var w = c.width = window.innerWidth,
 
   // Title and Subtitle (you can replace this with dynamic values if needed)
   var title = 'Kha Vo' // '{{ site.title }}'; // Title from Jekyll
-  var subtitle = 'The No.1 Australian AI scientist on Kaggle (with 9 competition gold medals)' // '{{ site.subtitle }}'; // Subtitle from Jekyll, optional
+  var subtitle = 'The no.1 Australian AI scientist on Kaggle' // '{{ site.subtitle }}'; // Subtitle from Jekyll, optional
   // Set font styles
 
 ctx.fillRect( 0, 0, w, h );
