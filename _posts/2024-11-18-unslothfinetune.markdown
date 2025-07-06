@@ -100,12 +100,35 @@ Let's get to the main part: my solution. There are a few main parts: <br>
 Basically, I want to DIRECTLY ASK the LLM the following question:
 
 ```python
-Question:
+question = """
+    
+Let's see if you can solve this simple Abstraction and Reasoning Challenge (ARC) task.
+Below there are some input-output grid examples that define the task.
+Your job is to understand the transformation between the input and the output and apply it to the test input grid.
+The transformations are always based on the following priors: objectness, goal-directed, numbers & counting, and basic geometry & topology.
+
+{% for sample in train_samples %}
+## Example {{ loop.index }}
+
+### Input
+
+{{ sample.input }}
+
+### Output
+
+{{ sample.output }}
+{% endfor %}
+## Test case
+
+### Input
+
+{{ test_input }}
+"""
 ```
 
 The tricky part is that how can it understand the spacial abstract meaning of objects inside the grids which are also texts in the question? <br>
 
-The answer is that we can modify the tokenizer to let it understand pixels! If we use the default tokenizer as is, there's no way it can understand that '[[1, 1, 1], [2, 2, 2]]' is an object with three pixels of color '1' and three pixels of color '2'. As a result, '1', '2', or even '|' should represent as independent tokens without their original meaning, and must not be merged with any other tokens or with each other. We can do by modifying the tokenizers and the related model objects as belows.
+The answer is that we can modify the tokenizer to let it understand pixels! If we use the default tokenizer as is, there's no way it can understand that '[[1, 1, 1], [2, 2, 2]]' is an object with three pixels of color '1' and three pixels of color '2'. As a result, '1', '2', or even '[', ']' should represent as independent tokens without their original meaning, and must not be merged with any other tokens or with each other. We can do by modifying the tokenizers and the related model objects as belows.
 
 ```python
 import json
