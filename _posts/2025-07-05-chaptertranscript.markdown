@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-title: Chaptering Clipchamp Video Transcripts with LLMs and considerations for auto-continual improvement
+title: A system design for chaptering Clipchamp video transcripts with LLMs, with automatic continual improvement
 excerpt: "(with optimization for both server-side and on-device inferencing)"
 mathjax: true
 date:   2025-07-05 00:00:00
@@ -137,8 +137,8 @@ def process_transcript(transcript):
         chapters = generate_chapters(chunk)
         all_chapters.extend(chapters)
     return all_chapters
-
-### Example usage:
+    
+# === Usage example ===
 messages = [
     {"role": "system", "content": "You are a helpful assistant."},
     {"role": "user", "content": (
@@ -253,6 +253,7 @@ Answer:
         "start_text": "It’s an entity. And the reason why Angelinos have followed this property is because there are so many changes that have taken place now in Los Angeles, which don’t allow you to ever recreate this. For one thing, there are nearly 30,000 cubic yards of dirt, 30,000 cubic yards of dirt that were removed, excavated to create this, okay. "
     },
 ]
+"""
 
 # === FastAPI app ===
 
@@ -265,8 +266,6 @@ class TranscriptRequest(BaseModel):
 async def process(req: TranscriptRequest):
     result = process_transcript(req.text)
     return {"chapters": result}
-
-"""
 
 ```
 
