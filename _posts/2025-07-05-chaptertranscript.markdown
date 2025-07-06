@@ -30,36 +30,6 @@ In this post, I would like to propose a system design for finetuning LLMs to per
 </div>
 <br>
 
-```python
-print("Works perfectly in Jekyll")
-```
-
-llm_service.py <br>
-```python
-# llm_service.py
-
-from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
-import torch
-import json
-from flask import Flask, request, jsonify
-
-# === Load model ===
-model_name = "Qwen/Qwen1.5-0.5B-Chat"
-
-bnb_config = BitsAndBytesConfig(
-    load_in_4bit=True,
-    bnb_4bit_compute_dtype=torch.float16,
-    bnb_4bit_use_double_quant=True,
-    bnb_4bit_quant_type="nf4"
-)
-
-tokenizer = AutoTokenizer.from_pretrained(model_name)
-model = AutoModelForCausalLM.from_pretrained(
-    model_name,
-    quantization_config=bnb_config,
-    device_map="auto"
-)
-```
 
 <br>
 inference.py (this code worked, I've tested on a Kaggle notebook).
@@ -342,6 +312,58 @@ public async Task<string> GetChaptersFromFlask(string transcript)
 }
 ```
 <br>
+
+## Other system parts that I haven't had sufficient time to code (I wish!)
+
+** Data Curator <br>
+- Collect existing cleaned, labeled data that have been processed in previous finetuning sessions. <br>
+- Collect newly added raw transcripts, with the model's prediction on segmented chapters, and with user feedbacks of the result (whether they can be upvote/downvote, or star rating) --> select 'good' user-feedback labeled transcripts <br>
+- Save the newly added 'good' labeled transcripts into the collection for next time use. <br>
+- Return the unification of the first 2 points above. <br>
+
+** Data Augmentation <br>
+- Takes as input the cleaned transcripts (without labels as no need) <br>
+- Generate n variants of each transcript using different methods: 1) trans-b2b: translate into another language then translate back, 2) rephrase: re-write the transcript in different style. These methods can be done by employing an LLM, or a lightweight custom trained deep learning NLP model (i.e., deberta-v3-base). <br>
+- Return all the pairs of variants: (transcript variant, label) for each original transcript. Expect no less than 10 variants for each sample. <br>
+
+** Prompt construction <br>
+- Construct textual prompts (to allow next-token prediction mechanism for most LLMs) from system/user/assistance level sub-prompts, depending on the model used.
+- Construct textual answers corresponding to each prompt, from the labels.
+- Code example for manual textual prompt construction (working):
+```python
+messages = [
+    {"role": "system", "content": "You are a helpful assistant."},
+    {"role": "user", "content": (
+        """
+Segment this paragraph into a few chapters.
+You MUST return a list of ordered json objects like this, by the appearance order of chapters (and say nothing else).
+Where 'title' is the chapter title, and 'start_text' is the exact starting sentence of that chapter.
+
+[{'title': 'some title', 'start_text': 'some_text'}, # this is for chapter 1
+ {'title': 'some title', 'start_text': 'some_text'}, # this is for chapter 2
+ ...
+]
+        """
+        f"Paragraph: {paragraph}"
+    )}
+]
+
+# Build prompt manually
+prompt = ""
+for message in messages:
+    if message["role"] == "system":
+        prompt += f"System: {message['content']}\n"
+    elif message["role"] == "user":
+        prompt += f"User: {message['content']}\n"
+prompt += "Assistant:"
+```
+
+** Finetuning procedure <br>
+- Consumes the prepared prompt-answer pairs as training data. <br>
+- Read base model weights (full), or previously trained weight (in case we only need to finetune on new data only, but this is not recommended for performance issue). <br>
+- Finetune the model in quantized mode, with full logging, metric monitoring, and error handling techniques. <br>
+- Return special model objects in quantized formats (gguf, llama.cpp, onnx, peft...) depending on design preference, and evaluation metrics. <br>
+
 
 
 Thank you for reading.
