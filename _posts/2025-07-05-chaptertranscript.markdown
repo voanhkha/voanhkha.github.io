@@ -62,7 +62,8 @@ model = AutoModelForCausalLM.from_pretrained(
 ```
 
 <br>
-inference.py <br>
+inference.py (this code worked, I've tested on a Kaggle notebook).
+<br>
 ```python
 
 # If on-server with default packages, will need to re-install these
@@ -137,19 +138,7 @@ def process_transcript(transcript):
         all_chapters.extend(chapters)
     return all_chapters
 
-# === FastAPI app ===
-
-app = FastAPI()
-
-class TranscriptRequest(BaseModel):
-    text: str
-
-@app.post("/process_transcript")
-async def process(req: TranscriptRequest):
-    result = process_transcript(req.text)
-    return {"chapters": result}
-
-
+### Example usage:
 messages = [
     {"role": "system", "content": "You are a helpful assistant."},
     {"role": "user", "content": (
@@ -264,16 +253,57 @@ Answer:
         "start_text": "It’s an entity. And the reason why Angelinos have followed this property is because there are so many changes that have taken place now in Los Angeles, which don’t allow you to ever recreate this. For one thing, there are nearly 30,000 cubic yards of dirt, 30,000 cubic yards of dirt that were removed, excavated to create this, okay. "
     },
 ]
-    
+
+# === FastAPI app ===
+
+app = FastAPI()
+
+class TranscriptRequest(BaseModel):
+    text: str
+
+@app.post("/process_transcript")
+async def process(req: TranscriptRequest):
+    result = process_transcript(req.text)
+    return {"chapters": result}
 
 """
 
 ```
 
 <br>
-augment_training_data.py
-```python
-codes
+
+c_sharp_call.py: C# Code for Calling POST /process_transcript from FastAPI
+```C#
+using System.Net.Http;
+using System.Text;
+using System.Threading.Tasks;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+
+public class TranscriptClient
+{
+    private static readonly HttpClient client = new HttpClient();
+
+    public async Task<string[]> GetChaptersAsync(string transcriptText)
+    {
+        var payload = new
+        {
+            text = transcriptText  // matches Python's TranscriptRequest: BaseModel with 'text'
+        };
+
+        var json = JsonConvert.SerializeObject(payload);
+        var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+        var response = await client.PostAsync("https://your-api-url/process_transcript", content);
+        response.EnsureSuccessStatusCode();
+
+        var responseBody = await response.Content.ReadAsStringAsync();
+        var parsed = JObject.Parse(responseBody);
+
+        var chapters = parsed["chapters"]?.ToObject<string[]>();
+        return chapters ?? new string[0];
+    }
+}
 ```
 
 <br>
