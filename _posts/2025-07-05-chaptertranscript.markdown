@@ -263,28 +263,24 @@ Answer:
         "title": "Property Tour",
         "start_text": "It’s an entity. And the reason why Angelinos have followed this property is because there are so many changes that have taken place now in Los Angeles, which don’t allow you to ever recreate this. For one thing, there are nearly 30,000 cubic yards of dirt, 30,000 cubic yards of dirt that were removed, excavated to create this, okay. "
     },
-    {
-        "title": "Property Features",
-        "start_text": "You are on four acres, almost four acres, up the longest driveway you’ve ever seen, and landing on top of the hill. One of the highest elevations in all of Bel Air. So for all of those reasons, and then add the icing on the cake, which is a 360 degree view."
-    },
-    {
-        "title": "Property Highlights",
-        "start_text": "You are in one of the most sought after and iconic properties in all of Los Angeles. (relaxed music)"
-    },
-    {
-        "title": "Property Exterior",
-        "start_text": "We’re gonna start our tour on the motor court. Long driveway brings you up here, and halfway through the driveway, you actually have an entrance point to your subterranean garage. "
-    },
-    {
-        "title": "Property Interior",
-        "start_text": "And coming here, we have this paved floors, palm trees, amazing scale. And coming to this section, we have the marble walkway taking you to the front door. "
-    },
+]
     
 
 """
 
 ```
 
+<br>
+augment_training_data.py
+```python
+codes
+```
+
+<br>
+prompt_construct.py
+```python
+codes
+```
 
 Thank you for reading.
 
