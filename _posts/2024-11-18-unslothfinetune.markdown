@@ -105,7 +105,7 @@ Question:
 
 The tricky part is that how can it understand the spacial abstract meaning of objects inside the grids which are also texts in the question? <br>
 
-The answer is that we can modify the tokenizer to let it understand pixels! If we use the default tokenizer as is, there's no way it can understand that |111|222| is an object with three pixels of color '1' and three pixels of color '2'. As a result, '1', '2', or even '|' should represent as independent token and must not be merged with any other tokens. We can do by modifying the tokenizer as belows.
+The answer is that we can modify the tokenizer to let it understand pixels! If we use the default tokenizer as is, there's no way it can understand that '[[1, 1, 1], [2, 2, 2]]' is an object with three pixels of color '1' and three pixels of color '2'. As a result, '1', '2', or even '|' should represent as independent tokens without their original meaning, and must not be merged with any other tokens or with each other. We can do by modifying the tokenizers and the related model objects as belows.
 
 ```python
 import json
@@ -709,21 +709,27 @@ def process_inference_output(key, outputs, formatter, store=None, decoder=None, 
 
 ```
 
-## 4)  Ensembling with past-solutions 
-<br>
+## 4)  Ensembling with past-solutions and Candidate selection optimization
+
 Some heuristic-based solutions from the 2019 edition were still very strong and helped the ensemble of predictions. <br>
 
-## 5) Candidate selection optimization
-<br>
-I used a unique self-made selection elimination technique that helps to reduce the irrelevant predictions for a single task, by observing various heuristic-based factors of that task: background detection, object count, task type classification... <br>
+To ensemble different predictions of a single task, I used a unique self-made selection elimination technique that helps to reduce the irrelevant predictions for a single task, by observing various heuristic-based factors of that task: background detection, object count, task type classification. For instance: <br>
 
++ Detect background color, eliminate predictions with wrong background color. <br>
 
++ Detect whether the task is of a specific type (such as only_recolor, only_move, always_num_input_objs_equal_num_output_objs, ...), then invalidate predictions that are not of that task type. <br>
+
++ Role swapping: use the prediction (A) as 1 input-output pair for training, and swap it with 1 real train input-output pair (B). Then with a new collection of train input-output pairs, try to predict the output of B and compare it with the real output of B. If they don't match then the prediction (A) is eliminated. <br>
+
+### Remarks
+
+Getting a solo gold in a Kaggle competition is no joke. This competition has consumed all my life and soul in 6 months. <br>
 
 However, if you look at the competition LB by now, you don't see me there because of the Kaggle buggy procedure when they hand out money prizes. It was a really long and frustrating story. If you want to understand more about this unfortunate incident, that also happened to 3 other teams, please read this Kaggle [discussion topic](https://www.kaggle.com/competitions/arc-prize-2024/discussion/550442) and all of its comments there. You'll also see me ranting about it there :) <br>
 
 Anyway, that doesn't reduce the validity of my solution, but as how it turned out, I would like to hold off the sharing of my full code solution for now, to gain an advantage on the ongoing 2025 edition (which is now running from Mar to Nov 2025). <br>
 
-I will post my full solution once ARC Prize 2025 is concluded. <br>
+I will post my full solution once ARC Prize 2025 is concluded (Nov 2025). <br>
 
 Thank you for reading.
 
