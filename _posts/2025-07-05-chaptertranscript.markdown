@@ -32,11 +32,11 @@ In this post, I would like to propose a system design for finetuning LLMs to per
 
 
 <br>
-inference.py (this code worked, I've tested on a Kaggle notebook).
+inference.py (working).
 <br>
 ```python
 
-# If on-server with default packages, will need to re-install these
+# Will need to re-install these packages
 !pip install fastapi 
 !pip install bitsandbytes
 
@@ -46,7 +46,7 @@ import json
 from fastapi import FastAPI
 from pydantic import BaseModel
 
-model_name = "Qwen/Qwen1.5-0.5B-Chat"
+# model_name = "Qwen/Qwen1.5-0.5B-Chat"
 # model_name = "Qwen2.5-0.5B-Instruct"
 model_name = "Qwen/Qwen2.5-0.5B-Instruct"
 
@@ -315,18 +315,18 @@ public async Task<string> GetChaptersFromFlask(string transcript)
 
 ## Other system parts that I haven't had sufficient time to code (I wish!)
 
-** Data Curator ** <br>
+**Data Curator** <br>
 - Collect existing cleaned, labeled data that have been processed in previous finetuning sessions. <br>
 - Collect newly added raw transcripts, with the model's prediction on segmented chapters, and with user feedbacks of the result (whether they can be upvote/downvote, or star rating) --> select 'good' user-feedback labeled transcripts <br>
 - Save the newly added 'good' labeled transcripts into the collection for next time use. <br>
 - Return the unification of the first 2 points above. <br>
 
-** Data Augmentation ** <br>
+**Data Augmentation** <br>
 - Takes as input the cleaned transcripts (without labels as no need) <br>
 - Generate n variants of each transcript using different methods: 1) trans-b2b: translate into another language then translate back, 2) rephrase: re-write the transcript in different style. These methods can be done by employing an LLM, or a lightweight custom trained deep learning NLP model (i.e., deberta-v3-base). <br>
 - Return all the pairs of variants: (transcript variant, label) for each original transcript. Expect no less than 10 variants for each sample. <br>
 
-** Prompt construction ** <br>
+**Prompt construction** <br>
 - Construct textual prompts (to allow next-token prediction mechanism for most LLMs) from system/user/assistance level sub-prompts, depending on the model used.
 - Construct textual answers corresponding to each prompt, from the labels.
 - Code example for manual textual prompt construction (working):
@@ -360,7 +360,7 @@ prompt += "Assistant:"
 ```
 
 <br>
-** Finetuning procedure ** <br>
+**Finetuning procedure** <br>
 - Consumes the prepared prompt-answer pairs as training data. <br>
 - Read base model weights (full), or previously trained weight (in case we only need to finetune on new data only, but this is not recommended for performance issue). <br>
 - Finetune the model in quantized mode, with full logging, metric monitoring, and error handling techniques. <br>
