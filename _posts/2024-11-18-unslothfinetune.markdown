@@ -107,14 +107,14 @@ Below there are some input-output grid examples that define the task.
 Your job is to understand the transformation between the input and the output and apply it to the test input grid.
 The transformations are always based on the following priors: objectness, goal-directed, numbers & counting, and basic geometry & topology.
 
-### Input:
-[insert train input-output pairs]
-
-### Output
-[insert test input image]
-
 Your task is to create a new grid that follows the same distribution as the input grids from the Abstraction and Reasoning Challenge (ARC).
-Below there are some grid examples, please create a new and different grid that follows the same distribution.
+Below there are some training input-output grid pairs examples, please create a new and different output grid corresponding to the test input images, that follows the same distribution of the train input-output pairs.
+
+Train input-output pairs:
+# insert train input-output pairs
+
+Test input images:
+# insert test input images
 """
 ```
 
