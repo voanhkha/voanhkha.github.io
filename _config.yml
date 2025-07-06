@@ -10,11 +10,11 @@ exclude:
 
 # Site settings
 title: Kha Vo
-subtitle: "A versatile AI scientist-engineer who won 10 Kaggle competition gold medals"
+subtitle: "The Australian no.1 AI scientist on Kaggle, with 10 competition gold medals"
 email: khahuras@gmail.com
 name: Kha Vo
 description: >
-  The personal webpage of a 10-gold-medal Kaggle Grandmaster
+  The personal webpage of a 10-gold-medal Kaggle Grandmaster, the most decorated Australian Kaggler
 # Base URL of site (i.e. /blog). It should always start with a slash,
 # and never end with a slash. Set it to a blank value if hosting at the
 # root of your server.
