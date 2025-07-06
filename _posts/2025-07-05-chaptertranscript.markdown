@@ -366,6 +366,13 @@ prompt += "Assistant:"
 - Finetune the model in quantized mode, with full logging, metric monitoring, and error handling techniques. <br>
 - Return special model objects in quantized formats (gguf, llama.cpp, onnx, peft...) depending on design preference, and evaluation metrics. <br>
 
+For more information on how I finetune LLMs, please read my other posts on this website. Here I suggest a few: <br>
+
+[Post 1](https://khavo.ai/kaggle/2024/11/18/unslothfinetune.html): Finetune LLMs to solve the famous abstract reasoning challenge with Unsloth AI ... and finished 6/1400 in ARC Prize 2024, then met intimately with Francois Chollet! <br>
+
+[Post 2](https://khavo.ai/kaggle/2024/08/29/LLM20Questions.html): Finetune an LLM to play the game of '20 questions' and won rank 13/832 in a Kaggle simulation competition. <br>
+
+[Post 3](https://khavo.ai/kaggle/2023/11/08/predictLLM.html): How to finetune an LLM to classify responses from other LLMs, and won a SECOND PLACE in the 'H2O.ai Predict the LLM', met with H2O.ai CEO, and recruited by them! <br>
 
 
 Thank you for reading.
