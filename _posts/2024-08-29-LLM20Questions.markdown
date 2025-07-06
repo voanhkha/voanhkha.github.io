@@ -93,4 +93,8 @@ There are a few key takeaways from this competition that I found really valuable
 
 <br>
 
-That's it for a painstaking but wonderful Kaggle simulation competition. Thanks for reading and see you in another post!
+That's it for a painstaking but wonderful Kaggle simulation competition. <br>
+
+Here is the link to my public [Kaggle code](https://www.kaggle.com/code/khahuras/offline-policy-questioner-agent), that has the top 5 most votes in the competition, and top 3 most forked! Many people used my code as the base solution and improve upon it. Note that the finetuning part was done offline, so the code is only about inferencing live on Kaggle mode. <br>
+
+ Thanks for reading and see you in another post!
