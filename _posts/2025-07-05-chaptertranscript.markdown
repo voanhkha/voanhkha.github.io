@@ -271,7 +271,7 @@ async def process(req: TranscriptRequest):
 
 <br>
 
-c_sharp_call.py: C# Code for Calling POST /process_transcript from FastAPI
+C# Code for Calling POST /process_transcript from FastAPI.
 ```C#
 using System.Net.Http;
 using System.Text;
@@ -306,10 +306,43 @@ public class TranscriptClient
 ```
 
 <br>
-prompt_construct.py
+flask_inference.py: similar routine to inference.py, but used Flask instead of FastAPI
 ```python
-codes
+from flask import Flask, request, jsonify
+
+app = Flask(__name__)
+
+@app.route("/process_transcript", methods=["POST"])
+def process():
+    data = request.get_json()
+    transcript = data.get("text", "")
+    chapters = process_transcript(transcript)
+    return jsonify({"chapters": chapters})
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=8000)
 ```
+<br>
+
+
+C# Code for Calling POST /process_transcript from Flask.
+```C#
+using System.Net.Http;
+using System.Text;
+using System.Threading.Tasks;
+using Newtonsoft.Json;
+
+public async Task<string> GetChaptersFromFlask(string transcript)
+{
+    var client = new HttpClient();
+    var requestBody = JsonConvert.SerializeObject(new { text = transcript });
+    var content = new StringContent(requestBody, Encoding.UTF8, "application/json");
+    var response = await client.PostAsync("https://your-api-url/process_transcript", content);
+    return await response.Content.ReadAsStringAsync();
+}
+```
+<br>
+
 
 Thank you for reading.
 
