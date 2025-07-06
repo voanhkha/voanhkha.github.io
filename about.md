@@ -43,6 +43,8 @@ I would like to briefly explain why "Kaggle" has its own section in my website. 
 
 That also explains why so many top Kagglers are being hired by big techs. For instance, NVIDIA is now hiring roughly 10 out of 20 top worldwide Kagglers. <br>
 
+I am also the top-1 Australian on this platform, with the most competition gold medals that I relentlessly fought for in the last 8 years. <br>
+
 <div id="animation-container">
 <canvas id="visualizationCanvas-3" class="wave"></canvas>
   <!--   <canvas id="visualizationCanvas" class="fibonacci" width="1604" height="600" style="width: 802px; height: 300px; opacity: 1;"></canvas> -->
