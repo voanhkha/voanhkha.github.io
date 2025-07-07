@@ -313,6 +313,36 @@ public async Task<string> GetChaptersFromFlask(string transcript)
 ```
 <br>
 
+An example of how Clipchamp UI in TypeScript can consume the Python LLM API json:
+```python
+# Suppose this is the json payload:
+{
+  "chapters": [
+    { "chapter_title": "Intro", "start_text_snippet": "Welcome to..." },
+    { "chapter_title": "Tour", "start_text_snippet": "Let’s go..." }
+  ]
+}
+```
+
+```ts
+type Chapter = {
+  chapter_title: string;
+  start_text_snippet: string;
+};
+
+async function getChapters(text: string): Promise<Chapter[]> {
+  const response = await fetch("https://your-api-url/process_transcript", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ text }),
+  });
+
+  const data = await response.json();
+  return data.chapters;
+}
+```
+<br>
+
 ## Other system parts that I haven't had sufficient time to code (I wish!)
 
 **Data Curator** <br>
