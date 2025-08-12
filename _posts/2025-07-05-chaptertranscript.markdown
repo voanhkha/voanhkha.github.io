@@ -9,6 +9,7 @@ author: Kha Vo
 categories: Kaggle
 tags:	AI
 cover:  "/assets/instacode.png"
+published: false
 ---
 
 In this post, I would like to propose a system design for finetuning LLMs to perform an interesting task of chaptering (segmenting) transcripts. In short, this design will perform the following: <br>
