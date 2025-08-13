@@ -9,7 +9,7 @@ author: Kha Vo
 categories: Kaggle
 tags:	AI
 cover:  "/assets/instacode.png"
-hidden: true
+published: false
 ---
 
 [ARC Prize](https://arcprize.org/) (Abstract Reasoning Challenge) on Kaggle has always been one of the most (if not the most) difficult AI challenge nowadays that even OpenAI o3 pro struggles! <br>
