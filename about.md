@@ -31,11 +31,11 @@ My name is Kha Vo, an AI scientist / engineer. <br>
 
 My interest of work is to develop creative and deep AI solutions to solve complex problems. That could be any of LLM finetuning, deep learning modeling (time-series, computer vision, NLP, reinforcement learning, graph neural networks...), deep program synthesis, mathematical optimization, AutoML, to statistical analysis. I am also familiar with standard data pipelines, infrastructures, and processes (Azure, Snowflake, SQL, AWS, GCP,...)
 
+<!--
 <div id="animation-container">
 <canvas id="visualizationCanvas-2" class="power"></canvas>
-  <!--   <canvas id="visualizationCanvas" class="fibonacci" width="1604" height="600" style="width: 802px; height: 300px; opacity: 1;"></canvas> -->
 </div>
-
+-->
 
 My strength is my versatility, depth, and wide exposure to various challenging AI problems, solidly and authentically demonstrated by achieving 9 Kaggle competition gold medals! Out of the best, I finished rank 1/2600 teams in the Google Brain Ventilator Pressure Prediction, and rank solo 4/1400 in the prestigious $1M-prize ARC-AGI 2024. I'm proud to present my [Kaggle Achievements](https://khavo.ai/kaggle) and my [Kaggle profile](https://kaggle.com/khahuras). <br>
 
@@ -45,10 +45,12 @@ That also explains why so many top Kagglers are being hired by big techs. For in
 
 I am also the top-1 Australian on this platform, with the most competition gold medals that I relentlessly fought for in the last 8 years. <br>
 
+<!--
 <div id="animation-container">
 <canvas id="visualizationCanvas-3" class="wave"></canvas>
-  <!--   <canvas id="visualizationCanvas" class="fibonacci" width="1604" height="600" style="width: 802px; height: 300px; opacity: 1;"></canvas> -->
 </div>
+-->
+
 <br>
 
 Besides deep data science exposure, I'm also capable of writing softwares or codes in other coding languages, such as Kotlin, JS, and C++. Proud to mention a few projects such as: <br>
@@ -58,18 +60,21 @@ Besides deep data science exposure, I'm also capable of writing softwares or cod
 
 Occasionally I write [Posts](https://khavo.ai/posts) in this website, or other short write-ups on Kaggle, to share my technical insights and discoveries. 
 
+<!--
 <div id="animation-container">
  <canvas id="visualizationCanvas-4" class="fibonacci" width="1604" height="600" style="width: 802px; height: 300px; opacity: 1;"></canvas> 
 </div>
+-->
 
 I have worked as key roles for Collective[i] (data science manager, data science lead), H2O.ai (senior customer data scientist), Oracle (senior applied scientist), CBA (senior data scientist), UNSW (applied science researcher), UTS (post-doc). I received a PhD degree in machine learning and data science from the University of Technology Sydney (UTS). <br>
 
 Also, I have a few notable research [Papers](https://khavo.ai/papers). <br>
 
+<!--
 <div id="animation-container">
 <canvas id="visualizationCanvas-5" class="gravitydispersion"></canvas>
-  <!--   <canvas id="visualizationCanvas" class="fibonacci" width="1604" height="600" style="width: 802px; height: 300px; opacity: 1;"></canvas> -->
 </div>
+-->
 
 Besides work, I also enjoy music (check out my [Tunes](https://khavo.ai/tunes) page), chess, soccer, and making funny AI stuffs :).  <br>
 
