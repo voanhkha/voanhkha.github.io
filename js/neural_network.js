@@ -75,8 +75,8 @@ var w = c.width = window.innerWidth,
 		Tau = Math.PI * 2;
 
   // Title and Subtitle (you can replace this with dynamic values if needed)
-  var title = 'Interstellarc' // '{{ site.title }}'; // Title from Jekyll
-  var subtitle = 'Do not step gentle into that good night' // '{{ site.subtitle }}'; // Subtitle from Jekyll, optional
+  var title = 'Kha Vo' // '{{ site.title }}'; // Title from Jekyll
+  var subtitle = 'One of the top Australian AI scientists on Kaggle' // '{{ site.subtitle }}'; // Subtitle from Jekyll, optional
   //   The no.1 Australian AI scientist on Kaggle
 
 ctx.fillRect( 0, 0, w, h );
