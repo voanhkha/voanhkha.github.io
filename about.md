@@ -24,10 +24,11 @@ main_nav: true
 
 My name is Kha Vo, an AI scientist / engineer. <br>
 
+<!--
 <div id="animation-container">
 <canvas id="visualizationCanvas-1" class="asteroids"></canvas>
-  <!--   <canvas id="visualizationCanvas" class="fibonacci" width="1604" height="600" style="width: 802px; height: 300px; opacity: 1;"></canvas> -->
 </div>
+-->
 
 My interest of work is to develop creative and deep AI solutions to solve complex problems. That could be any of LLM finetuning, deep learning modeling (time-series, computer vision, NLP, reinforcement learning, graph neural networks...), deep program synthesis, mathematical optimization, AutoML, to statistical analysis. I am also familiar with standard data pipelines, infrastructures, and processes (Azure, Snowflake, SQL, AWS, GCP,...)
 
@@ -92,11 +93,11 @@ Besides work, I also enjoy music (check out my [Tunes](https://khavo.ai/tunes) p
 
 <br>
 
-
+<!--
 <div id="animation-container">
 <canvas id="visualizationCanvas-6" class="donut"></canvas>
-  <!--   <canvas id="visualizationCanvas" class="fibonacci" width="1604" height="600" style="width: 802px; height: 300px; opacity: 1;"></canvas> -->
 </div>
+-->
 
 <script src="{{ '/js/neural_visuals.js' | relative_url }}"></script>
 
