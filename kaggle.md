@@ -19,11 +19,10 @@ main_nav: true
 * __6/1400: ARC Prize 2024 (Solo Gold) - Nov 2024__ <br>
 Create an AI capable of solving reasoning tasks it has never seen before. After this achievement, I got the chance to personally meet Francois Chollet, the TIME's 2024 Top 100 most influencial people in AI!
 
-<!--
 <div class="imgcap" style="display: flex; justify-content: center;">
 <img src="/images/Kha_Francois_MeetUp.png" style="width: 70%;">
 </div>  
--->
+
 
 <br>
 <br>
