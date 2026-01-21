@@ -78,7 +78,7 @@ There are a few key takeaways from this competition that I found really valuable
 - Finetuning LLAMA3 experience <br>
 - Realize the big gap improvement from LLAMA3 to LLAMA3.1 <br>
 - A critical trick on the game ([alpha trick](https://www.kaggle.com/code/cdeotte/make-animation-of-winning-teams)) that disrupted the LB, and got understood by about 20 top teams, including mine.
-- A brilliant [1st place solution](https://www.kaggle.com/competitions/llm-20-questions/discussion/531106) from a new Kaggle superstar [c-number](https://www.kaggle.com/cnumber). I like this solution so much! <br>
+- A brilliant [1st place solution](https://www.kaggle.com/competitions/llm-20-questions/discussion/531106) from a new Kaggle superstar [c-number](https://www.kaggle.com/cnumber). I like this solution so much! The below figures are the analysis made by him. <br>
 
 <div class="imgcap">
 <img src="https://www.googleapis.com/download/storage/v1/b/kaggle-forum-message-attachments/o/inbox%2F6624777%2Fb3e468f4bc8f9da52f5d7ff1c5d7a52a%2Fscatter.png?generation=1725032484048482&alt=media" width="400">
