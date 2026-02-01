@@ -5,7 +5,7 @@ permalink: /kaggle/
 main_nav: true
 ---
 
-### Kaggle Achievements (Updated Nov 2024)
+### Kaggle Achievements (Updated Jan 2026)
 
 <div class="imgcap">
 <img src="/images/KhaVo_KaggleGM.png" style="width: 70%;">
@@ -14,6 +14,18 @@ main_nav: true
 <!--<div id="animation-container">
   <canvas id="visualizationCanvas_constellation"></canvas>
 </div> -->
+
+https://www.kaggle.com/competitions/santa-2025/writeups/third-place-solution-a-customized-sparrow-algorit
+
+* __3/3395: Santa 2025 - Christmas Tree Packing Challenge (Gold) - Jan 2026__ <br>
+Solve a classic bin packing optimization problem with a festive twist: ugly-shape Christmas trees!<br>
+[[ContestPage]](https://www.kaggle.com/competitions/santa-2025/leaderboard) [[Solution]](https://www.kaggle.com/competitions/santa-2025/writeups/third-place-solution-a-customized-sparrow-algorit) [[Code]]()
+<br>
+<br> 
+
+
+<br>
+<br>
 
 
 * __6/1400: ARC Prize 2024 (Solo Gold) - Nov 2024__ <br>
