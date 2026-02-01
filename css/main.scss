@@ -131,3 +131,17 @@
 //  transform: translateY(-1px);
 //  transition: transform 160ms ease;
 //}
+
+/* Desktop / default */
+.post-list .post-link {
+  font-size: 1.9rem;
+  line-height: 1.25;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .post-list .post-link {
+    font-size: 1.35rem;   /* try 1.2–1.5rem */
+    line-height: 1.3;
+  }
+}
