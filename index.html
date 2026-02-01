@@ -27,27 +27,48 @@ pagination:
 <script src="{{ 'js/sphere.js' | relative_url }}"></script>
 	
 <div class="wrapper">
-<ul class="post-list">
-  {% for post in site.posts %}
-  <li>
-    <h2>
-      <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-    </h2>
-    <section class="post-excerpt" itemprop="description">
-      <p>{{ post.excerpt | strip_html | truncatewords: 50 }}</p>
-    </section>
-    <section class="post-meta">
-      <div class="post-date">{{ post.date | date: "%B %-d, %Y" }}</div>
+  <ul class="post-list">
+    {% for post in site.posts %}
+      <li class="post-item">
+        <div class="post-row">
+          <div class="post-media">
+            {% if post.preview_media %}
+              {% if post.preview_type == "video" %}
+                <video class="post-preview-video" autoplay loop muted playsinline preload="metadata">
+                  <source src="{{ post.preview_media | relative_url }}" type="video/webm">
+                </video>
+              {% else %}
+                <img class="post-preview-img"
+                     src="{{ post.preview_media | relative_url }}"
+                     alt="Preview for {{ post.title }}">
+              {% endif %}
+            {% else %}
+              <div class="post-media-fallback" aria-hidden="true"></div>
+            {% endif %}
+          </div>
 
-    </section>
-  </li>
-  {% if forloop.last == false %}
-  <hr>
-  {% endif %}
-  {% endfor %}
-</ul>
+          <div class="post-content">
+            <h2>
+              <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+            </h2>
 
+            <section class="post-excerpt" itemprop="description">
+              <p>{{ post.excerpt | strip_html | truncatewords: 50 }}</p>
+            </section>
 
+            <section class="post-meta">
+              <div class="post-date">{{ post.date | date: "%B %-d, %Y" }}</div>
+            </section>
+          </div>
+        </div>
+      </li>
+
+      {% if forloop.last == false %}
+        <hr>
+      {% endif %}
+    {% endfor %}
+  </ul>
 </div>
+
 		
 </div>

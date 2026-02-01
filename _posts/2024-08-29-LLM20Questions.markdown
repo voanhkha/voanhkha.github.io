@@ -9,6 +9,8 @@ author: Kha Vo
 categories: Kaggle
 tags:	AI
 cover:  "/assets/instacode.png"
+preview_media: /assets/previews/trees.gif
+preview_type: gif   # gif | video
 ---
 
 I've just earned my top solo silver medal (rank 13) in a Kaggle simulation competition ["LLM 20 Questions"](https://www.kaggle.com/competitions/llm-20-questions), where we need to develop an LLM to play the game of 20 questions. <br>
