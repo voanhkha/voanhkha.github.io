@@ -9,6 +9,8 @@ author: Kha Vo
 categories: Machine_Learning
 tags:	AI
 cover:  "/assets/instacode.png"
+preview_media: /assets/previews/policy.webm
+preview_type: video   # gif | video
 ---
 
 **Introduction**

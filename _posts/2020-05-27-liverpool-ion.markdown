@@ -9,6 +9,8 @@ author: Kha Vo
 categories: Kaggle
 tags:	AI
 cover:  "/assets/instacode.png"
+preview_media: /assets/previews/ion.webm
+preview_type: video   # gif | video
 ---
 
 I have just lost my first win (rank 1) of a Kaggle competition! It's due to an expected data leak at the end and two other teams exploited it! So finally we ranked 3rd. <br>

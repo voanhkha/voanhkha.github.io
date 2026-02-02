@@ -9,6 +9,8 @@ author: Kha Vo
 categories: Kaggle
 tags:	AI
 cover:  "/assets/instacode.png"
+preview_media: /assets/previews/brain.gif
+preview_type: gif   # gif | video
 ---
 
 After a while, missing a first place finish in another Kaggle competition due to the unexpected data leak (see my [blog](https://khavo.ai/kaggle/2020/05/27/liverpool-ion.html)),

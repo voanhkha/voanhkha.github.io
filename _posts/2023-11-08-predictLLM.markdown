@@ -9,8 +9,8 @@ author: Kha Vo
 categories: Kaggle
 tags:	AI
 cover:  "/assets/instacode.png"
-preview_media: /assets/previews/trees.webm
-preview_type: video   # gif | video
+preview_media: /assets/previews/detectllm.gif
+preview_type: gif   # gif | video
 ---
 
 Finetuning an LLM an optimizing its predictions is really an interesting task! <br>

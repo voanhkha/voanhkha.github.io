@@ -9,6 +9,8 @@ author: Kha Vo
 categories: Kaggle
 tags:	AI
 cover:  "/images/santa2018.gif"
+preview_media: /assets/previews/traveling.webm
+preview_type: video   # gif | video
 ---
 
 This is my first time writing and optimizing from scratch a Python script that solves a traveling salesman problem (TSP) for the Kaggle Santa 2018 competition. <br><br>
