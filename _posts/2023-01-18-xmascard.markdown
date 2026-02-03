@@ -69,6 +69,8 @@ And the same for all 8 links.<br>
 From these 32 configs, we usually are in a good position to go to the next city. Sometimes it’s not possible. In the case where we can’t reach city i+1, we go back 100 cities behind and from each city, we store 1000 configurations, randomly, added to the 32 configurations above. If it still doesn’t enable us to reach city i+1, we move back 200 behind and store 2000 configurations for each city. It was never useful to go back further.
 The solver starts once from the beginning, up to position (x=128,y=128) (top right corner, with a unique possible link configuration). Then the solver starts from the end, back to the same position. This removes the problem of the specific link configuration at the beginning and at the end.<br><br>
 
+Embedded below is my full published code (that can be found [here](https://www.kaggle.com/code/khahuras/arm-breakers-solution/notebook?scriptVersionId=116622207))
+
+<iframe src="https://www.kaggle.com/embed/khahuras/arm-breakers-solution?kernelSessionId=116622207" height="800" style="margin: 0 auto; width: 100%; max-width: 950px;" frameborder="0" scrolling="auto" title="Arm Breakers Solution"></iframe>
+
 Thanks for reading!
-
-

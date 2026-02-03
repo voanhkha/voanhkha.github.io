@@ -9,6 +9,8 @@ author: Kha Vo
 categories: Kaggle
 tags:	AI
 cover:  "/assets/instacode.png"
+preview_media: /assets/previews/ensemble.webm
+preview_type: video   # gif | video
 ---
 
  I was extremely proud to lead a team of great talents to an outstanding success: a gold medal (rank 14/3494) in the big annual Data Science Bowl tradition on Kaggle!

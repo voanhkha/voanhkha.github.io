@@ -33,7 +33,10 @@ It was a really fun and helpful experience in the whole journey of this competit
 
 - Our full code [here](https://github.com/GillesVandewiele/Liverpool-Ion-Switching)<br><br>
 
+Embedded below is my publicly published code (brief) for viewer's convenience.
 Have fun!
+
+<iframe src="https://www.kaggle.com/embed/khahuras/1st-place-non-leak-solution?kernelSessionId=34894967" height="800" style="margin: 0 auto; width: 100%; max-width: 950px;" frameborder="0" scrolling="auto" title="1st place non-leak Solution"></iframe>
 
 
 

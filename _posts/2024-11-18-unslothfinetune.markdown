@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-title: Finetune LLMs to solve the famous abstract reasoning challenge with Unsloth AI...
+title: (Rank 6/1637) Finetune LLMs to solve the famous abstract reasoning challenge with Unsloth AI...
 excerpt: "... and finished 6/1400 in ARC Prize 2024, then met intimately with Francois Chollet!"
 mathjax: true
 date:   2024-11-18 00:00:00
@@ -10,6 +10,8 @@ categories: Kaggle
 tags:	AI
 cover:  "/assets/instacode.png"
 published: true
+preview_media: /assets/previews/arc24.gif
+preview_type: gif   # gif | video
 ---
 
 [ARC Prize](https://arcprize.org/) (Abstract Reasoning Challenge) on Kaggle has always been one of the most (if not the most) difficult AI challenge nowadays that even OpenAI o3 pro struggles! <br>
@@ -191,5 +193,9 @@ Anyway, that doesn't reduce the validity of my solution, but as how it turned ou
 I will post my full solution once ARC Prize 2025 is concluded (Nov 2025). <br>
 
 Thank you for reading.
+
+My code for ARC Prize 2025 can be found [here](https://www.kaggle.com/code/khahuras/khavo-arc-prize-solution) (embedded below):
+
+<iframe src="https://www.kaggle.com/embed/khahuras/khavo-arc2025-solution?kernelSessionId=272929670" height="800" style="margin: 0 auto; width: 100%; max-width: 950px;" frameborder="0" scrolling="auto" title="KhaVo ARC2025 solution"></iframe>
 
 

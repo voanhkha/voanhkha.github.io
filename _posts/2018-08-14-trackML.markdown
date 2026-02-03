@@ -79,3 +79,7 @@ I did experiments with many algos like kNN, HDBSCAN, EM... but finally [DBSCAN](
 <br>
 
 It's really unusual, and good to see a single unsupervised algorithm dominate a featured Kaggle competition with a very hard scientific problem. The world of AI is truly astounding and full of surprise!
+
+Embedded below is my Kaggle version of the notebook (code), for viewer's convenience. It only reflects about 50% of the full scale of the work.
+
+<iframe src="https://www.kaggle.com/embed/khahuras/0-53x-clustering-using-hough-features-basic?kernelSessionId=4753585" height="800" style="margin: 0 auto; width: 100%; max-width: 950px;" frameborder="0" scrolling="auto" title="[0.53x] Clustering using Hough features - Basic"></iframe>

@@ -25,3 +25,11 @@ It is also one of the most prestigious competition held by Google Brain. No word
 One of my teammates (Gilles Van De Wiele) did most of the writing part for our solution. 
 Please head straight up to his original [blog post](https://medium.com/towards-data-science/winning-the-kaggle-google-brain-ventilator-pressure-prediction-2d4c90d831ec) on Medium to enjoy our solution! <br>
 
+Below are our publicly published codes (2 parts).
+
+Part 1: LSTM-CNN transformer modeling:
+<iframe src="https://www.kaggle.com/embed/shujun717/1-solution-lstm-cnn-transformer-1-fold?kernelSessionId=78971618" height="800" style="margin: 0 auto; width: 100%; max-width: 950px;" frameborder="0" scrolling="auto" title="[#1 Solution] LSTM CNN transformer"></iframe>
+<br>
+
+Part 2: PID Controller Matching:
+<iframe src="https://www.kaggle.com/embed/group16/1-solution-pid-controller-matching-v1?kernelSessionId=79356719" height="800" style="margin: 0 auto; width: 100%; max-width: 950px;" frameborder="0" scrolling="auto" title="[#1 Solution] PID Controller Matching (V1)"></iframe>

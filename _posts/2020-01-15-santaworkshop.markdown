@@ -9,6 +9,8 @@ author: Kha Vo
 categories: Kaggle
 tags:	AI
 cover:  "/assets/instacode.png"
+preview_media: /assets/previews/gurobi.jpg
+preview_type: img   # gif | video
 ---
 
 [Code 77777.77](https://www.kaggle.com/code/khahuras/the-elegant-prize)

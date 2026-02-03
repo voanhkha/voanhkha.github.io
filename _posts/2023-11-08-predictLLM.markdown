@@ -147,7 +147,11 @@ We may have a significantly better score that could break 0.499 if we combine al
   
 + Step 4: Use the test predictions from step 3 as the additional training data, repeat from step 1. <br>
   
-Thank you for reading. Our full code is publicly available [here](https://www.kaggle.com/khahuras/2nd-place-solution). <br>
+Thank you for reading. Our full code (models trained offline, inference only) is publicly available [here](https://www.kaggle.com/khahuras/2nd-place-solution). It's embedded below for viewer's convenience. <br>
+
+<br>
+<iframe src="https://www.kaggle.com/embed/khahuras/2nd-place-solution?kernelSessionId=150140874" height="800" style="margin: 0 auto; width: 100%; max-width: 950px;" frameborder="0" scrolling="auto" title="2nd place solution 🔥"></iframe>
+<br>
 
 <div class="imgcap">
 <img src="/images/meetsri_1.jpg" width="300">

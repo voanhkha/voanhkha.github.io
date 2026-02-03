@@ -13,4 +13,42 @@ preview_media: /assets/previews/molecule.webm
 preview_type: video   # gif | video
 ---
 
-The solution.
+I'm proud lead a team of 5 to achieve a GOLD medal (rank 10/2737 teams) in a fairly prestigious world-class Predicting Molecular Properties challenge.  
+
+This challenge aims to predict interactions between atoms. We will develop an algorithm that can predict the magnetic interaction between two atoms in a molecule (i.e., the scalar coupling constant).
+
+<div class="imgcap">
+<img src="/images/lb_molecule.png" width="500">
+<div class="thecap"> The final leaderboard </div>
+</div>
+<br>
+
+
+**The solution**
+
+For the modeling part, we have two models:
+
+- SchNet1 (1st train) with input features: node-features (x, y, z, atom_type, mulliken_charges), edge-features (bond binary (for pairs of atoms with distance 1), angle (for pairs of atoms with distance 2), and dihedral (for pairs of atoms with distance 3). 
+We predict 4 scc (scalar_coupling_constant) contributions and scc itself. This model gave us around -2.7 LB.
+
+- SchNet2 (2nd train): the model is the same as SchNet1, except we feed 4 out-of-fold scc contributions and scc itself as edge features where applicable, EXCEPT the edge of the learning instance itself (so in other words, we prevent leak from this, and this is not a stacking method). 
+This model gave us -2.85 LB.
+
+Scheduling: Cyclic LR.
+
+Ensemble part: 
+- Train 3 to 4 different seeds of 4-fold for each type. Some small types (xJHN) we also had an extra training of 8-fold.
+
+- Quantile regression and median averaging: since MAE cares more about predicting median of the variables, we tried to use quantile regression (with q=0.5), instead of linear regression, for 2 sub-tasks: 1) blending periodical valley model checkpoints of CyclicLR, where we removed the first 50% earlier checkpoints and only kept the last 50% checkpoints. 2) blending oof predictions of seeds of SchNet1 and SchNet2. This gave us around 0.01-0.02 boost on LB. For averaging test folds predictions, we also use median instead of mean, and found that it worked perfectly on LB.
+
+The materials (leaderboard, write-up, code can be found below)
+
+[Solution write-up](https://www.kaggle.com/competitions/champs-scalar-coupling/writeups/khavo-zidmie-josh-kyle-akira-10th-place-solution)
+
+[Code part 1 (SchNet)](https://www.kaggle.com/code/petersk20/schnet-10th-place-solution)
+
+<iframe src="https://www.kaggle.com/embed/petersk20/schnet-10th-place-solution?kernelSessionId=19749999" height="800" style="margin: 0 auto; width: 100%; max-width: 950px;" frameborder="0" scrolling="auto" title="Schnet - 10th Place Solution"></iframe>
+
+[Code part 2 (Custom GCN)](https://www.kaggle.com/code/joshxsarah/custom-gcn-10th-place-solution)
+
+<iframe src="https://www.kaggle.com/embed/joshxsarah/custom-gcn-10th-place-solution?kernelSessionId=19785693" height="800" style="margin: 0 auto; width: 100%; max-width: 950px;" frameborder="0" scrolling="auto" title="Custom GCN - 10th Place Solution"></iframe>
