@@ -1,8 +1,8 @@
 ---
 layout: post
 comments: true
-title: CPLEX vs Gurobi
-excerpt: "A good experience using Gurobi with custom handles to win rank 17/1620 in Kaggle Santa 2019!"
+title: (Rank 17/1620) Using Gurobi with custom handles 
+excerpt: "and compare with CPLEX, to solve an optimization problem in Kaggle Santa 2019!"
 mathjax: true
 date:   2020-01-15 00:00:00
 author: Kha Vo
@@ -12,7 +12,7 @@ cover:  "/assets/instacode.png"
 ---
 
 [Code 77777.77](https://www.kaggle.com/code/khahuras/the-elegant-prize)
-https://www.kaggle.com/competitions/santa-workshop-tour-2019/discussion/122290
+[Solution write-up](https://www.kaggle.com/competitions/santa-workshop-tour-2019/discussion/122290)
 
 Today, I have some quick tests with both CPLEX and Gurobi. Both are very different in terms of the API (how to define variables, add constraints…). Here are my thoughts:
 

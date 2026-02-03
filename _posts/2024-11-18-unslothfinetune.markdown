@@ -9,7 +9,7 @@ author: Kha Vo
 categories: Kaggle
 tags:	AI
 cover:  "/assets/instacode.png"
-published: false
+published: true
 ---
 
 [ARC Prize](https://arcprize.org/) (Abstract Reasoning Challenge) on Kaggle has always been one of the most (if not the most) difficult AI challenge nowadays that even OpenAI o3 pro struggles! <br>
@@ -102,20 +102,17 @@ Basically, I want to DIRECTLY ASK the LLM the following question:
 
 ```python
 question = """
-    
-Let's see if you can solve this simple Abstraction and Reasoning Challenge (ARC) task.
-Below there are some input-output grid examples that define the task.
-Your job is to understand the transformation between the input and the output and apply it to the test input grid.
-The transformations are always based on the following priors: objectness, goal-directed, numbers & counting, and basic geometry & topology.
+Try solving this introductory Abstraction and Reasoning Challenge (ARC) task.
+You are given several example input–output grid pairs that illustrate the underlying transformation. Your goal is to infer the rule that maps each input grid to its corresponding output grid, and then apply that rule to the test input grid.
+All transformations adhere to the standard ARC priors: objectness, goal-directed behavior, numerical reasoning and counting, and basic geometric and topological principles.
+Your task is to generate an output grid for the test input that is consistent with the distribution and patterns observed in the training input–output pairs.
 
-Your task is to create a new grid that follows the same distribution as the input grids from the Abstraction and Reasoning Challenge (ARC).
-Below there are some training input-output grid pairs examples, please create a new and different output grid corresponding to the test input images, that follows the same distribution of the train input-output pairs.
-
-Train input-output pairs:
-# insert train input-output pairs
+Training input–output pairs:
+#insert train input-output pairs
 
 Test input images:
-# insert test input images
+#insert test input images
+
 """
 ```
 
@@ -154,17 +151,17 @@ When the trained model faces a hidden test task in the inference mode, it will p
 The tricky part for test-time finetuning is to have all model re-training sessions (100 in total) fit within 12 hours of Kaggle runtime and with limited resources (1xP100 or 2xT4 GPUs). That can be done with asynchronous concurrent processes design:
 
 ```python
-%%python --bg --proc train_0
-run_training(gpu=0)
+%%python --procedure train_session_1
+training_call(gpu=0)
 
-%%python --bg --proc train_1
-run_training(gpu=1)
+%%python --bg --procedure train_session_2
+training_call(gpu=1)
 
-%%python --bg --proc infer_0
-run_training(gpu=0)
+%%python --bg --procedure infer_session_1
+inference_call(gpu=0)
 
-%%python --bg --proc infer_1
-run_training(gpu=1)
+%%python --bg --procedure infer_session_2
+inference_call(gpu=1)
 
 proc_exit_codes = await wait_for_subprocesses(train_0, train_1, infer_0, infer_1)
 ```

@@ -1,8 +1,8 @@
 ---
 layout: post
 comments: true
-title: How to finetune an LLM to classify responses from other LLMs
-excerpt: "...and won a SECOND PLACE in the 'H2O.ai Predict the LLM', met with H2O.ai CEO, and recruited by them!"
+title: (Rank 2/98) Build an LLM to classify responses from other LLMs
+excerpt: "...and placed 2nd in the 'H2O.ai Predict the LLM', met with H2O.ai CEO, and recruited by them!"
 mathjax: true
 date:   2023-11-08 00:00:00
 author: Kha Vo

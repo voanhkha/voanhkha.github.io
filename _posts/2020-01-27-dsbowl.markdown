@@ -1,8 +1,8 @@
 ---
 layout: post
 comments: true
-title: Ensemble zoo never disappoints!
-excerpt: "... but must be equipped with counter-overfitting measures to win a Kaggle Gold medal!"
+title: (Rank 14/3493) Ensemble zoo never disappoints!
+excerpt: "... but must be equipped with counter-overfitting measures to win a Kaggle Gold medal in the presitigious Data Science Bowl!"
 mathjax: true
 date:   2020-01-27 00:00:00
 author: Kha Vo
@@ -11,4 +11,180 @@ tags:	AI
 cover:  "/assets/instacode.png"
 ---
 
-The solution.
+ I was extremely proud to lead a team of great talents to an outstanding success: a gold medal (rank 14/3494) in the big annual Data Science Bowl tradition on Kaggle!
+Find my posted write-up and code here:
+
+[Code](https://www.kaggle.com/code/khahuras/bowl-2201-a)
+
+[Leaderboard](https://www.kaggle.com/competitions/data-science-bowl-2019/leaderboard)
+
+[Solution write-up](https://www.kaggle.com/competitions/data-science-bowl-2019/writeups/alijs-khavo-evgeny-marios-14th-place-solution)
+
+<div class="imgcap">
+<img src="/images/dsbowl19.png" width="500">
+<div class="thecap"> Our team placed in gold region in a very big annual Data Science Bowl competition </div>
+</div>
+<br>
+
+
+**🏆 Data Science Bowl 2019 — Competition Overview**
+
+The Data Science Bowl 2019 was a Kaggle competition focused on measuring how children learn through gameplay. Participants were given detailed event logs from an educational game and asked to predict how well a child would perform on future assessments.
+
+**🎯 Goal**
+
+The objective was to predict an accuracy group (0–3) for each assessment attempt, representing how successfully a player completed a task. This is a multi-class ordinal prediction problem, where understanding player behavior over time is crucial.
+
+**📊 Data**
+
+The dataset consisted of event-level logs capturing everything a player did inside the game:
+
+- Session types (Game, Activity, Assessment)
+
+- Event codes, actions, timestamps
+
+- Installation IDs representing individual users
+
+Each user’s history formed a sequence of interactions, making the problem a mix of behavioral analytics, temporal modeling, and feature engineering.
+
+[ Game → Activity → Game → Assessment → Game → Assessment ]
+\br \br
+
+**📐 Evaluation Metric**
+
+Submissions were scored using Quadratic Weighted Kappa (QWK) — a metric that:
+
+Rewards correct predictions
+
+Penalizes larger mistakes more heavily than smaller ones
+This made it especially important to get “almost right” predictions rather than just maximizing raw accuracy. \br \br
+
+**🧠 Our Solution**
+
+Before diving in, I want to sincerely thank Kaggle for hosting such a well-designed competition, and my amazing teammates @alijs1, @johnpateha, and @kazanova. 
+Working together was both challenging and genuinely fun — one of my most enjoyable Kaggle experiences.
+
+Below is a high-level summary of our approach.
+
+🔧 Feature Engineering: Where the Magic Started
+
+Beyond common public features, we focused heavily on behavior-driven signals, including:
+
+Ratios of good actions vs. all actions during Activity sessions
+
+Misclick and misdrag rates normalized by action count or session duration
+
+Counts of specific event codes since the previous Assessment
+
+Assessment-aware statistics: features computed relative to the same assessment type across a user’s history
+
+These assessment-specific statistics turned out to be especially powerful. They helped tree models converge faster and reduced over-reliance on assessment titles.
+
+In parallel, Marios (@kazanova) built an alternative feature set designed explicitly to handle train–test mismatch, which added valuable diversity to our final blend.
+
+**🔁 Data Augmentation: Free Data Hidden in Plain Sight**
+
+One of our biggest “aha” moments was realizing that test users often had past assessments.
+
+If a test installation_id had prior assessments, we could:
+
+Truncate the user’s history
+
+Treat earlier assessments as additional labeled training samples
+
+This simple idea massively expanded our effective training set and became a key contributor to our final performance, especially in ensembling.
+
+**🤖 Modeling Strategy**
+
+We used two main modeling tracks:
+
+- Model 1 — Global Model: A single model trained across all assessments, using the full dataset.
+
+- Model 2 — Assessment-Specific Models: Five separate models, each trained on one assessment type, whose predictions were later combined.
+
+With data augmentation enabled, this gave us four distinct training strategies, which provided excellent diversity for ensembling.
+
+Thresholding
+
+Rather than obsessing over threshold tuning, we used a simple CV-based optimizer and focused our effort on better modeling and blending, where the real gains were.
+
+**⚖️ Sample Weights: Matching the Real World**
+
+We observed strong leaderboard gains by applying sample weights based on the number of prior assessments a user had completed.
+
+However, weighting wasn’t trivial:
+
+Samples from the same user are highly correlated
+
+Overweighting frequent users can distort training
+
+In the end, we used a heuristic weighting scheme, roughly decreasing weights as prior assessments increased. While not theoretically perfect, it worked surprisingly well on the leaderboard.
+
+**🧩 Ensembling: Where Everything Came Together**
+Custom Classifier Logic
+
+Instead of averaging predictions, we built a rule-based ensemble:
+- Train three binary classifiers to distinguish between adjacent classes (0/1, 1/2, 2/3)
+- Use these classifiers to resolve disagreements between Model 1 and Model 2
+- This hybrid logic-based approach turned out to be one of our strongest techniques.
+
+**Stacking**
+
+We also experimented with stacking:
+
+- Averaging multiple stackers
+
+- Extra Trees Regressor as a meta-model
+
+Extra Trees performed very well in CV and private LB, but we ultimately submitted a blend of classifier logic + stacking, which unfortunately underperformed in private LB.
+
+**🔍 What Worked (and Didn’t)**
+
+Worked in Private LB (but not Public):
+
+- Histogram matching using public LB prediction distributions
+
+- Extra Trees stacking (this would’ve landed us even higher)
+
+Didn’t Work:
+
+- Ranking-based averaging
+
+- Pseudo-labeling unused training IDs (great CV, worse LB)
+
+Didn’t Finish in Time
+
+- We also built an RNN model that modeled session sequences using event-code counts
+
+- Combined sequence features with dense engineered features
+
+It achieved strong CV results and would likely have boosted our final score — but it was completed too late to integrate cleanly.
+
+**🧠 Final Reflections**
+
+This was my first time working with three Kaggle Grandmasters in a major competition — an incredible learning experience. A few things that stuck with me:
+
+- Diversity beats elegance in Kaggle
+
+- Public LB is a mystery — don’t trust it too much
+
+- Merging late is painful, but worth it if ideas are diverse
+
+- Long kernel runs that fail at the last minute… build character 😄
+
+We’re proud to be one of only three teams to maintain gold throughout the competition. The final result was a mix of hard work, teamwork, and a bit of luck — and we’ll happily enjoy that gold medal.
+
+Thanks for reading, and I hope you enjoyed this recap.
+
+This is the entire code solution written by me (embedded below, separate link [here](https://www.kaggle.com/code/khahuras/bowl-2201-a))
+
+<div style="max-width: 950px; margin: 0 auto;">
+  <iframe
+    src="https://www.kaggle.com/embed/khahuras/bowl-2201-a?kernelSessionId=28272875"
+    height="420"
+    style="width: 80%; border: 0;"
+    frameborder="0"
+    scrolling="auto"
+    title="Kaggle Notebook Embed">
+  </iframe>
+</div>

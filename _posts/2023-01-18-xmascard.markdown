@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-title: Santa again gave me another GOLD medal!
+title: (Rank 9/874) Santa again gave me another GOLD medal!
 excerpt: "Another Christmas, another traditional Santa contest, another constraint optimization problem, another gold medal (rank 9/874)!"
 mathjax: true
 date:   2023-01-18 00:00:00

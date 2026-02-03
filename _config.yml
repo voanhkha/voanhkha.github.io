@@ -25,6 +25,8 @@ logo: "/assets/logo_kha_small.png"
 
 # Build settings
 markdown: kramdown
+kramdown:
+  input: GFM
 inter_post_navigation: false
 highlightjs_theme: "monokai-sublime"
 

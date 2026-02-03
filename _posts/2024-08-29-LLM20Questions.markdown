@@ -1,8 +1,8 @@
 ---
 layout: post
 comments: true
-title: Finetune an LLM to play the game of '20 questions'
-excerpt: "...and won rank 13/832 in a Kaggle simulation competition."
+title: (Rank 13/832) Finetune an LLM to play the game of '20 questions'
+excerpt: "...and demonstrate LLMs can act and play interactive games in a Kaggle simulation competition."
 mathjax: true
 date:   2024-08-29 00:00:00
 author: Kha Vo

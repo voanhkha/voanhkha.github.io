@@ -1,8 +1,8 @@
 ---
 layout: post
 comments: true
-title: Graph neural networks shine in quantum chemistry modeling
-excerpt: "How I won a gold medal rank 10/2749 in the Kaggle Predicting Molecular Properties challenge!"
+title: (Rank 10/2749) Graph neural networks shine in quantum chemistry modeling
+excerpt: "How I won a gold medal in the Kaggle Predicting Molecular Properties challenge!"
 mathjax: true
 date:   2019-08-29 00:00:00
 author: Kha Vo

@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-title: The power of DBSCAN -- an unsupervised clustering algorithm
+title: (Rank 10/656) The power of DBSCAN -- an unsupervised clustering algorithm
 excerpt: "How I surprisingly won my 1st Kaggle GOLD medal (10/656) with DBSCAN in a challenging Quantum Physics particle tracking problem"
 mathjax: true
 date:   2018-08-14 00:00:00
@@ -9,6 +9,8 @@ author: Kha Vo
 categories: Kaggle
 tags:	AI
 cover:  "/images/trackML_hits.gif"
+preview_media: /assets/previews/helices.webm
+preview_type: video   # gif | video
 ---
 
 Nothing can describe my feelings when I won my first Kaggle competition gold medal! <br><br>
