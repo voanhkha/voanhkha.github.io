@@ -213,5 +213,6 @@ It would be dishonest not to mention the use of AI tools in this competition. Wh
 **Code**
 
 My code is shared [here](https://www.kaggle.com/code/khahuras/code-solution-team-jingle-bins-3rd-place?scriptVersionId=295891029) (also embedded below for viewer's convenience). Enjoy!
+Note it's only about 40%, as it points to a heavily customized Sparrow + jagua-rs for the solver. Upon request I can share those privately.
 
 <iframe src="https://www.kaggle.com/embed/khahuras/code-solution-team-jingle-bins-3rd-place?kernelSessionId=295891029" height="800" style="margin: 0 auto; width: 100%; max-width: 950px;" frameborder="0" scrolling="auto" title="Code Solution - Team Jingle Bins (3rd place)"></iframe>
