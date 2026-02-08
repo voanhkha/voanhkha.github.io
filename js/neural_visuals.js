@@ -76,27 +76,77 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (canvas) {
             const ctx = canvas.getContext('2d');
+            const isHelixCanvas = canvas.classList.contains('helix');
 
             // Make canvas full screen
+            // function resizeCanvas() {
+            //     const pixelRatio = window.devicePixelRatio || 1;
+            //     //const width = canvas.clientWidth;
+            //     //const height = canvas.clientHeight;
+            //
+            //     // const width = window.innerWidth;
+            //     // const height = window.innerHeight;
+            //
+            //     let width, height;
+            //
+            //     if (pattern === 'helix') {
+            //         // Use container height instead of full window
+            //         const rect = canvas.getBoundingClientRect();
+            //         width = rect.width;
+            //         height = rect.height;
+            //     } else {
+            //         width = window.innerWidth;
+            //         height = window.innerHeight;
+            //     }
+            //
+            //
+            //     // Set actual size in memory (scaled to account for extra pixel density)
+            //     canvas.width = width * pixelRatio;
+            //     canvas.height = height * pixelRatio;
+            //
+            //     // Style size (CSS pixels)
+            //     canvas.style.width = width + 'px';
+            //     canvas.style.height = height + 'px';
+            //
+            //     // Scale all drawing operations by the dpr
+            //     // ctx.scale(pixelRatio, pixelRatio);
+            //
+            //     // ctx.setTransform(1, 0, 0, 1, 0, 0);
+            //     ctx.scale(pixelRatio, pixelRatio);
+            //
+            // }
+
             function resizeCanvas() {
                 const pixelRatio = window.devicePixelRatio || 1;
-                //const width = canvas.clientWidth;
-                //const height = canvas.clientHeight;
-                
-                const width = window.innerWidth;
-                const height = window.innerHeight;
 
-                // Set actual size in memory (scaled to account for extra pixel density)
-                canvas.width = width * pixelRatio;
-                canvas.height = height * pixelRatio;
+                let width, height;
 
-                // Style size (CSS pixels)
+                if (isHelixCanvas) {
+                    // Use the actual on-page size (prevents huge blank space in page flow)
+                    const rect = canvas.getBoundingClientRect();
+                    // width = rect.width || canvas.clientWidth || window.innerWidth;
+                    // height = rect.height || canvas.clientHeight || 300; // safe fallback
+                    width = window.innerWidth;
+                    height = window.innerHeight;
+
+                } else {
+                    // Keep your original fullscreen behavior for other animations
+                    width = window.innerWidth;
+                    height = window.innerHeight;
+                }
+
+                canvas.width = Math.max(1, Math.floor(width * pixelRatio));
+                canvas.height = Math.max(1, Math.floor(height * pixelRatio));
+
                 canvas.style.width = width + 'px';
                 canvas.style.height = height + 'px';
 
-                // Scale all drawing operations by the dpr
+                // Prevent cumulative scaling on resize
+                ctx.setTransform(1, 0, 0, 1, 0, 0);
                 ctx.scale(pixelRatio, pixelRatio);
             }
+
+
             resizeCanvas();
             window.addEventListener('resize', resizeCanvas);
 
@@ -702,6 +752,204 @@ document.addEventListener('DOMContentLoaded', () => {
                         };
                         particles.push(particle);
                     }
+
+
+                    } else if (pattern === 'helix') {
+                        // DNA-like double helix with simple 3D-ish perspective projection
+                        const strandCount = 2;
+                        const pointsPerStrand = 480;                 // total particles = ~520
+                        const totalParticles = strandCount * pointsPerStrand;
+
+                        const spanY = minDimension * 0.95;           // vertical span of the helix
+                        const baseTopY = centerY - spanY / 2;
+
+                        const helixRadius = minDimension * 0.8;     // radius of the helix
+                        const twistStep = (Math.PI * 2) / 22;        // controls twist density
+                        const scrollSpeed = 25;                      // px/sec along y (visual flow)
+                        const rotateSpeed = 0.3;                     // rad/sec for twisting
+
+                        const perspective = 520;                     // bigger = flatter projection
+                        const zScale = 1.0;                          // depth scale
+                        const yDepthWobble = 0.06;                   // subtle vertical wobble from depth
+
+                        // Create particles on two strands (phase offset by PI)
+                        for (let strand = 0; strand < strandCount; strand++) {
+                            const phaseOffset = strand * Math.PI;
+
+                            for (let i = 0; i < pointsPerStrand; i++) {
+                                // We seed x/y, but we'll override update() so it doesn't matter much
+                                const seedAngle = i * twistStep + phaseOffset;
+                                const seedX = centerX + helixRadius * Math.cos(seedAngle);
+                                const seedY = baseTopY + (i / pointsPerStrand) * spanY;
+
+                                const p = new Particle(
+                                    seedX,
+                                    seedY,
+                                    seedAngle,
+                                    helixRadius,
+                                    centerX,
+                                    centerY,
+                                    null,
+                                    {
+                                        ...settings,
+                                        // keep your existing vibe
+                                        fadeInSpeed: (settings.fadeInSpeed ?? 0.012),
+                                        fadeOutSpeed: (settings.fadeOutSpeed ?? 0.008),
+                                        lineOpacity: (settings.lineOpacity ?? 0.35),
+                                        lineWidth: (settings.lineWidth ?? 0.55),
+                                    }
+                                );
+
+                                // Make rain particles bigger
+                                p.maxRadius = 1.6 + Math.random() * 1.2;  // was ~0.6–1.4 in default
+
+                                // Strand indexing
+                                p.strand = strand;
+                                p.strandPhase = phaseOffset;
+                                p.idx = i;
+
+                                // Per-particle speed variation (some faster, some slower)
+                                p.scrollMul = 0.65 + Math.random() * 0.9;   // ~0.65..1.55
+                                p.rotateMul = 0.70 + Math.random() * 0.9;   // ~0.70..1.60
+
+                                // Optional: make "streaks" of speed along the strand (looks nicer than pure random)
+                                p.scrollMul *= 0.85 + 0.3 * Math.sin(i * 0.15 + strand * 2.1);
+                                p.rotateMul *= 0.85 + 0.3 * Math.cos(i * 0.12 + strand * 1.7);
+
+                                // Store depth to use in draw / connections
+                                p.z = 0;
+                                p.depthScale = 1;
+
+                                // Override update: helix motion + depth projection + your pulsation
+                        p.update = function() {
+                            const t = Date.now() * 0.001;
+
+                            // --- Horizontal travel (wrap in X) ---
+                            const spanX = minDimension * 0.95;
+                            const baseLeftX = centerX - spanX / 2;
+
+                            const xFloat = (i * (spanX / pointsPerStrand) + t * scrollSpeed * this.scrollMul) % spanX;
+                            const x = baseLeftX + xFloat;
+
+                            // --- Twist over time ---
+                            const theta = i * twistStep + this.strandPhase + t * rotateSpeed * this.rotateMul;
+
+                            // --- Hourglass radius now depends on X (pinch at center) ---
+                            const xNormalized = ((x - centerX) / (spanX / 2)); // [-1, 1]
+                            const pinchStrength = 0.8; // tune 0..0.85
+                            const hourglassFactor = 1 - pinchStrength * Math.exp(-4 * xNormalized * xNormalized);
+                            const dynamicRadius = helixRadius * hourglassFactor;
+
+                            // --- 3D helix around the X-axis (circle in Y-Z plane) ---
+                            const y3 = dynamicRadius * Math.cos(theta);
+                            const z3 = dynamicRadius * Math.sin(theta) * zScale;
+
+                            // Perspective projection
+                            const depth = (perspective / (perspective + z3 + helixRadius));
+                            this.depthScale = depth;
+                            this.z = z3;
+
+                            // Project to screen
+                            this.x = x;
+                            this.y = centerY + y3 * depth + (z3 * yDepthWobble) * depth;
+
+                            // --- Standard pulsation (same as your style) ---
+                            if (this.pulsationState === 'fadeIn') {
+                                this.opacity = Math.min(1, this.opacity + this.fadeInSpeed);
+                                const targetMax = this.maxRadius * (0.7 + 0.8 * depth);
+                                this.radius = Math.min(targetMax, this.radius + this.fadeInSpeed * 2);
+
+                                if (this.opacity >= 1) {
+                                    this.opacity = 1;
+                                    this.pulsationState = 'fadeOut';
+                                }
+                            } else {
+                                this.opacity = Math.max(0, this.opacity - this.fadeOutSpeed);
+                                this.radius = Math.max(0, this.radius - this.fadeOutSpeed * 0.5);
+
+                                if (this.opacity <= 0) {
+                                    this.opacity = 0;
+                                    this.pulsationState = 'fadeIn';
+                                    this.radius = 0;
+                                }
+                            }
+                        };
+
+                                // Optional: depth-aware draw (still "white", just subtly stronger when closer)
+                                p.draw = function() {
+                                    if (this.opacity <= 0) return;
+
+                                    // 0.8..1.15-ish boost based on depth (keep it subtle)
+                                    const boost = 0.8 + 0.6 * this.depthScale;
+                                    const a = Math.min(1, this.opacity * boost);
+
+                                    ctx.beginPath();
+                                    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                                    ctx.fillStyle = `rgba(255, 255, 255, ${a})`;
+                                    ctx.fill();
+                                };
+
+                                // // Depth-aware connections (still dark grey like your default)
+                                // p.drawConnections = function() {
+                                //     if (!this.connectedParticles.length || this.opacity <= 0) return;
+                                //
+                                //     this.connectedParticles.forEach(other => {
+                                //         if (other.opacity <= 0) return;
+                                //
+                                //         const dx = this.x - other.x;
+                                //         const dy = this.y - other.y;
+                                //         const dist = Math.hypot(dx, dy);
+                                //
+                                //         const maxDist = 42; // tuned so neighbors connect nicely
+                                //         if (dist < maxDist) {
+                                //             const base = (1 - dist / maxDist) * (this.lineOpacity ?? 0.35);
+                                //
+                                //             // Slight depth weight for nicer “front strand” feel
+                                //             const depthW = 0.75 + 0.5 * ((this.depthScale + other.depthScale) * 0.5);
+                                //             const opacity = base * depthW;
+                                //
+                                //             if (opacity > 0.01) {
+                                //                 ctx.beginPath();
+                                //                 ctx.moveTo(this.x, this.y);
+                                //                 ctx.lineTo(other.x, other.y);
+                                //                 ctx.strokeStyle = `rgba(50, 50, 50, ${opacity})`;
+                                //                 ctx.lineWidth = this.lineWidth ?? 0.55;
+                                //                 ctx.stroke();
+                                //             }
+                                //         }
+                                //     });
+                                // };
+
+                                particles.push(p);
+                            }
+                        }
+
+                        // Make connections “structured”:
+                        // neighbors along each strand + occasional cross-bridge between strands
+                        //
+                        // Note: your main loop will clearConnections() then spatial-grid connect.
+                        // We can keep that AND add deterministic links by overriding connect() to allow
+                        // only “good” helix links (prevents random clutter).
+                        const allowCrossEvery = 4;
+
+                        // particles.forEach(p => {
+                        //     p.connect = function(other) {
+                        //         // same strand: connect to near indices only
+                        //         if (this.strand === other.strand) {
+                        //             const d = Math.abs(this.idx - other.idx);
+                        //             if (d === 1 || d === 2) this.connectedParticles.push(other);
+                        //             return;
+                        //         }
+                        //
+                        //         // different strands: connect "rungs" occasionally (like DNA base pairs)
+                        //         if (Math.abs(this.idx - other.idx) <= 1 && (this.idx % allowCrossEvery === 0)) {
+                        //             this.connectedParticles.push(other);
+                        //         }
+                        //     };
+                        // });
+
+
+
                 } else if (pattern === 'power') {
                     const numParticles = 300;
                     const maxRadius = minDimension * 0.125; // Dense center cluster
@@ -940,7 +1188,143 @@ document.addEventListener('DOMContentLoaded', () => {
                             particles.push(particle);
                         }
                     }
-                }
+
+                } else if (pattern === 'rainwaves') {
+            // Particle Rain + Gravity Waves
+            // - particles fall down
+            // - multiple moving wave fields push them sideways and slightly up/down
+            // - connections are handled by your global spatial-grid logic (no override needed)
+
+            const numParticles = 1500;                 // raise/lower for performance
+            const margin = 20;
+
+            // Wave field parameters (tuned for subtle, classy motion)
+            const wave1 = { amp: 28, kx: 0.010, ky: 0.006, speed: 0.85 };
+            const wave2 = { amp: 20, kx: 0.016, ky: -0.004, speed: 1.30 };
+            const wave3 = { amp: 16,  kx: -0.008, ky: 0.012, speed: 0.55 };
+
+            // Rain parameters
+            const baseFallSpeed = 22;                 // px/sec baseline
+            const fallSpeedJitter = 26;               // extra per-particle
+            const driftDamping = 0.92;                // smooth velocity
+
+            for (let i = 0; i < numParticles; i++) {
+                const x0 = Math.random() * canvas.clientWidth;
+                const y0 = Math.random() * canvas.clientHeight;
+
+                const p = new Particle(
+                    x0, y0,
+                    0, 0,
+                    x0, y0,
+                    null,
+                    {
+                        ...settings,
+                        lineOpacity: settings.lineOpacity ?? 0.18,
+                        lineWidth: settings.lineWidth ?? 0.45,
+                        fadeInSpeed: settings.fadeInSpeed ?? 0.02,
+                        fadeOutSpeed: settings.fadeOutSpeed ?? 0.012
+                    }
+                );
+
+                // Per-particle motion state
+                p.baseX = x0;
+                p.baseY = y0;
+
+                // Give each particle its own fall speed + slight sideways bias
+                p.fallSpeed = baseFallSpeed + Math.random() * fallSpeedJitter;
+                p.sideBias = (Math.random() - 0.5) * 0.5;   // tiny consistent drift
+                p.seed = Math.random() * Math.PI * 2;
+
+                // Velocity (for smoothness)
+                p.vx = 0;
+                p.vy = 0;
+
+                p.update = function() {
+                    const t = Date.now() * 0.001;
+
+                    // --- continuous falling ---
+                    // this.baseY += this.fallSpeed * (1 / 60); // frame-rate-ish step (stable enough)
+                    // // Wrap to top when off bottom
+                    // if (this.baseY > canvas.clientHeight + margin) {
+                    //     this.baseY = -margin;
+                    //     this.baseX = Math.random() * canvas.clientWidth;
+                    // }
+
+
+                    if (this.baseY > canvas.clientHeight + margin) {
+                      const spawnBand = canvas.clientHeight * 0.25; // <-- bigger band (25% of height)
+                      this.baseY = -margin - Math.random() * spawnBand;
+                      this.baseX = Math.random() * canvas.clientWidth;
+
+                      // prevent a “teleport velocity spike”
+                      this.x = this.baseX;
+                      this.y = this.baseY;
+                      this.vx = 0;
+                      this.vy = 0;
+                    }
+
+                    // --- gravity waves (flow field) ---
+                    // Combine several traveling wave fields for richer motion
+                    const w1 = Math.sin(this.baseX * wave1.kx + this.baseY * wave1.ky + t * wave1.speed + this.seed) * wave1.amp;
+                    const w2 = Math.sin(this.baseX * wave2.kx + this.baseY * wave2.ky + t * wave2.speed + this.seed * 1.7) * wave2.amp;
+                    const w3 = Math.cos(this.baseX * wave3.kx + this.baseY * wave3.ky + t * wave3.speed + this.seed * 2.3) * wave3.amp;
+
+                    // Horizontal flow + a subtle vertical wobble (like pockets of air)
+                    const flowX = (w1 + w2 + w3);
+                    const flowY = (0.25 * w2 - 0.15 * w3);
+
+                    // Target position from flow
+                    const targetX = this.baseX + flowX;
+                    const targetY = this.baseY + flowY;
+
+                    // Smoothly move toward target (avoids jitter)
+                    this.vx = this.vx * driftDamping + (targetX - this.x) * 0.08 + this.sideBias;
+                    this.vy = this.vy * driftDamping + (targetY - this.y) * 0.08;
+
+                    this.x += this.vx;
+                    this.y += this.vy;
+
+                    // Wrap horizontally too (keep density consistent)
+                    if (this.x < -margin) this.x = canvas.clientWidth + margin;
+                    if (this.x > canvas.clientWidth + margin) this.x = -margin;
+
+                    // --- your standard pulsation logic ---
+                    if (this.pulsationState === 'fadeIn') {
+                        this.opacity = Math.min(1, this.opacity + this.fadeInSpeed);
+                        this.radius = Math.min(this.maxRadius, this.radius + this.fadeInSpeed * 2);
+                        if (this.opacity >= 1) {
+                            this.opacity = 1;
+                            this.pulsationState = 'fadeOut';
+                        }
+                    } else {
+                        this.opacity = Math.max(0, this.opacity - this.fadeOutSpeed);
+                        this.radius = Math.max(0, this.radius - this.fadeOutSpeed * 0.5);
+                        if (this.opacity <= 0) {
+                            this.opacity = 0;
+                            this.pulsationState = 'fadeIn';
+                            this.radius = 0;
+                        }
+                    }
+                };
+
+                p.draw = function() {
+                    if (this.opacity <= 0) return;
+
+                    // Boost brightness slightly
+                    const brightnessBoost = 2.0; // try 1.2–1.8
+                    const alpha = Math.min(1, this.opacity * brightnessBoost);
+                    // ctx.shadowBlur = 6;
+                    // ctx.shadowColor = "rgba(255,255,255,0.6)";
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(255, 255, 255, ${alpha})`;
+                    ctx.fill();
+                    // ctx.shadowBlur = 0;
+                };
+
+                particles.push(p);
+            }
+        }
             }
 
             // Main animation loop
@@ -963,7 +1347,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 particles.forEach(particle => particle.update());
 
                 // Then batch all connections
-                const connectionDistance = 20;
+                const connectionDistance = 30;
                 particles.forEach(particle => {
                     const nearbyParticles = spatialGrid.getNearbyParticles(particle, connectionDistance);
                     nearbyParticles.forEach(other => {
@@ -990,10 +1374,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
 
-            // Get pattern from canvas class
+            // // Get pattern from canvas class
+            // const pattern = Array.from(canvas.classList).find(className =>
+            //     ['asteroids', 'donut', 'fibonacci', 'gravitydispersion', 'power', 'wave'].includes(className)
+            // ) || 'fibonacci'; // Changed default to fibonacci
+
             const pattern = Array.from(canvas.classList).find(className =>
-                ['asteroids', 'donut', 'fibonacci', 'gravitydispersion', 'power', 'wave'].includes(className)
-            ) || 'fibonacci'; // Changed default to fibonacci
+                ['asteroids', 'donut', 'fibonacci', 'gravitydispersion', 'power', 'wave', 'helix', 'rainwaves'].includes(className)
+            ) || 'fibonacci';
 
             // Pattern-specific settings
             const patternSettings = {
@@ -1047,6 +1435,19 @@ document.addEventListener('DOMContentLoaded', () => {
                     rotationSpeed: 0.002,
                     lineWidth: 0.5
                 },
+                helix: {
+                    orbitSpeed: 0.002,        // used as base speed hint (we override update anyway)
+                    lineOpacity: 0.35,
+                    fadeInSpeed: 0.012,
+                    fadeOutSpeed: 0.008,
+                    lineWidth: 0.55
+                },
+                rainwaves: {
+                      lineOpacity: 0.6,
+                      fadeInSpeed: 0.02,
+                      fadeOutSpeed: 0.001,
+                      lineWidth: 0.45,
+                    },
             };
 
             // Start animation with pattern from class

@@ -25,7 +25,7 @@ main_nav: true
 My name is Kha Vo, a top AI/data scientist, with the most number of world-class Kaggle competition gold medals (10) in Australia, spanning diverse disciplines of AI and data science. <br>
 
 <div id="animation-container">
-<canvas id="visualizationCanvas-1" class="asteroids"></canvas>
+<canvas id="visualizationCanvas-1" class="helix"></canvas>
 </div>
 
 My interest of work is to develop creative and deep AI/data solutions to solve complex problems in industrial, business, or deep academia domains. That could be any of LLM finetuning, deep learning modeling (time-series, computer vision, NLP, reinforcement learning, graph neural networks...), deep program synthesis, mathematical optimization, AutoML, to statistical analysis.
@@ -33,7 +33,7 @@ My interest of work is to develop creative and deep AI/data solutions to solve c
 I am also familiar with building scalable data pipelines, infrastructures, and processes (Azure, Snowflake, SQL, AWS, GCP,...).
 
 <div id="animation-container">
-<canvas id="visualizationCanvas-2" class="power"></canvas>
+<canvas id="visualizationCanvas-2" class="rainwaves"></canvas>
 </div>
 
 
