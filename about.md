@@ -44,7 +44,7 @@ Out of the best, I finished rank 1/2600 teams in the Google Brain Ventilator Pre
 I am also the top-1 Australian on this platform, with the most competition gold medals that I relentlessly fought for in the last 8 years. <br>
 
 <div id="animation-container">
-<canvas id="visualizationCanvas-3" class="wave"></canvas>
+<canvas id="visualizationCanvas-3" class="blackhole"></canvas>
 </div>
 
 <br>

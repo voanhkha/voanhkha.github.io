@@ -441,6 +441,162 @@ document.addEventListener('DOMContentLoaded', () => {
                             particles.push(particle);
                         }
                     }
+
+                } else if (pattern === 'blackhole') {
+    // Black Hole Accretion Disk
+    // - particles orbit and spiral inward
+    // - speed increases near center
+    // - particles "fall in" and respawn at outer disk
+
+    const numParticles = 750;                   // 700–1400 depending on perf
+    const minDim = Math.min(canvas.clientWidth, canvas.clientHeight);
+
+    const eventHorizon = minDim * 0.01;         // "black hole" radius
+    const innerDisk = minDim * 0.10;            // inner edge of visible disk
+    const outerDisk = minDim * 0.46;            // outer edge of disk
+    const diskThickness = minDim * 0.10;        // vertical thickness (tilt illusion)
+
+    const baseSpin = 0.05;                      // rad/sec baseline (outer)
+    const spinBoost = 0.5;                      // extra spin near center
+    const baseInfall = 10;                      // px/sec inward (outer)
+    const infallBoost = 28;                     // extra infall near center
+    const noiseAmp = 0.9;                       // turbulence strength
+
+    // Slight ellipse + tilt for "disk" look
+    const ellipse = 0.95;                       // >1 stretches x
+    const tilt = 0.85;                          // 0..1 compress y
+
+    // Helper to respawn a particle in the outer disk
+    function respawn(p) {
+        // Pick radius biased to outer disk (more particles out there)
+        const u = Math.random();
+        const r = innerDisk + (outerDisk - innerDisk) * Math.sqrt(u); // sqrt bias outward
+
+        const a = Math.random() * Math.PI * 2;
+        p.r = r;
+        p.a = a;
+
+        // small vertical offset to give thickness
+        p.z = (Math.random() - 0.5) * diskThickness;
+
+        // keep a little state for turbulence
+        p.seed = Math.random() * Math.PI * 2;
+
+        // initialize position
+        const x = centerX + (r * Math.cos(a)) * ellipse;
+        const y = centerY + (r * Math.sin(a)) * tilt + p.z * 0.15;
+        p.x = x;
+        p.y = y;
+
+        // calm velocities at spawn to avoid snapping
+        p.vx = 0;
+        p.vy = 0;
+
+        // make them a bit larger/brighter than default
+        p.maxRadius = 1.2 + Math.random() * 1.6;
+    }
+
+    for (let i = 0; i < numParticles; i++) {
+        const p = new Particle(centerX, centerY, 0, 0, centerX, centerY, null, {
+            ...settings,
+            lineOpacity: settings.lineOpacity ?? 0.22,
+            lineWidth: settings.lineWidth ?? 0.55,
+            fadeInSpeed: settings.fadeInSpeed ?? 0.02,
+            fadeOutSpeed: settings.fadeOutSpeed ?? 0.01,
+        });
+
+        // motion state
+        p.r = 0;
+        p.a = 0;
+        p.z = 0;
+        p.vx = 0;
+        p.vy = 0;
+        p.seed = 0;
+
+        respawn(p);
+
+        p.update = function() {
+            const t = Date.now() * 0.001;
+
+            // Normalize radius: 0 near innerDisk, 1 near outerDisk
+            const rn = Math.max(0, Math.min(1, (this.r - innerDisk) / (outerDisk - innerDisk)));
+            const nearCenter = 1 - rn;
+
+            // Spin faster near center
+            const spin = baseSpin + spinBoost * nearCenter;
+            // Infall faster near center
+            const infall = baseInfall + infallBoost * nearCenter;
+
+            // Orbit direction (all same looks clean; flip some if you want chaos)
+            this.a += (spin * (1 / 60));
+
+            // Spiral inward
+            this.r -= (infall * (1 / 60));
+
+            // Turbulence (subtle)
+            const turb = noiseAmp * (0.6 + 0.6 * nearCenter);
+            const wobX = Math.sin(t * 1.3 + this.seed + this.r * 0.02) * turb;
+            const wobY = Math.cos(t * 1.1 + this.seed + this.r * 0.018) * turb;
+
+            // Disk projection: ellipse + tilt + thickness
+            const tx = centerX + (this.r * Math.cos(this.a)) * ellipse + wobX;
+            const ty = centerY + (this.r * Math.sin(this.a)) * tilt + this.z * 0.15 + wobY;
+
+            // Smooth to target to avoid jitter
+            this.vx = this.vx * 0.90 + (tx - this.x) * 0.10;
+            this.vy = this.vy * 0.90 + (ty - this.y) * 0.10;
+
+            this.x += this.vx;
+            this.y += this.vy;
+
+            // If it crosses event horizon, respawn outside
+            if (this.r < eventHorizon) {
+                respawn(this);
+            }
+
+            // Standard pulsation
+            if (this.pulsationState === 'fadeIn') {
+                this.opacity = Math.min(1, this.opacity + this.fadeInSpeed);
+                this.radius = Math.min(this.maxRadius, this.radius + this.fadeInSpeed * 2);
+                if (this.opacity >= 1) {
+                    this.opacity = 1;
+                    this.pulsationState = 'fadeOut';
+                }
+            } else {
+                this.opacity = Math.max(0, this.opacity - this.fadeOutSpeed);
+                this.radius = Math.max(0, this.radius - this.fadeOutSpeed * 0.5);
+                if (this.opacity <= 0) {
+                    this.opacity = 0;
+                    this.pulsationState = 'fadeIn';
+                    this.radius = 0;
+                }
+            }
+        };
+
+        // Make particles slightly brighter near center (accretion glow illusion)
+        p.draw = function() {
+            if (this.opacity <= 0) return;
+
+            const rn = Math.max(0, Math.min(1, (this.r - innerDisk) / (outerDisk - innerDisk)));
+            const nearCenter = 1 - rn;
+
+            const boost = 1.25 + 0.9 * nearCenter;        // brighter near center
+            const alpha = Math.min(1, this.opacity * boost);
+
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(255, 255, 255, ${alpha})`;
+            ctx.fill();
+        };
+
+        particles.push(p);
+    }
+
+    // Optional: draw the event horizon as a dark circle by using a background pass.
+    // If you want it, tell me—your current loop clears the whole canvas each frame,
+    // so we’d add a lightweight "drawBackground" hook for this pattern.
+
+
                 } else if (pattern === 'donut') {
                     const patternRadius = minDimension * 0.2;
                     const numRings = 3;
@@ -1221,8 +1377,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         ...settings,
                         lineOpacity: settings.lineOpacity ?? 0.18,
                         lineWidth: settings.lineWidth ?? 0.45,
-                        fadeInSpeed: settings.fadeInSpeed ?? 0.02,
-                        fadeOutSpeed: settings.fadeOutSpeed ?? 0.012
+                        fadeInSpeed: settings.fadeInSpeed ?? 0.001,
+                        fadeOutSpeed: settings.fadeOutSpeed ?? 0.001
                     }
                 );
 
@@ -1238,6 +1394,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Velocity (for smoothness)
                 p.vx = 0;
                 p.vy = 0;
+
+                p.maxRadius = 1.6 + Math.random() * 1.2;  // was ~0.6–1.4 in default
 
                 p.update = function() {
                     const t = Date.now() * 0.001;
@@ -1347,7 +1505,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 particles.forEach(particle => particle.update());
 
                 // Then batch all connections
-                const connectionDistance = 30;
+                const connectionDistance = 35;
                 particles.forEach(particle => {
                     const nearbyParticles = spatialGrid.getNearbyParticles(particle, connectionDistance);
                     nearbyParticles.forEach(other => {
@@ -1380,7 +1538,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // ) || 'fibonacci'; // Changed default to fibonacci
 
             const pattern = Array.from(canvas.classList).find(className =>
-                ['asteroids', 'donut', 'fibonacci', 'gravitydispersion', 'power', 'wave', 'helix', 'rainwaves'].includes(className)
+                ['asteroids', 'donut', 'fibonacci', 'gravitydispersion', 'power', 'wave', 'helix', 'rainwaves', 'blackhole'].includes(className)
             ) || 'fibonacci';
 
             // Pattern-specific settings
@@ -1444,9 +1602,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 },
                 rainwaves: {
                       lineOpacity: 0.6,
+                      fadeInSpeed: 0.0012,
+                      fadeOutSpeed: 0.008,
+                      lineWidth: 0.55,
+                    },
+                blackhole: {
+                      lineOpacity: 0.6,
                       fadeInSpeed: 0.02,
-                      fadeOutSpeed: 0.001,
-                      lineWidth: 0.45,
+                      fadeOutSpeed: 0.01,
+                      lineWidth: 0.55,
                     },
             };
 
