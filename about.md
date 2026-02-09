@@ -22,7 +22,7 @@ main_nav: true
 
 ![alt text]({{ site.baseurl }}/assets/kha_godfather_theme.jpg "Profile Picture"){:.profile}
 
-My name is Kha Vo, a top AI/data scientist, with the most number of world-class Kaggle competition gold medals (10) in Australia, spanning diverse disciplines of AI and data science. <br>
+My name is Kha Vo, a top AI/data scientist, with the most number of world-class Kaggle competition gold medals (10) in Australia, spanning diverse disciplines of AI and data science. This is considered by the community as one of the most difficult achievements that a data/AI scientist can achieve. <br>
 
 <div id="animation-container">
 <canvas id="visualizationCanvas-1" class="helix"></canvas>
@@ -54,15 +54,12 @@ I have worked as key roles for Collective[i] (data science manager, data science
 
 Also, I have a few notable research [Papers](https://khavo.ai/papers). <br>
 
+
 <div id="animation-container">
-<canvas id="visualizationCanvas-5" class="gravitydispersion"></canvas>
+ <canvas id="visualizationCanvas-4" class="flock" width="1604" height="600" style="width: 802px; height: 300px; opacity: 1;"></canvas> 
 </div>
 
 Besides work, I also enjoy music (check out my [Tunes](https://khavo.ai/tunes) page), chess, soccer, and making funny AI stuffs :).  <br>
-
-<div id="animation-container">
- <canvas id="visualizationCanvas-4" class="fibonacci" width="1604" height="600" style="width: 802px; height: 300px; opacity: 1;"></canvas> 
-</div>
 
 <div class="img-row">
   <img src="/images/kha_brad.jpg" alt="Image 1">
@@ -78,11 +75,6 @@ Besides work, I also enjoy music (check out my [Tunes](https://khavo.ai/tunes) p
 
 <br>
 
-<!--
-<div id="animation-container">
-<canvas id="visualizationCanvas-6" class="donut"></canvas>
-</div>
--->
 
 <script src="{{ '/js/neural_visuals.js' | relative_url }}"></script>
 

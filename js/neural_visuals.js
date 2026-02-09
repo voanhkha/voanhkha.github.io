@@ -448,7 +448,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // - speed increases near center
     // - particles "fall in" and respawn at outer disk
 
-    const numParticles = 750;                   // 700–1400 depending on perf
+    const numParticles = 550;                   // 700–1400 depending on perf
     const minDim = Math.min(canvas.clientWidth, canvas.clientHeight);
 
     const eventHorizon = minDim * 0.01;         // "black hole" radius
@@ -1345,13 +1345,508 @@ document.addEventListener('DOMContentLoaded', () => {
                         }
                     }
 
+} else if (pattern === 'brainnet') {
+    // Neural Constellation Brain (Organic Network Growth)
+    // - particles live inside a "brain" silhouette (two overlapping ellipses)
+    // - they drift with gentle noise + slight attraction to wandering anchors
+    // - your global proximity connection logic draws the dim network
+
+    const numParticles = 500;
+    const minDim = Math.min(canvas.clientWidth, canvas.clientHeight);
+
+    // Brain silhouette parameters (two lobes)
+    const brainW = minDim * 0.65;
+    const brainH = minDim * 0.65;
+    const lobeOffset = brainW * 0.18;
+
+    // Ellipse radii
+    const rx = brainW * 0.42;
+    const ry = brainH * 0.50;
+
+    // Helpers
+    function insideEllipse(x, y, cx, cy, rx, ry) {
+        const dx = (x - cx) / rx;
+        const dy = (y - cy) / ry;
+        return (dx * dx + dy * dy) <= 1;
+    }
+
+    function insideBrain(x, y) {
+        // union of two ellipses
+        const left = insideEllipse(x, y, centerX - lobeOffset, centerY, rx, ry);
+        const right = insideEllipse(x, y, centerX + lobeOffset, centerY, rx, ry);
+        // add small “stem” hint by allowing a tiny lower ellipse
+        const stem = insideEllipse(x, y, centerX, centerY + ry * 0.75, rx * 0.35, ry * 0.35);
+        return left || right || stem;
+    }
+
+    function randomPointInBrain() {
+        // rejection sampling (fast enough for ~1k points)
+        for (let tries = 0; tries < 5000; tries++) {
+            const x = centerX + (Math.random() - 0.5) * brainW;
+            const y = centerY + (Math.random() - 0.5) * brainH * 1.2;
+            if (insideBrain(x, y)) return { x, y };
+        }
+        return { x: centerX, y: centerY };
+    }
+
+    // A few “growth anchors” that wander; particles are gently pulled to nearest anchor
+    const anchors = [];
+    const numAnchors = 8;
+    for (let a = 0; a < numAnchors; a++) {
+        const pt = randomPointInBrain();
+        anchors.push({
+            x: pt.x, y: pt.y,
+            vx: (Math.random() - 0.5) * 0.4,
+            vy: (Math.random() - 0.5) * 0.4,
+            seed: Math.random() * Math.PI * 2,
+        });
+    }
+
+    function updateAnchors() {
+        const t = Date.now() * 0.0001;
+        for (const an of anchors) {
+            // drift with gentle sinusoidal bias
+            const ax = Math.sin(t * 0.35 + an.seed) * 0.12;
+            const ay = Math.cos(t * 0.30 + an.seed) * 0.12;
+
+            // const ax = Math.sin(t * 0.35 + an.seed) * 0.22;
+            // const ay = Math.cos(t * 0.30 + an.seed) * 0.22;
+
+            an.vx = an.vx * 0.96 + ax;
+            an.vy = an.vy * 0.96 + ay;
+
+            an.x += an.vx;
+            an.y += an.vy;
+
+            // keep anchor inside brain (reflect)
+            if (!insideBrain(an.x, an.y)) {
+                an.vx *= -0.2;
+                an.vy *= -0.2;
+                // nudge back inward
+                an.x = Math.max(centerX - brainW * 0.45, Math.min(centerX + brainW * 0.45, an.x));
+                an.y = Math.max(centerY - brainH * 0.55, Math.min(centerY + brainH * 0.70, an.y));
+            }
+        }
+    }
+
+    for (let i = 0; i < numParticles; i++) {
+        const pt = randomPointInBrain();
+
+        const p = new Particle(pt.x, pt.y, 0, 0, centerX, centerY, null, {
+            ...settings,
+            lineOpacity: settings.lineOpacity ?? 0.28,
+            lineWidth: settings.lineWidth ?? 0.55,
+            fadeInSpeed: settings.fadeInSpeed ?? 0.018,
+            fadeOutSpeed: settings.fadeOutSpeed ?? 0.010
+        });
+
+        // Make these particles a bit more visible
+        p.maxRadius = 1.1 + Math.random() * 1.2;
+
+        // Local motion state
+        p.vx = 0;
+        p.vy = 0;
+        p.seed = Math.random() * Math.PI * 2;
+        p.anchorBias = Math.random(); // slightly different pull per particle
+
+        p.update = function() {
+            const t = Date.now() * 0.001;
+            updateAnchors();
+
+            // Find nearest anchor (small count => cheap)
+            let best = anchors[0];
+            let bestD = Infinity;
+            for (let k = 0; k < anchors.length; k++) {
+                const dx = anchors[k].x - this.x;
+                const dy = anchors[k].y - this.y;
+                const d2 = dx * dx + dy * dy;
+                if (d2 < bestD) { bestD = d2; best = anchors[k]; }
+            }
+
+            // “organic” noise drift
+            const n1 = Math.sin(t * 0.9 + this.seed + this.x * 0.01) * 0.35;
+            const n2 = Math.cos(t * 0.8 + this.seed + this.y * 0.01) * 0.35;
+
+            // Gentle attraction to nearest anchor
+            const dx = best.x - this.x;
+            const dy = best.y - this.y;
+
+            // const pull = 0.002 + 0.006 * this.anchorBias;
+            const pull = 0.001 + 0.005 * this.anchorBias;
+            const ax = dx * pull + n1;
+            const ay = dy * pull + n2;
+
+            this.vx = this.vx * 0.92 + ax;
+            this.vy = this.vy * 0.92 + ay;
+
+            this.x += this.vx;
+            this.y += this.vy;
+
+            // Keep inside brain: if outside, bounce back
+            // if (!insideBrain(this.x, this.y)) {
+            //     this.x -= this.vx * 2.2;
+            //     this.y -= this.vy * 2.2;
+            //     this.vx *= -0.65;
+            //     this.vy *= -0.65;
+            // }
+
+            if (!insideBrain(this.x, this.y)) {
+              this.x -= this.vx * 1.2;
+              this.y -= this.vy * 1.2;
+              this.vx *= -0.35;
+              this.vy *= -0.35;
+            }
+
+            // Standard pulsation logic
+            if (this.pulsationState === 'fadeIn') {
+                this.opacity = Math.min(1, this.opacity + this.fadeInSpeed);
+                this.radius = Math.min(this.maxRadius, this.radius + this.fadeInSpeed * 2);
+                if (this.opacity >= 1) {
+                    this.opacity = 1;
+                    this.pulsationState = 'fadeOut';
+                }
+            } else {
+                this.opacity = Math.max(0, this.opacity - this.fadeOutSpeed);
+                this.radius = Math.max(0, this.radius - this.fadeOutSpeed * 0.5);
+                if (this.opacity <= 0) {
+                    this.opacity = 0;
+                    this.pulsationState = 'fadeIn';
+                    this.radius = 0;
+                }
+            }
+        };
+
+        particles.push(p);
+    }
+
+    } else if (pattern === 'magfield') {
+    // Magnetic Field Lines
+    // - particles advect along a dipole-like vector field between two poles
+    // - global proximity connections give the “field line web” look
+
+    const numParticles = 300;
+    const minDim = Math.min(canvas.clientWidth, canvas.clientHeight);
+
+    // Pole positions
+
+// Use current CSS-pixel canvas size for true visual center
+    const centerShiftX = -200; // negative = move left, positive = move right
+    const cx = canvas.clientWidth * 0.5 + centerShiftX;
+    // const cx = canvas.clientWidth * 0.5;
+    const cy = canvas.clientHeight * 0.5;
+    const poleSep = minDim * 0.28;
+    const p1 = { x: cx - poleSep, y: cy };
+    const p2 = { x: cx + poleSep, y: cy };
+
+    // const poleSep = minDim * 0.28;
+    // const p1 = { x: centerX - poleSep, y: centerY };
+    // const p2 = { x: centerX + poleSep, y: centerY };
+
+    // Field tuning
+    const baseSpeed = 0.25;     // advection speed
+    const swirl = 0.35;         // adds curl-like behavior around poles
+    const soft = 200;            // softening to avoid singularity
+    const targetR = minDim * 0.56;      // desired big orbit radius
+    const band = minDim * 0.24;         // thickness of the allowed band
+    const keepStrength = 1.3;           // how strongly to keep the orbit wide (0.3..1.4)
+    const centerKickR = minDim * 0.30;  // if inside this, push outward
+    const centerKick = 1.2;             // kick strength
+
+    function fieldAt(x, y) {
+        // “electric-like” contributions from two opposite poles
+        // (not physically perfect magnetostatics, but looks great)
+        const dx1 = x - p1.x, dy1 = y - p1.y;
+        const dx2 = x - p2.x, dy2 = y - p2.y;
+
+        const r1 = Math.sqrt(dx1 * dx1 + dy1 * dy1 + soft);
+        const r2 = Math.sqrt(dx2 * dx2 + dy2 * dy2 + soft);
+
+        // opposite signs create “flow from one pole to the other”
+        const s1 = 1 / (r1 * r1);
+        const s2 = 1 / (r2 * r2);
+
+        // radial components
+        let fx = dx1 * s1 - dx2 * s2;
+        let fy = dy1 * s1 - dy2 * s2;
+
+        // add swirl around each pole (perpendicular)
+        fx += (-dy1 * s1 + dy2 * s2) * swirl;
+        fy += ( dx1 * s1 - dx2 * s2) * swirl;
+
+        // normalize
+        const m = Math.hypot(fx, fy) + 1e-6;
+        return { fx: fx / m, fy: fy / m };
+    }
+
+    for (let i = 0; i < numParticles; i++) {
+        const x0 = Math.random() * canvas.clientWidth;
+        const y0 = Math.random() * canvas.clientHeight;
+
+        const p = new Particle(x0, y0, 0, 0, centerX, centerY, null, {
+            ...settings,
+            lineOpacity: settings.lineOpacity ?? 0.24,
+            lineWidth: settings.lineWidth ?? 0.50,
+            fadeInSpeed: settings.fadeInSpeed ?? 0.018,
+            fadeOutSpeed: settings.fadeOutSpeed ?? 0.010
+        });
+
+        p.maxRadius = 1.0 + Math.random() * 1.2;
+        p.vx = 0;
+        p.vy = 0;
+        p.speedMul = 0.7 + Math.random() * 1.0;
+        p.seed = Math.random() * Math.PI * 2;
+
+        p.update = function() {
+            const t = Date.now() * 0.001;
+
+            // Sample vector field
+            const f = fieldAt(this.x, this.y);
+
+            // Add subtle time-varying wobble (keeps it alive)
+            const wob = 0.25;
+            const wx = Math.sin(t * 0.9 + this.seed) * wob;
+            const wy = Math.cos(t * 0.8 + this.seed) * wob;
+
+            // --- Keep particles circling at a large radius (avoid collapsing to a dot) ---
+            const cx = (p1.x + p2.x) * 0.5;
+            const cy = (p1.y + p2.y) * 0.5;
+
+            const dxC = this.x - cx;
+            const dyC = this.y - cy;
+            const r = Math.hypot(dxC, dyC) + 1e-6;
+
+            // outward unit vector from center
+            const ux = dxC / r;
+            const uy = dyC / r;
+
+            // spring toward target radius (positive => push outward, negative => pull inward)
+            const err = (targetR - r) / band;                 // roughly -1..+1 inside band
+            const spring = Math.max(-1, Math.min(1, err)) * keepStrength;
+
+            // “kick out” if too close to center (prevents collapse)
+            const kick = (r < centerKickR) ? (centerKick * (1 - r / centerKickR)) : 0;
+
+            // radial correction force
+            const radX = (spring + kick) * ux;
+            const radY = (spring + kick) * uy;
+
+            const sp = baseSpeed * this.speedMul;
+            // Smooth advection
+            this.vx = this.vx * 0.90 + (f.fx * sp + wx) * 0.8;
+            this.vy = this.vy * 0.90 + (f.fy * sp + wy) * 0.8;
+
+            // const sp = baseSpeed * this.speedMul;
+            // Mix field direction + radial keeper (radX/radY)
+            // this.vx = this.vx * 0.90 + ((f.fx + radX) * sp + wx) * 0.8;
+            // this.vy = this.vy * 0.90 + ((f.fy + radY) * sp + wy) * 0.8;
+
+            this.x += this.vx;
+            this.y += this.vy;
+
+            // Wrap
+            if (this.x < 0) this.x += canvas.clientWidth;
+            if (this.x > canvas.clientWidth) this.x -= canvas.clientWidth;
+            if (this.y < 0) this.y += canvas.clientHeight;
+            if (this.y > canvas.clientHeight) this.y -= canvas.clientHeight;
+
+            // Standard pulsation
+            if (this.pulsationState === 'fadeIn') {
+                this.opacity = Math.min(1, this.opacity + this.fadeInSpeed);
+                this.radius = Math.min(this.maxRadius, this.radius + this.fadeInSpeed * 2);
+                if (this.opacity >= 1) {
+                    this.opacity = 1;
+                    this.pulsationState = 'fadeOut';
+                }
+            } else {
+                this.opacity = Math.max(0, this.opacity - this.fadeOutSpeed);
+                this.radius = Math.max(0, this.radius - this.fadeOutSpeed * 0.5);
+                if (this.opacity <= 0) {
+                    this.opacity = 0;
+                    this.pulsationState = 'fadeIn';
+                    this.radius = 0;
+                }
+            }
+        };
+
+        particles.push(p);
+    }
+
+    } else if (pattern === 'flock') {
+    // Minimal Boids Flocking
+    // - classic separation/alignment/cohesion
+    // - global proximity connections create a subtle “swarm web”
+
+    const numParticles = 520; // boids are heavier; keep lower than other patterns
+    const minDim = Math.min(canvas.clientWidth, canvas.clientHeight);
+
+    // Boids parameters
+    // const perception = 55;
+    // const separationDist = 20;
+    // const maxSpeed = 1.35;
+    // const maxForce = 0.04;
+    // const wSep = 1.20;
+    // const wAli = 0.85;
+    // const wCoh = 0.75;
+
+    const perception = 95;        // see neighbors from further away (larger flock structure)
+    const separationDist = 54;    // keep personal space larger => bigger cluster
+    const maxSpeed = 1.55;        // a bit more roaming
+    const maxForce = 0.045;       // slightly more responsiveness
+    const wSep = 1.90;            // stronger push apart => fat flock
+    const wAli = 0.95;            // keep it coherent
+    const wCoh = 0.55;            // reduce “suck into a dot”
+
+    for (let i = 0; i < numParticles; i++) {
+        const x0 = Math.random() * canvas.clientWidth;
+        const y0 = Math.random() * canvas.clientHeight;
+
+        const p = new Particle(x0, y0, 0, 0, centerX, centerY, null, {
+            ...settings,
+            lineOpacity: settings.lineOpacity ?? 0.20,
+            lineWidth: settings.lineWidth ?? 0.50,
+            fadeInSpeed: settings.fadeInSpeed ?? 0.016,
+            fadeOutSpeed: settings.fadeOutSpeed ?? 0.010
+        });
+
+        p.maxRadius = 1.2 + Math.random() * 1.2;
+
+        // velocity
+        p.vx = (Math.random() - 0.5) * 2;
+        p.vy = (Math.random() - 0.5) * 2;
+
+        p.update = function() {
+            // Use your SpatialGrid to find neighbors (fast)
+            // We'll create a local grid each frame in animate(), so here we’ll just use
+            // the globally available `spatialGrid` by referencing it if you expose it.
+            // But your code doesn't expose it. So: we do a cheap local neighbor sample
+            // by scanning a limited number of random boids (keeps it self-contained).
+
+            // If you want the fully correct/faster version using your SpatialGrid directly,
+            // tell me and I’ll patch animate() in a tiny safe way.
+            const sampleN = 26; // small random sample for performance
+            let sepX = 0, sepY = 0, sepCount = 0;
+            let aliX = 0, aliY = 0, aliCount = 0;
+            let cohX = 0, cohY = 0, cohCount = 0;
+
+            for (let s = 0; s < sampleN; s++) {
+                const other = particles[(Math.random() * particles.length) | 0];
+                if (other === this) continue;
+
+                const dx = other.x - this.x;
+                const dy = other.y - this.y;
+
+                // wrap-aware distance (optional-ish; helps on edges)
+                const wx = dx - Math.sign(dx) * Math.max(0, Math.abs(dx) - canvas.clientWidth / 2);
+                const wy = dy - Math.sign(dy) * Math.max(0, Math.abs(dy) - canvas.clientHeight / 2);
+
+                const d = Math.hypot(wx, wy);
+                if (d < 1e-6) continue;
+
+                if (d < separationDist) {
+                    // separation: steer away
+                    sepX += (-wx / d) / d;
+                    sepY += (-wy / d) / d;
+                    sepCount++;
+                }
+
+                if (d < perception) {
+                    // alignment: match velocity
+                    aliX += other.vx;
+                    aliY += other.vy;
+                    aliCount++;
+
+                    // cohesion: go toward neighbors’ center
+                    cohX += other.x;
+                    cohY += other.y;
+                    cohCount++;
+                }
+            }
+
+            // Steering helpers
+            function limit(x, y, maxVal) {
+                const m = Math.hypot(x, y);
+                if (m > maxVal) {
+                    const k = maxVal / (m + 1e-6);
+                    return { x: x * k, y: y * k };
+                }
+                return { x, y };
+            }
+
+            let ax = 0, ay = 0;
+
+            // Separation
+            if (sepCount > 0) {
+                sepX /= sepCount; sepY /= sepCount;
+                const sep = limit(sepX, sepY, maxForce);
+                ax += sep.x * wSep;
+                ay += sep.y * wSep;
+            }
+
+            // Alignment
+            if (aliCount > 0) {
+                aliX /= aliCount; aliY /= aliCount;
+                // desired velocity in direction of average
+                const ali = limit(aliX - this.vx, aliY - this.vy, maxForce);
+                ax += ali.x * wAli;
+                ay += ali.y * wAli;
+            }
+
+            // Cohesion
+            if (cohCount > 0) {
+                cohX /= cohCount; cohY /= cohCount;
+                const toCX = cohX - this.x;
+                const toCY = cohY - this.y;
+                const coh = limit(toCX - this.vx, toCY - this.vy, maxForce);
+                ax += coh.x * wCoh;
+                ay += coh.y * wCoh;
+            }
+
+            // Update velocity + limit speed
+            this.vx += ax;
+            this.vy += ay;
+            const v = limit(this.vx, this.vy, maxSpeed);
+            this.vx = v.x; this.vy = v.y;
+
+            // Move
+            this.x += this.vx;
+            this.y += this.vy;
+
+            // Wrap
+            if (this.x < 0) this.x += canvas.clientWidth;
+            if (this.x > canvas.clientWidth) this.x -= canvas.clientWidth;
+            if (this.y < 0) this.y += canvas.clientHeight;
+            if (this.y > canvas.clientHeight) this.y -= canvas.clientHeight;
+
+            // Standard pulsation
+            if (this.pulsationState === 'fadeIn') {
+                this.opacity = Math.min(1, this.opacity + this.fadeInSpeed);
+                this.radius = Math.min(this.maxRadius, this.radius + this.fadeInSpeed * 2);
+                if (this.opacity >= 1) {
+                    this.opacity = 1;
+                    this.pulsationState = 'fadeOut';
+                }
+            } else {
+                this.opacity = Math.max(0, this.opacity - this.fadeOutSpeed);
+                this.radius = Math.max(0, this.radius - this.fadeOutSpeed * 0.5);
+                if (this.opacity <= 0) {
+                    this.opacity = 0;
+                    this.pulsationState = 'fadeIn';
+                    this.radius = 0;
+                }
+            }
+        };
+
+        particles.push(p);
+    }
+
+
                 } else if (pattern === 'rainwaves') {
             // Particle Rain + Gravity Waves
             // - particles fall down
             // - multiple moving wave fields push them sideways and slightly up/down
             // - connections are handled by your global spatial-grid logic (no override needed)
 
-            const numParticles = 1500;                 // raise/lower for performance
+            const numParticles = 1000;                 // raise/lower for performance
             const margin = 20;
 
             // Wave field parameters (tuned for subtle, classy motion)
@@ -1401,12 +1896,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     const t = Date.now() * 0.001;
 
                     // --- continuous falling ---
-                    // this.baseY += this.fallSpeed * (1 / 60); // frame-rate-ish step (stable enough)
-                    // // Wrap to top when off bottom
-                    // if (this.baseY > canvas.clientHeight + margin) {
-                    //     this.baseY = -margin;
-                    //     this.baseX = Math.random() * canvas.clientWidth;
-                    // }
+                    this.baseY += this.fallSpeed * (1 / 60); // frame-rate-ish step (stable enough)
+                    // Wrap to top when off bottom
+                    if (this.baseY > canvas.clientHeight + margin) {
+                        this.baseY = -margin;
+                        this.baseX = Math.random() * canvas.clientWidth;
+                    }
 
 
                     if (this.baseY > canvas.clientHeight + margin) {
@@ -1538,7 +2033,8 @@ document.addEventListener('DOMContentLoaded', () => {
             // ) || 'fibonacci'; // Changed default to fibonacci
 
             const pattern = Array.from(canvas.classList).find(className =>
-                ['asteroids', 'donut', 'fibonacci', 'gravitydispersion', 'power', 'wave', 'helix', 'rainwaves', 'blackhole'].includes(className)
+                ['asteroids', 'donut', 'fibonacci', 'gravitydispersion', 'power', 'wave',
+                    'helix', 'rainwaves', 'blackhole', 'brainnet', 'magfield', 'flock'].includes(className)
             ) || 'fibonacci';
 
             // Pattern-specific settings
@@ -1612,6 +2108,24 @@ document.addEventListener('DOMContentLoaded', () => {
                       fadeOutSpeed: 0.01,
                       lineWidth: 0.55,
                     },
+                brainnet: {
+                  lineOpacity: 0.28,
+                  fadeInSpeed: 0.018,
+                  fadeOutSpeed: 0.010,
+                  lineWidth: 0.55,
+                },
+                magfield: {
+                  lineOpacity: 0.24,
+                  fadeInSpeed: 0.018,
+                  fadeOutSpeed: 0.010,
+                  lineWidth: 0.50,
+                },
+                flock: {
+                  lineOpacity: 0.20,
+                  fadeInSpeed: 0.016,
+                  fadeOutSpeed: 0.010,
+                  lineWidth: 0.50,
+                },
             };
 
             // Start animation with pattern from class

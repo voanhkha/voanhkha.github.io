@@ -13,7 +13,7 @@ var w = c.width = window.innerWidth,
 		
 		opts = {
 			circDivisor: 13,
-			radius: 100,
+			radius: 120,
 			depth: 160,
 			rotVel: {
 				x: .0012,
@@ -89,10 +89,8 @@ Point.prototype.render = function(){
 	var y1 = y;
 	y = y * this.cosA; //y * this.cosB - z * this.sinB, but z = 0
 	z = z * this.cosA + y1 * this.sinA;
-	
-	
+
 	//rotate according to world rotation
-	
 	//rotate around z
 	var x1 = x;
 	x = x * rot.cos.z - y * rot.sin.z;
@@ -115,7 +113,6 @@ Point.prototype.render = function(){
 
 	// ctx.lineWidth = this.size * this.screen.scale;
 
-
 	// translate on the world translation
 	z += opts.depth;
 	
@@ -126,7 +123,7 @@ Point.prototype.render = function(){
 
     // **Draw the point as a small white dot**
 	ctx.beginPath();
-	ctx.arc(this.screen.x, this.screen.y, .7 * this.screen.scale, 0, Math.PI * 2); // Radius 2
+	ctx.arc(this.screen.x, this.screen.y, .9 * this.screen.scale, 0, Math.PI * 2); // Radius 2
     // ctx.fillStyle = 'white'
 	ctx.fillStyle = 'rgba(255, 255, 255, 1)'.replace('alp',  1 - ((z / (opts.radius + opts.radiusVariation)) / 2 + 0.5));
 	ctx.fill();
